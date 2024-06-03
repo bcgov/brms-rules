@@ -15,9 +15,9 @@ If you don't already have a GitHub account, you must [sign up for one](https://g
 
 Request that a team member add you to the ISD-BRE team on GitHub. You can also [request approval through github directly](https://github.com/orgs/bcgov/teams/isd-bre). Once approved, you will be able to submit edits.
 
-### 3. Switch to Desired Working Branch
+### 3. Select the Dev Working Branch
 
-Switch to the branch on which you would like to submit a change.
+Use the dropdown to switch to the `dev` branch. New or changed rules must be submitted to this branch for review.
 
 ![Select working branch](./assets/gifs/switch-to-dev.gif)
 

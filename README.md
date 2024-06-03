@@ -23,7 +23,10 @@ Switch to the branch on which you would like to submit a change.
 
 ### 4. Navigate to the Desired Folder
 
-Navigate through the repository to the desired folder for the item you wish to modify: - Click on the `rules` folder. - Select the folder where the rule you would like to modify is currently located, or where would like to create a new rule. - Click on the `Add file` button located in the upper right of the screen, and proceed to the next step to upload the desired files.
+Navigate through the repository to the desired folder for the item you wish to modify:
+1. Click on the `rules` folder.
+2. Select the folder where the rule you would like to modify is currently located, or where would like to create a new rule.
+3. Click on the `Add file` button located in the upper right of the screen, and proceed to the next step to upload the desired files.
 
 ![Navigate to folder for upload](./assets/gifs/navigate-upload.gif)
 

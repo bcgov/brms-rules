@@ -1,0 +1,31 @@
+name: Trigger the Build and Deploy of BRMS Backend
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Extract current branch name
+        id: extract_branch
+        run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+
+      - name: Trigger workflow in another repo
+        env:
+          GITHUB_TOKEN: ${{ secrets.BRMS_API_ACCESS_TOKEN }}
+          REPO: bcgov/brms-api
+          WORKFLOW_ID: build-and-deploy.yml
+          # This is the branch name we want to use of the brms backend
+          # We want it to be the same as the branch we are building so they stay in sync
+          BRANCH: ${{ env.BRANCH_NAME }}
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            https://api.github.com/repos/$REPO/actions/workflows/$WORKFLOW_ID/dispatches \
+            -d '{"ref":"'"$BRANCH"'"}'

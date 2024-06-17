@@ -1,0 +1,301 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "preNatalShelterInputNode",
+      "name": "Pre-natal Shelter Supplement",
+      "type": "inputNode",
+      "position": {
+        "x": -135,
+        "y": 125
+      }
+    },
+    {
+      "id": "preNatalShelterOutputNode",
+      "name": "Pre-natal Shelter Supplement",
+      "type": "outputNode",
+      "position": {
+        "x": 1095,
+        "y": 145
+      }
+    },
+    {
+      "id": "baseEligibilityDecisionNode",
+      "name": "Base Eligibility",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "rule1",
+            "isEligible": "true",
+            "shelterCostConfirmed": "true",
+            "reasonForIneligibility": "",
+            "familyUnitInPayForMonth": "true",
+            "singleNoDependentChildren": "true",
+            "writtenConfirmationProvided": "true",
+            "50f5506f-069f-4abd-9e0c-5c0536703976": "expectedDueDate",
+            "627a0864-2d44-4215-85de-87db96acc273": "confirmedPregnancyDate",
+            "b464f7d6-f248-4880-bea3-e7048f12b1d8": "shelterCosts"
+          },
+          {
+            "_id": "rule2",
+            "isEligible": "false",
+            "shelterCostConfirmed": "",
+            "reasonForIneligibility": "\"Not single or has dependent children\"",
+            "familyUnitInPayForMonth": "",
+            "singleNoDependentChildren": "false",
+            "writtenConfirmationProvided": "",
+            "50f5506f-069f-4abd-9e0c-5c0536703976": "",
+            "627a0864-2d44-4215-85de-87db96acc273": "",
+            "b464f7d6-f248-4880-bea3-e7048f12b1d8": ""
+          },
+          {
+            "_id": "rule3",
+            "isEligible": "false",
+            "shelterCostConfirmed": "",
+            "reasonForIneligibility": "\"No written confirmation provided\"",
+            "familyUnitInPayForMonth": "",
+            "singleNoDependentChildren": "",
+            "writtenConfirmationProvided": "false",
+            "50f5506f-069f-4abd-9e0c-5c0536703976": "",
+            "627a0864-2d44-4215-85de-87db96acc273": "",
+            "b464f7d6-f248-4880-bea3-e7048f12b1d8": ""
+          },
+          {
+            "_id": "rule4",
+            "isEligible": "false",
+            "shelterCostConfirmed": "false",
+            "reasonForIneligibility": "\"Shelter costs not verified\"",
+            "familyUnitInPayForMonth": "",
+            "singleNoDependentChildren": "",
+            "writtenConfirmationProvided": "",
+            "50f5506f-069f-4abd-9e0c-5c0536703976": "",
+            "627a0864-2d44-4215-85de-87db96acc273": "",
+            "b464f7d6-f248-4880-bea3-e7048f12b1d8": ""
+          }
+        ],
+        "inputs": [
+          {
+            "id": "familyUnitInPayForMonth",
+            "name": "Family Unit In Pay For Month",
+            "type": "expression",
+            "field": "familyUnitInPayForMonth"
+          },
+          {
+            "id": "singleNoDependentChildren",
+            "name": "Single No Dependent Children",
+            "type": "expression",
+            "field": "singleNoDependentChildren",
+            "defaultValue": "false"
+          },
+          {
+            "id": "writtenConfirmationProvided",
+            "name": "Written Confirmation of Pregnancy",
+            "type": "expression",
+            "field": "writtenConfirmationOfPregnancy"
+          },
+          {
+            "id": "shelterCostConfirmed",
+            "name": "Shelter Cost Confirmed",
+            "type": "expression",
+            "field": "shelterCostConfirmed"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "isEligible",
+            "name": "Is Eligible",
+            "type": "expression",
+            "field": "isEligible",
+            "defaultValue": "false"
+          },
+          {
+            "id": "reasonForIneligibility",
+            "name": "Reason For Ineligibility",
+            "type": "expression",
+            "field": "reasonForIneligibility"
+          },
+          {
+            "id": "b464f7d6-f248-4880-bea3-e7048f12b1d8",
+            "name": "Shelter Costs",
+            "type": "expression",
+            "field": "shelterCosts"
+          },
+          {
+            "id": "627a0864-2d44-4215-85de-87db96acc273",
+            "name": "Confirmed Pregnancy Date",
+            "type": "expression",
+            "field": "confirmedPregnancyDate"
+          },
+          {
+            "id": "50f5506f-069f-4abd-9e0c-5c0536703976",
+            "name": "Expected Due Date",
+            "type": "expression",
+            "field": "expectedDueDate"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 160,
+        "y": 125
+      }
+    },
+    {
+      "id": "6fe71fa1-7a32-4428-844e-60ee4f7b158b",
+      "name": "Supplement Calculation",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "b3cfd3c0-7324-4d2b-af0b-6a8a91bf5f50",
+            "0cf5717a-b013-4cba-bcbc-554b061b1dd6": "",
+            "557f29d1-4eb0-4bc1-8032-0954de31a081": "",
+            "57116634-1b11-4de4-a7e7-0f8a9ea2de69": "min([max([shelterCosts - 500, 0]), 195])",
+            "584bbd47-9758-4c2a-8a58-03241d53c3e7": "\n\n",
+            "af751836-a6ff-46c2-9bf2-30d9e059ba00": "true",
+            "f203a6c9-049c-4cbb-aaa8-0344de541bce": "",
+            "f9362756-1520-4aa1-9468-85f33dd16f74": ""
+          },
+          {
+            "_id": "63cc2d77-bebf-43df-ac76-a855d161678c",
+            "_description": "Start date is from date of application for an applicant or upon confirmed pregnancy for a current recipicant.",
+            "0cf5717a-b013-4cba-bcbc-554b061b1dd6": "",
+            "557f29d1-4eb0-4bc1-8032-0954de31a081": "",
+            "57116634-1b11-4de4-a7e7-0f8a9ea2de69": "",
+            "584bbd47-9758-4c2a-8a58-03241d53c3e7": "confirmedPregnancyDate",
+            "af751836-a6ff-46c2-9bf2-30d9e059ba00": "",
+            "f203a6c9-049c-4cbb-aaa8-0344de541bce": "",
+            "f9362756-1520-4aa1-9468-85f33dd16f74": " "
+          },
+          {
+            "_id": "c2ed501d-8f0e-4769-a67c-4ca482a7bd7f",
+            "0cf5717a-b013-4cba-bcbc-554b061b1dd6": "",
+            "557f29d1-4eb0-4bc1-8032-0954de31a081": "",
+            "57116634-1b11-4de4-a7e7-0f8a9ea2de69": "",
+            "584bbd47-9758-4c2a-8a58-03241d53c3e7": "",
+            "af751836-a6ff-46c2-9bf2-30d9e059ba00": "",
+            "f203a6c9-049c-4cbb-aaa8-0344de541bce": "",
+            "f9362756-1520-4aa1-9468-85f33dd16f74": "expectedDueDate"
+          },
+          {
+            "_id": "b484d94b-8aa6-4f33-bbbe-5cb2595b4121",
+            "0cf5717a-b013-4cba-bcbc-554b061b1dd6": "",
+            "557f29d1-4eb0-4bc1-8032-0954de31a081": "",
+            "57116634-1b11-4de4-a7e7-0f8a9ea2de69": "",
+            "584bbd47-9758-4c2a-8a58-03241d53c3e7": "",
+            "af751836-a6ff-46c2-9bf2-30d9e059ba00": "",
+            "f203a6c9-049c-4cbb-aaa8-0344de541bce": "",
+            "f9362756-1520-4aa1-9468-85f33dd16f74": ""
+          }
+        ],
+        "inputs": [
+          {
+            "id": "f203a6c9-049c-4cbb-aaa8-0344de541bce",
+            "name": "Check Shelter Costs",
+            "type": "expression",
+            "field": "shelterCosts"
+          },
+          {
+            "id": "557f29d1-4eb0-4bc1-8032-0954de31a081",
+            "name": "Benefit Plan Start Date",
+            "type": "expression",
+            "field": "confirmedPregnancyDate"
+          },
+          {
+            "id": "0cf5717a-b013-4cba-bcbc-554b061b1dd6",
+            "name": "Benefit Plan End Date",
+            "type": "expression",
+            "field": "expectedDueDate"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "af751836-a6ff-46c2-9bf2-30d9e059ba00",
+            "name": "Is Eligible",
+            "type": "expression",
+            "field": "isEligible"
+          },
+          {
+            "id": "57116634-1b11-4de4-a7e7-0f8a9ea2de69",
+            "name": "Supplement Amount",
+            "type": "expression",
+            "field": "supplementAmount"
+          },
+          {
+            "id": "584bbd47-9758-4c2a-8a58-03241d53c3e7",
+            "name": "Benefit Plan Start Date",
+            "type": "expression",
+            "field": "benefitPlanStartDate"
+          },
+          {
+            "id": "f9362756-1520-4aa1-9468-85f33dd16f74",
+            "name": "Benefit Plan End Date",
+            "type": "expression",
+            "field": "benefitPlanEndDate"
+          }
+        ],
+        "hitPolicy": "collect"
+      },
+      "position": {
+        "x": 790,
+        "y": 50
+      }
+    },
+    {
+      "id": "a4006989-b63c-4ffe-a492-c90c61fdcc86",
+      "name": "Eligibility Check",
+      "type": "switchNode",
+      "content": {
+        "statements": [
+          {
+            "id": "d3d69c2c-ff7b-4bad-9f12-644a311325fe",
+            "condition": "isEligible"
+          },
+          {
+            "id": "ab0c49f3-ceea-4a19-84e1-d1e76f08e043",
+            "condition": ""
+          }
+        ]
+      },
+      "position": {
+        "x": 480,
+        "y": 50
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "56da06ab-5008-4b3c-b6af-8493a0dd64a7",
+      "type": "edge",
+      "sourceId": "baseEligibilityDecisionNode",
+      "targetId": "a4006989-b63c-4ffe-a492-c90c61fdcc86"
+    },
+    {
+      "id": "d2247af6-6d9a-4160-81e4-7ab7bd92ec1f",
+      "type": "edge",
+      "sourceId": "a4006989-b63c-4ffe-a492-c90c61fdcc86",
+      "targetId": "6fe71fa1-7a32-4428-844e-60ee4f7b158b",
+      "sourceHandle": "d3d69c2c-ff7b-4bad-9f12-644a311325fe"
+    },
+    {
+      "id": "b93b5712-285a-497c-ab28-4fbc9ce9e69b",
+      "type": "edge",
+      "sourceId": "a4006989-b63c-4ffe-a492-c90c61fdcc86",
+      "targetId": "preNatalShelterOutputNode",
+      "sourceHandle": "ab0c49f3-ceea-4a19-84e1-d1e76f08e043"
+    },
+    {
+      "id": "9398facd-f225-4466-8feb-58c8ee0f5f33",
+      "type": "edge",
+      "sourceId": "6fe71fa1-7a32-4428-844e-60ee4f7b158b",
+      "targetId": "preNatalShelterOutputNode"
+    },
+    {
+      "id": "b7338111-7447-438c-a32e-956654add330",
+      "type": "edge",
+      "sourceId": "preNatalShelterInputNode",
+      "targetId": "baseEligibilityDecisionNode"
+    }
+  ]
+}

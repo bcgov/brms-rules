@@ -1,0 +1,93 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "8553e366-c7d6-4a22-93d5-54fd696960db",
+      "name": "request",
+      "type": "inputNode",
+      "position": {
+        "x": 120,
+        "y": 170
+      }
+    },
+    {
+      "id": "7f8c40cc-c714-4610-8115-9d4af481d6ae",
+      "name": "response",
+      "type": "outputNode",
+      "position": {
+        "x": 710,
+        "y": 170
+      }
+    },
+    {
+      "id": "14877138-a765-4efe-975c-9598963c13b5",
+      "name": "Generate Review Date based on date of last Assessment",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "ca90e81f-7700-43a4-8349-00f09660eeb7",
+            "51a27303-aa40-4f36-946b-d5f536a203b4": "",
+            "83c28e9b-8575-415a-a9e9-8d1888c401aa": "",
+            "defe8c0a-a6ed-45cd-8b9d-005f83599275": "dateString(date(mnsEligibilityAssessmentDate) + duration('12months'))",
+            "f3041dde-6a4b-4358-bdf0-c6e7ee48fcd6": "personID"
+          },
+          {
+            "_id": "e0e8aed3-b7cc-4fb8-a51b-de73eac0a423",
+            "51a27303-aa40-4f36-946b-d5f536a203b4": "null",
+            "83c28e9b-8575-415a-a9e9-8d1888c401aa": "'Person is not shown in the system as receiving MNS.'",
+            "defe8c0a-a6ed-45cd-8b9d-005f83599275": "",
+            "f3041dde-6a4b-4358-bdf0-c6e7ee48fcd6": "personID"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "51a27303-aa40-4f36-946b-d5f536a203b4",
+            "name": "Date of last MNS Eligibility Assessment",
+            "type": "expression",
+            "field": "mnsEligibilityAssessmentDate"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "f3041dde-6a4b-4358-bdf0-c6e7ee48fcd6",
+            "name": "Person ID",
+            "type": "expression",
+            "field": "personID"
+          },
+          {
+            "id": "defe8c0a-a6ed-45cd-8b9d-005f83599275",
+            "name": "MNS Eligibility Review Date",
+            "type": "expression",
+            "field": "mnsReviewDate"
+          },
+          {
+            "id": "83c28e9b-8575-415a-a9e9-8d1888c401aa",
+            "name": "Error Message",
+            "type": "expression",
+            "field": "errorMsg"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 400,
+        "y": 170
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "571f2834-91ac-4ae4-8df9-812eb961c1ca",
+      "type": "edge",
+      "sourceId": "8553e366-c7d6-4a22-93d5-54fd696960db",
+      "targetId": "14877138-a765-4efe-975c-9598963c13b5"
+    },
+    {
+      "id": "914055dc-2101-4367-ae1d-daef9bbd59ad",
+      "type": "edge",
+      "sourceId": "14877138-a765-4efe-975c-9598963c13b5",
+      "targetId": "7f8c40cc-c714-4610-8115-9d4af481d6ae"
+    }
+  ]
+}

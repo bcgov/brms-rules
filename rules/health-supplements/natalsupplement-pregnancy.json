@@ -1,0 +1,217 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "c4c4b2b2-a90e-4938-81c9-9d508a73b440",
+      "name": "request",
+      "type": "inputNode",
+      "position": {
+        "x": -420,
+        "y": -45
+      }
+    },
+    {
+      "id": "1bfb7aef-ab1c-4c87-aeb8-768b8a5b5ce7",
+      "name": "response",
+      "type": "outputNode",
+      "position": {
+        "x": 895,
+        "y": 75
+      }
+    },
+    {
+      "id": "42964304-1c52-4850-8915-64fa8f4e3dac",
+      "name": "Determine Eligibility",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "8b9df043-5b0b-431c-89bb-2589e4fdbf7a",
+            "32063f92-2c2e-43f5-9905-af37bba7132e": "personID",
+            "3bd6ebf0-924f-4276-88b9-ea5a6c7240d4": "benefitMonth\n\n",
+            "47c67489-a7a9-4165-ac08-af84c9883ad7": "",
+            "98513006-75bf-46e3-8f67-79fb98f59a24": "date(benefitMonth) <= date(estimatedDeliveryDate)",
+            "abc1e75e-c580-40db-91c4-e21aa5b211f5": "true",
+            "d37234fb-d01d-4f6e-b8f0-f826cb33a615": "true"
+          },
+          {
+            "_id": "cedc93e3-feea-4a2c-94ac-395ec769d9c2",
+            "32063f92-2c2e-43f5-9905-af37bba7132e": "personID",
+            "3bd6ebf0-924f-4276-88b9-ea5a6c7240d4": "benefitMonth\n\n",
+            "47c67489-a7a9-4165-ac08-af84c9883ad7": "'Date of expected delivery has already passed'",
+            "98513006-75bf-46e3-8f67-79fb98f59a24": "",
+            "abc1e75e-c580-40db-91c4-e21aa5b211f5": "false",
+            "d37234fb-d01d-4f6e-b8f0-f826cb33a615": "true"
+          },
+          {
+            "_id": "931f8763-1436-4ec0-b090-49742a72df7b",
+            "32063f92-2c2e-43f5-9905-af37bba7132e": "personID",
+            "3bd6ebf0-924f-4276-88b9-ea5a6c7240d4": "benefitMonth\n\n",
+            "47c67489-a7a9-4165-ac08-af84c9883ad7": "'Has not provided written confirmation of pregnancy'",
+            "98513006-75bf-46e3-8f67-79fb98f59a24": "",
+            "abc1e75e-c580-40db-91c4-e21aa5b211f5": "false",
+            "d37234fb-d01d-4f6e-b8f0-f826cb33a615": "false"
+          },
+          {
+            "_id": "4c87b6cb-49b6-4aa0-b1ea-552e373e32ef",
+            "32063f92-2c2e-43f5-9905-af37bba7132e": "",
+            "3bd6ebf0-924f-4276-88b9-ea5a6c7240d4": "",
+            "47c67489-a7a9-4165-ac08-af84c9883ad7": "",
+            "98513006-75bf-46e3-8f67-79fb98f59a24": "",
+            "abc1e75e-c580-40db-91c4-e21aa5b211f5": "",
+            "d37234fb-d01d-4f6e-b8f0-f826cb33a615": ""
+          }
+        ],
+        "inputs": [
+          {
+            "id": "d37234fb-d01d-4f6e-b8f0-f826cb33a615",
+            "name": "Is Pregnant",
+            "type": "expression",
+            "field": "isPregnant"
+          },
+          {
+            "id": "98513006-75bf-46e3-8f67-79fb98f59a24",
+            "name": "Within Allowed Benefit Period (Pregnancy)",
+            "type": "expression",
+            "field": "withinAllowedBenefitPeriodPregnancy"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "abc1e75e-c580-40db-91c4-e21aa5b211f5",
+            "name": "Eligible for Pregnancy Amount",
+            "type": "expression",
+            "field": "eligibleForPregnancyAmount"
+          },
+          {
+            "id": "47c67489-a7a9-4165-ac08-af84c9883ad7",
+            "name": "Reason for Ineligibility",
+            "type": "expression",
+            "field": "reasonForIneligibility"
+          },
+          {
+            "id": "3bd6ebf0-924f-4276-88b9-ea5a6c7240d4",
+            "name": "Benefit Month",
+            "type": "expression",
+            "field": "benefitMonth"
+          },
+          {
+            "id": "32063f92-2c2e-43f5-9905-af37bba7132e",
+            "name": "Person ID",
+            "type": "expression",
+            "field": "personID"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": -85,
+        "y": 145
+      }
+    },
+    {
+      "id": "11f42045-f21d-48f9-8a18-8241d629c1a8",
+      "name": "Calculate Amount",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "ccc8738b-4ac3-4170-9a49-c9c4bc988464",
+            "02f97ff2-08bd-4404-84ba-56422019da1f": "80",
+            "2d5c2c31-a9c9-4e13-bf60-f48e71b108df": "\"single\"",
+            "a98ef9e9-bdeb-4acf-81ce-e7b93c4b8813": "true"
+          },
+          {
+            "_id": "8e99d4c3-366e-4007-b911-a16cf896167f",
+            "02f97ff2-08bd-4404-84ba-56422019da1f": "160",
+            "2d5c2c31-a9c9-4e13-bf60-f48e71b108df": "\"multiple\"",
+            "a98ef9e9-bdeb-4acf-81ce-e7b93c4b8813": "true"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "a98ef9e9-bdeb-4acf-81ce-e7b93c4b8813",
+            "name": "Eligible for Pregnancy Amount",
+            "type": "expression",
+            "field": "eligibleForPregnancyAmount"
+          },
+          {
+            "id": "2d5c2c31-a9c9-4e13-bf60-f48e71b108df",
+            "name": "Single or Multiple (Pregnancy)",
+            "type": "expression",
+            "field": "singleOrMultiplePregnancy"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "02f97ff2-08bd-4404-84ba-56422019da1f",
+            "name": "Supplement Amount",
+            "type": "expression",
+            "field": "supplementAmount"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 590,
+        "y": -170
+      }
+    },
+    {
+      "id": "08f51eb1-ff05-4954-9460-8f1878706d36",
+      "name": "Should calculate",
+      "type": "switchNode",
+      "content": {
+        "statements": [
+          {
+            "id": "92f01035-77af-405a-bfac-2bffc4247a89",
+            "condition": "eligibleForPregnancyAmount == true"
+          }
+        ]
+      },
+      "position": {
+        "x": 275,
+        "y": -70
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "4a444ea5-ee66-4bf5-81e3-c404ca013a5c",
+      "type": "edge",
+      "sourceId": "c4c4b2b2-a90e-4938-81c9-9d508a73b440",
+      "targetId": "42964304-1c52-4850-8915-64fa8f4e3dac"
+    },
+    {
+      "id": "21c67e3c-6061-49f4-ba3f-08cb98e864a6",
+      "type": "edge",
+      "sourceId": "42964304-1c52-4850-8915-64fa8f4e3dac",
+      "targetId": "1bfb7aef-ab1c-4c87-aeb8-768b8a5b5ce7"
+    },
+    {
+      "id": "ade52bfc-c291-4f1c-b8ad-90bfbc07368d",
+      "type": "edge",
+      "sourceId": "11f42045-f21d-48f9-8a18-8241d629c1a8",
+      "targetId": "1bfb7aef-ab1c-4c87-aeb8-768b8a5b5ce7"
+    },
+    {
+      "id": "a64daed0-3d53-4f34-86da-e4dca74b2209",
+      "type": "edge",
+      "sourceId": "08f51eb1-ff05-4954-9460-8f1878706d36",
+      "targetId": "11f42045-f21d-48f9-8a18-8241d629c1a8",
+      "sourceHandle": "92f01035-77af-405a-bfac-2bffc4247a89"
+    },
+    {
+      "id": "278f155f-3724-4023-b633-17ba4104061b",
+      "type": "edge",
+      "sourceId": "42964304-1c52-4850-8915-64fa8f4e3dac",
+      "targetId": "08f51eb1-ff05-4954-9460-8f1878706d36"
+    },
+    {
+      "id": "2bf585c3-8a47-4135-9846-72f4a0c36bdd",
+      "type": "edge",
+      "sourceId": "c4c4b2b2-a90e-4938-81c9-9d508a73b440",
+      "targetId": "11f42045-f21d-48f9-8a18-8241d629c1a8"
+    }
+  ]
+}

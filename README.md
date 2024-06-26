@@ -13,7 +13,13 @@ If you don't already have a GitHub account, you must [sign up for one](https://g
 
 ### 2. Request Team Access
 
-Request that a team member add you to the ISD-BRE team on GitHub. You can also [request approval through github directly](https://github.com/orgs/bcgov/teams/isd-bre). Once approved, you will be able to submit edits.
+If you are new to GitHub and/or the BC Government, you will be required to join the [bcgov github organization](https://github.com/bcgov). Request that a team member add you on GitHub.
+
+After confirming membership in the bcgov organization, request that a team member add you to the ISD-BRE team on GitHub.
+
+If you are already part of the bcgov github organization, you can also [request approval through github directly](https://github.com/orgs/bcgov/teams/isd-bre).
+
+Once approved, you will be able to submit edits.
 
 ### 3. Select the Dev Working Branch
 

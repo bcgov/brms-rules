@@ -1,0 +1,472 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "edges": [
+    {
+      "id": "d7b74523-95f8-4af0-9b33-f2f47f8ebf71",
+      "type": "edge",
+      "sourceId": "51b9f47f-b533-40dd-85f8-ccfb929ac17c",
+      "targetId": "abf265d1-76e8-4818-9b41-3b87dab0d20a"
+    },
+    {
+      "id": "8f853bdd-1338-4843-ace7-7669b2b5e32d",
+      "type": "edge",
+      "sourceId": "769e2dca-eb74-4296-a11c-f801ad5dcae7",
+      "targetId": "0eb8bf1e-4396-43e4-8b35-9d87cc63a1b5"
+    },
+    {
+      "id": "446d7fea-b595-43d4-96bd-8e5976cddf2c",
+      "type": "edge",
+      "sourceId": "abf265d1-76e8-4818-9b41-3b87dab0d20a",
+      "targetId": "1a79eb26-fd3e-4640-8cb3-d88581c74621"
+    },
+    {
+      "id": "eed0ce72-f6b8-458e-b060-c616ed8ae940",
+      "type": "edge",
+      "sourceId": "1a79eb26-fd3e-4640-8cb3-d88581c74621",
+      "targetId": "0eb8bf1e-4396-43e4-8b35-9d87cc63a1b5",
+      "sourceHandle": "732826b3-d7e6-4ee1-bf6b-63dbf20b7cf0"
+    },
+    {
+      "id": "41d6dc66-45a8-420e-b2df-f716e8f2587b",
+      "type": "edge",
+      "sourceId": "bf7ecc90-71b5-4580-80af-86821cedf7cf",
+      "targetId": "769e2dca-eb74-4296-a11c-f801ad5dcae7"
+    },
+    {
+      "id": "1a28cb3d-2c3b-48cc-9449-0a7a8be87d23",
+      "type": "edge",
+      "sourceId": "d281d9bf-f979-4890-bb2a-781a6505f371",
+      "targetId": "769e2dca-eb74-4296-a11c-f801ad5dcae7",
+      "sourceHandle": "629f3068-761b-47da-b1cd-72f9791c86cd"
+    },
+    {
+      "id": "9e10f93e-d1f9-418b-9d1a-dadefb6a98a6",
+      "type": "edge",
+      "sourceId": "d281d9bf-f979-4890-bb2a-781a6505f371",
+      "targetId": "bf7ecc90-71b5-4580-80af-86821cedf7cf",
+      "sourceHandle": "9efe621f-728d-4fd6-a527-a23421ed6efe"
+    },
+    {
+      "id": "8916f8ec-361d-4f7b-88b1-cebf60ccaceb",
+      "type": "edge",
+      "sourceId": "1a79eb26-fd3e-4640-8cb3-d88581c74621",
+      "targetId": "d281d9bf-f979-4890-bb2a-781a6505f371",
+      "sourceHandle": "55fa777c-e8c4-4363-8178-cbf68696c087"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "51b9f47f-b533-40dd-85f8-ccfb929ac17c",
+      "name": "Diet Supplement Request",
+      "type": "inputNode",
+      "position": {
+        "x": 135,
+        "y": 305
+      }
+    },
+    {
+      "id": "0eb8bf1e-4396-43e4-8b35-9d87cc63a1b5",
+      "name": "Diet Supplement Response",
+      "type": "outputNode",
+      "position": {
+        "x": 2515,
+        "y": 325
+      }
+    },
+    {
+      "id": "abf265d1-76e8-4818-9b41-3b87dab0d20a",
+      "name": "Base Eligibility",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "a555e198-d982-4d05-a0c8-04d699eb7033",
+            "0ed964c2-1c82-4952-a481-ba345a254d14": "conditions",
+            "2d1145d8-e5c5-4c12-82e5-841240c58cb5": "true",
+            "41f1f7ae-781d-44a4-af97-b87794ae719e": "true",
+            "527e3309-1ce8-49c6-aad2-b46d12afd6a6": "highProteinConditions",
+            "97355f79-f49e-4506-99a8-4ead7859574b": "false",
+            "b37fff04-9f9f-4ff2-9ad3-3f1ce4c20aff": "true",
+            "b6ddf92d-b911-47a1-8343-88957225aed1": "",
+            "e22e3122-6429-4505-8cee-3c870bc85a51": "false"
+          },
+          {
+            "_id": "0be52e8e-6992-494b-a29b-9be944d882b6",
+            "0ed964c2-1c82-4952-a481-ba345a254d14": "",
+            "2d1145d8-e5c5-4c12-82e5-841240c58cb5": "false",
+            "41f1f7ae-781d-44a4-af97-b87794ae719e": "false",
+            "527e3309-1ce8-49c6-aad2-b46d12afd6a6": "",
+            "97355f79-f49e-4506-99a8-4ead7859574b": "",
+            "b37fff04-9f9f-4ff2-9ad3-3f1ce4c20aff": "",
+            "b6ddf92d-b911-47a1-8343-88957225aed1": "\"Not in pay\"",
+            "e22e3122-6429-4505-8cee-3c870bc85a51": ""
+          },
+          {
+            "_id": "4b6a9835-06d2-4b5d-a2de-362724f36bd8",
+            "0ed964c2-1c82-4952-a481-ba345a254d14": "",
+            "2d1145d8-e5c5-4c12-82e5-841240c58cb5": "false",
+            "41f1f7ae-781d-44a4-af97-b87794ae719e": "",
+            "527e3309-1ce8-49c6-aad2-b46d12afd6a6": "",
+            "97355f79-f49e-4506-99a8-4ead7859574b": "",
+            "b37fff04-9f9f-4ff2-9ad3-3f1ce4c20aff": "",
+            "b6ddf92d-b911-47a1-8343-88957225aed1": "\"In care facility\"",
+            "e22e3122-6429-4505-8cee-3c870bc85a51": "true"
+          },
+          {
+            "_id": "3a792776-47ac-4d94-b35a-a04992a35a0c",
+            "0ed964c2-1c82-4952-a481-ba345a254d14": "",
+            "2d1145d8-e5c5-4c12-82e5-841240c58cb5": "false",
+            "41f1f7ae-781d-44a4-af97-b87794ae719e": "",
+            "527e3309-1ce8-49c6-aad2-b46d12afd6a6": "",
+            "97355f79-f49e-4506-99a8-4ead7859574b": "true",
+            "b37fff04-9f9f-4ff2-9ad3-3f1ce4c20aff": "",
+            "b6ddf92d-b911-47a1-8343-88957225aed1": "\"In pay of another supplement\"",
+            "e22e3122-6429-4505-8cee-3c870bc85a51": ""
+          },
+          {
+            "_id": "36b814a6-3ee4-4cc0-bf2d-5bc9c75ce1ac",
+            "0ed964c2-1c82-4952-a481-ba345a254d14": "",
+            "2d1145d8-e5c5-4c12-82e5-841240c58cb5": "false",
+            "41f1f7ae-781d-44a4-af97-b87794ae719e": "",
+            "527e3309-1ce8-49c6-aad2-b46d12afd6a6": "",
+            "97355f79-f49e-4506-99a8-4ead7859574b": "",
+            "b37fff04-9f9f-4ff2-9ad3-3f1ce4c20aff": "false",
+            "b6ddf92d-b911-47a1-8343-88957225aed1": "\"No written confirmation provided\"",
+            "e22e3122-6429-4505-8cee-3c870bc85a51": ""
+          }
+        ],
+        "inputs": [
+          {
+            "id": "41f1f7ae-781d-44a4-af97-b87794ae719e",
+            "name": "Family Unit In Pay For Month",
+            "type": "expression",
+            "field": "familyUnitInPayForMonth"
+          },
+          {
+            "id": "e22e3122-6429-4505-8cee-3c870bc85a51",
+            "name": "Residing In Care Facility",
+            "type": "expression",
+            "field": "residingInCareFacility",
+            "defaultValue": "false"
+          },
+          {
+            "id": "97355f79-f49e-4506-99a8-4ead7859574b",
+            "name": "In Pay Of Any Other Supplement",
+            "type": "expression",
+            "field": "inPayOfAnyOtherSupplement",
+            "defaultValue": "false"
+          },
+          {
+            "id": "b37fff04-9f9f-4ff2-9ad3-3f1ce4c20aff",
+            "name": "Written Confirmation Provided",
+            "type": "expression",
+            "field": "writtenConfirmationProvided"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "2d1145d8-e5c5-4c12-82e5-841240c58cb5",
+            "name": "Is Eligible",
+            "type": "expression",
+            "field": "isEligible",
+            "defaultValue": "false"
+          },
+          {
+            "id": "0ed964c2-1c82-4952-a481-ba345a254d14",
+            "name": "Conditions",
+            "type": "expression",
+            "field": "conditions"
+          },
+          {
+            "id": "527e3309-1ce8-49c6-aad2-b46d12afd6a6",
+            "name": "highProteinConditions",
+            "type": "expression",
+            "field": "highProteinConditions"
+          },
+          {
+            "id": "b6ddf92d-b911-47a1-8343-88957225aed1",
+            "name": "Reason For Ineligibility",
+            "type": "expression",
+            "field": "reasonForIneligibility"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 530,
+        "y": 290
+      }
+    },
+    {
+      "id": "769e2dca-eb74-4296-a11c-f801ad5dcae7",
+      "name": "Condition Eligibility & Supplement Calculation",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "333bb206-3fb8-48b8-bb30-e301f88308b6",
+            "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
+            "8f4130c8-c03e-4503-8208-4a32a726af3a": "",
+            "929d5c8a-9f93-4620-96fe-2bfac31a307c": "80",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Cystic Fibrosis\" in conditions"
+          },
+          {
+            "_id": "59432e1a-280a-419b-96a6-79e59192729e",
+            "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
+            "8f4130c8-c03e-4503-8208-4a32a726af3a": "true",
+            "929d5c8a-9f93-4620-96fe-2bfac31a307c": "65",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Dysphagia\" in conditions"
+          },
+          {
+            "_id": "309c0b80-c954-480b-af3a-a2d330585548",
+            "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
+            "8f4130c8-c03e-4503-8208-4a32a726af3a": "true",
+            "929d5c8a-9f93-4620-96fe-2bfac31a307c": "65",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "eligibleForHighProteinSupplement"
+          },
+          {
+            "_id": "02cfdaab-62c7-4c04-8044-17a68e82eab5",
+            "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
+            "8f4130c8-c03e-4503-8208-4a32a726af3a": "",
+            "929d5c8a-9f93-4620-96fe-2bfac31a307c": "65",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Gluten-Free Diet\" in conditions"
+          },
+          {
+            "_id": "4833f6c0-a2cb-428d-9593-8fd5062fed67",
+            "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
+            "8f4130c8-c03e-4503-8208-4a32a726af3a": "",
+            "929d5c8a-9f93-4620-96fe-2bfac31a307c": "65",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Ketogenic Diet\" in conditions"
+          },
+          {
+            "_id": "752c7ef8-4b34-4c3a-a5c9-06784247ca53",
+            "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
+            "8f4130c8-c03e-4503-8208-4a32a726af3a": "",
+            "929d5c8a-9f93-4620-96fe-2bfac31a307c": "65",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Low Phenylalanine\" in conditions"
+          },
+          {
+            "_id": "b5d41c72-e196-47d3-bcb2-9f7517b8b1dc",
+            "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
+            "8f4130c8-c03e-4503-8208-4a32a726af3a": "",
+            "929d5c8a-9f93-4620-96fe-2bfac31a307c": "60",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Diabetes\" in conditions"
+          },
+          {
+            "_id": "e7c27251-b693-477f-bbe6-2d13af8eefdb",
+            "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
+            "8f4130c8-c03e-4503-8208-4a32a726af3a": "",
+            "929d5c8a-9f93-4620-96fe-2bfac31a307c": "50",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Kidney Dialysis\" in conditions"
+          },
+          {
+            "_id": "eb4e9c51-9753-41cb-83f4-8f4de7188fc3",
+            "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
+            "8f4130c8-c03e-4503-8208-4a32a726af3a": "",
+            "929d5c8a-9f93-4620-96fe-2bfac31a307c": "15",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Restricted Sodium\" in conditions"
+          },
+          {
+            "_id": "4a1135b3-2f5e-4106-aa1c-6feba8e14045",
+            "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "false",
+            "8f4130c8-c03e-4503-8208-4a32a726af3a": "",
+            "929d5c8a-9f93-4620-96fe-2bfac31a307c": "",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": ""
+          }
+        ],
+        "inputs": [
+          {
+            "id": "f0e9e752-c27b-4587-b5f5-007fee9c84ae",
+            "name": "Check Condition",
+            "type": "expression"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf",
+            "name": "Is Eligible",
+            "type": "expression",
+            "field": "isEligible"
+          },
+          {
+            "id": "929d5c8a-9f93-4620-96fe-2bfac31a307c",
+            "name": "Supplement Amount",
+            "type": "expression",
+            "field": "supplementAmount",
+            "defaultValue": "0"
+          },
+          {
+            "id": "8f4130c8-c03e-4503-8208-4a32a726af3a",
+            "name": "Eligible For Blender Supplement",
+            "type": "expression",
+            "field": "eligibleForBlenderSupplement",
+            "defaultValue": "false"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 2085,
+        "y": 110
+      }
+    },
+    {
+      "id": "1a79eb26-fd3e-4640-8cb3-d88581c74621",
+      "name": "Eligibility Check",
+      "type": "switchNode",
+      "content": {
+        "statements": [
+          {
+            "id": "55fa777c-e8c4-4363-8178-cbf68696c087",
+            "condition": "isEligible"
+          },
+          {
+            "id": "732826b3-d7e6-4ee1-bf6b-63dbf20b7cf0",
+            "condition": ""
+          }
+        ]
+      },
+      "position": {
+        "x": 910,
+        "y": 230
+      }
+    },
+    {
+      "id": "bf7ecc90-71b5-4580-80af-86821cedf7cf",
+      "name": "High Protein Eligibility",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "48c95eef-3fee-4149-bca8-dda570ae1897",
+            "568fdae8-6508-4636-a3b5-dd0c3fbf879a": "conditions",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Cancer' in highProteinConditions",
+            "8b24542d-1794-4729-bc32-690b317e158d": "true"
+          },
+          {
+            "_id": "cd565aa0-eeee-47d2-8f8e-8fbed423d23c",
+            "568fdae8-6508-4636-a3b5-dd0c3fbf879a": "conditions",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Chronic Inflammatory Bowel Disease' in highProteinConditions",
+            "8b24542d-1794-4729-bc32-690b317e158d": "true"
+          },
+          {
+            "_id": "36910e19-2139-48ee-8b1a-e48a452e5ef6",
+            "568fdae8-6508-4636-a3b5-dd0c3fbf879a": "conditions",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "\"Crohn's Disease\" in highProteinConditions",
+            "8b24542d-1794-4729-bc32-690b317e158d": "true"
+          },
+          {
+            "_id": "560d61ec-759f-4ead-a63c-b978eaee3d6b",
+            "568fdae8-6508-4636-a3b5-dd0c3fbf879a": "conditions",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Ulcerative Colitis' in highProteinConditions",
+            "8b24542d-1794-4729-bc32-690b317e158d": "true"
+          },
+          {
+            "_id": "73f46b58-bd62-4711-8d83-237a7cf79584",
+            "568fdae8-6508-4636-a3b5-dd0c3fbf879a": "conditions",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'HIV Positive Diagnosis' in highProteinConditions",
+            "8b24542d-1794-4729-bc32-690b317e158d": "true"
+          },
+          {
+            "_id": "0ed9ac10-da32-470c-ba3a-c76c3fbf0250",
+            "568fdae8-6508-4636-a3b5-dd0c3fbf879a": "conditions",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'AIDS' in highProteinConditions",
+            "8b24542d-1794-4729-bc32-690b317e158d": "true"
+          },
+          {
+            "_id": "b739df96-19a9-4538-9ab5-540dd11a5989",
+            "568fdae8-6508-4636-a3b5-dd0c3fbf879a": "conditions",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Chronic Bacterial Infection' in highProteinConditions",
+            "8b24542d-1794-4729-bc32-690b317e158d": "true"
+          },
+          {
+            "_id": "6909a27c-e6db-44fc-9adb-006fa1d9c09b",
+            "568fdae8-6508-4636-a3b5-dd0c3fbf879a": "conditions",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Tuberculosis' in highProteinConditions",
+            "8b24542d-1794-4729-bc32-690b317e158d": "true"
+          },
+          {
+            "_id": "01644735-15f0-4649-b010-238699bf0442",
+            "568fdae8-6508-4636-a3b5-dd0c3fbf879a": "conditions",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Hyperthyroidism' in highProteinConditions",
+            "8b24542d-1794-4729-bc32-690b317e158d": "true"
+          },
+          {
+            "_id": "08d724ed-a154-4ac2-bb68-f8c48f1b253a",
+            "568fdae8-6508-4636-a3b5-dd0c3fbf879a": "conditions",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Osteoporosis' in highProteinConditions",
+            "8b24542d-1794-4729-bc32-690b317e158d": "true"
+          },
+          {
+            "_id": "5ca6cc41-66c0-4b86-9421-e67e0bce53a1",
+            "568fdae8-6508-4636-a3b5-dd0c3fbf879a": "conditions",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Hepatitis B' in highProteinConditions",
+            "8b24542d-1794-4729-bc32-690b317e158d": "true"
+          },
+          {
+            "_id": "9b64ef15-c179-4096-8620-6f8db67af588",
+            "568fdae8-6508-4636-a3b5-dd0c3fbf879a": "conditions",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Hepatitis C' in highProteinConditions",
+            "8b24542d-1794-4729-bc32-690b317e158d": "true"
+          },
+          {
+            "_id": "da11cea4-9fda-4dbb-9dde-f40ab9cfa4b7",
+            "568fdae8-6508-4636-a3b5-dd0c3fbf879a": "conditions",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "",
+            "8b24542d-1794-4729-bc32-690b317e158d": "false"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "87eeb68c-ca4b-4914-8a5f-438dcaf977f5",
+            "name": "Check Reason for High Protein Diet",
+            "type": "expression",
+            "defaultValue": ""
+          }
+        ],
+        "outputs": [
+          {
+            "id": "8b24542d-1794-4729-bc32-690b317e158d",
+            "name": "Eligible for High Protein Supplement",
+            "type": "expression",
+            "field": "eligibleForHighProteinSupplement",
+            "defaultValue": "false"
+          },
+          {
+            "id": "568fdae8-6508-4636-a3b5-dd0c3fbf879a",
+            "name": "Conditions",
+            "type": "expression",
+            "field": "conditions"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 1680,
+        "y": -75
+      }
+    },
+    {
+      "id": "d281d9bf-f979-4890-bb2a-781a6505f371",
+      "name": "High Protein Condition",
+      "type": "switchNode",
+      "content": {
+        "statements": [
+          {
+            "id": "9efe621f-728d-4fd6-a527-a23421ed6efe",
+            "condition": "\"High Protein Diet\" in conditions"
+          },
+          {
+            "id": "629f3068-761b-47da-b1cd-72f9791c86cd",
+            "condition": ""
+          }
+        ]
+      },
+      "position": {
+        "x": 1300,
+        "y": -5
+      }
+    }
+  ],
+  "meta": null
+}

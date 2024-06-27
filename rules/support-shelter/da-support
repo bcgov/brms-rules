@@ -1,1 +1,211 @@
-
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
+      "name": "Calculating MaximumDA Support Request",
+      "type": "inputNode",
+      "position": {
+        "x": 125,
+        "y": 250
+      }
+    },
+    {
+      "id": "87a78f50-78f3-4ed8-9368-bcbeb110516d",
+      "name": "DA Support Amount Response",
+      "type": "outputNode",
+      "position": {
+        "x": 785,
+        "y": 250
+      }
+    },
+    {
+      "id": "464e51e5-4ce2-45a4-b3b0-7dbd7c87d93e",
+      "name": "Calculation",
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "f60aecf1-41b4-46cb-be41-da2a321eace7",
+            "name": "Person1 Age",
+            "type": "expression",
+            "field": "Person1Age"
+          },
+          {
+            "id": "2228d8e9-e32a-47f2-8905-dcd24315fb44",
+            "name": "Person1 PWD Status",
+            "type": "expression",
+            "field": "Person1HasPWDStatus"
+          },
+          {
+            "id": "8abc2014-5c23-42a9-9ba7-0b106e9158d2",
+            "name": "Person2 Age",
+            "type": "expression",
+            "field": "Person2Age"
+          },
+          {
+            "id": "b816ade1-bef2-42de-9d6f-4c389b8c16a5",
+            "name": "Person2 PWD Status",
+            "type": "expression",
+            "field": "Person2HasPWDStatus\n"
+          },
+          {
+            "id": "e0163cbe-f048-41de-b8f9-4f902257c6ac",
+            "name": "Family Unit Size",
+            "type": "expression",
+            "field": "familyUnitSize"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6",
+            "name": "Maximum DA Support Amount",
+            "type": "expression",
+            "field": "maximumDASupportAmount"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "1b7a089a-784f-4e59-998e-1b98e49b5c2a",
+            "_description": "Couple - Person2 PWD, Person1 non PWD >65",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": ">= 65",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "false",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "true",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1628.50\n"
+          },
+          {
+            "_id": "c65d2ee5-47fc-4755-bf6b-a0e759e49764",
+            "_description": "Two-parent family, Person1 non PWD >65",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": ">= 65",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "false",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "true",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1728.50\n"
+          },
+          {
+            "_id": "1f0000ea-9710-4dd9-a8aa-129bd8091ebb",
+            "_description": "Single PWD",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "true",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 1",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "983.50"
+          },
+          {
+            "_id": "095a879b-4eee-4957-bd00-bf4edea34c4a",
+            "_description": "Couple - Person1 PWD <65",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "true",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1378.50\n"
+          },
+          {
+            "_id": "06a7cc69-3468-49f4-a30c-eba466cfc6db",
+            "_description": "Couple - Person2 PWD <65",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "false",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "true",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1378.50\n"
+          },
+          {
+            "_id": "ac31bab6-591f-4639-9643-2ca7ec4f6499",
+            "_description": "Two-parent family - Person1 PWD <65\n",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "true",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1478.50"
+          },
+          {
+            "_id": "9ac364f8-38fe-40f1-a5ae-0abac33d968f",
+            "_description": "Two-parent family - Person2 PWD <65",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "false",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "true",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1478.50"
+          },
+          {
+            "_id": "ca24b4c8-091c-4499-8e24-ea19f2ac5a0e",
+            "_description": "Couple - both PWD",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "true",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "true",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "2",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1853.50"
+          },
+          {
+            "_id": "9ee983fd-0c57-48c0-8838-a4f995c043e6",
+            "_description": "Two-parent family - both PWD",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "true",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "true",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1953.50"
+          },
+          {
+            "_id": "b2b214c6-2796-4aef-be71-3f420a033ad3",
+            "_description": "One-parent family  PWD",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "true",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1133.50"
+          },
+          {
+            "_id": "ae486e86-26c5-4695-babb-79db4cd4d49e",
+            "_description": "Couple - Person1 PWD, Person2 non PWD >65",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "true",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": ">= 65",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1628.50"
+          },
+          {
+            "_id": "559326cf-622d-4dec-855b-a32e91d41e33",
+            "_description": "Two-parent family, Person 2 non PWD >65",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "true",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": ">= 65",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1728.50\n"
+          }
+        ]
+      },
+      "position": {
+        "x": 455,
+        "y": 250
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "202ce0bc-fd77-4ee0-90e4-e68baa08a7da",
+      "type": "edge",
+      "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
+      "targetId": "464e51e5-4ce2-45a4-b3b0-7dbd7c87d93e"
+    },
+    {
+      "id": "6284d22a-a682-41e9-a6d0-17582a3b84b7",
+      "type": "edge",
+      "sourceId": "464e51e5-4ce2-45a4-b3b0-7dbd7c87d93e",
+      "targetId": "87a78f50-78f3-4ed8-9368-bcbeb110516d"
+    }
+  ]
+}

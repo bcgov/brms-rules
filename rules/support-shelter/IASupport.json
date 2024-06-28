@@ -1,0 +1,391 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
+      "name": "Calculating Maximum Support Request",
+      "type": "inputNode",
+      "position": {
+        "x": -100,
+        "y": 295
+      }
+    },
+    {
+      "id": "95a8fd76-0915-48d9-b716-11577923dd7b",
+      "name": "Single or Couple",
+      "type": "switchNode",
+      "content": {
+        "statements": [
+          {
+            "id": "371816d5-dfad-494e-af27-f68367b8a574",
+            "condition": "applicant2age != null"
+          },
+          {
+            "id": "71d825d5-b9e2-45a6-b106-4cbe576f379a",
+            "condition": ""
+          }
+        ]
+      },
+      "position": {
+        "x": 310,
+        "y": 245
+      }
+    },
+    {
+      "id": "42de2c3f-f9c0-4acf-93bd-f06a3adf5ef2",
+      "name": "Single Calculation",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "1e20c7a4-e759-4f2e-ae7b-03b409963a6e",
+            "_description": "A: Employable singles under 65 years of age.\n",
+            "564db848-f951-461f-b572-0b14f4499e05": "false",
+            "aed03151-e8ba-4284-b360-29b70f07a573": "560",
+            "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c": "== 1",
+            "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": "< 65"
+          },
+          {
+            "_id": "76d3daab-d739-4fb9-bdad-a891df611a02",
+            "_description": "B: Single adult meets the Persons with Persistent Multiple Barriers (PPMB) criteria and is under 65.",
+            "564db848-f951-461f-b572-0b14f4499e05": "true",
+            "aed03151-e8ba-4284-b360-29b70f07a573": "610",
+            "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c": "== 1",
+            "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": "< 65"
+          },
+          {
+            "_id": "553c0645-0282-429a-b473-9d09a1886798",
+            "_description": "C: Employable one-parent families where the parent is under 65.",
+            "564db848-f951-461f-b572-0b14f4499e05": "false",
+            "aed03151-e8ba-4284-b360-29b70f07a573": "710",
+            "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c": "> 1",
+            "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": "< 65"
+          },
+          {
+            "_id": "ed5933c4-4c1c-4243-a8b3-76ea117913ec",
+            "_description": "D: Single where one adult is aged 65 years or older.",
+            "564db848-f951-461f-b572-0b14f4499e05": "",
+            "aed03151-e8ba-4284-b360-29b70f07a573": "860",
+            "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c": "== 1",
+            "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": ">= 65"
+          },
+          {
+            "_id": "9132f40b-c333-4211-914a-3c61ed60724a",
+            "_description": "F: One-parent families where the parent is aged 65 or older.",
+            "564db848-f951-461f-b572-0b14f4499e05": "",
+            "aed03151-e8ba-4284-b360-29b70f07a573": "1010",
+            "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c": "> 1",
+            "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": ">= 65\t"
+          },
+          {
+            "_id": "45c88acb-3683-43fe-ac20-c06e07cd6882",
+            "_description": "G: One-parent families where the parent meets the Persons with Persistent Multiple Barriers (PPMB) criteria and is under 65.\n",
+            "564db848-f951-461f-b572-0b14f4499e05": "true",
+            "aed03151-e8ba-4284-b360-29b70f07a573": "760",
+            "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c": "> 1",
+            "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": "< 65"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca",
+            "name": "Age",
+            "type": "expression",
+            "field": "person1age"
+          },
+          {
+            "id": "564db848-f951-461f-b572-0b14f4499e05",
+            "name": "PPMB Status",
+            "type": "expression",
+            "field": "person1hasPPMBStatus",
+            "defaultValue": "false"
+          },
+          {
+            "id": "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c",
+            "name": "Family Unit Size",
+            "type": "expression",
+            "field": "familyUnitSize"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "aed03151-e8ba-4284-b360-29b70f07a573",
+            "name": "Maximum Support Amount",
+            "type": "expression",
+            "field": "maximumSupportAmount"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 820,
+        "y": 445
+      }
+    },
+    {
+      "id": "87a78f50-78f3-4ed8-9368-bcbeb110516d",
+      "name": "Support Amount Response",
+      "type": "outputNode",
+      "position": {
+        "x": 1165,
+        "y": 295
+      }
+    },
+    {
+      "id": "464e51e5-4ce2-45a4-b3b0-7dbd7c87d93e",
+      "name": "Couple Calculation",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "1f0000ea-9710-4dd9-a8aa-129bd8091ebb",
+            "_description": "A: Employable couple where all adults are under 65 years of age.",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "955",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "false",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65"
+          },
+          {
+            "_id": "095a879b-4eee-4957-bd00-bf4edea34c4a",
+            "_description": "A: Employable two-parent family where all adults are under 65 years of age. ",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1055",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "false",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65"
+          },
+          {
+            "_id": "06a7cc69-3468-49f4-a30c-eba466cfc6db",
+            "_description": "B: Couples where all adults meet the Persons with Persistent Multiple Barriers (PPMB) criteria and all are under 65.",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1055",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "true",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65\t",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "true",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65\t"
+          },
+          {
+            "_id": "ac31bab6-591f-4639-9643-2ca7ec4f6499",
+            "_description": "B: Two-parent families where all adults meet the Persons with Persistent Multiple Barriers (PPMB) criteria and all are under 65.",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1155",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "true",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65\t",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "true",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65\t"
+          },
+          {
+            "_id": "9ac364f8-38fe-40f1-a5ae-0abac33d968f",
+            "_description": "D:  Couples where one adult is aged 65 years or older. Alternate applicant.",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1255",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65\t",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": ">= 65\t"
+          },
+          {
+            "_id": "ca24b4c8-091c-4499-8e24-ea19f2ac5a0e",
+            "_description": "E: Couples where both adults are aged 65 years or older.",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1505",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": ">= 65\t",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": ">= 65\t"
+          },
+          {
+            "_id": "56f1a164-a279-4590-bc65-4c61686f75ee",
+            "_description": "D: Two-parent families where one adult is aged 65 years or older. Alternate applicant.",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1355",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65\t",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": ">= 65\t"
+          },
+          {
+            "_id": "3a307cb8-6e34-438a-b3b0-3fa998feabff",
+            "_description": "D:  Couples where one adult is aged 65 years or older. Alternate applicant.",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1255",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": ">= 65\t",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65\t"
+          },
+          {
+            "_id": "d071365d-11fa-46a1-8cfc-137b1f9b42c5",
+            "_description": "D: Two-parent families where one adult is aged 65 years or older. Alternate applicant.",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1355",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": ">= 65\t",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65\t"
+          },
+          {
+            "_id": "9df7b0de-a1b8-4792-8ab0-6d965de8c202",
+            "_description": "E: Two-parent families where both adults are aged 65 years or older.",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1605",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": ">= 65\t",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": ">= 65\t"
+          },
+          {
+            "_id": "96ec783a-9748-474a-93af-30cb5c9b82b7",
+            "_description": "H: Couples where one adult meets the PPMB criteria and all are under 65.",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1005",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "true",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65"
+          },
+          {
+            "_id": "ed31394e-2ee4-4b2d-a735-29810a38571d",
+            "_description": "H: Couples where one adult meets the PPMB criteria and all are under 65. ",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1005",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "false",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "true",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65"
+          },
+          {
+            "_id": "0e5d29e0-ec09-46bf-b83a-183a5d362b38",
+            "_description": "H: Two-parent families where one adult meets the PPMB criteria and all are under 65.",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1105",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "true",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65"
+          },
+          {
+            "_id": "70024b9c-874b-4f96-82d4-ec8b68cca2c3",
+            "_description": "H: Two-parent families where one adult meets the PPMB criteria and all are under 65. ",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1105",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "false",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65\t",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "true",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65\t"
+          },
+          {
+            "_id": "9ee983fd-0c57-48c0-8838-a4f995c043e6",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "",
+            "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "",
+            "e0163cbe-f048-41de-b8f9-4f902257c6ac": "",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": ""
+          }
+        ],
+        "inputs": [
+          {
+            "id": "f60aecf1-41b4-46cb-be41-da2a321eace7",
+            "name": "Person 1 Age",
+            "type": "expression",
+            "field": "person1age"
+          },
+          {
+            "id": "2228d8e9-e32a-47f2-8905-dcd24315fb44",
+            "name": "Person 1 PPMB Status",
+            "type": "expression",
+            "field": "person1hasPPMBStatus"
+          },
+          {
+            "id": "8abc2014-5c23-42a9-9ba7-0b106e9158d2",
+            "name": "Person 2 Age",
+            "type": "expression",
+            "field": "person2age"
+          },
+          {
+            "id": "b816ade1-bef2-42de-9d6f-4c389b8c16a5",
+            "name": "Person 2 PPMB Status",
+            "type": "expression",
+            "field": "person2hasPPMBStatus"
+          },
+          {
+            "id": "e0163cbe-f048-41de-b8f9-4f902257c6ac",
+            "name": "Family Unit Size",
+            "type": "expression",
+            "field": "familyUnitSize"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6",
+            "name": "Maximum Support Amount",
+            "type": "expression",
+            "field": "maximumSupportAmount"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 835,
+        "y": 215
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "fbe47bad-75f3-423e-ab99-001b93de9837",
+      "type": "edge",
+      "sourceId": "95a8fd76-0915-48d9-b716-11577923dd7b",
+      "targetId": "42de2c3f-f9c0-4acf-93bd-f06a3adf5ef2",
+      "sourceHandle": "68eabe9f-10dd-4eb3-a071-16dac264bc30"
+    },
+    {
+      "id": "d9bf5699-fb6c-4862-86cf-cb90bd90c728",
+      "type": "edge",
+      "sourceId": "464e51e5-4ce2-45a4-b3b0-7dbd7c87d93e",
+      "targetId": "87a78f50-78f3-4ed8-9368-bcbeb110516d"
+    },
+    {
+      "id": "c64cf46d-8ab1-4faf-a12c-50291ace86ea",
+      "type": "edge",
+      "sourceId": "42de2c3f-f9c0-4acf-93bd-f06a3adf5ef2",
+      "targetId": "87a78f50-78f3-4ed8-9368-bcbeb110516d"
+    },
+    {
+      "id": "d688ef06-de14-422e-a1ce-623ba2555574",
+      "type": "edge",
+      "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
+      "targetId": "42de2c3f-f9c0-4acf-93bd-f06a3adf5ef2"
+    },
+    {
+      "id": "26aafec1-d88f-4144-8f2c-14711851f18b",
+      "type": "edge",
+      "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
+      "targetId": "95a8fd76-0915-48d9-b716-11577923dd7b"
+    },
+    {
+      "id": "c87285d1-5802-4081-85b4-38c9256c17a4",
+      "type": "edge",
+      "sourceId": "95a8fd76-0915-48d9-b716-11577923dd7b",
+      "targetId": "464e51e5-4ce2-45a4-b3b0-7dbd7c87d93e",
+      "sourceHandle": "371816d5-dfad-494e-af27-f68367b8a574"
+    },
+    {
+      "id": "b10506b7-5ed4-4b38-af66-4864b18f00aa",
+      "type": "edge",
+      "sourceId": "95a8fd76-0915-48d9-b716-11577923dd7b",
+      "targetId": "42de2c3f-f9c0-4acf-93bd-f06a3adf5ef2",
+      "sourceHandle": "71d825d5-b9e2-45a6-b106-4cbe576f379a"
+    },
+    {
+      "id": "7b0e9066-0fe9-4317-bf28-2946f94985de",
+      "type": "edge",
+      "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
+      "targetId": "464e51e5-4ce2-45a4-b3b0-7dbd7c87d93e"
+    }
+  ]
+}

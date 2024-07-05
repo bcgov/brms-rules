@@ -48,7 +48,7 @@
             "id": "b816ade1-bef2-42de-9d6f-4c389b8c16a5",
             "name": "Person2 PWD Status",
             "type": "expression",
-            "field": "Person2HasPWDStatus\n"
+            "field": "Person2HasPWDStatus"
           },
           {
             "id": "e0163cbe-f048-41de-b8f9-4f902257c6ac",
@@ -74,7 +74,7 @@
             "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "",
             "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "true",
             "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
-            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1628.50\n"
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1628.50"
           },
           {
             "_id": "c65d2ee5-47fc-4755-bf6b-a0e759e49764",
@@ -84,7 +84,7 @@
             "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "",
             "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "true",
             "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",
-            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1728.50\n"
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1728.50"
           },
           {
             "_id": "1f0000ea-9710-4dd9-a8aa-129bd8091ebb",
@@ -104,7 +104,7 @@
             "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "",
             "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false",
             "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
-            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1378.50\n"
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1378.50"
           },
           {
             "_id": "06a7cc69-3468-49f4-a30c-eba466cfc6db",
@@ -114,11 +114,11 @@
             "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65",
             "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "true",
             "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
-            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1378.50\n"
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1378.50"
           },
           {
             "_id": "ac31bab6-591f-4639-9643-2ca7ec4f6499",
-            "_description": "Two-parent family - Person1 PWD <65\n",
+            "_description": "Two-parent family - Person1 PWD <65",
             "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65",
             "2228d8e9-e32a-47f2-8905-dcd24315fb44": "true",
             "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "",
@@ -184,7 +184,7 @@
             "8abc2014-5c23-42a9-9ba7-0b106e9158d2": ">= 65",
             "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false",
             "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",
-            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1728.50\n"
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1728.50"
           }
         ]
       },

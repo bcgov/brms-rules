@@ -1,0 +1,129 @@
+{
+  contentType: 'application/vnd.gorules.decision',
+  nodes: [
+    {
+      id: '09032963-abf8-4065-a01c-056c8a2a9af3',
+      name: 'Diet Supplement',
+      type: 'decisionNode',
+      content: {
+        key: 'health-supplements/mns-review.json',
+      },
+      position: {
+        x: 45,
+        y: 80,
+      },
+    },
+    {
+      id: '03e0b3e0-fdaa-4c64-8bef-dc2ad994fa90',
+      name: 'Blender Supplement Request',
+      type: 'inputNode',
+      position: {
+        x: -365,
+        y: 165,
+      },
+    },
+    {
+      id: '928116a9-8e4b-4030-8246-6a15db5358bc',
+      name: 'Blender Supplement Request Response',
+      type: 'outputNode',
+      position: {
+        x: 830,
+        y: 165,
+      },
+    },
+    {
+      id: '4dd505c3-6278-4d7c-9bf3-8d60452daf86',
+      name: 'Eligibility And Supplement',
+      type: 'decisionTableNode',
+      content: {
+        rules: [
+          {
+            _id: 'cd2b6b6c-99d6-47c0-9e6c-e0467373d331',
+            '1a55ec9e-7bac-4729-8f26-0d508ec03a19': '50',
+            '61bd7869-6c97-4290-bbdf-cdb23b9053c9': 'true',
+            'a6924bd9-f483-4bed-b847-bf70bff9b38e': 'true',
+          },
+          {
+            _id: '2cd9bc0f-26bc-418b-bbc7-fbe0ec90c7b0',
+            '1a55ec9e-7bac-4729-8f26-0d508ec03a19': '',
+            '61bd7869-6c97-4290-bbdf-cdb23b9053c9': '',
+            'a6924bd9-f483-4bed-b847-bf70bff9b38e': 'false',
+          },
+        ],
+        inputs: [
+          {
+            id: '61bd7869-6c97-4290-bbdf-cdb23b9053c9',
+            name: 'Eligible For Blender Supplement',
+            type: 'expression',
+            field: 'eligibleForBlenderSupplement',
+            defaultValue: 'false',
+          },
+        ],
+        outputs: [
+          {
+            id: 'a6924bd9-f483-4bed-b847-bf70bff9b38e',
+            name: 'Is Eligible',
+            type: 'expression',
+            field: 'isEligible',
+            defaultValue: 'false',
+          },
+          {
+            id: '1a55ec9e-7bac-4729-8f26-0d508ec03a19',
+            name: 'Supplement Amount',
+            type: 'expression',
+            field: 'supplementAmount',
+          },
+        ],
+        hitPolicy: 'first',
+      },
+      position: {
+        x: 440,
+        y: 165,
+      },
+    },
+    {
+      id: 'cdcb9d6e-2fc5-4471-a1dc-bbadaa398f2b',
+      type: 'decisionNode',
+      position: {
+        x: 30,
+        y: 460,
+      },
+      name: 'Linked Rule',
+      content: {
+        key: 'general-supplements/wintersupplement.json',
+      },
+    },
+  ],
+  edges: [
+    {
+      id: '5fbf498e-c212-4e59-b4a3-242576e5c11d',
+      type: 'edge',
+      sourceId: '03e0b3e0-fdaa-4c64-8bef-dc2ad994fa90',
+      targetId: '09032963-abf8-4065-a01c-056c8a2a9af3',
+    },
+    {
+      id: '254e8479-7d21-414c-8709-c4736719c78d',
+      type: 'edge',
+      sourceId: '09032963-abf8-4065-a01c-056c8a2a9af3',
+      targetId: '4dd505c3-6278-4d7c-9bf3-8d60452daf86',
+    },
+    {
+      id: '2bdc9847-68a3-4ee1-9a43-1f1eaaae2145',
+      type: 'edge',
+      sourceId: '4dd505c3-6278-4d7c-9bf3-8d60452daf86',
+      targetId: '928116a9-8e4b-4030-8246-6a15db5358bc',
+    },
+    {
+      id: '7da642f7-c216-4d3b-8288-59931d75f45f',
+      sourceId: '03e0b3e0-fdaa-4c64-8bef-dc2ad994fa90',
+      type: 'edge',
+      targetId: 'cdcb9d6e-2fc5-4471-a1dc-bbadaa398f2b',
+    },
+    {
+      id: 'd85803f4-ef61-41af-a0b0-f597d95affb7',
+      sourceId: 'cdcb9d6e-2fc5-4471-a1dc-bbadaa398f2b',
+      type: 'edge',
+      targetId: '4dd505c3-6278-4d7c-9bf3-8d60452daf86',
+    },
+  ],
+}

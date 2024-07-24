@@ -1,0 +1,135 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "17119358-634b-4f74-b48b-d49d5163a0fc",
+      "name": "request",
+      "type": "inputNode",
+      "position": {
+        "x": -910,
+        "y": 385
+      }
+    },
+    {
+      "id": "de2830d9-2046-4d3c-9979-e7c68259afaf",
+      "name": "response",
+      "type": "outputNode",
+      "position": {
+        "x": 110,
+        "y": 445
+      }
+    },
+    {
+      "id": "d268153e-1aae-4829-be27-f0871ca4ec11",
+      "name": "calculateEligibleYouth",
+      "type": "functionNode",
+      "content": "/**\n * @param dependents[{birthDate:String, inSchool:Boolean}]\n * @returns childCountCCBEligible\n * @returns childCountDeemedEligible\n */\nconst handler = ({ dependents } = input) => {\n\n  const twoMonthsOld = new Date();\n  twoMonthsOld.setMonth(twoMonthsOld.getMonth() - 2);\n\n  const eighteenYearsOld = new Date();\n  eighteenYearsOld.setFullYear(eighteenYearsOld.getFullYear() - 18);\n\n  const nineteenYearsOld = new Date();\n  nineteenYearsOld.setFullYear(nineteenYearsOld.getFullYear() - 19);\n\n  // Count children older than or equal to 2 months of age, and less than or equal to 18 years of age\n  const childCountCCBEligible = dependents.filter(dependent => {\n    const birthDate = new Date(dependent.birthDate);\n    return birthDate <= twoMonthsOld && birthDate >= eighteenYearsOld;\n  }).length;\n\n  // Count children less than 2 months of age, older than 18 but less than 19, or 19+ but in school\n  const childCountDeemedEligible = dependents.filter(dependent => {\n    const birthDate = new Date(dependent.birthDate);\n    const isLessThanTwoMonthsOld = birthDate > twoMonthsOld;\n    const isBetweenEighteenAndNineteenYearsOld = birthDate <= eighteenYearsOld && birthDate > nineteenYearsOld;\n    const isNineteenOrOlderAndInSchool = birthDate <= nineteenYearsOld && dependent.inSchool === true;\n\n    return isLessThanTwoMonthsOld || isBetweenEighteenAndNineteenYearsOld || isNineteenOrOlderAndInSchool;\n  }).length;\n  return {\n    childCountCCBEligible,\n    childCountDeemedEligible,\n  }\n};",
+      "position": {
+        "x": -595,
+        "y": 435
+      }
+    },
+    {
+      "id": "3c35a5d6-8574-4ad4-8b3e-f1c21f4259e1",
+      "type": "decisionNode",
+      "position": {
+        "x": -235,
+        "y": 335
+      },
+      "name": "CCB Calculator",
+      "content": {
+        "key": "ccb/child-benefit-calculation.json"
+      }
+    },
+    {
+      "id": "7749efa8-50c5-47d6-b5fb-bce302fac8cc",
+      "type": "decisionNode",
+      "position": {
+        "x": -230,
+        "y": 575
+      },
+      "name": "CCB In Lieu",
+      "content": {
+        "key": "ccb/ccb-in-lieu.json"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "1f68820f-810e-4c11-9360-4109563d2e1f",
+      "type": "edge",
+      "sourceId": "17119358-634b-4f74-b48b-d49d5163a0fc",
+      "targetId": "d268153e-1aae-4829-be27-f0871ca4ec11"
+    },
+    {
+      "id": "ada3dbb4-9f7e-4607-b2af-a0419db59ddc",
+      "sourceId": "3c35a5d6-8574-4ad4-8b3e-f1c21f4259e1",
+      "type": "edge",
+      "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
+    },
+    {
+      "id": "1727a645-5b72-4d6a-a089-1964975487fd",
+      "sourceId": "d268153e-1aae-4829-be27-f0871ca4ec11",
+      "type": "edge",
+      "targetId": "7749efa8-50c5-47d6-b5fb-bce302fac8cc"
+    },
+    {
+      "id": "c8113b03-ec2c-4eac-a3ea-dbc563768af8",
+      "sourceId": "7749efa8-50c5-47d6-b5fb-bce302fac8cc",
+      "type": "edge",
+      "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
+    },
+    {
+      "id": "981ed440-cc7f-4dc6-845f-8c0832cb8c9a",
+      "sourceId": "d268153e-1aae-4829-be27-f0871ca4ec11",
+      "type": "edge",
+      "targetId": "3c35a5d6-8574-4ad4-8b3e-f1c21f4259e1"
+    },
+    {
+      "id": "55dae37b-9213-4e95-8130-400941b089cd",
+      "sourceId": "17119358-634b-4f74-b48b-d49d5163a0fc",
+      "type": "edge",
+      "targetId": "3c35a5d6-8574-4ad4-8b3e-f1c21f4259e1"
+    }
+  ],
+  "tests": [
+    {
+      "name": "34000 AFNI 2 Children",
+      "input": {
+        "afni": 34000,
+        "dependents": [
+          {
+            "birthDate": "2019-05-24",
+            "inSchool": false
+          },
+          {
+            "birthDate": "2024-06-05",
+            "inSchool": false
+          }
+        ]
+      },
+      "output": {}
+    },
+    {
+      "name": "3 Children 50000 AFNI",
+      "input": {
+        "afni": 50000,
+        "dependents": [
+          {
+            "birthDate": "2014-05-09",
+            "inSchool": false
+          },
+          {
+            "birthDate": "2006-07-08",
+            "inSchool": true
+          },
+          {
+            "birthDate": "2024-06-05",
+            "inSchool": false
+          }
+        ]
+      },
+      "output": {}
+    }
+  ]
+}

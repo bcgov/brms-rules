@@ -1,0 +1,283 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "5b19498f-574a-457a-bc86-9ee9e017321c",
+      "name": "request",
+      "type": "inputNode",
+      "position": {
+        "x": 15,
+        "y": 195
+      }
+    },
+    {
+      "id": "d41af8a8-e440-420d-9332-836023903fdb",
+      "name": "response",
+      "type": "outputNode",
+      "position": {
+        "x": 1580,
+        "y": 205
+      }
+    },
+    {
+      "id": "5ba65cea-5a47-4c86-bac4-57721678cf8a",
+      "name": "baseChildAmount",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "af650458-501f-44f8-99df-4e7da51c9927",
+            "04e66a8e-900e-40c2-9760-0c62db6c04ce": "==1",
+            "24aa41f7-74a7-47be-a006-951759307f90": "237.33*12"
+          },
+          {
+            "_id": "3e9d5c6d-b74e-4a4e-a6a3-24f109878bc8",
+            "04e66a8e-900e-40c2-9760-0c62db6c04ce": "==2",
+            "24aa41f7-74a7-47be-a006-951759307f90": "(237.33 + 209.92 )*12"
+          },
+          {
+            "_id": "0b0e57cb-c304-43ea-a247-6d7621cee10d",
+            "04e66a8e-900e-40c2-9760-0c62db6c04ce": ">=3",
+            "24aa41f7-74a7-47be-a006-951759307f90": "(237.33 + 209.92 + ((childCountCCBEligible-2)*199.75)) * 12"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "04e66a8e-900e-40c2-9760-0c62db6c04ce",
+            "name": "Number of Children Eligible for CCB",
+            "type": "expression",
+            "field": "childCountCCBEligible"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "24aa41f7-74a7-47be-a006-951759307f90",
+            "name": "Base Topup Amount of Children",
+            "type": "expression",
+            "field": "baseAmountChild"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 370,
+        "y": 95
+      }
+    },
+    {
+      "id": "e415fdce-c7e2-4e57-8bf1-1407a60a8a5c",
+      "name": "incomeCalculation",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "9cb85ac4-352a-4006-82eb-b4531a012623",
+            "4cf57968-f6c6-4428-b961-c663319fba99": "adjustedFamilyNetIncome-31220.7",
+            "b95474de-3dce-4306-9a50-873aa0c16220": ">31220.7"
+          },
+          {
+            "_id": "dca9ab86-e969-4703-b76a-a8332b0115f4",
+            "4cf57968-f6c6-4428-b961-c663319fba99": "0",
+            "b95474de-3dce-4306-9a50-873aa0c16220": "<=31220.7"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "b95474de-3dce-4306-9a50-873aa0c16220",
+            "name": "Adjusted Family Net Income",
+            "type": "expression",
+            "field": "adjustedFamilyNetIncome"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "4cf57968-f6c6-4428-b961-c663319fba99",
+            "name": "remainingFamilyNetIncome",
+            "type": "expression",
+            "field": "remainingFamilyNetIncome"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 360,
+        "y": 300
+      }
+    },
+    {
+      "id": "43718020-0694-4fa7-a9ad-e4f21c91672a",
+      "name": "percentageDeduction",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "7a828756-23d0-47b1-a791-b2f318fbcc44",
+            "53b4001b-975e-41fe-bf9b-d7b2554a29f6": "remainingFamilyNetIncome*0.122",
+            "7057b964-bfcd-42cd-adeb-aa7143899085": "==1"
+          },
+          {
+            "_id": "afb337cb-4c3b-4e3c-85e1-f8fbbab43b55",
+            "53b4001b-975e-41fe-bf9b-d7b2554a29f6": "0+(remainingFamilyNetIncome*0.230)",
+            "7057b964-bfcd-42cd-adeb-aa7143899085": "==2"
+          },
+          {
+            "_id": "9b420ae5-5b16-48b1-b8d5-1c8083f90540",
+            "53b4001b-975e-41fe-bf9b-d7b2554a29f6": "0+(remainingFamilyNetIncome*0.333)",
+            "7057b964-bfcd-42cd-adeb-aa7143899085": ">=3"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "7057b964-bfcd-42cd-adeb-aa7143899085",
+            "name": "Count of Children Eligible For CCB",
+            "type": "expression",
+            "field": "childCountCCBEligible"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "53b4001b-975e-41fe-bf9b-d7b2554a29f6",
+            "name": "percentageDeduction",
+            "type": "expression",
+            "field": "percentageDeduction"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 685,
+        "y": 205
+      }
+    },
+    {
+      "id": "5f77eeb1-baf1-4dfe-98d5-31747b7a80cc",
+      "name": "AnnualAmount",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "ccb4cdeb-6ec6-46d2-845c-fbe93f6fc27b",
+            "1acea2e1-e3bd-4d21-a19f-ef8100d3bc1f": "baseAmountChild - percentageDeduction",
+            "cf972f0f-7e79-49a9-ad94-245a38dc54a6": "> 0"
+          },
+          {
+            "_id": "2f6978b6-a169-438f-bb3e-18bd375c2318",
+            "1acea2e1-e3bd-4d21-a19f-ef8100d3bc1f": "0",
+            "cf972f0f-7e79-49a9-ad94-245a38dc54a6": "<= 0"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "cf972f0f-7e79-49a9-ad94-245a38dc54a6",
+            "name": "baseAmountChild",
+            "type": "expression",
+            "field": "baseAmountChild"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "1acea2e1-e3bd-4d21-a19f-ef8100d3bc1f",
+            "name": "annualAmount",
+            "type": "expression",
+            "field": "annualAmount"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 960,
+        "y": 160
+      }
+    },
+    {
+      "id": "f1918cde-f801-465a-a355-0c0a3ae9c4c6",
+      "name": "childMonthlyTopup",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "0a4092d6-1243-46da-9766-2bbc8eb37d0f",
+            "327608c7-2598-4a88-aa6f-243bf9e189d9": ">0",
+            "6cc07735-a0f3-4601-b62a-856576d115ae": "round((annualAmount/12) * 100) / 100"
+          },
+          {
+            "_id": "70aa88a3-cea7-4ab5-b637-3dc5b1f5e1d1",
+            "327608c7-2598-4a88-aa6f-243bf9e189d9": "<=0",
+            "6cc07735-a0f3-4601-b62a-856576d115ae": "0"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "327608c7-2598-4a88-aa6f-243bf9e189d9",
+            "name": "annualAmount",
+            "type": "expression",
+            "field": "annualAmount"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "6cc07735-a0f3-4601-b62a-856576d115ae",
+            "name": "monthlyChildBenefitTopupAmount",
+            "type": "expression",
+            "field": "monthlyChildBenefitTopupAmount"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 1250,
+        "y": 200
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "08d28295-81a0-4aab-bda2-86bb436424c3",
+      "type": "edge",
+      "sourceId": "5b19498f-574a-457a-bc86-9ee9e017321c",
+      "targetId": "5ba65cea-5a47-4c86-bac4-57721678cf8a"
+    },
+    {
+      "id": "15f5b7fb-9fcb-46de-a8ce-397382d18522",
+      "type": "edge",
+      "sourceId": "5b19498f-574a-457a-bc86-9ee9e017321c",
+      "targetId": "e415fdce-c7e2-4e57-8bf1-1407a60a8a5c"
+    },
+    {
+      "id": "865a6f7f-ce8e-449d-8980-a9eab635f617",
+      "type": "edge",
+      "sourceId": "e415fdce-c7e2-4e57-8bf1-1407a60a8a5c",
+      "targetId": "43718020-0694-4fa7-a9ad-e4f21c91672a"
+    },
+    {
+      "id": "a9bc0ef4-c6f1-4f6c-98a8-f9c11ba30696",
+      "type": "edge",
+      "sourceId": "5b19498f-574a-457a-bc86-9ee9e017321c",
+      "targetId": "43718020-0694-4fa7-a9ad-e4f21c91672a"
+    },
+    {
+      "id": "53410a24-d48f-42ba-8d6e-40485d56b0ff",
+      "type": "edge",
+      "sourceId": "43718020-0694-4fa7-a9ad-e4f21c91672a",
+      "targetId": "5f77eeb1-baf1-4dfe-98d5-31747b7a80cc"
+    },
+    {
+      "id": "fa5d9035-c018-4271-b053-2d350aca1d2a",
+      "type": "edge",
+      "sourceId": "5ba65cea-5a47-4c86-bac4-57721678cf8a",
+      "targetId": "5f77eeb1-baf1-4dfe-98d5-31747b7a80cc"
+    },
+    {
+      "id": "d305728d-7d63-49b5-ac15-b044163bc609",
+      "type": "edge",
+      "sourceId": "5f77eeb1-baf1-4dfe-98d5-31747b7a80cc",
+      "targetId": "f1918cde-f801-465a-a355-0c0a3ae9c4c6"
+    },
+    {
+      "id": "f4aa9f1b-eed7-4e46-aee3-3591f851a179",
+      "type": "edge",
+      "sourceId": "f1918cde-f801-465a-a355-0c0a3ae9c4c6",
+      "targetId": "d41af8a8-e440-420d-9332-836023903fdb"
+    }
+  ]
+}

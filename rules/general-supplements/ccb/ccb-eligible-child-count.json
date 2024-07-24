@@ -1,0 +1,47 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "17119358-634b-4f74-b48b-d49d5163a0fc",
+      "name": "request",
+      "type": "inputNode",
+      "position": {
+        "x": -875,
+        "y": 445
+      }
+    },
+    {
+      "id": "de2830d9-2046-4d3c-9979-e7c68259afaf",
+      "name": "response",
+      "type": "outputNode",
+      "position": {
+        "x": 110,
+        "y": 445
+      }
+    },
+    {
+      "id": "d268153e-1aae-4829-be27-f0871ca4ec11",
+      "name": "calculateEligibleYouth",
+      "type": "functionNode",
+      "content": "/**\n * @param dependents[{birthDate:String, inSchool:Boolean}]\n * @returns childCountCCBEligible\n * @returns childCountDeemedEligible\n */\nconst handler = ({ dependents } = input) => {\n\n  const twoMonthsOld = new Date();\n  twoMonthsOld.setMonth(twoMonthsOld.getMonth() - 2);\n\n  const eighteenYearsOld = new Date();\n  eighteenYearsOld.setFullYear(eighteenYearsOld.getFullYear() - 18);\n\n  const nineteenYearsOld = new Date();\n  nineteenYearsOld.setFullYear(nineteenYearsOld.getFullYear() - 19);\n\n  // Count children older than or equal to 2 months of age, and less than or equal to 18 years of age\n  const childCountCCBEligible = dependents.filter(dependent => {\n    const birthDate = new Date(dependent.birthDate);\n    return birthDate <= twoMonthsOld && birthDate >= eighteenYearsOld;\n  }).length;\n\n  // Count children less than 2 months of age, older than 18 but less than 19, or 19+ but in school\n  const childCountDeemedEligible = dependents.filter(dependent => {\n    const birthDate = new Date(dependent.birthDate);\n    const isLessThanTwoMonthsOld = birthDate > twoMonthsOld;\n    const isBetweenEighteenAndNineteenYearsOld = birthDate <= eighteenYearsOld && birthDate > nineteenYearsOld;\n    const isNineteenOrOlderAndInSchool = birthDate <= nineteenYearsOld && dependent.inSchool === true;\n\n    return isLessThanTwoMonthsOld || isBetweenEighteenAndNineteenYearsOld || isNineteenOrOlderAndInSchool;\n  }).length;\n  return {\n    childCountCCBEligible,\n    childCountDeemedEligible,\n  }\n};",
+      "position": {
+        "x": -415,
+        "y": 440
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "1f68820f-810e-4c11-9360-4109563d2e1f",
+      "type": "edge",
+      "sourceId": "17119358-634b-4f74-b48b-d49d5163a0fc",
+      "targetId": "d268153e-1aae-4829-be27-f0871ca4ec11"
+    },
+    {
+      "id": "ac0c136f-d02e-4fa3-8d5d-b901889e6ad3",
+      "type": "edge",
+      "sourceId": "d268153e-1aae-4829-be27-f0871ca4ec11",
+      "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
+    }
+  ]
+}

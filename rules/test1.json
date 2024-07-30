@@ -1,0 +1,30 @@
+{
+  "nodes": [
+    {
+      "id": "f2158606-be6a-490e-8e0a-d6b279d059b0",
+      "type": "inputNode",
+      "position": {
+        "x": 130,
+        "y": 115
+      },
+      "name": "request"
+    },
+    {
+      "id": "7d133b84-e75a-44fd-bf6b-8f67011d968d",
+      "type": "outputNode",
+      "position": {
+        "x": 565,
+        "y": 110
+      },
+      "name": "response"
+    }
+  ],
+  "edges": [
+    {
+      "id": "85cbc9d4-4625-48c7-8639-2bd9f7d86eb7",
+      "sourceId": "f2158606-be6a-490e-8e0a-d6b279d059b0",
+      "type": "edge",
+      "targetId": "7d133b84-e75a-44fd-bf6b-8f67011d968d"
+    }
+  ]
+}

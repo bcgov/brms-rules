@@ -252,12 +252,8 @@
     },
     {
       "id": "78761bae-b68c-4521-a3f7-e58b2a3c0966",
-      "type": "switchNode",
-      "position": {
-        "x": 900,
-        "y": 445
-      },
       "name": "Shelter above Min",
+      "type": "switchNode",
       "content": {
         "statements": [
           {
@@ -269,16 +265,16 @@
             "condition": ""
           }
         ]
+      },
+      "position": {
+        "x": 900,
+        "y": 445
       }
     },
     {
       "id": "eed0980d-0d33-4eda-aeed-7175bb2b52fe",
-      "type": "expressionNode",
-      "position": {
-        "x": 1180,
-        "y": 605
-      },
       "name": "Default Minimum",
+      "type": "expressionNode",
       "content": {
         "expressions": [
           {
@@ -287,16 +283,16 @@
             "value": "minimumShelterAmount"
           }
         ]
+      },
+      "position": {
+        "x": 1180,
+        "y": 605
       }
     },
     {
       "id": "86a9f3d7-9483-4e82-950a-a8e303553007",
-      "type": "expressionNode",
-      "position": {
-        "x": 1485,
-        "y": 435
-      },
       "name": "Confirmed Amount",
+      "type": "expressionNode",
       "content": {
         "expressions": [
           {
@@ -305,16 +301,16 @@
             "value": "confirmedShelterCosts"
           }
         ]
+      },
+      "position": {
+        "x": 1485,
+        "y": 435
       }
     },
     {
       "id": "d5077945-4e31-4d63-b9dd-7452d4c85599",
-      "type": "switchNode",
-      "position": {
-        "x": 1185,
-        "y": 380
-      },
       "name": "Shelter above Max",
+      "type": "switchNode",
       "content": {
         "statements": [
           {
@@ -326,24 +322,43 @@
             "condition": ""
           }
         ]
+      },
+      "position": {
+        "x": 1185,
+        "y": 380
       }
     },
     {
       "id": "e2ad50bf-d9f4-4c8e-919c-c8b12c4ad1fe",
-      "type": "decisionTableNode",
-      "position": {
-        "x": 320,
-        "y": 285
-      },
       "name": "Over 65 and OAS/GIS",
+      "type": "decisionTableNode",
       "content": {
-        "hitPolicy": "first",
+        "rules": [
+          {
+            "_id": "39d5f2d1-b4a8-4439-8037-d472fb081c66",
+            "0790addc-d45c-4868-bc9f-fef836ec0c5f": "",
+            "311cb44c-6092-4d8b-ae65-43760fd7491e": "> 1",
+            "57c76e4b-1729-4d3f-827e-eac0558d7b21": ">= 65",
+            "7cf5315c-5c1c-4221-9012-b9df29d5a90c": "true",
+            "ce0740ab-4208-4f2c-923c-5eb3da2ed464": "true",
+            "dcbc0318-2758-4eb6-ba4d-39cba089cd9b": ""
+          },
+          {
+            "_id": "f0a290f0-a996-4220-8acb-173ad2b48797",
+            "0790addc-d45c-4868-bc9f-fef836ec0c5f": "true",
+            "311cb44c-6092-4d8b-ae65-43760fd7491e": "> 1",
+            "57c76e4b-1729-4d3f-827e-eac0558d7b21": "",
+            "7cf5315c-5c1c-4221-9012-b9df29d5a90c": "true",
+            "ce0740ab-4208-4f2c-923c-5eb3da2ed464": "",
+            "dcbc0318-2758-4eb6-ba4d-39cba089cd9b": ">= 65"
+          }
+        ],
         "inputs": [
           {
             "id": "57c76e4b-1729-4d3f-827e-eac0558d7b21",
+            "name": "Person 1 Age",
             "type": "expression",
-            "field": "person1age",
-            "name": "Person 1 Age"
+            "field": "person1age"
           },
           {
             "id": "dcbc0318-2758-4eb6-ba4d-39cba089cd9b",
@@ -353,44 +368,37 @@
           },
           {
             "id": "ce0740ab-4208-4f2c-923c-5eb3da2ed464",
+            "name": "Person 1 Receiving OAS/GIS",
             "type": "expression",
-            "field": "person1ReceivingOASGIS",
-            "name": "Person 1 Receiving OAS/GIS"
+            "field": "person1ReceivingOASGIS"
           },
           {
             "id": "0790addc-d45c-4868-bc9f-fef836ec0c5f",
+            "name": "Person 2 Receiving OAS/GIS",
             "type": "expression",
-            "field": "person2ReceivingOASGIS",
-            "name": "Person 2 Receiving OAS/GIS"
+            "field": "person2ReceivingOASGIS"
+          },
+          {
+            "id": "311cb44c-6092-4d8b-ae65-43760fd7491e",
+            "name": "Family Unit Size",
+            "type": "expression",
+            "field": "familyUnitSize"
           }
         ],
         "outputs": [
           {
             "id": "7cf5315c-5c1c-4221-9012-b9df29d5a90c",
-            "field": "defaultMax",
             "name": "Default To Maximum Shelter",
             "type": "expression",
+            "field": "defaultMax",
             "defaultValue": "false"
           }
         ],
-        "rules": [
-          {
-            "_id": "39d5f2d1-b4a8-4439-8037-d472fb081c66",
-            "57c76e4b-1729-4d3f-827e-eac0558d7b21": ">= 65",
-            "dcbc0318-2758-4eb6-ba4d-39cba089cd9b": "",
-            "ce0740ab-4208-4f2c-923c-5eb3da2ed464": "true",
-            "0790addc-d45c-4868-bc9f-fef836ec0c5f": "",
-            "7cf5315c-5c1c-4221-9012-b9df29d5a90c": "true"
-          },
-          {
-            "_id": "f0a290f0-a996-4220-8acb-173ad2b48797",
-            "57c76e4b-1729-4d3f-827e-eac0558d7b21": "",
-            "dcbc0318-2758-4eb6-ba4d-39cba089cd9b": ">= 65",
-            "ce0740ab-4208-4f2c-923c-5eb3da2ed464": "",
-            "0790addc-d45c-4868-bc9f-fef836ec0c5f": "true",
-            "7cf5315c-5c1c-4221-9012-b9df29d5a90c": "true"
-          }
-        ]
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 320,
+        "y": 285
       }
     }
   ],
@@ -434,98 +442,68 @@
     },
     {
       "id": "caefefa9-c646-49e5-b47f-3329abd9ce0e",
-      "sourceId": "95a8fd76-0915-48d9-b716-11577923dd7b",
       "type": "edge",
+      "sourceId": "95a8fd76-0915-48d9-b716-11577923dd7b",
       "targetId": "78761bae-b68c-4521-a3f7-e58b2a3c0966",
       "sourceHandle": "71d825d5-b9e2-45a6-b106-4cbe576f379a"
     },
     {
       "id": "97b346c2-f952-4d19-9546-e2712abdd2a2",
-      "sourceId": "78761bae-b68c-4521-a3f7-e58b2a3c0966",
       "type": "edge",
+      "sourceId": "78761bae-b68c-4521-a3f7-e58b2a3c0966",
       "targetId": "eed0980d-0d33-4eda-aeed-7175bb2b52fe",
       "sourceHandle": "c72e709f-a8ab-4db9-9505-940780741930"
     },
     {
       "id": "2ffd8474-98ce-4a98-aede-323b43deb264",
-      "sourceId": "eed0980d-0d33-4eda-aeed-7175bb2b52fe",
       "type": "edge",
+      "sourceId": "eed0980d-0d33-4eda-aeed-7175bb2b52fe",
       "targetId": "87a78f50-78f3-4ed8-9368-bcbeb110516d"
     },
     {
       "id": "1dc753b9-0723-429f-a445-21d20b5cd9c1",
-      "sourceId": "d5077945-4e31-4d63-b9dd-7452d4c85599",
       "type": "edge",
+      "sourceId": "d5077945-4e31-4d63-b9dd-7452d4c85599",
       "targetId": "4be9dde3-585c-4ea0-bad6-f0cd25d55678",
       "sourceHandle": "6a206dda-5f06-4bcd-961d-b3f74042543f"
     },
     {
       "id": "9a96e28a-2de7-48ee-ae06-4222140b1757",
-      "sourceId": "78761bae-b68c-4521-a3f7-e58b2a3c0966",
       "type": "edge",
+      "sourceId": "78761bae-b68c-4521-a3f7-e58b2a3c0966",
       "targetId": "d5077945-4e31-4d63-b9dd-7452d4c85599",
       "sourceHandle": "8c2bc3dc-1690-40ff-afd7-733d34055764"
     },
     {
       "id": "a7b749f1-8a6c-4c0c-8249-ed26b071d970",
-      "sourceId": "d5077945-4e31-4d63-b9dd-7452d4c85599",
       "type": "edge",
+      "sourceId": "d5077945-4e31-4d63-b9dd-7452d4c85599",
       "targetId": "86a9f3d7-9483-4e82-950a-a8e303553007",
       "sourceHandle": "cb1d261b-46f4-46b8-b5ae-9ca23a14a336"
     },
     {
       "id": "9cd4bb8c-6766-4960-8801-f168e3d02089",
-      "sourceId": "86a9f3d7-9483-4e82-950a-a8e303553007",
       "type": "edge",
+      "sourceId": "86a9f3d7-9483-4e82-950a-a8e303553007",
       "targetId": "87a78f50-78f3-4ed8-9368-bcbeb110516d"
     },
     {
       "id": "02fbe0c1-ffd8-4b1d-be90-f5b3b0dbca0a",
-      "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
       "type": "edge",
+      "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
       "targetId": "e2ad50bf-d9f4-4c8e-919c-c8b12c4ad1fe"
     },
     {
       "id": "d97d816a-cd0f-42f1-9b7b-567c65bf8933",
-      "sourceId": "e2ad50bf-d9f4-4c8e-919c-c8b12c4ad1fe",
       "type": "edge",
+      "sourceId": "e2ad50bf-d9f4-4c8e-919c-c8b12c4ad1fe",
       "targetId": "95a8fd76-0915-48d9-b716-11577923dd7b"
     },
     {
       "id": "d15f4bd9-5aa7-47f5-8688-44fc6d089661",
-      "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
       "type": "edge",
+      "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
       "targetId": "95a8fd76-0915-48d9-b716-11577923dd7b"
-    }
-  ],
-  "tests": [
-    {
-      "name": "Family Unit 2 < 65",
-      "input": {
-        "familyUnitSize": 2,
-        "confirmedShelterCosts": 450,
-        "person1age": 45,
-        "person2Age": 44,
-        "person1ReceivingOASGIS": false,
-        "person2ReceivingOASGIS": false
-      },
-      "output": {
-        "shelterAmount": 450
-      }
-    },
-    {
-      "name": "Family 1 Child - 1 over 65 with OAS/GIS",
-      "input": {
-        "familyUnitSize": 3,
-        "confirmedShelterCosts": 600,
-        "person1age": 66,
-        "person2Age": 64,
-        "person1ReceivingOASGIS": true,
-        "person2ReceivingOASGIS": false
-      },
-      "output": {
-        "shelterAmount": 790
-      }
     }
   ]
 }

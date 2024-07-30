@@ -1,0 +1,234 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "f1eb4300-0831-48d8-9be4-6e5a3ddee346",
+      "name": "request",
+      "type": "inputNode",
+      "position": {
+        "x": 10,
+        "y": 235
+      }
+    },
+    {
+      "id": "47cd916c-3dbc-4318-ac35-494866661198",
+      "name": "response",
+      "type": "outputNode",
+      "position": {
+        "x": 840,
+        "y": 235
+      }
+    },
+    {
+      "id": "685389fd-5734-4d51-8fac-9ce721dc9f44",
+      "name": "Calc A Support",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "87959c69-62ce-41fc-94d1-c6c75a535556",
+            "3a9b96c6-215a-405d-85e4-feba8354dd54": "> 0",
+            "4dcce982-347d-4e04-862b-dd850f43ce5d": "60",
+            "90ad7a83-831e-471d-9280-001b00a15cc3": "",
+            "dcfb8186-ad11-4974-a114-04f019bb9c42": "== 1"
+          },
+          {
+            "_id": "2b7283a1-21b5-4c2a-91cd-c7d4b001e829",
+            "3a9b96c6-215a-405d-85e4-feba8354dd54": "> 0",
+            "4dcce982-347d-4e04-862b-dd850f43ce5d": "120+((familyUnitSize-2)*40)",
+            "90ad7a83-831e-471d-9280-001b00a15cc3": "> 0",
+            "dcfb8186-ad11-4974-a114-04f019bb9c42": ">= 2"
+          },
+          {
+            "_id": "b13e1ca5-e6f2-4410-81dd-1d4882018064",
+            "3a9b96c6-215a-405d-85e4-feba8354dd54": "> 0",
+            "4dcce982-347d-4e04-862b-dd850f43ce5d": "60+((familyUnitSize-2)*40)",
+            "90ad7a83-831e-471d-9280-001b00a15cc3": "",
+            "dcfb8186-ad11-4974-a114-04f019bb9c42": ">= 2"
+          },
+          {
+            "_id": "5d53b2d8-f518-419d-ad0c-929d652ad1c1",
+            "3a9b96c6-215a-405d-85e4-feba8354dd54": "",
+            "4dcce982-347d-4e04-862b-dd850f43ce5d": "",
+            "90ad7a83-831e-471d-9280-001b00a15cc3": "",
+            "dcfb8186-ad11-4974-a114-04f019bb9c42": ""
+          }
+        ],
+        "inputs": [
+          {
+            "id": "dcfb8186-ad11-4974-a114-04f019bb9c42",
+            "name": "Family Unit Size",
+            "type": "expression",
+            "field": "familyUnitSize"
+          },
+          {
+            "id": "3a9b96c6-215a-405d-85e4-feba8354dd54",
+            "name": "Person 1 Age",
+            "type": "expression",
+            "field": "person1Age"
+          },
+          {
+            "id": "90ad7a83-831e-471d-9280-001b00a15cc3",
+            "name": "Person 2 Age",
+            "type": "expression",
+            "field": "person2Age"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "4dcce982-347d-4e04-862b-dd850f43ce5d",
+            "name": "Support Amount",
+            "type": "expression",
+            "field": "baseSupportAmount"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 280,
+        "y": 150
+      }
+    },
+    {
+      "id": "b3719c5c-ed90-4626-b388-9d6b64ed9e54",
+      "name": "PWD Increase",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "681a8e2f-3274-4c85-a2fa-fa333190db69",
+            "a033bce8-e5a7-498d-808c-1495646eccaa": "true",
+            "c7633900-0045-40fe-99fd-ad8b2e7e6d00": "127",
+            "d3e396b5-3811-4c5f-b5ab-08d0bc11d559": ""
+          },
+          {
+            "_id": "ec8b4831-b462-4810-9006-f9893d868085",
+            "a033bce8-e5a7-498d-808c-1495646eccaa": "",
+            "c7633900-0045-40fe-99fd-ad8b2e7e6d00": "127",
+            "d3e396b5-3811-4c5f-b5ab-08d0bc11d559": "true"
+          },
+          {
+            "_id": "a9ce7651-83e4-483d-a28d-f49a03accf0a",
+            "a033bce8-e5a7-498d-808c-1495646eccaa": "true",
+            "c7633900-0045-40fe-99fd-ad8b2e7e6d00": "127*2",
+            "d3e396b5-3811-4c5f-b5ab-08d0bc11d559": "true"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "a033bce8-e5a7-498d-808c-1495646eccaa",
+            "name": "Person 1 Has PWD Status",
+            "type": "expression",
+            "field": "person1HasPWDStatus"
+          },
+          {
+            "id": "d3e396b5-3811-4c5f-b5ab-08d0bc11d559",
+            "name": "Person 2 Has PWD Status",
+            "type": "expression",
+            "field": "person2HasPWDStatus"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "c7633900-0045-40fe-99fd-ad8b2e7e6d00",
+            "name": "PWD Amount",
+            "type": "expression",
+            "field": "pwdAmount"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 275,
+        "y": 290
+      }
+    },
+    {
+      "id": "f41efde5-6b4d-4528-bfe5-49ac8514b2f7",
+      "name": "Room and Board Amount",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "995bd057-7f78-44b8-a84c-f90aacd49b22",
+            "4eeec7e4-d3c2-4293-9691-d4d5fb0c0b80": "",
+            "7ded162c-6a47-4638-986d-a90ef31d7ebd": "",
+            "dd14661d-ee13-4854-9fa8-7fd1951de299": "baseSupportAmount + pwdAmount + confirmedShelterCosts",
+            "f5a2a63c-ef10-421e-adc8-14f17359dd45": ""
+          }
+        ],
+        "inputs": [
+          {
+            "id": "7ded162c-6a47-4638-986d-a90ef31d7ebd",
+            "name": "Base Support Amount Calculation",
+            "type": "expression",
+            "field": "baseSupportAmount"
+          },
+          {
+            "id": "f5a2a63c-ef10-421e-adc8-14f17359dd45",
+            "name": "Additional PWD Amount",
+            "type": "expression",
+            "field": "pwdAmount"
+          },
+          {
+            "id": "4eeec7e4-d3c2-4293-9691-d4d5fb0c0b80",
+            "name": "Confirmed Shelter Costs",
+            "type": "expression",
+            "field": "confirmedShelterCosts"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "dd14661d-ee13-4854-9fa8-7fd1951de299",
+            "name": "Calculation A total of Room and Board ",
+            "type": "expression",
+            "field": "roomAndBoardCalculationAAmount"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 540,
+        "y": 235
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "dd68ae00-ca9c-4b2e-bc98-2378ec8dee69",
+      "type": "edge",
+      "sourceId": "f1eb4300-0831-48d8-9be4-6e5a3ddee346",
+      "targetId": "685389fd-5734-4d51-8fac-9ce721dc9f44"
+    },
+    {
+      "id": "9cfd999e-ed55-4b6b-8306-8df8679b6bd3",
+      "type": "edge",
+      "sourceId": "f1eb4300-0831-48d8-9be4-6e5a3ddee346",
+      "targetId": "b3719c5c-ed90-4626-b388-9d6b64ed9e54"
+    },
+    {
+      "id": "3061b182-be0a-496e-8463-95179b261ec7",
+      "type": "edge",
+      "sourceId": "f1eb4300-0831-48d8-9be4-6e5a3ddee346",
+      "targetId": "f41efde5-6b4d-4528-bfe5-49ac8514b2f7"
+    },
+    {
+      "id": "510b9948-c0e6-40f5-9690-953db5cc30eb",
+      "type": "edge",
+      "sourceId": "b3719c5c-ed90-4626-b388-9d6b64ed9e54",
+      "targetId": "f41efde5-6b4d-4528-bfe5-49ac8514b2f7"
+    },
+    {
+      "id": "3491e464-b878-4021-af91-66d7e194febb",
+      "type": "edge",
+      "sourceId": "685389fd-5734-4d51-8fac-9ce721dc9f44",
+      "targetId": "f41efde5-6b4d-4528-bfe5-49ac8514b2f7"
+    },
+    {
+      "id": "2c35f473-81b8-4d05-a947-f4dcc8db6801",
+      "type": "edge",
+      "sourceId": "f41efde5-6b4d-4528-bfe5-49ac8514b2f7",
+      "targetId": "47cd916c-3dbc-4318-ac35-494866661198"
+    }
+  ]
+}

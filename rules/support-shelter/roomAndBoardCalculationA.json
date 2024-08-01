@@ -24,36 +24,7 @@
       "name": "Calc A Support",
       "type": "decisionTableNode",
       "content": {
-        "rules": [
-          {
-            "_id": "87959c69-62ce-41fc-94d1-c6c75a535556",
-            "3a9b96c6-215a-405d-85e4-feba8354dd54": "> 0",
-            "4dcce982-347d-4e04-862b-dd850f43ce5d": "60",
-            "90ad7a83-831e-471d-9280-001b00a15cc3": "",
-            "dcfb8186-ad11-4974-a114-04f019bb9c42": "== 1"
-          },
-          {
-            "_id": "2b7283a1-21b5-4c2a-91cd-c7d4b001e829",
-            "3a9b96c6-215a-405d-85e4-feba8354dd54": "> 0",
-            "4dcce982-347d-4e04-862b-dd850f43ce5d": "120+((familyUnitSize-2)*40)",
-            "90ad7a83-831e-471d-9280-001b00a15cc3": "> 0",
-            "dcfb8186-ad11-4974-a114-04f019bb9c42": ">= 2"
-          },
-          {
-            "_id": "b13e1ca5-e6f2-4410-81dd-1d4882018064",
-            "3a9b96c6-215a-405d-85e4-feba8354dd54": "> 0",
-            "4dcce982-347d-4e04-862b-dd850f43ce5d": "60+((familyUnitSize-2)*40)",
-            "90ad7a83-831e-471d-9280-001b00a15cc3": "",
-            "dcfb8186-ad11-4974-a114-04f019bb9c42": ">= 2"
-          },
-          {
-            "_id": "5d53b2d8-f518-419d-ad0c-929d652ad1c1",
-            "3a9b96c6-215a-405d-85e4-feba8354dd54": "",
-            "4dcce982-347d-4e04-862b-dd850f43ce5d": "",
-            "90ad7a83-831e-471d-9280-001b00a15cc3": "",
-            "dcfb8186-ad11-4974-a114-04f019bb9c42": ""
-          }
-        ],
+        "hitPolicy": "first",
         "inputs": [
           {
             "id": "dcfb8186-ad11-4974-a114-04f019bb9c42",
@@ -65,13 +36,13 @@
             "id": "3a9b96c6-215a-405d-85e4-feba8354dd54",
             "name": "Person 1 Age",
             "type": "expression",
-            "field": "person1Age"
+            "field": "person1age"
           },
           {
             "id": "90ad7a83-831e-471d-9280-001b00a15cc3",
             "name": "Person 2 Age",
             "type": "expression",
-            "field": "person2Age"
+            "field": "person2age"
           }
         ],
         "outputs": [
@@ -82,7 +53,36 @@
             "field": "baseSupportAmount"
           }
         ],
-        "hitPolicy": "first"
+        "rules": [
+          {
+            "_id": "87959c69-62ce-41fc-94d1-c6c75a535556",
+            "dcfb8186-ad11-4974-a114-04f019bb9c42": "== 1",
+            "3a9b96c6-215a-405d-85e4-feba8354dd54": "> 0",
+            "90ad7a83-831e-471d-9280-001b00a15cc3": "",
+            "4dcce982-347d-4e04-862b-dd850f43ce5d": "60"
+          },
+          {
+            "_id": "2b7283a1-21b5-4c2a-91cd-c7d4b001e829",
+            "dcfb8186-ad11-4974-a114-04f019bb9c42": ">= 2",
+            "3a9b96c6-215a-405d-85e4-feba8354dd54": "> 0",
+            "90ad7a83-831e-471d-9280-001b00a15cc3": "> 0",
+            "4dcce982-347d-4e04-862b-dd850f43ce5d": "120+((familyUnitSize-2)*40)"
+          },
+          {
+            "_id": "b13e1ca5-e6f2-4410-81dd-1d4882018064",
+            "dcfb8186-ad11-4974-a114-04f019bb9c42": ">= 2",
+            "3a9b96c6-215a-405d-85e4-feba8354dd54": "> 0",
+            "90ad7a83-831e-471d-9280-001b00a15cc3": "",
+            "4dcce982-347d-4e04-862b-dd850f43ce5d": "60+((familyUnitSize-1)*40)"
+          },
+          {
+            "_id": "5d53b2d8-f518-419d-ad0c-929d652ad1c1",
+            "dcfb8186-ad11-4974-a114-04f019bb9c42": "",
+            "3a9b96c6-215a-405d-85e4-feba8354dd54": "",
+            "90ad7a83-831e-471d-9280-001b00a15cc3": "",
+            "4dcce982-347d-4e04-862b-dd850f43ce5d": ""
+          }
+        ]
       },
       "position": {
         "x": 280,

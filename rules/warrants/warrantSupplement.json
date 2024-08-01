@@ -1,0 +1,379 @@
+{
+  "nodes": [
+    {
+      "id": "1be71c2d-1353-4604-b466-4917708117f8",
+      "type": "inputNode",
+      "position": {
+        "x": -230,
+        "y": 320
+      },
+      "name": "request"
+    },
+    {
+      "id": "9f1071ab-5f07-427d-9ea5-1b4dfac1b908",
+      "type": "outputNode",
+      "position": {
+        "x": 1345,
+        "y": 400
+      },
+      "name": "response"
+    },
+    {
+      "id": "8c8e1478-43b8-4bec-9dea-c863485b7225",
+      "type": "decisionNode",
+      "position": {
+        "x": 90,
+        "y": 225
+      },
+      "name": "EligibleForAssistance?",
+      "content": {
+        "key": "warrants/warrantAssistanceEligibility.json"
+      }
+    },
+    {
+      "id": "9e94e9b1-ad7e-4949-9789-e4aecaf2252d",
+      "type": "decisionTableNode",
+      "position": {
+        "x": 90,
+        "y": 370
+      },
+      "name": "Assess Supplement?",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "575c3f6c-53c7-4efe-985b-a4cf121a7e2a",
+            "name": "Family Unit eligible For assistance?",
+            "type": "expression",
+            "field": "isEligibleForAssistance"
+          },
+          {
+            "id": "af76f7f8-57e1-4f40-8e9e-8a9a6e49ec2a",
+            "type": "expression",
+            "field": "isHardship",
+            "name": "Should family unit be assessed for hardship?"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "7e1ece75-e2e7-4a63-9dcc-2ea88d0b2446",
+            "field": "isAssessWarrant",
+            "name": "Assess Warrant Supplement?",
+            "type": "expression"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "53b51ca3-c113-4ccd-b9e2-cde54fd68b8e",
+            "575c3f6c-53c7-4efe-985b-a4cf121a7e2a": "false",
+            "af76f7f8-57e1-4f40-8e9e-8a9a6e49ec2a": "true",
+            "7e1ece75-e2e7-4a63-9dcc-2ea88d0b2446": "true"
+          },
+          {
+            "_id": "81fecec7-1989-4320-a266-29c4fabdac8b",
+            "575c3f6c-53c7-4efe-985b-a4cf121a7e2a": "",
+            "af76f7f8-57e1-4f40-8e9e-8a9a6e49ec2a": "",
+            "7e1ece75-e2e7-4a63-9dcc-2ea88d0b2446": "false"
+          }
+        ]
+      }
+    },
+    {
+      "id": "6cb32f09-0d7f-436b-998f-3e06661506fc",
+      "type": "switchNode",
+      "position": {
+        "x": 80,
+        "y": 490
+      },
+      "name": "Assess Supplement?",
+      "content": {
+        "statements": [
+          {
+            "id": "e82f6d97-d1d7-43a6-ab6e-beead4ea42ee",
+            "condition": "isAssessWarrant"
+          },
+          {
+            "id": "9e246347-67c8-444e-909c-202e856a7a63",
+            "condition": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "496748b5-8071-47e3-bab6-78453d34a43a",
+      "type": "expressionNode",
+      "position": {
+        "x": 745,
+        "y": 610
+      },
+      "name": "Ineligible",
+      "content": {
+        "expressions": [
+          {
+            "id": "4b4e874c-8864-4757-b93e-d241f6313fbc",
+            "key": "eligibleForAssistance",
+            "value": "false and isHardship"
+          }
+        ]
+      }
+    },
+    {
+      "id": "2c907918-ef52-4567-b7d5-77386df788d8",
+      "type": "switchNode",
+      "position": {
+        "x": 445,
+        "y": 240
+      },
+      "name": "Couple Both Warrants?",
+      "content": {
+        "statements": [
+          {
+            "id": "1bbc1e1c-9b2c-48bf-a5e9-00a374194dd9",
+            "condition": "person1Warrant == true and person2Warrant == true and familyUnitSize == 2"
+          },
+          {
+            "id": "279eda6d-71d9-4cde-a87e-0f8f5bf6cd47",
+            "condition": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "e4c305c5-d4ff-4920-9470-152de932c83b",
+      "type": "decisionNode",
+      "position": {
+        "x": 745,
+        "y": 85
+      },
+      "name": "A - Support and Shelter",
+      "content": {
+        "key": "support-shelter/totalSupportAndShelter.json"
+      }
+    },
+    {
+      "id": "3248ca00-b684-4feb-aaf3-886b0d520b91",
+      "type": "decisionNode",
+      "position": {
+        "x": 745,
+        "y": 345
+      },
+      "name": "B - Support and Shelter",
+      "content": {
+        "key": "warrants/warrantTotalSupportAndShelter.json"
+      }
+    },
+    {
+      "id": "801798b5-b019-40eb-9355-501542b142de",
+      "type": "expressionNode",
+      "position": {
+        "x": 750,
+        "y": 230
+      },
+      "name": "Calc A S & S",
+      "content": {
+        "expressions": [
+          {
+            "id": "70fd650b-448b-4219-a732-c47b738d3909",
+            "key": "calcAShelter",
+            "value": "shelterAmount"
+          },
+          {
+            "id": "d0ce025b-a34d-45f9-912b-c02dbbef720d",
+            "key": "calcASupport",
+            "value": "supportAmount"
+          }
+        ]
+      }
+    },
+    {
+      "id": "7a43769e-8efc-441d-ac87-3742ce007e0b",
+      "type": "expressionNode",
+      "position": {
+        "x": 750,
+        "y": 485
+      },
+      "name": "Calc B S & S",
+      "content": {
+        "expressions": [
+          {
+            "id": "b6940afc-5c96-489d-ad60-cdefc680854c",
+            "key": "calcBShelter",
+            "value": "shelterAmount"
+          },
+          {
+            "id": "5fb7ca33-16e8-4c59-bbce-f237517d8383",
+            "key": "calcBSupport",
+            "value": "supportAmount"
+          }
+        ]
+      }
+    },
+    {
+      "id": "f1de1756-4677-4437-badc-2791d4e8fff0",
+      "type": "expressionNode",
+      "position": {
+        "x": 1065,
+        "y": 325
+      },
+      "name": "Warrant Sup",
+      "content": {
+        "expressions": [
+          {
+            "id": "784b0a9f-99c8-4ea6-9a45-f6f8c200956f",
+            "key": "warrantSupplementSupport",
+            "value": "calcASupport - calcBSupport"
+          },
+          {
+            "id": "16a73ab5-901e-4d21-82a6-69c16ab4b672",
+            "key": "warrantSupplementShelter",
+            "value": "calcAShelter - calcBShelter"
+          }
+        ]
+      }
+    },
+    {
+      "id": "27f4dcf3-39f1-434e-9dcb-45bfc68a680b",
+      "type": "expressionNode",
+      "position": {
+        "x": 1065,
+        "y": 445
+      },
+      "name": "Support and Shelter",
+      "content": {
+        "expressions": [
+          {
+            "id": "2551176e-2e4a-4872-9c10-fa11a889c8c8",
+            "key": "support",
+            "value": "calcBSupport"
+          },
+          {
+            "id": "785359b9-caf4-4fcb-bb1f-98ef059a05b5",
+            "key": "shelter",
+            "value": "calcBShelter"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "71cdb2ce-5b6a-4c4f-91a1-8b2677bc2324",
+      "sourceId": "1be71c2d-1353-4604-b466-4917708117f8",
+      "type": "edge",
+      "targetId": "8c8e1478-43b8-4bec-9dea-c863485b7225"
+    },
+    {
+      "id": "4a785718-44c0-4392-9db2-217baf6b1c5f",
+      "sourceId": "8c8e1478-43b8-4bec-9dea-c863485b7225",
+      "type": "edge",
+      "targetId": "9e94e9b1-ad7e-4949-9789-e4aecaf2252d"
+    },
+    {
+      "id": "5b74d1d7-fe14-4edb-b71b-59b471990983",
+      "sourceId": "1be71c2d-1353-4604-b466-4917708117f8",
+      "type": "edge",
+      "targetId": "9e94e9b1-ad7e-4949-9789-e4aecaf2252d"
+    },
+    {
+      "id": "1e20d3b3-2678-4564-be07-b5b6efb791b9",
+      "sourceId": "9e94e9b1-ad7e-4949-9789-e4aecaf2252d",
+      "type": "edge",
+      "targetId": "6cb32f09-0d7f-436b-998f-3e06661506fc"
+    },
+    {
+      "id": "6c87df91-48e5-4fc8-8b88-58323bb75bf3",
+      "sourceId": "6cb32f09-0d7f-436b-998f-3e06661506fc",
+      "type": "edge",
+      "targetId": "496748b5-8071-47e3-bab6-78453d34a43a",
+      "sourceHandle": "9e246347-67c8-444e-909c-202e856a7a63"
+    },
+    {
+      "id": "8239bc7a-7029-4e8b-b8dd-bd3b72af9a1b",
+      "sourceId": "496748b5-8071-47e3-bab6-78453d34a43a",
+      "type": "edge",
+      "targetId": "9f1071ab-5f07-427d-9ea5-1b4dfac1b908"
+    },
+    {
+      "id": "96d46861-c049-4982-85f0-1b0744b497c2",
+      "sourceId": "1be71c2d-1353-4604-b466-4917708117f8",
+      "type": "edge",
+      "targetId": "6cb32f09-0d7f-436b-998f-3e06661506fc"
+    },
+    {
+      "id": "00f14655-266e-443b-8fc1-aed1ad6ffb4c",
+      "sourceId": "1be71c2d-1353-4604-b466-4917708117f8",
+      "type": "edge",
+      "targetId": "2c907918-ef52-4567-b7d5-77386df788d8"
+    },
+    {
+      "id": "92c6aaa2-6966-4360-b46e-7ca8f188a468",
+      "sourceId": "6cb32f09-0d7f-436b-998f-3e06661506fc",
+      "type": "edge",
+      "targetId": "2c907918-ef52-4567-b7d5-77386df788d8",
+      "sourceHandle": "e82f6d97-d1d7-43a6-ab6e-beead4ea42ee"
+    },
+    {
+      "id": "d706cf75-93e0-4336-a657-acec5eccec18",
+      "sourceId": "2c907918-ef52-4567-b7d5-77386df788d8",
+      "type": "edge",
+      "targetId": "496748b5-8071-47e3-bab6-78453d34a43a",
+      "sourceHandle": "1bbc1e1c-9b2c-48bf-a5e9-00a374194dd9"
+    },
+    {
+      "id": "bb4ff51d-41cc-4a4d-b972-b20a0939beda",
+      "sourceId": "2c907918-ef52-4567-b7d5-77386df788d8",
+      "type": "edge",
+      "targetId": "3248ca00-b684-4feb-aaf3-886b0d520b91",
+      "sourceHandle": "279eda6d-71d9-4cde-a87e-0f8f5bf6cd47"
+    },
+    {
+      "id": "6eacc328-3f02-4190-9dec-2a91410b8245",
+      "sourceId": "e4c305c5-d4ff-4920-9470-152de932c83b",
+      "type": "edge",
+      "targetId": "801798b5-b019-40eb-9355-501542b142de"
+    },
+    {
+      "id": "3999d43e-5cb8-410b-bb1f-56bd03a6b11a",
+      "sourceId": "3248ca00-b684-4feb-aaf3-886b0d520b91",
+      "type": "edge",
+      "targetId": "7a43769e-8efc-441d-ac87-3742ce007e0b"
+    },
+    {
+      "id": "3c328794-26a8-4325-b82e-0930d5d634d2",
+      "sourceId": "2c907918-ef52-4567-b7d5-77386df788d8",
+      "type": "edge",
+      "targetId": "e4c305c5-d4ff-4920-9470-152de932c83b",
+      "sourceHandle": "279eda6d-71d9-4cde-a87e-0f8f5bf6cd47"
+    },
+    {
+      "id": "79ba296f-99a8-4221-bd97-2e8b650402d8",
+      "sourceId": "801798b5-b019-40eb-9355-501542b142de",
+      "type": "edge",
+      "targetId": "f1de1756-4677-4437-badc-2791d4e8fff0"
+    },
+    {
+      "id": "a5e544c9-7139-4231-82fb-f223b2287573",
+      "sourceId": "7a43769e-8efc-441d-ac87-3742ce007e0b",
+      "type": "edge",
+      "targetId": "f1de1756-4677-4437-badc-2791d4e8fff0"
+    },
+    {
+      "id": "2d05a181-a179-4782-ad97-25d6a658f334",
+      "sourceId": "f1de1756-4677-4437-badc-2791d4e8fff0",
+      "type": "edge",
+      "targetId": "9f1071ab-5f07-427d-9ea5-1b4dfac1b908"
+    },
+    {
+      "id": "f7b60e7c-eacf-4d87-97e2-64bee9b0a7b3",
+      "sourceId": "7a43769e-8efc-441d-ac87-3742ce007e0b",
+      "type": "edge",
+      "targetId": "27f4dcf3-39f1-434e-9dcb-45bfc68a680b"
+    },
+    {
+      "id": "1a238c4e-f143-490f-b443-b4356ded8d26",
+      "sourceId": "27f4dcf3-39f1-434e-9dcb-45bfc68a680b",
+      "type": "edge",
+      "targetId": "9f1071ab-5f07-427d-9ea5-1b4dfac1b908"
+    }
+  ]
+}

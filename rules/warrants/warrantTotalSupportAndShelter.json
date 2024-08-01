@@ -1,0 +1,390 @@
+{
+  "nodes": [
+    {
+      "id": "9412c2c5-1837-4377-8181-e4b95d95fb11",
+      "type": "inputNode",
+      "position": {
+        "x": -395,
+        "y": 245
+      },
+      "name": "request"
+    },
+    {
+      "id": "f6123455-b9a6-4ff1-bfd4-be1a33cfa07b",
+      "type": "outputNode",
+      "position": {
+        "x": 1055,
+        "y": 275
+      },
+      "name": "response"
+    },
+    {
+      "id": "937a5547-71cf-4f91-8020-55780b7c2a9c",
+      "type": "decisionNode",
+      "position": {
+        "x": 460,
+        "y": 355
+      },
+      "name": "Shelter Amount",
+      "content": {
+        "key": "support-shelter/shelter.json"
+      }
+    },
+    {
+      "id": "cb23d8ac-e1c5-4d27-8a15-e0603b2225ee",
+      "type": "decisionNode",
+      "position": {
+        "x": 460,
+        "y": 210
+      },
+      "name": "IA Support",
+      "content": {
+        "key": "warrants/warrantIASupport.json"
+      }
+    },
+    {
+      "id": "332b0f26-7c14-4fd9-803a-9a001b25f28c",
+      "type": "decisionNode",
+      "position": {
+        "x": 460,
+        "y": 65
+      },
+      "name": "DA Support",
+      "content": {
+        "key": "warrants/warrantDAsupport.json"
+      }
+    },
+    {
+      "id": "7148d6a5-d907-4dd1-af2c-58e1bc01e834",
+      "type": "decisionTableNode",
+      "position": {
+        "x": -110,
+        "y": 155
+      },
+      "name": "DA or IA",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "96f4f625-ebb4-43ca-a278-a2c5db137411",
+            "type": "expression",
+            "field": "person1HasPWDStatus",
+            "name": "Person 1 Has PWD Status?"
+          },
+          {
+            "id": "a4e3746e-70d7-4159-967f-840a8d4a2c93",
+            "name": "Person 2 Has PWD Status?",
+            "type": "expression",
+            "field": "person2HasPWDStatus"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "2dcb34dd-34ca-44d2-a942-d0d9c839f81f",
+            "field": "supportCategory",
+            "name": "Type of Support (IA or DA)",
+            "type": "expression"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "8381a934-3d2f-4370-9c41-9645e043be91",
+            "96f4f625-ebb4-43ca-a278-a2c5db137411": "true",
+            "a4e3746e-70d7-4159-967f-840a8d4a2c93": "",
+            "2dcb34dd-34ca-44d2-a942-d0d9c839f81f": "\"DA\""
+          },
+          {
+            "_id": "79cb6c5d-8255-4286-96f1-95c4ab89d8d3",
+            "96f4f625-ebb4-43ca-a278-a2c5db137411": "",
+            "a4e3746e-70d7-4159-967f-840a8d4a2c93": "true",
+            "2dcb34dd-34ca-44d2-a942-d0d9c839f81f": "\"DA\""
+          },
+          {
+            "_id": "22702b9b-9e39-4b55-a031-fc2b00341709",
+            "96f4f625-ebb4-43ca-a278-a2c5db137411": "",
+            "a4e3746e-70d7-4159-967f-840a8d4a2c93": "",
+            "2dcb34dd-34ca-44d2-a942-d0d9c839f81f": "\"IA\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "9e1a5c36-4e54-403e-b772-c34b5b215001",
+      "type": "switchNode",
+      "position": {
+        "x": 165,
+        "y": 85
+      },
+      "name": "Support Category",
+      "content": {
+        "statements": [
+          {
+            "id": "0675e93c-8307-4ee4-bc2b-e02b59564583",
+            "condition": "supportCategory == \"DA\""
+          },
+          {
+            "id": "30394c68-3c83-4051-9b89-10eb63466f06",
+            "condition": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "ab558fa1-90f8-4c45-a821-02fc4ab3c52e",
+      "type": "expressionNode",
+      "position": {
+        "x": 735,
+        "y": 65
+      },
+      "name": "DA Support Amount",
+      "content": {
+        "expressions": [
+          {
+            "id": "04e8d128-1247-4155-9650-46671358563b",
+            "key": "supportAmount",
+            "value": "maximumSupportAmount"
+          }
+        ]
+      }
+    },
+    {
+      "id": "13d992f4-7d47-487d-b370-8a34421a2ba2",
+      "type": "expressionNode",
+      "position": {
+        "x": 740,
+        "y": 210
+      },
+      "name": "IA Support Amount",
+      "content": {
+        "expressions": [
+          {
+            "id": "ae3fcdb0-2827-4a03-8c43-5737955272b3",
+            "key": "supportAmount",
+            "value": "maximumSupportAmount"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4003649-1c04-4bf8-a88b-6e227ca89848",
+      "type": "decisionTableNode",
+      "position": {
+        "x": -125,
+        "y": 300
+      },
+      "name": "Family Unit Size Modification",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "46f9b5b9-9d47-455e-9251-df6792e71000",
+            "type": "expression",
+            "field": "familyUnitSize",
+            "name": "Family Unit Size"
+          },
+          {
+            "id": "91f9bf5d-dd4f-469f-8d33-182af75c923b",
+            "type": "expression",
+            "field": "person1age",
+            "name": "Person 1 Age"
+          },
+          {
+            "id": "2810be51-8603-4fac-85f4-b639e66f9eda",
+            "type": "expression",
+            "field": "person1Warrant",
+            "name": "Person 1 Has Warrant?"
+          },
+          {
+            "id": "2d2b1374-65c1-4390-9402-175343ed35d6",
+            "type": "expression",
+            "field": "person2age",
+            "name": "Person 2 Age"
+          },
+          {
+            "id": "ab89a2da-31dc-4d03-b765-cccc1785830d",
+            "type": "expression",
+            "field": "person2Warrant",
+            "name": "Person 2 Has Warrant?"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "f84edb32-757d-4278-9c20-6ef2fd5b9426",
+            "field": "familyUnitSizeModifier",
+            "name": "Adjusted Family Unit Size",
+            "type": "expression",
+            "defaultValue": "familyUnitSize"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "71b4691b-4c73-48ad-9a1b-80a3d427842b",
+            "46f9b5b9-9d47-455e-9251-df6792e71000": "== 1",
+            "91f9bf5d-dd4f-469f-8d33-182af75c923b": "",
+            "2810be51-8603-4fac-85f4-b639e66f9eda": "true",
+            "2d2b1374-65c1-4390-9402-175343ed35d6": "",
+            "ab89a2da-31dc-4d03-b765-cccc1785830d": "",
+            "f84edb32-757d-4278-9c20-6ef2fd5b9426": "0"
+          },
+          {
+            "_id": "8aa9438f-aae7-462b-829c-011651a85d9c",
+            "46f9b5b9-9d47-455e-9251-df6792e71000": "== 2",
+            "91f9bf5d-dd4f-469f-8d33-182af75c923b": "> 0",
+            "2810be51-8603-4fac-85f4-b639e66f9eda": "true",
+            "2d2b1374-65c1-4390-9402-175343ed35d6": "> 0",
+            "ab89a2da-31dc-4d03-b765-cccc1785830d": "true",
+            "f84edb32-757d-4278-9c20-6ef2fd5b9426": "0"
+          },
+          {
+            "_id": "c8460513-b44d-45b0-a812-2fb2d6d910ac",
+            "46f9b5b9-9d47-455e-9251-df6792e71000": "== 2",
+            "91f9bf5d-dd4f-469f-8d33-182af75c923b": "> 0",
+            "2810be51-8603-4fac-85f4-b639e66f9eda": "true",
+            "2d2b1374-65c1-4390-9402-175343ed35d6": "> 0",
+            "ab89a2da-31dc-4d03-b765-cccc1785830d": "== null or == false",
+            "f84edb32-757d-4278-9c20-6ef2fd5b9426": "1"
+          },
+          {
+            "_id": "978e7a7d-ac5b-41ce-b14c-7c4d141b835c",
+            "46f9b5b9-9d47-455e-9251-df6792e71000": "== 2",
+            "91f9bf5d-dd4f-469f-8d33-182af75c923b": "> 0",
+            "2810be51-8603-4fac-85f4-b639e66f9eda": "== null or == false",
+            "2d2b1374-65c1-4390-9402-175343ed35d6": "> 0",
+            "ab89a2da-31dc-4d03-b765-cccc1785830d": "true",
+            "f84edb32-757d-4278-9c20-6ef2fd5b9426": "1"
+          },
+          {
+            "_id": "589c5d6a-85bf-41c4-a302-6fe35b5e22e2",
+            "46f9b5b9-9d47-455e-9251-df6792e71000": "== 2",
+            "91f9bf5d-dd4f-469f-8d33-182af75c923b": "> 0",
+            "2810be51-8603-4fac-85f4-b639e66f9eda": "true",
+            "2d2b1374-65c1-4390-9402-175343ed35d6": "== null",
+            "ab89a2da-31dc-4d03-b765-cccc1785830d": "== null or == false",
+            "f84edb32-757d-4278-9c20-6ef2fd5b9426": "2"
+          },
+          {
+            "_id": "5a718b63-bce3-49eb-8d1c-e1c46b19482e",
+            "46f9b5b9-9d47-455e-9251-df6792e71000": ">= 3",
+            "91f9bf5d-dd4f-469f-8d33-182af75c923b": "",
+            "2810be51-8603-4fac-85f4-b639e66f9eda": "",
+            "2d2b1374-65c1-4390-9402-175343ed35d6": "",
+            "ab89a2da-31dc-4d03-b765-cccc1785830d": "",
+            "f84edb32-757d-4278-9c20-6ef2fd5b9426": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "4ef8fed7-da85-4e78-8427-1939b80e1fa3",
+      "type": "expressionNode",
+      "position": {
+        "x": 160,
+        "y": 380
+      },
+      "name": "Modified Family Unit",
+      "content": {
+        "expressions": [
+          {
+            "id": "a4a61a43-3bc1-4296-acea-77b76d0515f7",
+            "key": "familyUnitSize",
+            "value": "familyUnitSizeModifier != null ? familyUnitSizeModifier : familyUnitSize"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "b6b19595-bef9-4825-8771-ffabac40b831",
+      "sourceId": "7148d6a5-d907-4dd1-af2c-58e1bc01e834",
+      "type": "edge",
+      "targetId": "9e1a5c36-4e54-403e-b772-c34b5b215001"
+    },
+    {
+      "id": "db84d320-a7aa-480f-8480-51f901739253",
+      "sourceId": "9e1a5c36-4e54-403e-b772-c34b5b215001",
+      "type": "edge",
+      "targetId": "332b0f26-7c14-4fd9-803a-9a001b25f28c",
+      "sourceHandle": "0675e93c-8307-4ee4-bc2b-e02b59564583"
+    },
+    {
+      "id": "2e3ffb8c-cbe9-478c-bfa7-58d1be6ed791",
+      "sourceId": "9e1a5c36-4e54-403e-b772-c34b5b215001",
+      "type": "edge",
+      "targetId": "cb23d8ac-e1c5-4d27-8a15-e0603b2225ee",
+      "sourceHandle": "30394c68-3c83-4051-9b89-10eb63466f06"
+    },
+    {
+      "id": "31746358-1bff-4690-9120-b850fb79571f",
+      "sourceId": "937a5547-71cf-4f91-8020-55780b7c2a9c",
+      "type": "edge",
+      "targetId": "f6123455-b9a6-4ff1-bfd4-be1a33cfa07b"
+    },
+    {
+      "id": "cba9ae1e-119d-4447-9ffa-b79854a5b478",
+      "sourceId": "9412c2c5-1837-4377-8181-e4b95d95fb11",
+      "type": "edge",
+      "targetId": "7148d6a5-d907-4dd1-af2c-58e1bc01e834"
+    },
+    {
+      "id": "41b313e9-55df-4c76-a5a3-82170cfbce31",
+      "sourceId": "9412c2c5-1837-4377-8181-e4b95d95fb11",
+      "type": "edge",
+      "targetId": "9e1a5c36-4e54-403e-b772-c34b5b215001"
+    },
+    {
+      "id": "1ccc2cfd-2465-4979-bde5-d86326d9e120",
+      "sourceId": "ab558fa1-90f8-4c45-a821-02fc4ab3c52e",
+      "type": "edge",
+      "targetId": "f6123455-b9a6-4ff1-bfd4-be1a33cfa07b"
+    },
+    {
+      "id": "95d4d3c9-e180-43ac-b82b-85cf424457ee",
+      "sourceId": "13d992f4-7d47-487d-b370-8a34421a2ba2",
+      "type": "edge",
+      "targetId": "f6123455-b9a6-4ff1-bfd4-be1a33cfa07b"
+    },
+    {
+      "id": "4e6a21a7-ada8-42c7-a903-14f90d5071dd",
+      "sourceId": "cb23d8ac-e1c5-4d27-8a15-e0603b2225ee",
+      "type": "edge",
+      "targetId": "13d992f4-7d47-487d-b370-8a34421a2ba2"
+    },
+    {
+      "id": "88ca0a35-72db-4f49-9335-d2a76c460cac",
+      "sourceId": "332b0f26-7c14-4fd9-803a-9a001b25f28c",
+      "type": "edge",
+      "targetId": "ab558fa1-90f8-4c45-a821-02fc4ab3c52e"
+    },
+    {
+      "id": "46f8fafb-7f2e-4e83-8063-da59f3d54209",
+      "sourceId": "c4003649-1c04-4bf8-a88b-6e227ca89848",
+      "type": "edge",
+      "targetId": "4ef8fed7-da85-4e78-8427-1939b80e1fa3"
+    },
+    {
+      "id": "817d1328-381c-4a58-a053-8f114e13fc0e",
+      "sourceId": "9412c2c5-1837-4377-8181-e4b95d95fb11",
+      "type": "edge",
+      "targetId": "c4003649-1c04-4bf8-a88b-6e227ca89848"
+    },
+    {
+      "id": "35fd3784-c606-4d5d-bb63-8af33c653a71",
+      "sourceId": "4ef8fed7-da85-4e78-8427-1939b80e1fa3",
+      "type": "edge",
+      "targetId": "937a5547-71cf-4f91-8020-55780b7c2a9c"
+    },
+    {
+      "id": "0e2e3a42-699a-427e-966a-f7669470cccb",
+      "sourceId": "9412c2c5-1837-4377-8181-e4b95d95fb11",
+      "type": "edge",
+      "targetId": "937a5547-71cf-4f91-8020-55780b7c2a9c"
+    },
+    {
+      "id": "a4c37e0f-29a7-462c-82c5-30d080a512b7",
+      "sourceId": "9412c2c5-1837-4377-8181-e4b95d95fb11",
+      "type": "edge",
+      "targetId": "4ef8fed7-da85-4e78-8427-1939b80e1fa3"
+    }
+  ]
+}

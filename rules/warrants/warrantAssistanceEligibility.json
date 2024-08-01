@@ -1,0 +1,140 @@
+{
+  "nodes": [
+    {
+      "id": "d4d2bed9-940a-45dc-85b4-30b5f0cdf7c1",
+      "type": "inputNode",
+      "position": {
+        "x": 0,
+        "y": 195
+      },
+      "name": "request"
+    },
+    {
+      "id": "0a5db759-bccd-4f31-a9f4-e0b060a0959c",
+      "type": "outputNode",
+      "position": {
+        "x": 570,
+        "y": 195
+      },
+      "name": "response"
+    },
+    {
+      "id": "738d101c-af1e-4fb7-9401-2d8e84a4fbf2",
+      "type": "decisionTableNode",
+      "position": {
+        "x": 285,
+        "y": 195
+      },
+      "name": "Warrant Holder?",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "36d8f915-aa32-47b1-b909-008c4272b652",
+            "type": "expression",
+            "field": "person1Warrant",
+            "name": "Warrant on file for person 1?"
+          },
+          {
+            "id": "6f8d37eb-fd6d-4dfc-9a2e-26df61e0eac4",
+            "type": "expression",
+            "field": "person1ExemptWarrant",
+            "name": "Person 1 meets exemption criteria for continued assistance?"
+          },
+          {
+            "id": "062e07c4-507d-4761-b5c8-e10d7c80e885",
+            "type": "expression",
+            "field": "person2Warrant",
+            "name": "Warrant on file for Person 2?"
+          },
+          {
+            "id": "ca2e1ff6-7a6a-46f5-a255-34ac16b429a0",
+            "type": "expression",
+            "field": "person2ExemptWarrant",
+            "name": "Person 2 meets exemption criteria for continued assistance?"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "b7988629-7bf9-4c05-abea-4fc3a6ff1131",
+            "field": "isEligibleForAssistance",
+            "name": "Eligible for regular assistance?",
+            "type": "expression"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "926acd0a-3053-4e2f-a6c5-b86fc53f0d99",
+            "36d8f915-aa32-47b1-b909-008c4272b652": "true",
+            "6f8d37eb-fd6d-4dfc-9a2e-26df61e0eac4": "true",
+            "062e07c4-507d-4761-b5c8-e10d7c80e885": "== null or == false",
+            "ca2e1ff6-7a6a-46f5-a255-34ac16b429a0": "",
+            "b7988629-7bf9-4c05-abea-4fc3a6ff1131": "true"
+          },
+          {
+            "_id": "f983f128-0210-43b1-8f06-f0200a52c3e3",
+            "36d8f915-aa32-47b1-b909-008c4272b652": "== null or == false",
+            "6f8d37eb-fd6d-4dfc-9a2e-26df61e0eac4": "",
+            "062e07c4-507d-4761-b5c8-e10d7c80e885": "true",
+            "ca2e1ff6-7a6a-46f5-a255-34ac16b429a0": "true",
+            "b7988629-7bf9-4c05-abea-4fc3a6ff1131": "true"
+          },
+          {
+            "_id": "4ee5491b-e127-4c1f-ad77-4165633f05f3",
+            "36d8f915-aa32-47b1-b909-008c4272b652": "true",
+            "6f8d37eb-fd6d-4dfc-9a2e-26df61e0eac4": "== null or == false",
+            "062e07c4-507d-4761-b5c8-e10d7c80e885": "",
+            "ca2e1ff6-7a6a-46f5-a255-34ac16b429a0": "",
+            "b7988629-7bf9-4c05-abea-4fc3a6ff1131": "false"
+          },
+          {
+            "_id": "51b17742-4c0d-4bdb-a9dd-1565ef48cc23",
+            "36d8f915-aa32-47b1-b909-008c4272b652": "",
+            "6f8d37eb-fd6d-4dfc-9a2e-26df61e0eac4": "",
+            "062e07c4-507d-4761-b5c8-e10d7c80e885": "true",
+            "ca2e1ff6-7a6a-46f5-a255-34ac16b429a0": "== null or == false",
+            "b7988629-7bf9-4c05-abea-4fc3a6ff1131": "false"
+          },
+          {
+            "_id": "b25459d9-7297-47e9-ace0-1e89a9d6eb21",
+            "36d8f915-aa32-47b1-b909-008c4272b652": "true",
+            "6f8d37eb-fd6d-4dfc-9a2e-26df61e0eac4": "true",
+            "062e07c4-507d-4761-b5c8-e10d7c80e885": "true",
+            "ca2e1ff6-7a6a-46f5-a255-34ac16b429a0": "true",
+            "b7988629-7bf9-4c05-abea-4fc3a6ff1131": "true"
+          },
+          {
+            "_id": "79caae13-bee3-48ea-92c0-88b7e567a8f8",
+            "36d8f915-aa32-47b1-b909-008c4272b652": "true",
+            "6f8d37eb-fd6d-4dfc-9a2e-26df61e0eac4": "== null or == false",
+            "062e07c4-507d-4761-b5c8-e10d7c80e885": "true",
+            "ca2e1ff6-7a6a-46f5-a255-34ac16b429a0": "== null or == false",
+            "b7988629-7bf9-4c05-abea-4fc3a6ff1131": "false"
+          },
+          {
+            "_id": "bbc9914b-7a22-4c51-be90-15239353e865",
+            "36d8f915-aa32-47b1-b909-008c4272b652": "",
+            "6f8d37eb-fd6d-4dfc-9a2e-26df61e0eac4": "",
+            "062e07c4-507d-4761-b5c8-e10d7c80e885": "",
+            "ca2e1ff6-7a6a-46f5-a255-34ac16b429a0": "",
+            "b7988629-7bf9-4c05-abea-4fc3a6ff1131": "true"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "b73f7ef1-c0ca-484d-bfaa-b25776eb485c",
+      "sourceId": "d4d2bed9-940a-45dc-85b4-30b5f0cdf7c1",
+      "type": "edge",
+      "targetId": "738d101c-af1e-4fb7-9401-2d8e84a4fbf2"
+    },
+    {
+      "id": "ab95dffa-3634-4189-8208-9e6661cd2565",
+      "sourceId": "738d101c-af1e-4fb7-9401-2d8e84a4fbf2",
+      "type": "edge",
+      "targetId": "0a5db759-bccd-4f31-a9f4-e0b060a0959c"
+    }
+  ]
+}

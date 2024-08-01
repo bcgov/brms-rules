@@ -30,25 +30,25 @@
             "id": "f60aecf1-41b4-46cb-be41-da2a321eace7",
             "name": "Person1 Age",
             "type": "expression",
-            "field": "Person1Age"
+            "field": "person1age"
           },
           {
             "id": "2228d8e9-e32a-47f2-8905-dcd24315fb44",
             "name": "Person1 PWD Status",
             "type": "expression",
-            "field": "Person1HasPWDStatus"
+            "field": "person1HasPWDStatus"
           },
           {
             "id": "8abc2014-5c23-42a9-9ba7-0b106e9158d2",
             "name": "Person2 Age",
             "type": "expression",
-            "field": "Person2Age"
+            "field": "person2age"
           },
           {
             "id": "b816ade1-bef2-42de-9d6f-4c389b8c16a5",
             "name": "Person2 PWD Status",
             "type": "expression",
-            "field": "Person2HasPWDStatus"
+            "field": "person2HasPWDStatus"
           },
           {
             "id": "e0163cbe-f048-41de-b8f9-4f902257c6ac",

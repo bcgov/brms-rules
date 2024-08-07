@@ -36,6 +36,36 @@
       "name": "Single Calculation",
       "type": "decisionTableNode",
       "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca",
+            "name": "Age",
+            "type": "expression",
+            "field": "person1age"
+          },
+          {
+            "id": "564db848-f951-461f-b572-0b14f4499e05",
+            "name": "PPMB Status",
+            "type": "expression",
+            "field": "person1hasPPMBStatus",
+            "defaultValue": "false"
+          },
+          {
+            "id": "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c",
+            "name": "Family Unit Size",
+            "type": "expression",
+            "field": "familyUnitSize"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "aed03151-e8ba-4284-b360-29b70f07a573",
+            "name": "Maximum Support Amount",
+            "type": "expression",
+            "field": "maximumSupportAmount"
+          }
+        ],
         "rules": [
           {
             "_id": "1e20c7a4-e759-4f2e-ae7b-03b409963a6e",
@@ -85,37 +115,7 @@
             "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c": "> 1",
             "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": "< 65"
           }
-        ],
-        "inputs": [
-          {
-            "id": "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca",
-            "name": "Age",
-            "type": "expression",
-            "field": "person1age"
-          },
-          {
-            "id": "564db848-f951-461f-b572-0b14f4499e05",
-            "name": "PPMB Status",
-            "type": "expression",
-            "field": "person1hasPPMBStatus",
-            "defaultValue": "false"
-          },
-          {
-            "id": "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c",
-            "name": "Family Unit Size",
-            "type": "expression",
-            "field": "familyUnitSize"
-          }
-        ],
-        "outputs": [
-          {
-            "id": "aed03151-e8ba-4284-b360-29b70f07a573",
-            "name": "Maximum Support Amount",
-            "type": "expression",
-            "field": "maximumSupportAmount"
-          }
-        ],
-        "hitPolicy": "first"
+        ]
       },
       "position": {
         "x": 820,
@@ -330,8 +330,8 @@
         "hitPolicy": "first"
       },
       "position": {
-        "x": 835,
-        "y": 215
+        "x": 780,
+        "y": 140
       }
     }
   ],

@@ -1,5 +1,65 @@
 {
   "contentType": "application/vnd.gorules.decision",
-  "nodes": [],
-  "edges": []
+  "nodes": [
+    {
+      "id": "c73918ca-9122-42c1-aafa-377f6bd9ea34",
+      "type": "inputNode",
+      "position": {
+        "x": -5,
+        "y": 95
+      },
+      "name": "request"
+    },
+    {
+      "id": "c361318e-cc48-43a9-91fb-80bd553e3980",
+      "type": "outputNode",
+      "position": {
+        "x": 570,
+        "y": 95
+      },
+      "name": "response"
+    },
+    {
+      "id": "9171857a-8f51-4704-a6f8-971c827b9270",
+      "type": "decisionTableNode",
+      "position": {
+        "x": 280,
+        "y": 95
+      },
+      "name": "decisionTable1",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "2dd7db49-3e18-47cc-aeb0-3b0c8fde30d6",
+            "name": "Input",
+            "type": "expression"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "0ac24b8c-f0c4-44f4-bed4-b19b2f9efa14",
+            "field": "output",
+            "name": "Output",
+            "type": "expression"
+          }
+        ],
+        "rules": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "d08dcb44-01ff-4b7d-a298-5b860043f78f",
+      "sourceId": "c73918ca-9122-42c1-aafa-377f6bd9ea34",
+      "type": "edge",
+      "targetId": "9171857a-8f51-4704-a6f8-971c827b9270"
+    },
+    {
+      "id": "c593752a-b1a2-4cc7-9004-0b9cde799ea8",
+      "sourceId": "9171857a-8f51-4704-a6f8-971c827b9270",
+      "type": "edge",
+      "targetId": "c361318e-cc48-43a9-91fb-80bd553e3980"
+    }
+  ]
 }

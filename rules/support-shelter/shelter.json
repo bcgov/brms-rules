@@ -1,0 +1,509 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
+      "name": "Calculating Maximum Support Request",
+      "type": "inputNode",
+      "position": {
+        "x": -10,
+        "y": 295
+      }
+    },
+    {
+      "id": "95a8fd76-0915-48d9-b716-11577923dd7b",
+      "name": "Over 65 and Receiving OAS/GIS",
+      "type": "switchNode",
+      "content": {
+        "statements": [
+          {
+            "id": "371816d5-dfad-494e-af27-f68367b8a574",
+            "condition": "defaultMax == true"
+          },
+          {
+            "id": "71d825d5-b9e2-45a6-b106-4cbe576f379a",
+            "condition": ""
+          }
+        ]
+      },
+      "position": {
+        "x": 620,
+        "y": 295
+      }
+    },
+    {
+      "id": "87a78f50-78f3-4ed8-9368-bcbeb110516d",
+      "name": "Support Amount Response",
+      "type": "outputNode",
+      "position": {
+        "x": 1820,
+        "y": 515
+      }
+    },
+    {
+      "id": "464e51e5-4ce2-45a4-b3b0-7dbd7c87d93e",
+      "name": "Max Shelter",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "1f0000ea-9710-4dd9-a8aa-129bd8091ebb",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "500",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "1"
+          },
+          {
+            "_id": "095a879b-4eee-4957-bd00-bf4edea34c4a",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "695",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "2"
+          },
+          {
+            "_id": "06a7cc69-3468-49f4-a30c-eba466cfc6db",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "790",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "3"
+          },
+          {
+            "_id": "ac31bab6-591f-4639-9643-2ca7ec4f6499",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "840",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "4"
+          },
+          {
+            "_id": "9ac364f8-38fe-40f1-a5ae-0abac33d968f",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "890",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "5"
+          },
+          {
+            "_id": "ca24b4c8-091c-4499-8e24-ea19f2ac5a0e",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "940",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "6"
+          },
+          {
+            "_id": "56f1a164-a279-4590-bc65-4c61686f75ee",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "990",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "7"
+          },
+          {
+            "_id": "3a307cb8-6e34-438a-b3b0-3fa998feabff",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1040",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "8"
+          },
+          {
+            "_id": "d071365d-11fa-46a1-8cfc-137b1f9b42c5",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1090",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "9"
+          },
+          {
+            "_id": "9df7b0de-a1b8-4792-8ab0-6d965de8c202",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1140",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "10"
+          },
+          {
+            "_id": "96ec783a-9748-474a-93af-30cb5c9b82b7",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1140 + (50*(familyUnitSize-10))",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": ">= 11"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "f60aecf1-41b4-46cb-be41-da2a321eace7",
+            "name": "Family Unit Size",
+            "type": "expression",
+            "field": "familyUnitSize"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6",
+            "name": "Maximum Shelter Amount",
+            "type": "expression",
+            "field": "maximumShelterAmount"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 320,
+        "y": 180
+      }
+    },
+    {
+      "id": "4f25d814-d992-45df-97a2-7faa7c99016d",
+      "name": "Minimum Shelter",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "1f0000ea-9710-4dd9-a8aa-129bd8091ebb",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "75",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "1"
+          },
+          {
+            "_id": "095a879b-4eee-4957-bd00-bf4edea34c4a",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "150",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "2"
+          },
+          {
+            "_id": "06a7cc69-3468-49f4-a30c-eba466cfc6db",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "200",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "3"
+          },
+          {
+            "_id": "ac31bab6-591f-4639-9643-2ca7ec4f6499",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "225",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "4"
+          },
+          {
+            "_id": "9ac364f8-38fe-40f1-a5ae-0abac33d968f",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "250",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "5"
+          },
+          {
+            "_id": "ca24b4c8-091c-4499-8e24-ea19f2ac5a0e",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "275",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "6"
+          },
+          {
+            "_id": "56f1a164-a279-4590-bc65-4c61686f75ee",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "300",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "7"
+          },
+          {
+            "_id": "3a307cb8-6e34-438a-b3b0-3fa998feabff",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "325",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "8"
+          },
+          {
+            "_id": "d071365d-11fa-46a1-8cfc-137b1f9b42c5",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "350",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "9"
+          },
+          {
+            "_id": "9df7b0de-a1b8-4792-8ab0-6d965de8c202",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "375",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "10"
+          },
+          {
+            "_id": "96ec783a-9748-474a-93af-30cb5c9b82b7",
+            "_description": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "375 + (25*(familyUnitSize-10))",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": ">= 11"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "f60aecf1-41b4-46cb-be41-da2a321eace7",
+            "name": "Family Unit Size",
+            "type": "expression",
+            "field": "familyUnitSize"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6",
+            "name": "Minimum Shelter Amount",
+            "type": "expression",
+            "field": "minimumShelterAmount"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 320,
+        "y": 385
+      }
+    },
+    {
+      "id": "4be9dde3-585c-4ea0-bad6-f0cd25d55678",
+      "name": "Default Max",
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "d1a457fb-d963-4360-9592-9cedcff66ab3",
+            "key": "shelterAmount",
+            "value": "maximumShelterAmount"
+          }
+        ]
+      },
+      "position": {
+        "x": 1480,
+        "y": 290
+      }
+    },
+    {
+      "id": "78761bae-b68c-4521-a3f7-e58b2a3c0966",
+      "name": "Shelter above Min",
+      "type": "switchNode",
+      "content": {
+        "statements": [
+          {
+            "id": "8c2bc3dc-1690-40ff-afd7-733d34055764",
+            "condition": "confirmedShelterCosts > minimumShelterAmount"
+          },
+          {
+            "id": "c72e709f-a8ab-4db9-9505-940780741930",
+            "condition": ""
+          }
+        ]
+      },
+      "position": {
+        "x": 900,
+        "y": 445
+      }
+    },
+    {
+      "id": "eed0980d-0d33-4eda-aeed-7175bb2b52fe",
+      "name": "Default Minimum",
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "239cdf25-b6de-4cea-b912-ed1de617fe3b",
+            "key": "shelterAmount",
+            "value": "minimumShelterAmount"
+          }
+        ]
+      },
+      "position": {
+        "x": 1180,
+        "y": 605
+      }
+    },
+    {
+      "id": "86a9f3d7-9483-4e82-950a-a8e303553007",
+      "name": "Confirmed Amount",
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "128dd6fa-e202-4b1a-98d4-af33d0f8031f",
+            "key": "shelterAmount",
+            "value": "confirmedShelterCosts"
+          }
+        ]
+      },
+      "position": {
+        "x": 1485,
+        "y": 435
+      }
+    },
+    {
+      "id": "d5077945-4e31-4d63-b9dd-7452d4c85599",
+      "name": "Shelter above Max",
+      "type": "switchNode",
+      "content": {
+        "statements": [
+          {
+            "id": "6a206dda-5f06-4bcd-961d-b3f74042543f",
+            "condition": "confirmedShelterCosts > maximumShelterAmount"
+          },
+          {
+            "id": "cb1d261b-46f4-46b8-b5ae-9ca23a14a336",
+            "condition": ""
+          }
+        ]
+      },
+      "position": {
+        "x": 1185,
+        "y": 380
+      }
+    },
+    {
+      "id": "e2ad50bf-d9f4-4c8e-919c-c8b12c4ad1fe",
+      "name": "Over 65 and OAS/GIS",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "39d5f2d1-b4a8-4439-8037-d472fb081c66",
+            "0790addc-d45c-4868-bc9f-fef836ec0c5f": "",
+            "311cb44c-6092-4d8b-ae65-43760fd7491e": "> 1",
+            "57c76e4b-1729-4d3f-827e-eac0558d7b21": ">= 65",
+            "7cf5315c-5c1c-4221-9012-b9df29d5a90c": "true",
+            "ce0740ab-4208-4f2c-923c-5eb3da2ed464": "true",
+            "dcbc0318-2758-4eb6-ba4d-39cba089cd9b": ""
+          },
+          {
+            "_id": "f0a290f0-a996-4220-8acb-173ad2b48797",
+            "0790addc-d45c-4868-bc9f-fef836ec0c5f": "true",
+            "311cb44c-6092-4d8b-ae65-43760fd7491e": "> 1",
+            "57c76e4b-1729-4d3f-827e-eac0558d7b21": "",
+            "7cf5315c-5c1c-4221-9012-b9df29d5a90c": "true",
+            "ce0740ab-4208-4f2c-923c-5eb3da2ed464": "",
+            "dcbc0318-2758-4eb6-ba4d-39cba089cd9b": ">= 65"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "57c76e4b-1729-4d3f-827e-eac0558d7b21",
+            "name": "Person 1 Age",
+            "type": "expression",
+            "field": "person1age"
+          },
+          {
+            "id": "dcbc0318-2758-4eb6-ba4d-39cba089cd9b",
+            "name": "Person 2 Age",
+            "type": "expression",
+            "field": "person2age"
+          },
+          {
+            "id": "ce0740ab-4208-4f2c-923c-5eb3da2ed464",
+            "name": "Person 1 Receiving OAS/GIS",
+            "type": "expression",
+            "field": "person1ReceivingOASGIS"
+          },
+          {
+            "id": "0790addc-d45c-4868-bc9f-fef836ec0c5f",
+            "name": "Person 2 Receiving OAS/GIS",
+            "type": "expression",
+            "field": "person2ReceivingOASGIS"
+          },
+          {
+            "id": "311cb44c-6092-4d8b-ae65-43760fd7491e",
+            "name": "Family Unit Size",
+            "type": "expression",
+            "field": "familyUnitSize"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "7cf5315c-5c1c-4221-9012-b9df29d5a90c",
+            "name": "Default To Maximum Shelter",
+            "type": "expression",
+            "field": "defaultMax",
+            "defaultValue": "false"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 320,
+        "y": 285
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "1cf93c04-64fe-4e52-b56b-2aa92955b634",
+      "type": "edge",
+      "sourceId": "4be9dde3-585c-4ea0-bad6-f0cd25d55678",
+      "targetId": "87a78f50-78f3-4ed8-9368-bcbeb110516d"
+    },
+    {
+      "id": "92ad995c-9479-4a03-b08a-5d50795dfb0a",
+      "type": "edge",
+      "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
+      "targetId": "4f25d814-d992-45df-97a2-7faa7c99016d"
+    },
+    {
+      "id": "28ca41b8-0f32-49be-8c87-3292b5ef699c",
+      "type": "edge",
+      "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
+      "targetId": "464e51e5-4ce2-45a4-b3b0-7dbd7c87d93e"
+    },
+    {
+      "id": "1be2a54a-a72c-44ba-923f-395b9cddee02",
+      "type": "edge",
+      "sourceId": "464e51e5-4ce2-45a4-b3b0-7dbd7c87d93e",
+      "targetId": "95a8fd76-0915-48d9-b716-11577923dd7b"
+    },
+    {
+      "id": "60045fa5-d606-403c-8a15-09636045658f",
+      "type": "edge",
+      "sourceId": "4f25d814-d992-45df-97a2-7faa7c99016d",
+      "targetId": "95a8fd76-0915-48d9-b716-11577923dd7b"
+    },
+    {
+      "id": "36539ee4-9b5b-4b9a-8e69-c6fbe8782e4e",
+      "type": "edge",
+      "sourceId": "95a8fd76-0915-48d9-b716-11577923dd7b",
+      "targetId": "4be9dde3-585c-4ea0-bad6-f0cd25d55678",
+      "sourceHandle": "371816d5-dfad-494e-af27-f68367b8a574"
+    },
+    {
+      "id": "caefefa9-c646-49e5-b47f-3329abd9ce0e",
+      "type": "edge",
+      "sourceId": "95a8fd76-0915-48d9-b716-11577923dd7b",
+      "targetId": "78761bae-b68c-4521-a3f7-e58b2a3c0966",
+      "sourceHandle": "71d825d5-b9e2-45a6-b106-4cbe576f379a"
+    },
+    {
+      "id": "97b346c2-f952-4d19-9546-e2712abdd2a2",
+      "type": "edge",
+      "sourceId": "78761bae-b68c-4521-a3f7-e58b2a3c0966",
+      "targetId": "eed0980d-0d33-4eda-aeed-7175bb2b52fe",
+      "sourceHandle": "c72e709f-a8ab-4db9-9505-940780741930"
+    },
+    {
+      "id": "2ffd8474-98ce-4a98-aede-323b43deb264",
+      "type": "edge",
+      "sourceId": "eed0980d-0d33-4eda-aeed-7175bb2b52fe",
+      "targetId": "87a78f50-78f3-4ed8-9368-bcbeb110516d"
+    },
+    {
+      "id": "1dc753b9-0723-429f-a445-21d20b5cd9c1",
+      "type": "edge",
+      "sourceId": "d5077945-4e31-4d63-b9dd-7452d4c85599",
+      "targetId": "4be9dde3-585c-4ea0-bad6-f0cd25d55678",
+      "sourceHandle": "6a206dda-5f06-4bcd-961d-b3f74042543f"
+    },
+    {
+      "id": "9a96e28a-2de7-48ee-ae06-4222140b1757",
+      "type": "edge",
+      "sourceId": "78761bae-b68c-4521-a3f7-e58b2a3c0966",
+      "targetId": "d5077945-4e31-4d63-b9dd-7452d4c85599",
+      "sourceHandle": "8c2bc3dc-1690-40ff-afd7-733d34055764"
+    },
+    {
+      "id": "a7b749f1-8a6c-4c0c-8249-ed26b071d970",
+      "type": "edge",
+      "sourceId": "d5077945-4e31-4d63-b9dd-7452d4c85599",
+      "targetId": "86a9f3d7-9483-4e82-950a-a8e303553007",
+      "sourceHandle": "cb1d261b-46f4-46b8-b5ae-9ca23a14a336"
+    },
+    {
+      "id": "9cd4bb8c-6766-4960-8801-f168e3d02089",
+      "type": "edge",
+      "sourceId": "86a9f3d7-9483-4e82-950a-a8e303553007",
+      "targetId": "87a78f50-78f3-4ed8-9368-bcbeb110516d"
+    },
+    {
+      "id": "02fbe0c1-ffd8-4b1d-be90-f5b3b0dbca0a",
+      "type": "edge",
+      "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
+      "targetId": "e2ad50bf-d9f4-4c8e-919c-c8b12c4ad1fe"
+    },
+    {
+      "id": "d97d816a-cd0f-42f1-9b7b-567c65bf8933",
+      "type": "edge",
+      "sourceId": "e2ad50bf-d9f4-4c8e-919c-c8b12c4ad1fe",
+      "targetId": "95a8fd76-0915-48d9-b716-11577923dd7b"
+    },
+    {
+      "id": "d15f4bd9-5aa7-47f5-8688-44fc6d089661",
+      "type": "edge",
+      "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
+      "targetId": "95a8fd76-0915-48d9-b716-11577923dd7b"
+    }
+  ]
+}

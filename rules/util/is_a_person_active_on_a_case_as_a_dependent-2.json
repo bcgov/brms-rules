@@ -1,0 +1,133 @@
+{
+  "nodes": [
+    {
+      "id": "a023eb5d-4691-49c9-9e85-dfcc687801d9",
+      "name": "request",
+      "type": "inputNode",
+      "position": {
+        "x": 100,
+        "y": 210
+      }
+    },
+    {
+      "id": "ea124db4-20bc-46bb-99ea-202a55b55b5b",
+      "name": "response",
+      "type": "outputNode",
+      "position": {
+        "x": 715,
+        "y": 210
+      }
+    },
+    {
+      "id": "6e70304c-a2e3-4d5a-9541-bb97c3038665",
+      "name": "Check if active on case",
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "b2cf9f67-055f-4b21-b77f-4d801dd5ef76",
+            "name": "List of dependents",
+            "type": "expression",
+            "field": "dependentsList"
+          },
+          {
+            "id": "4c93cda8-b24b-4f6c-97fc-4f9087ace2cc",
+            "type": "expression",
+            "field": "personID",
+            "name": "Person ID"
+          },
+          {
+            "id": "a7f74800-d22b-4a76-af01-17666a09f1a5",
+            "type": "expression",
+            "field": "benefitMonth",
+            "name": "Benefit Month"
+          },
+          {
+            "id": "e48d52ba-1bba-47e3-82f5-176c442619b2",
+            "type": "expression",
+            "field": "caseID",
+            "name": "Case ID"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "4303d58e-47f2-4f8f-aef2-96070d5c4319",
+            "name": "Is Active On Case",
+            "type": "expression",
+            "field": "isActiveOnCase"
+          },
+          {
+            "id": "61e30398-6b49-42fd-b8e4-95256c32487a",
+            "name": "Benefit Month",
+            "type": "expression",
+            "field": "benefitMonth"
+          },
+          {
+            "id": "b7cb0485-6b52-45a2-86a8-ff8980c1c84c",
+            "name": "Case ID",
+            "type": "expression",
+            "field": "caseID"
+          },
+          {
+            "id": "3df89bec-0fa5-4321-9194-3f330e3c18c7",
+            "name": "Person ID",
+            "type": "expression",
+            "field": "personID"
+          },
+          {
+            "id": "71544763-067f-41ea-bae3-a445418b9261",
+            "name": "Reason",
+            "type": "expression",
+            "field": "reason"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "048934cd-fb94-4508-937f-c128d45beb3e",
+            "b2cf9f67-055f-4b21-b77f-4d801dd5ef76": "contains(dependentsList, personID)",
+            "4c93cda8-b24b-4f6c-97fc-4f9087ace2cc": "",
+            "a7f74800-d22b-4a76-af01-17666a09f1a5": "",
+            "e48d52ba-1bba-47e3-82f5-176c442619b2": "",
+            "4303d58e-47f2-4f8f-aef2-96070d5c4319": "true",
+            "61e30398-6b49-42fd-b8e4-95256c32487a": "benefitMonth",
+            "b7cb0485-6b52-45a2-86a8-ff8980c1c84c": "caseID",
+            "3df89bec-0fa5-4321-9194-3f330e3c18c7": "personID",
+            "71544763-067f-41ea-bae3-a445418b9261": ""
+          },
+          {
+            "_id": "0936bf97-d254-4ec5-aebc-d41d11ec74fd",
+            "b2cf9f67-055f-4b21-b77f-4d801dd5ef76": "",
+            "4c93cda8-b24b-4f6c-97fc-4f9087ace2cc": "",
+            "a7f74800-d22b-4a76-af01-17666a09f1a5": "",
+            "e48d52ba-1bba-47e3-82f5-176c442619b2": "",
+            "4303d58e-47f2-4f8f-aef2-96070d5c4319": "false",
+            "61e30398-6b49-42fd-b8e4-95256c32487a": "benefitMonth",
+            "b7cb0485-6b52-45a2-86a8-ff8980c1c84c": "caseID",
+            "3df89bec-0fa5-4321-9194-3f330e3c18c7": "personID",
+            "71544763-067f-41ea-bae3-a445418b9261": "'Person not listed on the case as a dependent for the month given'"
+          }
+        ]
+      },
+      "position": {
+        "x": 410,
+        "y": 210
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edd18df1-570a-4351-b593-43d25efffda0",
+      "type": "edge",
+      "sourceId": "a023eb5d-4691-49c9-9e85-dfcc687801d9",
+      "targetId": "6e70304c-a2e3-4d5a-9541-bb97c3038665"
+    },
+    {
+      "id": "9f88d22a-bd9f-4082-856b-7cfe2dbaae78",
+      "type": "edge",
+      "sourceId": "6e70304c-a2e3-4d5a-9541-bb97c3038665",
+      "targetId": "ea124db4-20bc-46bb-99ea-202a55b55b5b"
+    }
+  ],
+  "tests": []
+}

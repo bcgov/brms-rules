@@ -1,0 +1,377 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "6190b6c7-63ea-4f39-8fb2-8858d95a2629",
+      "name": "request",
+      "type": "inputNode",
+      "position": {
+        "x": 25,
+        "y": 385
+      }
+    },
+    {
+      "id": "21e2ec3e-c365-483e-8162-d4fc5e28c9e3",
+      "name": "response",
+      "type": "outputNode",
+      "position": {
+        "x": 1105,
+        "y": 445
+      }
+    },
+    {
+      "id": "02424b7d-61a9-486e-aaa2-1b856caf0c32",
+      "name": "Base Eligibility",
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "cc08a770-560b-4757-9227-cc12f5ffb7f6",
+            "name": "Person has PWD Status",
+            "type": "expression",
+            "field": "hasPWDDesignation"
+          },
+          {
+            "id": "e15293b5-0521-4242-9ee9-b9932557d791",
+            "name": "Next Benefit Period is Eligible for DA",
+            "type": "expression",
+            "field": "isEligibleForNextBenefitPeriod"
+          },
+          {
+            "id": "501a514c-1b7e-49a8-8b7a-75704fe9c665",
+            "name": "Person was eligible for DA or HA in previous benefit period",
+            "type": "expression",
+            "field": "isEligibleForPreviousBenefitPeriod"
+          },
+          {
+            "id": "90c2b6ab-3d20-4b4c-b895-ec8ed6872b06",
+            "name": "Previously assessed as eligible for Year",
+            "type": "expression",
+            "field": "msoEligibleYear"
+          },
+          {
+            "id": "60e7b8de-b291-470f-968d-51088ccb95a9",
+            "name": "Type of eligibility for MSO Year",
+            "type": "expression",
+            "field": "msoTransportationType"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "7a36673d-b1a1-4765-a0ba-82d217c30b03",
+            "name": "Eligible for Transportation Supplement",
+            "type": "expression",
+            "field": "isEligibleForTransportationSupplement"
+          },
+          {
+            "id": "72013a0f-19ef-42d0-9a3b-1c3574e08dd9",
+            "name": "Eligible for Transitional transportation Support",
+            "type": "expression",
+            "field": "isEligibleForTransitionalTransporationSupport"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "15310bd4-8464-4c3e-836f-603a682bbeb9",
+            "cc08a770-560b-4757-9227-cc12f5ffb7f6": "true",
+            "e15293b5-0521-4242-9ee9-b9932557d791": "true",
+            "501a514c-1b7e-49a8-8b7a-75704fe9c665": "",
+            "90c2b6ab-3d20-4b4c-b895-ec8ed6872b06": "",
+            "60e7b8de-b291-470f-968d-51088ccb95a9": "",
+            "7a36673d-b1a1-4765-a0ba-82d217c30b03": "true",
+            "72013a0f-19ef-42d0-9a3b-1c3574e08dd9": ""
+          },
+          {
+            "_id": "d3cded36-2e58-4b2f-af74-61466aa78f2e",
+            "cc08a770-560b-4757-9227-cc12f5ffb7f6": "",
+            "e15293b5-0521-4242-9ee9-b9932557d791": "",
+            "501a514c-1b7e-49a8-8b7a-75704fe9c665": "",
+            "90c2b6ab-3d20-4b4c-b895-ec8ed6872b06": "== year(date('now'))",
+            "60e7b8de-b291-470f-968d-51088ccb95a9": "== 'AEE Year' or == 'Current Year'",
+            "7a36673d-b1a1-4765-a0ba-82d217c30b03": "true",
+            "72013a0f-19ef-42d0-9a3b-1c3574e08dd9": ""
+          },
+          {
+            "_id": "9f3ec6e8-eb1e-4eaf-aa5a-b915cf67baed",
+            "_description": "Checks for AEE year, and allows issuance in first month of next year for benefit period.",
+            "cc08a770-560b-4757-9227-cc12f5ffb7f6": "true",
+            "e15293b5-0521-4242-9ee9-b9932557d791": "",
+            "501a514c-1b7e-49a8-8b7a-75704fe9c665": "",
+            "90c2b6ab-3d20-4b4c-b895-ec8ed6872b06": "== year(date('now'))-1 and (monthOfYear((date('now'))) == 1)",
+            "60e7b8de-b291-470f-968d-51088ccb95a9": "== 'AEE Year'",
+            "7a36673d-b1a1-4765-a0ba-82d217c30b03": "true",
+            "72013a0f-19ef-42d0-9a3b-1c3574e08dd9": ""
+          },
+          {
+            "_id": "c29c42cb-6333-4127-a4e0-3afb4a0610cf",
+            "_description": "Checks for AEE year, and allows issuance in second month of next year for benefit period.",
+            "cc08a770-560b-4757-9227-cc12f5ffb7f6": "true",
+            "e15293b5-0521-4242-9ee9-b9932557d791": "",
+            "501a514c-1b7e-49a8-8b7a-75704fe9c665": "",
+            "90c2b6ab-3d20-4b4c-b895-ec8ed6872b06": "== year(date('now'))-1 and (monthOfYear((date('now'))) == 2)",
+            "60e7b8de-b291-470f-968d-51088ccb95a9": "== 'AEE Year'",
+            "7a36673d-b1a1-4765-a0ba-82d217c30b03": "true",
+            "72013a0f-19ef-42d0-9a3b-1c3574e08dd9": ""
+          },
+          {
+            "_id": "353b1ab4-3cc2-4a05-a941-8d25d1b397be",
+            "cc08a770-560b-4757-9227-cc12f5ffb7f6": "true",
+            "e15293b5-0521-4242-9ee9-b9932557d791": "false",
+            "501a514c-1b7e-49a8-8b7a-75704fe9c665": "true",
+            "90c2b6ab-3d20-4b4c-b895-ec8ed6872b06": "",
+            "60e7b8de-b291-470f-968d-51088ccb95a9": "",
+            "7a36673d-b1a1-4765-a0ba-82d217c30b03": "false",
+            "72013a0f-19ef-42d0-9a3b-1c3574e08dd9": "true"
+          },
+          {
+            "_id": "036330ef-94c6-41a0-9e2f-5aeb01ab1ac5",
+            "cc08a770-560b-4757-9227-cc12f5ffb7f6": "",
+            "e15293b5-0521-4242-9ee9-b9932557d791": "",
+            "501a514c-1b7e-49a8-8b7a-75704fe9c665": "",
+            "90c2b6ab-3d20-4b4c-b895-ec8ed6872b06": "",
+            "60e7b8de-b291-470f-968d-51088ccb95a9": "",
+            "7a36673d-b1a1-4765-a0ba-82d217c30b03": "false",
+            "72013a0f-19ef-42d0-9a3b-1c3574e08dd9": ""
+          }
+        ]
+      },
+      "position": {
+        "x": 285,
+        "y": 480
+      }
+    },
+    {
+      "id": "eb0cb9a1-a32c-4cdc-b59f-b569e0621e0e",
+      "name": "Switch",
+      "type": "switchNode",
+      "content": {
+        "statements": [
+          {
+            "id": "2f52db37-e57f-44f7-bab7-0e59b5d4897f",
+            "condition": "isEligibleForTransportationSupplement"
+          },
+          {
+            "id": "7d892584-6d4c-41e9-93e3-6734beaa64e4",
+            "condition": "isEligibleForTransitionalTransporationSupport"
+          },
+          {
+            "id": "e8694d08-a64b-4e99-af9f-cd6a41886d12",
+            "condition": ""
+          }
+        ]
+      },
+      "position": {
+        "x": 545,
+        "y": 320
+      }
+    },
+    {
+      "id": "5efdce73-11b0-498a-a39d-2293f4e70866",
+      "name": "Payment Type",
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "49890ec0-8f95-4750-98db-ebfad5f1a284",
+            "name": "Payment Option Selected",
+            "type": "expression",
+            "field": "selectedPaymentOption"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "b0819074-4d3c-4402-acbc-f79d7b39beb0",
+            "name": "Transportation Supplement Provided",
+            "type": "expression",
+            "field": "transportationSupplementType"
+          },
+          {
+            "id": "500d014f-fd23-4af8-8249-23727b89d54f",
+            "name": "Amount for Transportation Supplement",
+            "type": "expression",
+            "field": "transportationSupplementAmount"
+          },
+          {
+            "id": "0dddf43e-118f-4b2c-afa8-f97ab2685c3d",
+            "name": "Person is Eligible for Transportation Supplement",
+            "type": "expression",
+            "field": "eligibleForTransportationSupplement"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "c500bead-0c14-4d3c-ab25-82b0c0bb9e27",
+            "0dddf43e-118f-4b2c-afa8-f97ab2685c3d": "true",
+            "49890ec0-8f95-4750-98db-ebfad5f1a284": "== 'pass'",
+            "500d014f-fd23-4af8-8249-23727b89d54f": "",
+            "b0819074-4d3c-4402-acbc-f79d7b39beb0": "\"In-kind Bus Pass\"",
+            "_description": "In-kind  (concession bus pass costing $52)"
+          },
+          {
+            "_id": "20671669-3023-418a-9fe0-6e745a272dc2",
+            "0dddf43e-118f-4b2c-afa8-f97ab2685c3d": "true",
+            "49890ec0-8f95-4750-98db-ebfad5f1a284": "",
+            "500d014f-fd23-4af8-8249-23727b89d54f": "52",
+            "b0819074-4d3c-4402-acbc-f79d7b39beb0": "\"Cash\"",
+            "_description": ""
+          }
+        ]
+      },
+      "position": {
+        "x": 810,
+        "y": 340
+      }
+    },
+    {
+      "id": "3f5327af-8e2d-4a45-af36-9cd88cab11fc",
+      "name": "Ineligible",
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "95932ee6-a39b-40e3-b2fe-8f9f1ad351cb",
+            "key": "eligibleForTransportationSupplement",
+            "value": "isEligibleForTransportationSupplement"
+          }
+        ]
+      },
+      "position": {
+        "x": 805,
+        "y": 550
+      }
+    },
+    {
+      "id": "3ac06c74-5552-475c-91bc-8f3b89192c69",
+      "name": "MSO Eligible",
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "49becb9a-dc07-4ca1-9307-d49e084b66b2",
+            "name": "Person with MSO Status",
+            "type": "expression",
+            "field": "isFamilyUnitMsoligible"
+          },
+          {
+            "id": "f83fde2c-312b-4d60-b271-e4184282b33a",
+            "name": "Reason for Transition to MSO",
+            "type": "expression",
+            "field": "msoReason"
+          },
+          {
+            "id": "d9e95475-c2fc-4a87-8ed3-53b8daec83bf",
+            "name": "MSO Eligibility Period",
+            "type": "expression",
+            "field": "currentDate"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "bf688694-a121-4776-af8f-1a43043eb0b6",
+            "name": "MSO Eligibility Type",
+            "type": "expression",
+            "field": "msoTransportationType"
+          },
+          {
+            "id": "a56e3191-b139-4c70-bb48-0797b1ac096d",
+            "name": "MSO Eligible for transitional transport",
+            "type": "expression",
+            "field": "msoEligibleYear"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "c95a20b7-d097-4da8-87ad-c737a10d8cfa",
+            "49becb9a-dc07-4ca1-9307-d49e084b66b2": "true",
+            "f83fde2c-312b-4d60-b271-e4184282b33a": "== \"AEE\"",
+            "d9e95475-c2fc-4a87-8ed3-53b8daec83bf": "",
+            "bf688694-a121-4776-af8f-1a43043eb0b6": "\"AEE Year\"",
+            "a56e3191-b139-4c70-bb48-0797b1ac096d": "year(date('now'))"
+          },
+          {
+            "_id": "02339c37-6415-4918-ba67-49e5139f0235",
+            "49becb9a-dc07-4ca1-9307-d49e084b66b2": "true",
+            "f83fde2c-312b-4d60-b271-e4184282b33a": "",
+            "d9e95475-c2fc-4a87-8ed3-53b8daec83bf": "",
+            "bf688694-a121-4776-af8f-1a43043eb0b6": "\"Current Year\"",
+            "a56e3191-b139-4c70-bb48-0797b1ac096d": "year(date('now'))"
+          },
+          {
+            "_id": "7dafc0a0-9fca-46cb-b53a-58d82a908e2b",
+            "49becb9a-dc07-4ca1-9307-d49e084b66b2": "",
+            "f83fde2c-312b-4d60-b271-e4184282b33a": "",
+            "d9e95475-c2fc-4a87-8ed3-53b8daec83bf": "",
+            "bf688694-a121-4776-af8f-1a43043eb0b6": "",
+            "a56e3191-b139-4c70-bb48-0797b1ac096d": ""
+          }
+        ]
+      },
+      "position": {
+        "x": 810,
+        "y": 445
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "7ca0e7eb-e21c-471d-afa3-4a4188419bf9",
+      "type": "edge",
+      "sourceId": "6190b6c7-63ea-4f39-8fb2-8858d95a2629",
+      "targetId": "02424b7d-61a9-486e-aaa2-1b856caf0c32"
+    },
+    {
+      "id": "fd7603ed-37e4-4a4b-a8a6-2e54f42f921f",
+      "type": "edge",
+      "sourceId": "02424b7d-61a9-486e-aaa2-1b856caf0c32",
+      "targetId": "eb0cb9a1-a32c-4cdc-b59f-b569e0621e0e"
+    },
+    {
+      "id": "4f000833-f3bf-4dee-b7fd-f30171e9f435",
+      "type": "edge",
+      "sourceId": "6190b6c7-63ea-4f39-8fb2-8858d95a2629",
+      "targetId": "eb0cb9a1-a32c-4cdc-b59f-b569e0621e0e"
+    },
+    {
+      "id": "440fde20-a22a-4dd7-91b0-77160d9ae63f",
+      "type": "edge",
+      "sourceId": "eb0cb9a1-a32c-4cdc-b59f-b569e0621e0e",
+      "targetId": "5efdce73-11b0-498a-a39d-2293f4e70866",
+      "sourceHandle": "2f52db37-e57f-44f7-bab7-0e59b5d4897f"
+    },
+    {
+      "id": "ca7c24d9-64c4-4666-95b2-6f1d02ba242d",
+      "type": "edge",
+      "sourceId": "5efdce73-11b0-498a-a39d-2293f4e70866",
+      "targetId": "21e2ec3e-c365-483e-8162-d4fc5e28c9e3"
+    },
+    {
+      "id": "a4ca6fc5-f6c0-4a15-8bf3-a028847a4e5b",
+      "type": "edge",
+      "sourceId": "eb0cb9a1-a32c-4cdc-b59f-b569e0621e0e",
+      "targetId": "3f5327af-8e2d-4a45-af36-9cd88cab11fc",
+      "sourceHandle": "e8694d08-a64b-4e99-af9f-cd6a41886d12"
+    },
+    {
+      "id": "00bb3de2-3fe5-426b-ab67-a1d288edabd1",
+      "type": "edge",
+      "sourceId": "3f5327af-8e2d-4a45-af36-9cd88cab11fc",
+      "targetId": "21e2ec3e-c365-483e-8162-d4fc5e28c9e3"
+    },
+    {
+      "id": "787865e0-e4cb-4681-967b-83a773eeed3a",
+      "type": "edge",
+      "sourceId": "eb0cb9a1-a32c-4cdc-b59f-b569e0621e0e",
+      "targetId": "3ac06c74-5552-475c-91bc-8f3b89192c69",
+      "sourceHandle": "7d892584-6d4c-41e9-93e3-6734beaa64e4"
+    },
+    {
+      "id": "695230ca-8f6b-4ac7-a691-d31a354d6602",
+      "type": "edge",
+      "sourceId": "3ac06c74-5552-475c-91bc-8f3b89192c69",
+      "targetId": "21e2ec3e-c365-483e-8162-d4fc5e28c9e3"
+    }
+  ]
+}

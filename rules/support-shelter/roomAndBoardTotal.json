@@ -1,0 +1,179 @@
+{
+  "nodes": [
+    {
+      "id": "1eaca8a6-a20c-466c-9362-3b727d4810c4",
+      "type": "inputNode",
+      "position": {
+        "x": 180,
+        "y": 300
+      },
+      "name": "request"
+    },
+    {
+      "id": "1bf11c5e-f7e1-4373-bb4e-c314941284bf",
+      "type": "outputNode",
+      "position": {
+        "x": 1325,
+        "y": 320
+      },
+      "name": "response"
+    },
+    {
+      "id": "97548ae9-a0c4-4a26-842d-f4e4826b0e6c",
+      "type": "decisionNode",
+      "position": {
+        "x": 455,
+        "y": 165
+      },
+      "name": "Calculation A - Room and Board Amount",
+      "content": {
+        "key": "support-shelter/roomAndBoardCalculationA.json"
+      }
+    },
+    {
+      "id": "734c827e-9ab2-4313-a0a2-00307f1c7f0b",
+      "type": "decisionNode",
+      "position": {
+        "x": 455,
+        "y": 300
+      },
+      "name": "Max support/shelter",
+      "content": {
+        "key": "support-shelter/totalSupportAndShelter.json"
+      }
+    },
+    {
+      "id": "34135e9c-5adb-4479-9cac-898ace8c4a02",
+      "type": "switchNode",
+      "position": {
+        "x": 740,
+        "y": 205
+      },
+      "name": "Determine Lesser Amount",
+      "content": {
+        "statements": [
+          {
+            "id": "270d2cb2-5f5f-4e6c-951d-2599cc75549d",
+            "condition": "roomAndBoardCalculationAAmount < roomAndBoardCalculationBAmount"
+          },
+          {
+            "id": "33099ffd-b8a5-407c-a1b5-8332b415352a",
+            "condition": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "9d97813c-748b-4627-ada7-021e5bc07fad",
+      "type": "expressionNode",
+      "position": {
+        "x": 455,
+        "y": 435
+      },
+      "name": "Calculation B",
+      "content": {
+        "expressions": [
+          {
+            "id": "bb5eb9f9-9ca3-4afb-8395-549910133923",
+            "key": "roomAndBoardCalculationBAmount",
+            "value": "shelterAmount + supportAmount"
+          }
+        ]
+      }
+    },
+    {
+      "id": "726a80ec-aa74-4b33-a9d3-e7407eec56c1",
+      "type": "expressionNode",
+      "position": {
+        "x": 1020,
+        "y": 275
+      },
+      "name": "Total = Calc A",
+      "content": {
+        "expressions": [
+          {
+            "id": "58ad1fe5-720b-49c3-a3f0-e2452c5f4d91",
+            "key": "totalRoomAndBoard",
+            "value": "roomAndBoardCalculationAAmount"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c9c7ec31-bbb7-4bf2-b6c5-fc2d6f534c5b",
+      "type": "expressionNode",
+      "position": {
+        "x": 1020,
+        "y": 375
+      },
+      "name": "Total = Calc B",
+      "content": {
+        "expressions": [
+          {
+            "id": "679aea5f-53eb-4b46-867a-9c16b7f7fa77",
+            "key": "totalRoomAndBoard",
+            "value": "roomAndBoardCalculationBAmount"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "7bbfd1c5-0e82-44b2-a465-8fe656aa796b",
+      "sourceId": "1eaca8a6-a20c-466c-9362-3b727d4810c4",
+      "type": "edge",
+      "targetId": "97548ae9-a0c4-4a26-842d-f4e4826b0e6c"
+    },
+    {
+      "id": "ab318e32-c65b-47bb-81e5-4d4fd5883a37",
+      "sourceId": "1eaca8a6-a20c-466c-9362-3b727d4810c4",
+      "type": "edge",
+      "targetId": "734c827e-9ab2-4313-a0a2-00307f1c7f0b"
+    },
+    {
+      "id": "8b14ac80-c178-4988-8a90-d237fa289fe4",
+      "sourceId": "97548ae9-a0c4-4a26-842d-f4e4826b0e6c",
+      "type": "edge",
+      "targetId": "34135e9c-5adb-4479-9cac-898ace8c4a02"
+    },
+    {
+      "id": "8696c885-41a1-4ddb-a9d2-e4ec0f18cea6",
+      "sourceId": "734c827e-9ab2-4313-a0a2-00307f1c7f0b",
+      "type": "edge",
+      "targetId": "9d97813c-748b-4627-ada7-021e5bc07fad"
+    },
+    {
+      "id": "3f751a52-8e58-4f53-a27d-8eb522b2dfc2",
+      "sourceId": "9d97813c-748b-4627-ada7-021e5bc07fad",
+      "type": "edge",
+      "targetId": "34135e9c-5adb-4479-9cac-898ace8c4a02"
+    },
+    {
+      "id": "90f43c77-29b5-4e4b-a20e-d5de463fc2eb",
+      "sourceId": "34135e9c-5adb-4479-9cac-898ace8c4a02",
+      "type": "edge",
+      "targetId": "726a80ec-aa74-4b33-a9d3-e7407eec56c1",
+      "sourceHandle": "270d2cb2-5f5f-4e6c-951d-2599cc75549d"
+    },
+    {
+      "id": "906b8c1c-b34c-4f7c-bce9-79dc399467f4",
+      "sourceId": "34135e9c-5adb-4479-9cac-898ace8c4a02",
+      "type": "edge",
+      "targetId": "c9c7ec31-bbb7-4bf2-b6c5-fc2d6f534c5b",
+      "sourceHandle": "33099ffd-b8a5-407c-a1b5-8332b415352a"
+    },
+    {
+      "id": "4b25b01b-2151-4ed7-84c6-a720b16fd393",
+      "sourceId": "c9c7ec31-bbb7-4bf2-b6c5-fc2d6f534c5b",
+      "type": "edge",
+      "targetId": "1bf11c5e-f7e1-4373-bb4e-c314941284bf"
+    },
+    {
+      "id": "3ea173a5-f902-4bda-bfad-791121b6da5c",
+      "sourceId": "726a80ec-aa74-4b33-a9d3-e7407eec56c1",
+      "type": "edge",
+      "targetId": "1bf11c5e-f7e1-4373-bb4e-c314941284bf"
+    }
+  ]
+}

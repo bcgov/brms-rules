@@ -1,0 +1,98 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "17119358-634b-4f74-b48b-d49d5163a0fc",
+      "name": "request",
+      "type": "inputNode",
+      "position": {
+        "x": -880,
+        "y": 385
+      }
+    },
+    {
+      "id": "de2830d9-2046-4d3c-9979-e7c68259afaf",
+      "name": "response",
+      "type": "outputNode",
+      "position": {
+        "x": 0,
+        "y": 440
+      }
+    },
+    {
+      "id": "3c35a5d6-8574-4ad4-8b3e-f1c21f4259e1",
+      "type": "decisionNode",
+      "position": {
+        "x": -305,
+        "y": 350
+      },
+      "name": "CCB Calculator",
+      "content": {
+        "key": "general-supplements/ccb/ccb-child-benefit-calculation.json"
+      }
+    },
+    {
+      "id": "7749efa8-50c5-47d6-b5fb-bce302fac8cc",
+      "type": "decisionNode",
+      "position": {
+        "x": -305,
+        "y": 500
+      },
+      "name": "CCB In Lieu",
+      "content": {
+        "key": "general-supplements/ccb/ccb-support-in-lieu.json"
+      }
+    },
+    {
+      "id": "fb8102ea-0e32-415b-866d-ff90dfa5dfcd",
+      "type": "decisionNode",
+      "position": {
+        "x": -590,
+        "y": 435
+      },
+      "name": "CCB Eligible Children",
+      "content": {
+        "key": "general-supplements/ccb/ccb-eligible-child-count.json"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "ada3dbb4-9f7e-4607-b2af-a0419db59ddc",
+      "sourceId": "3c35a5d6-8574-4ad4-8b3e-f1c21f4259e1",
+      "type": "edge",
+      "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
+    },
+    {
+      "id": "c8113b03-ec2c-4eac-a3ea-dbc563768af8",
+      "sourceId": "7749efa8-50c5-47d6-b5fb-bce302fac8cc",
+      "type": "edge",
+      "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
+    },
+    {
+      "id": "55dae37b-9213-4e95-8130-400941b089cd",
+      "sourceId": "17119358-634b-4f74-b48b-d49d5163a0fc",
+      "type": "edge",
+      "targetId": "3c35a5d6-8574-4ad4-8b3e-f1c21f4259e1"
+    },
+    {
+      "id": "463c1965-b64f-4d13-9804-265e3cd4dd05",
+      "sourceId": "fb8102ea-0e32-415b-866d-ff90dfa5dfcd",
+      "type": "edge",
+      "targetId": "3c35a5d6-8574-4ad4-8b3e-f1c21f4259e1"
+    },
+    {
+      "id": "dd3cee14-ed9d-4237-933b-bad4e62d1ae2",
+      "sourceId": "fb8102ea-0e32-415b-866d-ff90dfa5dfcd",
+      "type": "edge",
+      "targetId": "7749efa8-50c5-47d6-b5fb-bce302fac8cc"
+    },
+    {
+      "id": "840a6c1e-08b1-4b6a-bed2-9905ddcf22b8",
+      "sourceId": "17119358-634b-4f74-b48b-d49d5163a0fc",
+      "type": "edge",
+      "targetId": "fb8102ea-0e32-415b-866d-ff90dfa5dfcd"
+    }
+  ],
+  "tests": []
+}

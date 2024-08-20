@@ -1,0 +1,188 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "4ac175b6-173f-4de6-b00c-42cf5dd9126d",
+      "name": "request",
+      "type": "inputNode",
+      "position": {
+        "x": -270,
+        "y": 220
+      }
+    },
+    {
+      "id": "982aebae-fc23-40ca-ac93-a69764f09536",
+      "name": "response",
+      "type": "outputNode",
+      "position": {
+        "x": 705,
+        "y": 285
+      }
+    },
+    {
+      "id": "9c789eca-6e1a-4cb7-ae50-83eb89ce0f49",
+      "name": "noCCBEligibleCalculation",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "3274f0cc-cc05-4fb6-b236-33c37f493e0b",
+            "19bc3c42-ee62-43b3-8f1c-98934898325a": "0",
+            "d7df20fc-6a16-45f6-80ef-75ccff32cf52": "0"
+          },
+          {
+            "_id": "88a063ae-1a15-41fe-ae74-faacedb89452",
+            "19bc3c42-ee62-43b3-8f1c-98934898325a": "1",
+            "d7df20fc-6a16-45f6-80ef-75ccff32cf52": "237.33"
+          },
+          {
+            "_id": "46276b54-b46a-4cf1-8ef6-3b183eb64848",
+            "19bc3c42-ee62-43b3-8f1c-98934898325a": "2",
+            "d7df20fc-6a16-45f6-80ef-75ccff32cf52": "237.33+209.92"
+          },
+          {
+            "_id": "d9f349f8-64b5-4bd0-b8c1-624b36c9bf66",
+            "19bc3c42-ee62-43b3-8f1c-98934898325a": ">=3",
+            "d7df20fc-6a16-45f6-80ef-75ccff32cf52": "(237.33+209.92)+((childCountDeemedEligible-2)*199.75)"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "19bc3c42-ee62-43b3-8f1c-98934898325a",
+            "name": "childCountDeemedEligible",
+            "type": "expression",
+            "field": "childCountDeemedEligible"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "d7df20fc-6a16-45f6-80ef-75ccff32cf52",
+            "name": "monthlyCCBTopupInLieuAmount",
+            "type": "expression",
+            "field": "monthlyCCBTopupInLieuAmount"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 350,
+        "y": 170
+      }
+    },
+    {
+      "id": "776bdc61-07d9-45a2-86aa-0f1d45e997b1",
+      "name": "childrenOnFile",
+      "type": "switchNode",
+      "content": {
+        "statements": [
+          {
+            "id": "d40bbe27-1b36-4643-9985-b449e9e41f2d",
+            "condition": "childCountCCBEligible == 0"
+          },
+          {
+            "id": "06fa3548-072c-4cd6-a21b-b64a6dcbeb80",
+            "condition": "childCountCCBEligible > 0"
+          }
+        ]
+      },
+      "position": {
+        "x": 35,
+        "y": 215
+      }
+    },
+    {
+      "id": "f91d6116-bc49-431e-8ca9-1a8d51f6f001",
+      "name": "CCBEligibleAndDeemed",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "401d7d19-de6d-4de4-82d8-94d784e4d641",
+            "0178c364-6128-4136-9586-ac1c37d66ed0": "==1",
+            "271963d8-7658-4712-a055-52195159f881": "209.92",
+            "82b5adc3-473c-4da9-b18b-242932c60f18": "==1"
+          },
+          {
+            "_id": "16f232c8-803d-49ee-8a09-31b09c1d203a",
+            "0178c364-6128-4136-9586-ac1c37d66ed0": ">=2",
+            "271963d8-7658-4712-a055-52195159f881": "(209.92)+((childCountDeemedEligible-1)*199.75)",
+            "82b5adc3-473c-4da9-b18b-242932c60f18": "==1"
+          },
+          {
+            "_id": "90e350c3-a8e0-42f6-9993-597cd961aea8",
+            "0178c364-6128-4136-9586-ac1c37d66ed0": ">=1",
+            "271963d8-7658-4712-a055-52195159f881": "((childCountDeemedEligible)*199.75)",
+            "82b5adc3-473c-4da9-b18b-242932c60f18": ">=2"
+          },
+          {
+            "_id": "d810eeaa-18a7-4721-9070-218d4399db78",
+            "0178c364-6128-4136-9586-ac1c37d66ed0": "",
+            "271963d8-7658-4712-a055-52195159f881": "0",
+            "82b5adc3-473c-4da9-b18b-242932c60f18": ""
+          }
+        ],
+        "inputs": [
+          {
+            "id": "82b5adc3-473c-4da9-b18b-242932c60f18",
+            "name": "childCountCCBEligible",
+            "type": "expression",
+            "field": "childCountCCBEligible"
+          },
+          {
+            "id": "0178c364-6128-4136-9586-ac1c37d66ed0",
+            "name": "childCountDeemedEligible",
+            "type": "expression",
+            "field": "childCountDeemedEligible"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "271963d8-7658-4712-a055-52195159f881",
+            "name": "monthlyCCBTopupInLieuAmount",
+            "type": "expression",
+            "field": "monthlyCCBTopupInLieuAmount"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 360,
+        "y": 345
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "7dc52f80-828b-432a-a87a-57e14153a65b",
+      "type": "edge",
+      "sourceId": "4ac175b6-173f-4de6-b00c-42cf5dd9126d",
+      "targetId": "776bdc61-07d9-45a2-86aa-0f1d45e997b1"
+    },
+    {
+      "id": "db4cf975-b33d-4aa9-96d8-6981575bbef9",
+      "type": "edge",
+      "sourceId": "776bdc61-07d9-45a2-86aa-0f1d45e997b1",
+      "targetId": "9c789eca-6e1a-4cb7-ae50-83eb89ce0f49",
+      "sourceHandle": "d40bbe27-1b36-4643-9985-b449e9e41f2d"
+    },
+    {
+      "id": "c14b1c3c-ed73-4fe0-a61d-3463889bf4e1",
+      "type": "edge",
+      "sourceId": "9c789eca-6e1a-4cb7-ae50-83eb89ce0f49",
+      "targetId": "982aebae-fc23-40ca-ac93-a69764f09536"
+    },
+    {
+      "id": "a854ef7a-6733-4861-b638-2a5a19023790",
+      "type": "edge",
+      "sourceId": "776bdc61-07d9-45a2-86aa-0f1d45e997b1",
+      "targetId": "f91d6116-bc49-431e-8ca9-1a8d51f6f001",
+      "sourceHandle": "06fa3548-072c-4cd6-a21b-b64a6dcbeb80"
+    },
+    {
+      "id": "2287a86c-63fa-4115-9f4e-edbd0d739227",
+      "type": "edge",
+      "sourceId": "f91d6116-bc49-431e-8ca9-1a8d51f6f001",
+      "targetId": "982aebae-fc23-40ca-ac93-a69764f09536"
+    }
+  ]
+}

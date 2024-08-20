@@ -1,0 +1,239 @@
+{
+  "nodes": [
+    {
+      "id": "9412c2c5-1837-4377-8181-e4b95d95fb11",
+      "type": "inputNode",
+      "position": {
+        "x": -395,
+        "y": 245
+      },
+      "name": "request"
+    },
+    {
+      "id": "f6123455-b9a6-4ff1-bfd4-be1a33cfa07b",
+      "type": "outputNode",
+      "position": {
+        "x": 1035,
+        "y": 295
+      },
+      "name": "response"
+    },
+    {
+      "id": "937a5547-71cf-4f91-8020-55780b7c2a9c",
+      "type": "decisionNode",
+      "position": {
+        "x": 460,
+        "y": 345
+      },
+      "name": "Shelter Amount",
+      "content": {
+        "key": "support-shelter/shelter.json"
+      }
+    },
+    {
+      "id": "cb23d8ac-e1c5-4d27-8a15-e0603b2225ee",
+      "type": "decisionNode",
+      "position": {
+        "x": 460,
+        "y": 210
+      },
+      "name": "IA Support",
+      "content": {
+        "key": "support-shelter/IASupport.json"
+      }
+    },
+    {
+      "id": "332b0f26-7c14-4fd9-803a-9a001b25f28c",
+      "type": "decisionNode",
+      "position": {
+        "x": 460,
+        "y": 75
+      },
+      "name": "DA Support",
+      "content": {
+        "key": "support-shelter/da-support.json"
+      }
+    },
+    {
+      "id": "7148d6a5-d907-4dd1-af2c-58e1bc01e834",
+      "type": "decisionTableNode",
+      "position": {
+        "x": -100,
+        "y": 160
+      },
+      "name": "DA or IA",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "96f4f625-ebb4-43ca-a278-a2c5db137411",
+            "type": "expression",
+            "field": "person1HasPWDStatus",
+            "name": "Person 1 Has PWD Status?"
+          },
+          {
+            "id": "a4e3746e-70d7-4159-967f-840a8d4a2c93",
+            "name": "Person 2 Has PWD Status?",
+            "type": "expression",
+            "field": "person2HasPWDStatus"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "2dcb34dd-34ca-44d2-a942-d0d9c839f81f",
+            "field": "supportCategory",
+            "name": "Type of Support (IA or DA)",
+            "type": "expression"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "8381a934-3d2f-4370-9c41-9645e043be91",
+            "96f4f625-ebb4-43ca-a278-a2c5db137411": "true",
+            "a4e3746e-70d7-4159-967f-840a8d4a2c93": "",
+            "2dcb34dd-34ca-44d2-a942-d0d9c839f81f": "\"DA\""
+          },
+          {
+            "_id": "79cb6c5d-8255-4286-96f1-95c4ab89d8d3",
+            "96f4f625-ebb4-43ca-a278-a2c5db137411": "",
+            "a4e3746e-70d7-4159-967f-840a8d4a2c93": "true",
+            "2dcb34dd-34ca-44d2-a942-d0d9c839f81f": "\"DA\""
+          },
+          {
+            "_id": "22702b9b-9e39-4b55-a031-fc2b00341709",
+            "96f4f625-ebb4-43ca-a278-a2c5db137411": "",
+            "a4e3746e-70d7-4159-967f-840a8d4a2c93": "",
+            "2dcb34dd-34ca-44d2-a942-d0d9c839f81f": "\"IA\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "9e1a5c36-4e54-403e-b772-c34b5b215001",
+      "type": "switchNode",
+      "position": {
+        "x": 185,
+        "y": 110
+      },
+      "name": "Support Category",
+      "content": {
+        "statements": [
+          {
+            "id": "0675e93c-8307-4ee4-bc2b-e02b59564583",
+            "condition": "supportCategory == \"DA\""
+          },
+          {
+            "id": "30394c68-3c83-4051-9b89-10eb63466f06",
+            "condition": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "ab558fa1-90f8-4c45-a821-02fc4ab3c52e",
+      "type": "expressionNode",
+      "position": {
+        "x": 735,
+        "y": 75
+      },
+      "name": "DA Support Amount",
+      "content": {
+        "expressions": [
+          {
+            "id": "04e8d128-1247-4155-9650-46671358563b",
+            "key": "supportAmount",
+            "value": "maximumDASupportAmount"
+          }
+        ]
+      }
+    },
+    {
+      "id": "13d992f4-7d47-487d-b370-8a34421a2ba2",
+      "type": "expressionNode",
+      "position": {
+        "x": 735,
+        "y": 210
+      },
+      "name": "IA Support Amount",
+      "content": {
+        "expressions": [
+          {
+            "id": "ae3fcdb0-2827-4a03-8c43-5737955272b3",
+            "key": "supportAmount",
+            "value": "maximumSupportAmount"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "5709d94b-90ca-4feb-9c91-b99b04a435d0",
+      "sourceId": "9412c2c5-1837-4377-8181-e4b95d95fb11",
+      "type": "edge",
+      "targetId": "937a5547-71cf-4f91-8020-55780b7c2a9c"
+    },
+    {
+      "id": "b6b19595-bef9-4825-8771-ffabac40b831",
+      "sourceId": "7148d6a5-d907-4dd1-af2c-58e1bc01e834",
+      "type": "edge",
+      "targetId": "9e1a5c36-4e54-403e-b772-c34b5b215001"
+    },
+    {
+      "id": "db84d320-a7aa-480f-8480-51f901739253",
+      "sourceId": "9e1a5c36-4e54-403e-b772-c34b5b215001",
+      "type": "edge",
+      "targetId": "332b0f26-7c14-4fd9-803a-9a001b25f28c",
+      "sourceHandle": "0675e93c-8307-4ee4-bc2b-e02b59564583"
+    },
+    {
+      "id": "2e3ffb8c-cbe9-478c-bfa7-58d1be6ed791",
+      "sourceId": "9e1a5c36-4e54-403e-b772-c34b5b215001",
+      "type": "edge",
+      "targetId": "cb23d8ac-e1c5-4d27-8a15-e0603b2225ee",
+      "sourceHandle": "30394c68-3c83-4051-9b89-10eb63466f06"
+    },
+    {
+      "id": "31746358-1bff-4690-9120-b850fb79571f",
+      "sourceId": "937a5547-71cf-4f91-8020-55780b7c2a9c",
+      "type": "edge",
+      "targetId": "f6123455-b9a6-4ff1-bfd4-be1a33cfa07b"
+    },
+    {
+      "id": "cba9ae1e-119d-4447-9ffa-b79854a5b478",
+      "sourceId": "9412c2c5-1837-4377-8181-e4b95d95fb11",
+      "type": "edge",
+      "targetId": "7148d6a5-d907-4dd1-af2c-58e1bc01e834"
+    },
+    {
+      "id": "41b313e9-55df-4c76-a5a3-82170cfbce31",
+      "sourceId": "9412c2c5-1837-4377-8181-e4b95d95fb11",
+      "type": "edge",
+      "targetId": "9e1a5c36-4e54-403e-b772-c34b5b215001"
+    },
+    {
+      "id": "1ccc2cfd-2465-4979-bde5-d86326d9e120",
+      "sourceId": "ab558fa1-90f8-4c45-a821-02fc4ab3c52e",
+      "type": "edge",
+      "targetId": "f6123455-b9a6-4ff1-bfd4-be1a33cfa07b"
+    },
+    {
+      "id": "95d4d3c9-e180-43ac-b82b-85cf424457ee",
+      "sourceId": "13d992f4-7d47-487d-b370-8a34421a2ba2",
+      "type": "edge",
+      "targetId": "f6123455-b9a6-4ff1-bfd4-be1a33cfa07b"
+    },
+    {
+      "id": "4e6a21a7-ada8-42c7-a903-14f90d5071dd",
+      "sourceId": "cb23d8ac-e1c5-4d27-8a15-e0603b2225ee",
+      "type": "edge",
+      "targetId": "13d992f4-7d47-487d-b370-8a34421a2ba2"
+    },
+    {
+      "id": "88ca0a35-72db-4f49-9335-d2a76c460cac",
+      "sourceId": "332b0f26-7c14-4fd9-803a-9a001b25f28c",
+      "type": "edge",
+      "targetId": "ab558fa1-90f8-4c45-a821-02fc4ab3c52e"
+    }
+  ]
+}

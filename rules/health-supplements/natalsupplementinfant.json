@@ -24,55 +24,22 @@
       "name": "Eligibility and Calculation",
       "type": "decisionTableNode",
       "content": {
-        "rules": [
-          {
-            "_id": "be6af98e-75fd-4c1c-ba16-bd3972b084d3",
-            "3e4e3028-c7bb-41e6-a4ba-9864691e892c": "personID",
-            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": "",
-            "be656184-3f4e-4168-b3d5-c82424f79327": "date(benefitMonth) >= date(effectiveDOB) and date(benefitMonth) < date(effectiveDOB) + duration('13months')",
-            "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "80",
-            "e50f146d-8f28-4119-b9cc-b88821c80974": "true",
-            "f0ac2e4b-a477-4e36-abf4-d20c30f13867": "benefitMonth"
-          },
-          {
-            "_id": "3dadb145-7f50-42c4-a4f6-50ed54d6ab76",
-            "3e4e3028-c7bb-41e6-a4ba-9864691e892c": "personID",
-            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": "\"Person has passed the eligibility period (13 months)\"",
-            "be656184-3f4e-4168-b3d5-c82424f79327": "",
-            "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "",
-            "e50f146d-8f28-4119-b9cc-b88821c80974": "false",
-            "f0ac2e4b-a477-4e36-abf4-d20c30f13867": "benefitMonth"
-          },
-          {
-            "_id": "e0bb1564-6e76-4e8e-9895-7b863ad69b0e",
-            "3e4e3028-c7bb-41e6-a4ba-9864691e892c": "",
-            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": "",
-            "be656184-3f4e-4168-b3d5-c82424f79327": "",
-            "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "",
-            "e50f146d-8f28-4119-b9cc-b88821c80974": "",
-            "f0ac2e4b-a477-4e36-abf4-d20c30f13867": ""
-          }
-        ],
+        "hitPolicy": "first",
         "inputs": [
+          {
+            "id": "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807",
+            "type": "expression",
+            "field": "benefitMonth",
+            "name": "Assessing for which Benefit Month?"
+          },
           {
             "id": "be656184-3f4e-4168-b3d5-c82424f79327",
             "name": "Check whether individual is less than 13 months old",
-            "type": "expression"
+            "type": "expression",
+            "field": "dateOfBirth"
           }
         ],
         "outputs": [
-          {
-            "id": "f0ac2e4b-a477-4e36-abf4-d20c30f13867",
-            "name": "Benefit Month",
-            "type": "expression",
-            "field": "benefitMonth"
-          },
-          {
-            "id": "3e4e3028-c7bb-41e6-a4ba-9864691e892c",
-            "name": "Person ID in ICM",
-            "type": "expression",
-            "field": "personID"
-          },
           {
             "id": "e50f146d-8f28-4119-b9cc-b88821c80974",
             "name": "Is Eligible for Natal Supplement (Newborn)",
@@ -92,7 +59,32 @@
             "field": "reason"
           }
         ],
-        "hitPolicy": "first"
+        "rules": [
+          {
+            "_id": "be6af98e-75fd-4c1c-ba16-bd3972b084d3",
+            "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807": "dayOfWeek(date(benefitMonth)) > 0",
+            "be656184-3f4e-4168-b3d5-c82424f79327": "date(benefitMonth) >= date(effectiveDOB) and date(benefitMonth) < date(effectiveDOB) + duration('13months')",
+            "e50f146d-8f28-4119-b9cc-b88821c80974": "true",
+            "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "80",
+            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": ""
+          },
+          {
+            "_id": "3dadb145-7f50-42c4-a4f6-50ed54d6ab76",
+            "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807": "dayOfWeek(date(benefitMonth)) > 0",
+            "be656184-3f4e-4168-b3d5-c82424f79327": "",
+            "e50f146d-8f28-4119-b9cc-b88821c80974": "false",
+            "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "0",
+            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": "\"Person has passed the eligibility period (13 months)\""
+          },
+          {
+            "_id": "e0bb1564-6e76-4e8e-9895-7b863ad69b0e",
+            "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807": "",
+            "be656184-3f4e-4168-b3d5-c82424f79327": "",
+            "e50f146d-8f28-4119-b9cc-b88821c80974": "false",
+            "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "0",
+            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": ""
+          }
+        ]
       },
       "position": {
         "x": 690,

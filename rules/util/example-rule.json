@@ -1,0 +1,55 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "29d6d337-80b3-4f40-8611-d0192759eb10",
+      "type": "inputNode",
+      "position": {
+        "x": -50,
+        "y": 220
+      },
+      "name": "request"
+    },
+    {
+      "id": "0db3bbab-1592-45d5-a355-ace7aeeda114",
+      "type": "outputNode",
+      "position": {
+        "x": 545,
+        "y": 220
+      },
+      "name": "response"
+    },
+    {
+      "id": "814a686d-fd13-4036-9ce0-ff8a1b211942",
+      "type": "expressionNode",
+      "position": {
+        "x": 240,
+        "y": 220
+      },
+      "name": "expression1",
+      "content": {
+        "expressions": [
+          {
+            "id": "b38e09c0-d3be-4079-976f-57fa7e0fbe6c",
+            "key": "test",
+            "value": "true"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1c76dd8-3743-4ce1-93b9-510c3ec2438e",
+      "sourceId": "29d6d337-80b3-4f40-8611-d0192759eb10",
+      "type": "edge",
+      "targetId": "814a686d-fd13-4036-9ce0-ff8a1b211942"
+    },
+    {
+      "id": "db58c052-a112-43c3-bd22-28af3bca34c4",
+      "sourceId": "814a686d-fd13-4036-9ce0-ff8a1b211942",
+      "type": "edge",
+      "targetId": "0db3bbab-1592-45d5-a355-ace7aeeda114"
+    }
+  ]
+}

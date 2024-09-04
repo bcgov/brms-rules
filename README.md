@@ -33,7 +33,9 @@ Once approved, you will be able to submit edits.
 
 ## How to Add a New File
 
-New or changed rules are managed through the [SDPR Business Rules Management System (BRMS) Application](https://brms-simulator-dev.apps.silver.devops.gov.bc.ca/). The BRMS Rules repository is used to manage the rules that are used in the BRMS Simulator. These instructions are provided in the event that you would like to directly add a new rule to the BRMS Rules repository.
+New or changed rules are managed through the [SDPR Business Rules Management System (BRMS) Application](https://brms-simulator-dev.apps.silver.devops.gov.bc.ca/). Follow [the instructions on The Hive](https://thehive.apps.silver.devops.gov.bc.ca/business_rules_engine/front-end?s[]=github) to add and manage rules. The BRMS Rules repository is used to manage the rules that are used in the BRMS Simulator.
+
+The following instructions are provided in the event that you would like to directly add a new rule to the BRMS Rules repository outside of the BRMS Application.
 
 ### 1. Select the Dev Working Branch
 

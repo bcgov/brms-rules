@@ -50,8 +50,8 @@
           {
             "id": "e4f947f3-834a-4c40-823d-76280542e7fe",
             "type": "expression",
-            "field": "isDependent",
-            "name": "isDependent"
+            "field": "isDependentChild",
+            "name": "isDependentChild"
           },
           {
             "id": "0c2cf641-631d-479f-a256-42b396e1cc68",
@@ -80,8 +80,8 @@
             "2aea8e5d-791a-47fe-ab58-ea12171ef3d4": "false",
             "ec6dbe6a-a7d6-4439-bf52-624090a0f73d": "true",
             "a53d2377-896d-413f-834b-de04ec7a3cae": "false",
-            "e4f947f3-834a-4c40-823d-76280542e7fe": "isDependent == true or hasPWDDesignation == true",
-            "0c2cf641-631d-479f-a256-42b396e1cc68": "isDependent == true or hasPWDDesignation == true",
+            "e4f947f3-834a-4c40-823d-76280542e7fe": "isDependentChild == true or hasPWDDesignation == true",
+            "0c2cf641-631d-479f-a256-42b396e1cc68": "isDependentChild == true or hasPWDDesignation == true",
             "904453b6-91c0-441e-bafb-038843e87de8": "true",
             "d97e8152-3c69-4b90-9c77-1c355e6a0bbf": "true"
           },

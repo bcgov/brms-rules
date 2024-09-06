@@ -33,7 +33,7 @@
             "id": "2aea8e5d-791a-47fe-ab58-ea12171ef3d4",
             "type": "expression",
             "field": "hasSupplementBeenPaidThisFiscal",
-            "name": "hasSupplementBeenPaidThisFiscal"
+            "name": "Has supplement been paid this fiscal "
           },
           {
             "id": "ec6dbe6a-a7d6-4439-bf52-624090a0f73d",
@@ -45,7 +45,7 @@
             "id": "a53d2377-896d-413f-834b-de04ec7a3cae",
             "type": "expression",
             "field": "isFundingExhausted",
-            "name": "isFundingExhausted"
+            "name": "Fiscal Budget Exhausted for Camp Fees"
           },
           {
             "id": "e4f947f3-834a-4c40-823d-76280542e7fe",
@@ -175,7 +175,7 @@
             "_id": "d9055fa7-59c0-4af8-9ed1-84216721dd94",
             "fc46da0a-e54b-4f26-bb94-c06c4f56ef13": "",
             "ed90ad0b-8010-4491-a7ab-3e6ff24028c1": "true",
-            "ee2bbd45-b53d-47e3-8cf9-34046e44b908": "min([feeAmount,200])"
+            "ee2bbd45-b53d-47e3-8cf9-34046e44b908": "max(min([feeAmount,200]),0)"
           },
           {
             "_id": "cd21ed93-9eae-4e16-8e7d-28e434d3c40e",

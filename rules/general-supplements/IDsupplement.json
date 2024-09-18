@@ -119,7 +119,7 @@
           {
             "id": "db5beaf9-13ca-44c1-9ac6-0c82477b42ff",
             "key": "supplementAmount",
-            "value": "isEligible == true and idCost > 0 ? idCost : 0\n"
+            "value": "isEligible == true and idCost > 0 ? idCost : 0"
           }
         ]
       },

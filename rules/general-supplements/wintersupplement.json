@@ -1,5 +1,6 @@
 {
-    "tests": [{
+  "tests": [
+    {
       "name": "Default test",
       "input": {
         "numberOfChildren": 2,
@@ -12,252 +13,286 @@
         "isEligible": true,
         "supplementAmount": 100
       }
-    }],
-    "contentType": "application/vnd.gorules.decision",
-    "nodes": [
-      {
-        "id": "8ac97728-c53d-441b-8c4f-cbce96bbbfb1",
-        "name": "Winter Supplement Request",
-        "type": "inputNode",
-        "position": {
-          "x": -900,
-          "y": 30
-        }
+    }
+  ],
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "86049028-7a4f-4b79-a1b1-025b98061ee0",
+      "name": "Winter Supplement Response",
+      "type": "outputNode",
+      "position": {
+        "x": 890,
+        "y": 180
       },
-      {
-        "id": "86049028-7a4f-4b79-a1b1-025b98061ee0",
-        "name": "Winter Supplement Response",
-        "type": "outputNode",
-        "position": {
-          "x": 890,
-          "y": 150
-        }
-      },
-      {
-        "id": "d5e41add-1cb0-4e32-8667-ffd548e523bf",
-        "name": "Child Calculation",
-        "type": "decisionTableNode",
-        "content": {
-          "rules": [
-            {
-              "_id": "722b3945-02f5-4210-a9e4-b496d7d9438b",
-              "399837f9-5fd5-4936-8262-a47c36287cf7": "numberOfChildren*20",
-              "4513898e-c063-4670-a99a-804148934985": ""
-            }
-          ],
-          "inputs": [
-            {
-              "id": "4513898e-c063-4670-a99a-804148934985",
-              "name": "Number of Children",
-              "type": "expression",
-              "field": "numberOfChildren"
-            }
-          ],
-          "outputs": [
-            {
-              "id": "399837f9-5fd5-4936-8262-a47c36287cf7",
-              "name": "Children Amount",
-              "type": "expression",
-              "field": "childrenAmount",
-              "defaultValue": "0"
-            }
-          ],
-          "hitPolicy": "first"
-        },
-        "position": {
-          "x": 120,
-          "y": 30
-        }
-      },
-      {
-        "id": "c3ab217c-22fa-4896-8f29-4a359e12f483",
-        "name": "Spouse Calculation",
-        "type": "decisionTableNode",
-        "content": {
-          "rules": [
-            {
-              "_id": "f3164738-59c2-4e3b-84d5-ceaf3e04aff2",
-              "3991b5b8-b68c-493d-a31b-226a0756ff28": "\"single\"",
-              "c526b490-0906-4505-aff8-d161e8feed4b": "60"
-            },
-            {
-              "_id": "1a7b357d-bbd8-481b-9c24-d91686c83e67",
-              "3991b5b8-b68c-493d-a31b-226a0756ff28": "\"couple\"",
-              "c526b490-0906-4505-aff8-d161e8feed4b": "120"
-            }
-          ],
-          "inputs": [
-            {
-              "id": "3991b5b8-b68c-493d-a31b-226a0756ff28",
-              "name": "Family Composition",
-              "type": "expression",
-              "field": "familyComposition",
-              "defaultValue": "single"
-            }
-          ],
-          "outputs": [
-            {
-              "id": "c526b490-0906-4505-aff8-d161e8feed4b",
-              "name": "Base Amount",
-              "type": "expression",
-              "field": "baseAmount"
-            }
-          ],
-          "hitPolicy": "first"
-        },
-        "position": {
-          "x": 120,
-          "y": -80
-        }
-      },
-      {
-        "id": "84cf05d5-9ef3-4e83-bb7c-2b686e6b7815",
-        "name": "Total Supplement",
-        "type": "decisionTableNode",
-        "content": {
-          "rules": [
-            {
-              "_id": "aa135592-8426-42ae-8d23-4512caeea78e",
-              "16683437-061d-4caf-804f-aefeeddc9b32": "baseAmount+childrenAmount",
-              "6abe1cb3-a3da-4770-abdc-25de26f96a88": "",
-              "dc3e0c07-45e0-4220-ba8e-f3d654be8f0a": ""
-            }
-          ],
-          "inputs": [
-            {
-              "id": "6abe1cb3-a3da-4770-abdc-25de26f96a88",
-              "name": "Base Amount",
-              "type": "expression",
-              "field": "baseAmount",
-              "defaultValue": "0"
-            },
-            {
-              "id": "dc3e0c07-45e0-4220-ba8e-f3d654be8f0a",
-              "name": "Children Amount",
-              "type": "expression",
-              "field": "childrenAmount",
-              "defaultValue": "0"
-            }
-          ],
-          "outputs": [
-            {
-              "id": "16683437-061d-4caf-804f-aefeeddc9b32",
-              "name": "Supplement Amount",
-              "type": "expression",
-              "field": "supplementAmount"
-            }
-          ],
-          "hitPolicy": "first"
-        },
-        "position": {
-          "x": 480,
-          "y": -20
-        }
-      },
-      {
-        "id": "bd7103da-9a6e-4fbd-ba14-12008e3cd61c",
-        "name": "Should Calculate Supplement",
-        "type": "switchNode",
-        "content": {
-          "statements": [
-            {
-              "id": "38203cc4-5089-4ed7-b19c-58a99b65e545",
-              "condition": "isEligible"
-            }
-          ]
-        },
-        "position": {
-          "x": -225,
-          "y": -80
-        }
-      },
-      {
-        "id": "7b088ca1-2314-45ec-835c-c38e66f7cb5c",
-        "name": "IsEligible",
-        "type": "expressionNode",
-        "content": {
-          "expressions": [
-            {
-              "id": "3c63ac7c-49a8-4e3f-b23c-53e78666b29a",
-              "key": "isEligible",
-              "value": "familyUnitInPayForDecember"
-            }
-          ]
-        },
-        "position": {
-          "x": -555,
-          "y": 150
-        }
+      "content": {
+        "fields": [
+          {
+            "id": "2b551fda-efea-41c5-ba1a-6eb4f6230049",
+            "field": "baseAmount",
+            "label": "Base Amount: The base amount for this supplement before we add additional factors"
+          },
+          {
+            "id": "466a9f1d-b7c7-4218-8781-b4abf0979292",
+            "field": "benefitMonth",
+            "label": "Benefit Month"
+          },
+          {
+            "id": "94073a2d-6bde-422b-b9b5-d8c318f83419",
+            "field": "eligibleForBlenderSupplement",
+            "label": "Eligible for Blender Supplement"
+          }
+        ]
       }
-    ],
-    "edges": [
-      {
-        "id": "39711638-645a-4f35-b85d-3b619f47cc8e",
-        "type": "edge",
-        "sourceId": "bd7103da-9a6e-4fbd-ba14-12008e3cd61c",
-        "targetId": "d5e41add-1cb0-4e32-8667-ffd548e523bf",
-        "sourceHandle": "38203cc4-5089-4ed7-b19c-58a99b65e545"
+    },
+    {
+      "id": "d5e41add-1cb0-4e32-8667-ffd548e523bf",
+      "name": "Child Calculation",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "722b3945-02f5-4210-a9e4-b496d7d9438b",
+            "399837f9-5fd5-4936-8262-a47c36287cf7": "numberOfChildren*20",
+            "4513898e-c063-4670-a99a-804148934985": ""
+          }
+        ],
+        "inputs": [
+          {
+            "id": "4513898e-c063-4670-a99a-804148934985",
+            "name": "Number of Children",
+            "type": "expression",
+            "field": "numberOfChildren"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "399837f9-5fd5-4936-8262-a47c36287cf7",
+            "name": "Children Amount",
+            "type": "expression",
+            "field": "childrenAmount",
+            "defaultValue": "0"
+          }
+        ],
+        "hitPolicy": "first"
       },
-      {
-        "id": "363f09ea-7a0f-4b9c-bf2c-aa00ef6925e0",
-        "type": "edge",
-        "sourceId": "bd7103da-9a6e-4fbd-ba14-12008e3cd61c",
-        "targetId": "c3ab217c-22fa-4896-8f29-4a359e12f483",
-        "sourceHandle": "38203cc4-5089-4ed7-b19c-58a99b65e545"
-      },
-      {
-        "id": "d5c6c7df-dc16-47d4-b84d-e005893ee2d1",
-        "type": "edge",
-        "sourceId": "8ac97728-c53d-441b-8c4f-cbce96bbbfb1",
-        "targetId": "7b088ca1-2314-45ec-835c-c38e66f7cb5c"
-      },
-      {
-        "id": "19ebf821-284b-4b01-99cc-5e51837d2408",
-        "type": "edge",
-        "sourceId": "7b088ca1-2314-45ec-835c-c38e66f7cb5c",
-        "targetId": "bd7103da-9a6e-4fbd-ba14-12008e3cd61c"
-      },
-      {
-        "id": "aed0501a-8138-4cfa-b7f3-7b8eee7807c9",
-        "type": "edge",
-        "sourceId": "7b088ca1-2314-45ec-835c-c38e66f7cb5c",
-        "targetId": "86049028-7a4f-4b79-a1b1-025b98061ee0"
-      },
-      {
-        "id": "533fcf7b-c45d-45fd-b1e9-3099217d9ded",
-        "type": "edge",
-        "sourceId": "8ac97728-c53d-441b-8c4f-cbce96bbbfb1",
-        "targetId": "bd7103da-9a6e-4fbd-ba14-12008e3cd61c"
-      },
-      {
-        "id": "6fa54de0-abe4-4581-9ffb-54bbc1faa0f9",
-        "type": "edge",
-        "sourceId": "c3ab217c-22fa-4896-8f29-4a359e12f483",
-        "targetId": "86049028-7a4f-4b79-a1b1-025b98061ee0"
-      },
-      {
-        "id": "4969d7e2-7417-4185-922a-a128ab998f20",
-        "type": "edge",
-        "sourceId": "d5e41add-1cb0-4e32-8667-ffd548e523bf",
-        "targetId": "86049028-7a4f-4b79-a1b1-025b98061ee0"
-      },
-      {
-        "id": "7e990235-16d1-4220-9621-baf08c49e3b2",
-        "type": "edge",
-        "sourceId": "c3ab217c-22fa-4896-8f29-4a359e12f483",
-        "targetId": "84cf05d5-9ef3-4e83-bb7c-2b686e6b7815"
-      },
-      {
-        "id": "793c31a0-6a07-4d94-b79b-bad5fd4e6a1c",
-        "type": "edge",
-        "sourceId": "d5e41add-1cb0-4e32-8667-ffd548e523bf",
-        "targetId": "84cf05d5-9ef3-4e83-bb7c-2b686e6b7815"
-      },
-      {
-        "id": "8b1fc9c9-65ab-4024-8994-832f0bb32201",
-        "type": "edge",
-        "sourceId": "84cf05d5-9ef3-4e83-bb7c-2b686e6b7815",
-        "targetId": "86049028-7a4f-4b79-a1b1-025b98061ee0"
+      "position": {
+        "x": 120,
+        "y": 30
       }
-    ]
-  }
+    },
+    {
+      "id": "c3ab217c-22fa-4896-8f29-4a359e12f483",
+      "name": "Spouse Calculation",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "f3164738-59c2-4e3b-84d5-ceaf3e04aff2",
+            "3991b5b8-b68c-493d-a31b-226a0756ff28": "\"single\"",
+            "c526b490-0906-4505-aff8-d161e8feed4b": "60"
+          },
+          {
+            "_id": "1a7b357d-bbd8-481b-9c24-d91686c83e67",
+            "3991b5b8-b68c-493d-a31b-226a0756ff28": "\"couple\"",
+            "c526b490-0906-4505-aff8-d161e8feed4b": "120"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "3991b5b8-b68c-493d-a31b-226a0756ff28",
+            "name": "Family Composition",
+            "type": "expression",
+            "field": "familyComposition",
+            "defaultValue": "single"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "c526b490-0906-4505-aff8-d161e8feed4b",
+            "name": "Base Amount",
+            "type": "expression",
+            "field": "baseAmount"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 120,
+        "y": -80
+      }
+    },
+    {
+      "id": "84cf05d5-9ef3-4e83-bb7c-2b686e6b7815",
+      "name": "Total Supplement",
+      "type": "decisionTableNode",
+      "content": {
+        "rules": [
+          {
+            "_id": "aa135592-8426-42ae-8d23-4512caeea78e",
+            "16683437-061d-4caf-804f-aefeeddc9b32": "baseAmount+childrenAmount",
+            "6abe1cb3-a3da-4770-abdc-25de26f96a88": "",
+            "dc3e0c07-45e0-4220-ba8e-f3d654be8f0a": ""
+          }
+        ],
+        "inputs": [
+          {
+            "id": "6abe1cb3-a3da-4770-abdc-25de26f96a88",
+            "name": "Base Amount",
+            "type": "expression",
+            "field": "baseAmount",
+            "defaultValue": "0"
+          },
+          {
+            "id": "dc3e0c07-45e0-4220-ba8e-f3d654be8f0a",
+            "name": "Children Amount",
+            "type": "expression",
+            "field": "childrenAmount",
+            "defaultValue": "0"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "16683437-061d-4caf-804f-aefeeddc9b32",
+            "name": "Supplement Amount",
+            "type": "expression",
+            "field": "supplementAmount"
+          }
+        ],
+        "hitPolicy": "first"
+      },
+      "position": {
+        "x": 480,
+        "y": -20
+      }
+    },
+    {
+      "id": "bd7103da-9a6e-4fbd-ba14-12008e3cd61c",
+      "name": "Should Calculate Supplement",
+      "type": "switchNode",
+      "content": {
+        "statements": [
+          {
+            "id": "38203cc4-5089-4ed7-b19c-58a99b65e545",
+            "condition": "isEligible"
+          }
+        ]
+      },
+      "position": {
+        "x": -225,
+        "y": -80
+      }
+    },
+    {
+      "id": "7b088ca1-2314-45ec-835c-c38e66f7cb5c",
+      "name": "IsEligible",
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "3c63ac7c-49a8-4e3f-b23c-53e78666b29a",
+            "key": "isEligible",
+            "value": "familyUnitInPayForDecember"
+          }
+        ]
+      },
+      "position": {
+        "x": -570,
+        "y": 150
+      }
+    },
+    {
+      "type": "inputNode",
+      "id": "19ad63b2-551b-4302-a12b-5d7d78b78196",
+      "name": "Winter Supplement",
+      "position": {
+        "x": -1200,
+        "y": -90
+      },
+      "content": {
+        "fields": [
+          {
+            "id": "0529a9c1-e80b-42bb-85d2-ce58a27ede1d",
+            "field": "baseAmount",
+            "label": "Base Amount: The base amount for this supplement before we add additional factors"
+          },
+          {
+            "id": "76cebf3e-2e20-42ab-9596-f60237f146ae",
+            "field": "benefitMonth",
+            "label": "Benefit Month"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "39711638-645a-4f35-b85d-3b619f47cc8e",
+      "type": "edge",
+      "sourceId": "bd7103da-9a6e-4fbd-ba14-12008e3cd61c",
+      "targetId": "d5e41add-1cb0-4e32-8667-ffd548e523bf",
+      "sourceHandle": "38203cc4-5089-4ed7-b19c-58a99b65e545"
+    },
+    {
+      "id": "363f09ea-7a0f-4b9c-bf2c-aa00ef6925e0",
+      "type": "edge",
+      "sourceId": "bd7103da-9a6e-4fbd-ba14-12008e3cd61c",
+      "targetId": "c3ab217c-22fa-4896-8f29-4a359e12f483",
+      "sourceHandle": "38203cc4-5089-4ed7-b19c-58a99b65e545"
+    },
+    {
+      "id": "19ebf821-284b-4b01-99cc-5e51837d2408",
+      "type": "edge",
+      "sourceId": "7b088ca1-2314-45ec-835c-c38e66f7cb5c",
+      "targetId": "bd7103da-9a6e-4fbd-ba14-12008e3cd61c"
+    },
+    {
+      "id": "aed0501a-8138-4cfa-b7f3-7b8eee7807c9",
+      "type": "edge",
+      "sourceId": "7b088ca1-2314-45ec-835c-c38e66f7cb5c",
+      "targetId": "86049028-7a4f-4b79-a1b1-025b98061ee0"
+    },
+    {
+      "id": "6fa54de0-abe4-4581-9ffb-54bbc1faa0f9",
+      "type": "edge",
+      "sourceId": "c3ab217c-22fa-4896-8f29-4a359e12f483",
+      "targetId": "86049028-7a4f-4b79-a1b1-025b98061ee0"
+    },
+    {
+      "id": "4969d7e2-7417-4185-922a-a128ab998f20",
+      "type": "edge",
+      "sourceId": "d5e41add-1cb0-4e32-8667-ffd548e523bf",
+      "targetId": "86049028-7a4f-4b79-a1b1-025b98061ee0"
+    },
+    {
+      "id": "7e990235-16d1-4220-9621-baf08c49e3b2",
+      "type": "edge",
+      "sourceId": "c3ab217c-22fa-4896-8f29-4a359e12f483",
+      "targetId": "84cf05d5-9ef3-4e83-bb7c-2b686e6b7815"
+    },
+    {
+      "id": "793c31a0-6a07-4d94-b79b-bad5fd4e6a1c",
+      "type": "edge",
+      "sourceId": "d5e41add-1cb0-4e32-8667-ffd548e523bf",
+      "targetId": "84cf05d5-9ef3-4e83-bb7c-2b686e6b7815"
+    },
+    {
+      "id": "8b1fc9c9-65ab-4024-8994-832f0bb32201",
+      "type": "edge",
+      "sourceId": "84cf05d5-9ef3-4e83-bb7c-2b686e6b7815",
+      "targetId": "86049028-7a4f-4b79-a1b1-025b98061ee0"
+    },
+    {
+      "id": "3562b969-7af3-41d2-b1a4-e1f69cc3440c",
+      "sourceId": "19ad63b2-551b-4302-a12b-5d7d78b78196",
+      "type": "edge",
+      "targetId": "7b088ca1-2314-45ec-835c-c38e66f7cb5c"
+    },
+    {
+      "id": "f768466b-6978-4dd5-bc2f-dbaf20af6988",
+      "sourceId": "19ad63b2-551b-4302-a12b-5d7d78b78196",
+      "type": "edge",
+      "targetId": "bd7103da-9a6e-4fbd-ba14-12008e3cd61c"
+    }
+  ]
+}

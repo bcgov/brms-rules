@@ -7,7 +7,14 @@
         "x": 50,
         "y": 125
       },
-      "name": "request"
+      "name": "request",
+      "content": {
+        "fields": [
+          {
+            "name": ""
+          }
+        ]
+      }
     },
     {
       "id": "15d12193-caa2-4e20-b41c-554544e9211c",
@@ -16,7 +23,14 @@
         "x": 740,
         "y": 105
       },
-      "name": "response"
+      "name": "response",
+      "content": {
+        "fields": [
+          {
+            "name": ""
+          }
+        ]
+      }
     },
     {
       "id": "da964da7-1557-4bb8-b64d-2923d6545b61",
@@ -44,8 +58,8 @@
           {
             "id": "a53d2377-896d-413f-834b-de04ec7a3cae",
             "type": "expression",
-            "field": "isFundingExhausted",
-            "name": "isFundingExhausted"
+            "field": "isBudgetExhausted",
+            "name": "Is Supplement Budget Exhausted"
           },
           {
             "id": "e4f947f3-834a-4c40-823d-76280542e7fe",

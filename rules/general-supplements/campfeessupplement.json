@@ -62,16 +62,16 @@
             "name": "Is Supplement Budget Exhausted"
           },
           {
-            "id": "e4f947f3-834a-4c40-823d-76280542e7fe",
-            "type": "expression",
-            "field": "isDependentChild",
-            "name": "isDependentChild"
-          },
-          {
             "id": "0c2cf641-631d-479f-a256-42b396e1cc68",
             "type": "expression",
             "field": "hasPWDDesignation",
             "name": "hasPWDDesignation"
+          },
+          {
+            "id": "e4f947f3-834a-4c40-823d-76280542e7fe",
+            "type": "expression",
+            "field": "isDependentChild",
+            "name": "isDependentChild"
           },
           {
             "id": "088b5840-d46f-48ef-8f74-b703a8122db6",
@@ -101,8 +101,8 @@
             "2aea8e5d-791a-47fe-ab58-ea12171ef3d4": "false",
             "ec6dbe6a-a7d6-4439-bf52-624090a0f73d": "true",
             "a53d2377-896d-413f-834b-de04ec7a3cae": "false",
-            "e4f947f3-834a-4c40-823d-76280542e7fe": "isDependentChild == true or hasPWDDesignation == true",
             "0c2cf641-631d-479f-a256-42b396e1cc68": "isDependentChild == true or hasPWDDesignation == true",
+            "e4f947f3-834a-4c40-823d-76280542e7fe": "isDependentChild == true or hasPWDDesignation == true",
             "088b5840-d46f-48ef-8f74-b703a8122db6": "true",
             "18f63360-c02c-447a-85ab-08391baf44dd": "",
             "d97e8152-3c69-4b90-9c77-1c355e6a0bbf": "true"
@@ -112,8 +112,8 @@
             "2aea8e5d-791a-47fe-ab58-ea12171ef3d4": "true",
             "ec6dbe6a-a7d6-4439-bf52-624090a0f73d": "",
             "a53d2377-896d-413f-834b-de04ec7a3cae": "",
-            "e4f947f3-834a-4c40-823d-76280542e7fe": "",
             "0c2cf641-631d-479f-a256-42b396e1cc68": "",
+            "e4f947f3-834a-4c40-823d-76280542e7fe": "",
             "088b5840-d46f-48ef-8f74-b703a8122db6": "",
             "18f63360-c02c-447a-85ab-08391baf44dd": "",
             "d97e8152-3c69-4b90-9c77-1c355e6a0bbf": "false"
@@ -123,8 +123,8 @@
             "2aea8e5d-791a-47fe-ab58-ea12171ef3d4": "",
             "ec6dbe6a-a7d6-4439-bf52-624090a0f73d": "false",
             "a53d2377-896d-413f-834b-de04ec7a3cae": "",
-            "e4f947f3-834a-4c40-823d-76280542e7fe": "",
             "0c2cf641-631d-479f-a256-42b396e1cc68": "",
+            "e4f947f3-834a-4c40-823d-76280542e7fe": "",
             "088b5840-d46f-48ef-8f74-b703a8122db6": "",
             "18f63360-c02c-447a-85ab-08391baf44dd": "",
             "d97e8152-3c69-4b90-9c77-1c355e6a0bbf": "false"
@@ -134,8 +134,8 @@
             "2aea8e5d-791a-47fe-ab58-ea12171ef3d4": "",
             "ec6dbe6a-a7d6-4439-bf52-624090a0f73d": "",
             "a53d2377-896d-413f-834b-de04ec7a3cae": "true",
-            "e4f947f3-834a-4c40-823d-76280542e7fe": "",
             "0c2cf641-631d-479f-a256-42b396e1cc68": "",
+            "e4f947f3-834a-4c40-823d-76280542e7fe": "",
             "088b5840-d46f-48ef-8f74-b703a8122db6": "",
             "18f63360-c02c-447a-85ab-08391baf44dd": "",
             "d97e8152-3c69-4b90-9c77-1c355e6a0bbf": "false"
@@ -145,8 +145,8 @@
             "2aea8e5d-791a-47fe-ab58-ea12171ef3d4": "",
             "ec6dbe6a-a7d6-4439-bf52-624090a0f73d": "",
             "a53d2377-896d-413f-834b-de04ec7a3cae": "",
-            "e4f947f3-834a-4c40-823d-76280542e7fe": "false",
             "0c2cf641-631d-479f-a256-42b396e1cc68": "false",
+            "e4f947f3-834a-4c40-823d-76280542e7fe": "false",
             "088b5840-d46f-48ef-8f74-b703a8122db6": "",
             "18f63360-c02c-447a-85ab-08391baf44dd": "",
             "d97e8152-3c69-4b90-9c77-1c355e6a0bbf": "false"
@@ -156,8 +156,8 @@
             "2aea8e5d-791a-47fe-ab58-ea12171ef3d4": "",
             "ec6dbe6a-a7d6-4439-bf52-624090a0f73d": "",
             "a53d2377-896d-413f-834b-de04ec7a3cae": "",
-            "e4f947f3-834a-4c40-823d-76280542e7fe": "",
             "0c2cf641-631d-479f-a256-42b396e1cc68": "",
+            "e4f947f3-834a-4c40-823d-76280542e7fe": "",
             "088b5840-d46f-48ef-8f74-b703a8122db6": "false",
             "18f63360-c02c-447a-85ab-08391baf44dd": "",
             "d97e8152-3c69-4b90-9c77-1c355e6a0bbf": "false"

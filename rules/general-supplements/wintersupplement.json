@@ -18,31 +18,21 @@
   "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
+      "id": "8ac97728-c53d-441b-8c4f-cbce96bbbfb1",
+      "name": "Winter Supplement Request",
+      "type": "inputNode",
+      "position": {
+        "x": -900,
+        "y": 30
+      }
+    },
+    {
       "id": "86049028-7a4f-4b79-a1b1-025b98061ee0",
       "name": "Winter Supplement Response",
       "type": "outputNode",
       "position": {
         "x": 890,
-        "y": 180
-      },
-      "content": {
-        "fields": [
-          {
-            "id": "2b551fda-efea-41c5-ba1a-6eb4f6230049",
-            "field": "baseAmount",
-            "label": "Base Amount: The base amount for this supplement before we add additional factors"
-          },
-          {
-            "id": "466a9f1d-b7c7-4218-8781-b4abf0979292",
-            "field": "benefitMonth",
-            "label": "Benefit Month"
-          },
-          {
-            "id": "94073a2d-6bde-422b-b9b5-d8c318f83419",
-            "field": "eligibleForBlenderSupplement",
-            "label": "Eligible for Blender Supplement"
-          }
-        ]
+        "y": 150
       }
     },
     {
@@ -162,8 +152,8 @@
         "hitPolicy": "first"
       },
       "position": {
-        "x": 480,
-        "y": -20
+        "x": 490,
+        "y": -30
       }
     },
     {
@@ -197,31 +187,8 @@
         ]
       },
       "position": {
-        "x": -570,
+        "x": -555,
         "y": 150
-      }
-    },
-    {
-      "type": "inputNode",
-      "id": "19ad63b2-551b-4302-a12b-5d7d78b78196",
-      "name": "Winter Supplement",
-      "position": {
-        "x": -1200,
-        "y": -90
-      },
-      "content": {
-        "fields": [
-          {
-            "id": "0529a9c1-e80b-42bb-85d2-ce58a27ede1d",
-            "field": "baseAmount",
-            "label": "Base Amount: The base amount for this supplement before we add additional factors"
-          },
-          {
-            "id": "76cebf3e-2e20-42ab-9596-f60237f146ae",
-            "field": "benefitMonth",
-            "label": "Benefit Month"
-          }
-        ]
       }
     }
   ],
@@ -241,6 +208,12 @@
       "sourceHandle": "38203cc4-5089-4ed7-b19c-58a99b65e545"
     },
     {
+      "id": "d5c6c7df-dc16-47d4-b84d-e005893ee2d1",
+      "type": "edge",
+      "sourceId": "8ac97728-c53d-441b-8c4f-cbce96bbbfb1",
+      "targetId": "7b088ca1-2314-45ec-835c-c38e66f7cb5c"
+    },
+    {
       "id": "19ebf821-284b-4b01-99cc-5e51837d2408",
       "type": "edge",
       "sourceId": "7b088ca1-2314-45ec-835c-c38e66f7cb5c",
@@ -251,6 +224,12 @@
       "type": "edge",
       "sourceId": "7b088ca1-2314-45ec-835c-c38e66f7cb5c",
       "targetId": "86049028-7a4f-4b79-a1b1-025b98061ee0"
+    },
+    {
+      "id": "533fcf7b-c45d-45fd-b1e9-3099217d9ded",
+      "type": "edge",
+      "sourceId": "8ac97728-c53d-441b-8c4f-cbce96bbbfb1",
+      "targetId": "bd7103da-9a6e-4fbd-ba14-12008e3cd61c"
     },
     {
       "id": "6fa54de0-abe4-4581-9ffb-54bbc1faa0f9",
@@ -281,18 +260,6 @@
       "type": "edge",
       "sourceId": "84cf05d5-9ef3-4e83-bb7c-2b686e6b7815",
       "targetId": "86049028-7a4f-4b79-a1b1-025b98061ee0"
-    },
-    {
-      "id": "3562b969-7af3-41d2-b1a4-e1f69cc3440c",
-      "sourceId": "19ad63b2-551b-4302-a12b-5d7d78b78196",
-      "type": "edge",
-      "targetId": "7b088ca1-2314-45ec-835c-c38e66f7cb5c"
-    },
-    {
-      "id": "f768466b-6978-4dd5-bc2f-dbaf20af6988",
-      "sourceId": "19ad63b2-551b-4302-a12b-5d7d78b78196",
-      "type": "edge",
-      "targetId": "bd7103da-9a6e-4fbd-ba14-12008e3cd61c"
     }
   ]
 }

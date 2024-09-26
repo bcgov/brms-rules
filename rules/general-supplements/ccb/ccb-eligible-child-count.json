@@ -1,13 +1,41 @@
 {
-  "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
       "id": "17119358-634b-4f74-b48b-d49d5163a0fc",
       "name": "request",
       "type": "inputNode",
       "position": {
-        "x": -875,
-        "y": 445
+        "x": -1060,
+        "y": 425
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "dependentsList",
+            "name": "Dependents List",
+            "id": 8,
+            "description": "A list of dependent active on a case with their relevant properties.",
+            "dataType": "object-array",
+            "childFields": [
+              {
+                "id": 64,
+                "name": "dateOfBirth",
+                "field": "Date of Birth",
+                "description": "The specific date of birth for an individual.",
+                "dataType": "date",
+                "validationCriteria": "1910-01-01",
+                "validationType": ">="
+              },
+              {
+                "id": 69,
+                "name": "inSchool",
+                "field": "In School",
+                "description": "Individual is currently in school.",
+                "dataType": "true-false"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -15,33 +43,157 @@
       "name": "response",
       "type": "outputNode",
       "position": {
-        "x": 110,
-        "y": 445
+        "x": -210,
+        "y": 450
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "childCountCCBEligible",
+            "name": "Count of children eligible for CCB",
+            "id": 70,
+            "description": "A count of the children in a family unit that would be eligible for CCB based on their age.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "childCountDeemedEligible",
+            "name": "Children Deemed Eligible for Support In Lieu",
+            "id": 71,
+            "description": "A count of the children that would be 'deemed' eligible for support in lieu, as they are not eligible for CCB due to their age.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
       }
     },
     {
-      "id": "d268153e-1aae-4829-be27-f0871ca4ec11",
-      "name": "calculateEligibleYouth",
       "type": "functionNode",
-      "content": "/**\n * @param dependents[{birthDate:String, inSchool:Boolean}]\n * @returns childCountCCBEligible\n * @returns childCountDeemedEligible\n */\nconst handler = ({ dependents } = input) => {\n\n  const twoMonthsOld = new Date();\n  twoMonthsOld.setMonth(twoMonthsOld.getMonth() - 2);\n\n  const eighteenYearsOld = new Date();\n  eighteenYearsOld.setFullYear(eighteenYearsOld.getFullYear() - 18);\n\n  const nineteenYearsOld = new Date();\n  nineteenYearsOld.setFullYear(nineteenYearsOld.getFullYear() - 19);\n\n  // Count children older than or equal to 2 months of age, and less than or equal to 18 years of age\n  const childCountCCBEligible = dependents.filter(dependent => {\n    const birthDate = new Date(dependent.birthDate);\n    return birthDate <= twoMonthsOld && birthDate >= eighteenYearsOld;\n  }).length;\n\n  // Count children less than 2 months of age, older than 18 but less than 19, or 19+ but in school\n  const childCountDeemedEligible = dependents.filter(dependent => {\n    const birthDate = new Date(dependent.birthDate);\n    const isLessThanTwoMonthsOld = birthDate > twoMonthsOld;\n    const isBetweenEighteenAndNineteenYearsOld = birthDate <= eighteenYearsOld && birthDate > nineteenYearsOld;\n    const isNineteenOrOlderAndInSchool = birthDate <= nineteenYearsOld && dependent.inSchool === true;\n\n    return isLessThanTwoMonthsOld || isBetweenEighteenAndNineteenYearsOld || isNineteenOrOlderAndInSchool;\n  }).length;\n  return {\n    childCountCCBEligible,\n    childCountDeemedEligible,\n  }\n};",
+      "content": {
+        "source": "export const handler = async (input) => {\n  const dependents = input.dependentsList;\n  const twoMonthsOld = new Date();\n  twoMonthsOld.setMonth(twoMonthsOld.getMonth() - 2);\n\n  const eighteenYearsOld = new Date();\n  eighteenYearsOld.setFullYear(eighteenYearsOld.getFullYear() - 18);\n\n  const nineteenYearsOld = new Date();\n  nineteenYearsOld.setFullYear(nineteenYearsOld.getFullYear() - 19);\n\n  // Count children older than or equal to 2 months of age, and less than or equal to 18 years of age\n  const childCountCCBEligible = dependents.filter(dependent => {\n    const dateOfBirth = new Date(dependent.dateOfBirth);\n    return dateOfBirth <= twoMonthsOld && dateOfBirth >= eighteenYearsOld;\n  }).length;\n\n  // Count children less than 2 months of age, older than 18 but less than 19, or 19+ but in school\n  const childCountDeemedEligible = dependents.filter(dependent => {\n    const dateOfBirth = new Date(dependent.dateOfBirth);\n    const isLessThanTwoMonthsOld = dateOfBirth > twoMonthsOld;\n    const isBetweenEighteenAndNineteenYearsOld = dateOfBirth <= eighteenYearsOld && dateOfBirth > nineteenYearsOld;\n    const isNineteenOrOlderAndInSchool = dateOfBirth <= nineteenYearsOld && dependent.inSchool === true;\n\n    return isLessThanTwoMonthsOld || isBetweenEighteenAndNineteenYearsOld || isNineteenOrOlderAndInSchool;\n  }).length;\n  return {\n    childCountCCBEligible,\n    childCountDeemedEligible,\n  }\n};\n"
+      },
+      "id": "be5c7626-8f52-4ce8-b01f-d9eee1cd71d6",
+      "name": "Youth Count",
       "position": {
-        "x": -415,
-        "y": 440
+        "x": -480,
+        "y": 465
+      }
+    },
+    {
+      "type": "switchNode",
+      "content": {
+        "hitPolicy": "first",
+        "statements": [
+          {
+            "id": "f9f1f545-7595-44cf-9785-3c52eee65b52",
+            "condition": "dependentsList != null and len(dependentsList) > 0",
+            "isDefault": false
+          },
+          {
+            "id": "547d8e4d-304c-41ef-a9d0-3f59937e08ba",
+            "condition": "",
+            "isDefault": true
+          }
+        ]
+      },
+      "id": "7c2595a1-56dd-4ce4-89b3-f652084ef761",
+      "name": "Check if dependents exist",
+      "position": {
+        "x": -775,
+        "y": 425
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "a1665c95-c24b-4232-bfb7-4732f806b04d",
+            "key": "childCountCCBEligible",
+            "value": "0 + 0"
+          },
+          {
+            "id": "6733d70e-d443-4191-84ec-7ed1a64ab1d6",
+            "key": "childCountDeemedEligible",
+            "value": "0 + 0"
+          }
+        ]
+      },
+      "id": "5038060c-b9a3-401e-a1e2-7a54f235abee",
+      "name": "Default 0",
+      "position": {
+        "x": -480,
+        "y": 565
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "ccfb4915-9542-48dd-83cb-ede6fe066012",
+            "key": "unusedInput",
+            "value": "dependentsList"
+          }
+        ]
+      },
+      "id": "b472d5c1-83ff-4f5a-889a-c19aeeaaafe4",
+      "name": "Mark Used Input",
+      "position": {
+        "x": -480,
+        "y": 365
       }
     }
   ],
   "edges": [
     {
-      "id": "1f68820f-810e-4c11-9360-4109563d2e1f",
+      "id": "1264884f-17c4-43de-998d-d6de0f0bc9d0",
+      "sourceId": "be5c7626-8f52-4ce8-b01f-d9eee1cd71d6",
       "type": "edge",
-      "sourceId": "17119358-634b-4f74-b48b-d49d5163a0fc",
-      "targetId": "d268153e-1aae-4829-be27-f0871ca4ec11"
+      "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
     },
     {
-      "id": "ac0c136f-d02e-4fa3-8d5d-b901889e6ad3",
+      "id": "f237ce32-5cdd-4a66-adb2-f948f94b3963",
+      "sourceId": "5038060c-b9a3-401e-a1e2-7a54f235abee",
       "type": "edge",
-      "sourceId": "d268153e-1aae-4829-be27-f0871ca4ec11",
       "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
+    },
+    {
+      "id": "e1a3c04e-25a1-40d7-9a56-bac0f204caa0",
+      "sourceId": "17119358-634b-4f74-b48b-d49d5163a0fc",
+      "type": "edge",
+      "targetId": "7c2595a1-56dd-4ce4-89b3-f652084ef761"
+    },
+    {
+      "id": "a906d2f5-c980-48c8-84bc-6389b46e9d22",
+      "sourceId": "7c2595a1-56dd-4ce4-89b3-f652084ef761",
+      "type": "edge",
+      "targetId": "be5c7626-8f52-4ce8-b01f-d9eee1cd71d6",
+      "sourceHandle": "f9f1f545-7595-44cf-9785-3c52eee65b52"
+    },
+    {
+      "id": "0c3f2e62-fb43-4fa2-b615-bdb85db8bdc9",
+      "sourceId": "7c2595a1-56dd-4ce4-89b3-f652084ef761",
+      "type": "edge",
+      "targetId": "5038060c-b9a3-401e-a1e2-7a54f235abee",
+      "sourceHandle": "547d8e4d-304c-41ef-a9d0-3f59937e08ba"
+    },
+    {
+      "id": "2c37fa54-63d3-44e2-9859-0086e513b544",
+      "sourceId": "7c2595a1-56dd-4ce4-89b3-f652084ef761",
+      "type": "edge",
+      "targetId": "b472d5c1-83ff-4f5a-889a-c19aeeaaafe4",
+      "sourceHandle": "f9f1f545-7595-44cf-9785-3c52eee65b52"
+    },
+    {
+      "id": "4764a1a1-e2e7-4df4-a177-fba25918bbf5",
+      "sourceId": "b472d5c1-83ff-4f5a-889a-c19aeeaaafe4",
+      "type": "edge",
+      "targetId": "be5c7626-8f52-4ce8-b01f-d9eee1cd71d6"
     }
   ]
 }

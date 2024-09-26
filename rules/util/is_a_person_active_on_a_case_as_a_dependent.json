@@ -1,109 +1,225 @@
 {
-    "contentType": "application/vnd.gorules.decision",
-    "edges": [
-        {
-            "id": "edd18df1-570a-4351-b593-43d25efffda0",
-            "type": "edge",
-            "sourceId": "a023eb5d-4691-49c9-9e85-dfcc687801d9",
-            "targetId": "6e70304c-a2e3-4d5a-9541-bb97c3038665"
-        },
-        {
-            "id": "9f88d22a-bd9f-4082-856b-7cfe2dbaae78",
-            "type": "edge",
-            "sourceId": "6e70304c-a2e3-4d5a-9541-bb97c3038665",
-            "targetId": "ea124db4-20bc-46bb-99ea-202a55b55b5b"
-        }
-    ],
-    "nodes": [
-        {
-            "id": "a023eb5d-4691-49c9-9e85-dfcc687801d9",
-            "name": "request",
-            "type": "inputNode",
-            "position": {
-                "x": 100,
-                "y": 210
-            }
-        },
-        {
-            "id": "ea124db4-20bc-46bb-99ea-202a55b55b5b",
-            "name": "response",
-            "type": "outputNode",
-            "position": {
-                "x": 715,
-                "y": 210
-            }
-        },
-        {
-            "id": "6e70304c-a2e3-4d5a-9541-bb97c3038665",
-            "name": "Check if active on case",
-            "type": "decisionTableNode",
-            "content": {
-                "rules": [
-                    {
-                        "_id": "048934cd-fb94-4508-937f-c128d45beb3e",
-                        "3df89bec-0fa5-4321-9194-3f330e3c18c7": "personID",
-                        "4303d58e-47f2-4f8f-aef2-96070d5c4319": "true",
-                        "61e30398-6b49-42fd-b8e4-95256c32487a": "benefitMonth",
-                        "71544763-067f-41ea-bae3-a445418b9261": "",
-                        "b2cf9f67-055f-4b21-b77f-4d801dd5ef76": "contains(dependentsList, personID)",
-                        "b7cb0485-6b52-45a2-86a8-ff8980c1c84c": "caseID"
-                    },
-                    {
-                        "_id": "0936bf97-d254-4ec5-aebc-d41d11ec74fd",
-                        "3df89bec-0fa5-4321-9194-3f330e3c18c7": "personID",
-                        "4303d58e-47f2-4f8f-aef2-96070d5c4319": "false",
-                        "61e30398-6b49-42fd-b8e4-95256c32487a": "benefitMonth",
-                        "71544763-067f-41ea-bae3-a445418b9261": "'Person not listed on the case as a dependent for the month given'",
-                        "b2cf9f67-055f-4b21-b77f-4d801dd5ef76": "",
-                        "b7cb0485-6b52-45a2-86a8-ff8980c1c84c": "caseID"
-                    }
-                ],
-                "inputs": [
-                    {
-                        "id": "b2cf9f67-055f-4b21-b77f-4d801dd5ef76",
-                        "name": "Inputs",
-                        "type": "expression",
-                        "field": "inputs"
-                    }
-                ],
-                "outputs": [
-                    {
-                        "id": "4303d58e-47f2-4f8f-aef2-96070d5c4319",
-                        "name": "Is Active On Case",
-                        "type": "expression",
-                        "field": "isActiveOnCase"
-                    },
-                    {
-                        "id": "61e30398-6b49-42fd-b8e4-95256c32487a",
-                        "name": "Benefit Month",
-                        "type": "expression",
-                        "field": "benefitMonth"
-                    },
-                    {
-                        "id": "b7cb0485-6b52-45a2-86a8-ff8980c1c84c",
-                        "name": "Case ID",
-                        "type": "expression",
-                        "field": "caseID"
-                    },
-                    {
-                        "id": "3df89bec-0fa5-4321-9194-3f330e3c18c7",
-                        "name": "Person ID",
-                        "type": "expression",
-                        "field": "personID"
-                    },
-                    {
-                        "id": "71544763-067f-41ea-bae3-a445418b9261",
-                        "name": "Reason",
-                        "type": "expression",
-                        "field": "reason"
-                    }
-                ],
-                "hitPolicy": "first"
-            },
-            "position": {
-                "x": 410,
-                "y": 210
-            }
-        }
-    ]
+  "contentType": "application/vnd.gorules.decision",
+  "edges": [
+    {
+      "id": "9f88d22a-bd9f-4082-856b-7cfe2dbaae78",
+      "type": "edge",
+      "sourceId": "6e70304c-a2e3-4d5a-9541-bb97c3038665",
+      "targetId": "ea124db4-20bc-46bb-99ea-202a55b55b5b"
+    },
+    {
+      "id": "3b9fe63d-f493-457b-b2c8-1ec04b3c075b",
+      "sourceId": "a4568c5b-a4be-4222-b379-02bc117dcb29",
+      "type": "edge",
+      "targetId": "6e70304c-a2e3-4d5a-9541-bb97c3038665"
+    },
+    {
+      "id": "4aae948b-ec25-4d66-a474-dba321306153",
+      "sourceId": "a023eb5d-4691-49c9-9e85-dfcc687801d9",
+      "type": "edge",
+      "targetId": "862b9aae-f2ed-4832-aab7-68676c8124eb"
+    },
+    {
+      "id": "262cb68e-4aee-42bb-b4b8-be0a16a3d5a9",
+      "sourceId": "862b9aae-f2ed-4832-aab7-68676c8124eb",
+      "type": "edge",
+      "targetId": "6e70304c-a2e3-4d5a-9541-bb97c3038665",
+      "sourceHandle": "91271c97-325c-435d-afec-fed17be9ea67"
+    },
+    {
+      "id": "47e2bda3-f0e2-46cf-9bb7-599233b60c7e",
+      "sourceId": "862b9aae-f2ed-4832-aab7-68676c8124eb",
+      "type": "edge",
+      "targetId": "ea124db4-20bc-46bb-99ea-202a55b55b5b",
+      "sourceHandle": "8f469792-0352-4541-a593-eec3cce87696"
+    },
+    {
+      "id": "44ba334a-ad74-4aa2-af57-0189af94c949",
+      "sourceId": "862b9aae-f2ed-4832-aab7-68676c8124eb",
+      "type": "edge",
+      "targetId": "a4568c5b-a4be-4222-b379-02bc117dcb29",
+      "sourceHandle": "91271c97-325c-435d-afec-fed17be9ea67"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "a023eb5d-4691-49c9-9e85-dfcc687801d9",
+      "name": "request",
+      "type": "inputNode",
+      "position": {
+        "x": -185,
+        "y": 205
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "dependentsList",
+            "name": "Dependents List",
+            "id": 8,
+            "description": "A list of dependent active on a case with their relevant properties.",
+            "dataType": "object-array",
+            "childFields": [
+              {
+                "id": 40,
+                "name": "personID",
+                "field": "Person ID",
+                "description": null,
+                "dataType": "text-input"
+              },
+              {
+                "id": 64,
+                "name": "dateOfBirth",
+                "field": "Date of Birth",
+                "description": "The specific date of birth for an individual.",
+                "dataType": "date",
+                "validationCriteria": "1910-01-01",
+                "validationType": ">="
+              },
+              {
+                "id": 69,
+                "name": "inSchool",
+                "field": "In School",
+                "description": "Individual is currently in school.",
+                "dataType": "true-false"
+              }
+            ]
+          },
+          {
+            "field": "personID",
+            "name": "Person ID",
+            "id": 40,
+            "description": null,
+            "dataType": "text-input",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "ea124db4-20bc-46bb-99ea-202a55b55b5b",
+      "name": "response",
+      "type": "outputNode",
+      "position": {
+        "x": 665,
+        "y": 210
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "reason",
+            "name": "Reason",
+            "id": 47,
+            "description": "The reason provided for a given decision.",
+            "dataType": "text-input",
+            "childFields": []
+          },
+          {
+            "field": "isActiveOnCase",
+            "name": "Is Active On Case",
+            "id": 27,
+            "description": "Individual is 'active' on case.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "6e70304c-a2e3-4d5a-9541-bb97c3038665",
+      "name": "Check if active on case",
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "b2cf9f67-055f-4b21-b77f-4d801dd5ef76",
+            "name": "Dependents List",
+            "type": "expression",
+            "field": "dependentsList"
+          },
+          {
+            "id": "56b6531a-219d-4edb-b518-0201a2f58219",
+            "field": "personID",
+            "name": "Person ID"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "4303d58e-47f2-4f8f-aef2-96070d5c4319",
+            "name": "Is Active On Case",
+            "type": "expression",
+            "field": "isActiveOnCase"
+          },
+          {
+            "id": "71544763-067f-41ea-bae3-a445418b9261",
+            "name": "Reason",
+            "type": "expression",
+            "field": "reason"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "048934cd-fb94-4508-937f-c128d45beb3e",
+            "b2cf9f67-055f-4b21-b77f-4d801dd5ef76": "contains(dependentsIDs, personID)",
+            "56b6531a-219d-4edb-b518-0201a2f58219": "",
+            "4303d58e-47f2-4f8f-aef2-96070d5c4319": "true",
+            "71544763-067f-41ea-bae3-a445418b9261": ""
+          },
+          {
+            "_id": "0936bf97-d254-4ec5-aebc-d41d11ec74fd",
+            "b2cf9f67-055f-4b21-b77f-4d801dd5ef76": "",
+            "56b6531a-219d-4edb-b518-0201a2f58219": "",
+            "4303d58e-47f2-4f8f-aef2-96070d5c4319": "false",
+            "71544763-067f-41ea-bae3-a445418b9261": "'Person not listed on the case as a dependent.'"
+          }
+        ]
+      },
+      "position": {
+        "x": 380,
+        "y": 320
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "ee032223-2e2c-4fd4-85c7-304c361b0634",
+            "key": "dependentsIDs",
+            "value": "map(dependentsList, #.personID)"
+          }
+        ]
+      },
+      "id": "a4568c5b-a4be-4222-b379-02bc117dcb29",
+      "name": "Filter IDs",
+      "position": {
+        "x": 375,
+        "y": 200
+      }
+    },
+    {
+      "type": "switchNode",
+      "content": {
+        "hitPolicy": "first",
+        "statements": [
+          {
+            "id": "91271c97-325c-435d-afec-fed17be9ea67",
+            "condition": "dependentsList != null and len(dependentsList) > 0",
+            "isDefault": false
+          },
+          {
+            "id": "8f469792-0352-4541-a593-eec3cce87696",
+            "condition": "",
+            "isDefault": true
+          }
+        ]
+      },
+      "id": "862b9aae-f2ed-4832-aab7-68676c8124eb",
+      "name": "Any Dependents?",
+      "position": {
+        "x": 100,
+        "y": 190
+      }
+    }
+  ]
 }

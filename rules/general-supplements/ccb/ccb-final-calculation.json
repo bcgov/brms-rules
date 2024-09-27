@@ -173,7 +173,7 @@
           {
             "id": "a12378b6-702b-42a1-99a0-d7bbd7a3ecdd",
             "key": "monthlyCCBAutoTopupAmount",
-            "value": "max([(sdprChildBenefitSupplementAmount -monthlyChildBenefitTopupAmount), 0])"
+            "value": "monthlyChildBenefitTopupAmount != null ? max([(sdprChildBenefitSupplementAmount - monthlyChildBenefitTopupAmount), 0]) : 0"
           }
         ]
       },
@@ -270,5 +270,6 @@
       "type": "edge",
       "targetId": "fb8102ea-0e32-415b-866d-ff90dfa5dfcd"
     }
-  ]
+  ],
+  "tests": []
 }

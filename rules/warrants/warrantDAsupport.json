@@ -7,6 +7,70 @@
       "position": {
         "x": -100,
         "y": 295
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "familyUnitSize",
+            "name": "Family Unit Size",
+            "id": 21,
+            "description": "The number of people in a family unit. This includes all currently active members of that family unit.",
+            "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "field": "person1age",
+            "name": "Person 1 Age",
+            "id": 41,
+            "description": "The age of person 1 in a family unit in years.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "person1HasPWDStatus",
+            "name": "Person 1 Has PWD Status",
+            "id": 45,
+            "description": "If person 1 in a family unit has PWD status.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person2age",
+            "name": "Person 2 Age",
+            "id": 42,
+            "description": "The age of person 2 in a family unit in years.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "person2HasPWDStatus",
+            "name": "Person 2 Has PWD Status",
+            "id": 46,
+            "description": "If person 2 in a family unit has PWD status.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person1Warrant",
+            "name": "Person 1 Has Warrant",
+            "id": 79,
+            "description": "There is an outstanding warrant for person 1 on the file.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person2Warrant",
+            "name": "Person 2 Has a Warrant",
+            "id": 80,
+            "description": "There is an outstanding warrant for person 2 on the file.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -66,9 +130,9 @@
         "outputs": [
           {
             "id": "aed03151-e8ba-4284-b360-29b70f07a573",
-            "name": "Maximum Support Amount",
+            "name": "Maximum DA Support Amount",
             "type": "expression",
-            "field": "maximumSupportAmount"
+            "field": "maximumDASupportAmount"
           }
         ],
         "rules": [
@@ -112,6 +176,20 @@
       "position": {
         "x": 1165,
         "y": 295
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "maximumDASupportAmount",
+            "name": "Maximum DA Support Amount",
+            "id": 67,
+            "description": "The maximum amount of support assessed to a family unit for disability assistance.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -161,9 +239,9 @@
         "outputs": [
           {
             "id": "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6",
-            "name": "Maximum Support Amount",
+            "name": "Maximum DA Support Amount",
             "type": "expression",
-            "field": "maximumSupportAmount"
+            "field": "maximumDASupportAmount"
           }
         ],
         "rules": [
@@ -318,9 +396,9 @@
         "outputs": [
           {
             "id": "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6",
-            "name": "Maximum Support Amount",
+            "name": "Maximum DA Support Amount",
             "type": "expression",
-            "field": "maximumSupportAmount"
+            "field": "maximumDASupportAmount"
           }
         ],
         "rules": [
@@ -566,6 +644,150 @@
       "sourceId": "73aeb715-5c63-4ec6-8cfd-dcba63d7bf96",
       "type": "edge",
       "targetId": "87a78f50-78f3-4ed8-9368-bcbeb110516d"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Both applicants/recipients are persons with a disability and a warrant has been issued for one",
+      "input": {
+        "person1age": 45,
+        "person1HasPWDStatus": true,
+        "familyUnitSize": 4,
+        "person1Warrant": true,
+        "person2age": 42,
+        "person2HasPWDStatus": true,
+        "person2Warrant": false
+      },
+      "output": {
+        "maximumDASupportAmount": 1853.5
+      }
+    },
+    {
+      "name": "single with dependents, is PWD, age N/A ",
+      "input": {
+        "person1age": 0,
+        "person1HasPWDStatus": true,
+        "familyUnitSize": 2,
+        "person1Warrant": true
+      },
+      "output": {
+        "maximumDASupportAmount": 1033.5
+      }
+    },
+    {
+      "name": "couple no dependents, 1 warrant holder PWD, age N/A",
+      "input": {
+        "person1HasPWDStatus": true,
+        "familyUnitSize": 2,
+        "person1Warrant": true,
+        "person2HasPWDStatus": false,
+        "person2Warrant": false
+      },
+      "output": {
+        "maximumDASupportAmount": 1033.5
+      }
+    },
+    {
+      "name": "couple with dependents, 1 warrant holder with PWD, other under 65 no PWD",
+      "input": {
+        "person1HasPWDStatus": true,
+        "familyUnitSize": 3,
+        "person1Warrant": true,
+        "person2age": 45,
+        "person2HasPWDStatus": false,
+        "person2Warrant": false
+      },
+      "output": {
+        "maximumDASupportAmount": 1378.5
+      }
+    },
+    {
+      "name": "couple with dependents, 1 warrant holder with PWD, other is =>65 no PWD",
+      "input": {
+        "person1HasPWDStatus": true,
+        "familyUnitSize": 3,
+        "person1Warrant": true,
+        "person2age": 65,
+        "person2HasPWDStatus": false
+      },
+      "output": {
+        "maximumDASupportAmount": 1628.5
+      }
+    },
+    {
+      "name": "couple with dependents, 2 warrant holders, 1 PWD, other under 65 no PWD",
+      "input": {
+        "person1age": 0,
+        "person1HasPWDStatus": true,
+        "familyUnitSize": 3,
+        "person1Warrant": true,
+        "person2age": 45,
+        "person2HasPWDStatus": false,
+        "person2Warrant": true
+      },
+      "output": {
+        "maximumDASupportAmount": 1328.5
+      }
+    },
+    {
+      "name": "couple with dependents, 2 warrant holders, 1 PWD, other =>65 no PWD",
+      "input": {
+        "person1age": 0,
+        "person1HasPWDStatus": true,
+        "familyUnitSize": 3,
+        "person1Warrant": true,
+        "person2age": 65,
+        "person2HasPWDStatus": false,
+        "person2Warrant": true
+      },
+      "output": {
+        "maximumDASupportAmount": 1578.5
+      }
+    },
+    {
+      "name": "couple no dependents, both PWD, age N/A",
+      "input": {
+        "person1age": 45,
+        "person1HasPWDStatus": true,
+        "familyUnitSize": 2,
+        "person1Warrant": true,
+        "person2age": 45,
+        "person2HasPWDStatus": true,
+        "person2Warrant": false
+      },
+      "output": {
+        "maximumDASupportAmount": 1260.5
+      }
+    },
+    {
+      "name": "couple with dependents, both PWD, 1 warrant holder, age N/A",
+      "input": {
+        "person1age": 45,
+        "person1HasPWDStatus": true,
+        "familyUnitSize": 3,
+        "person1Warrant": true,
+        "person2age": 45,
+        "person2HasPWDStatus": true,
+        "person2Warrant": false
+      },
+      "output": {
+        "maximumDASupportAmount": 1853.5
+      }
+    },
+    {
+      "name": "couple with dependents, 2 warrant holders, both PWD, age N/A",
+      "input": {
+        "person1age": 45,
+        "person1HasPWDStatus": true,
+        "familyUnitSize": 3,
+        "person1Warrant": true,
+        "person2age": 45,
+        "person2HasPWDStatus": true,
+        "person2Warrant": true
+      },
+      "output": {
+        "maximumDASupportAmount": 1803.5
+      }
     }
   ]
 }

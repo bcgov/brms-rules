@@ -8,6 +8,28 @@
       "position": {
         "x": 80,
         "y": 205
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "benefitMonth",
+            "name": "Benefit Month",
+            "id": 2,
+            "description": "The month for which the benefit is being requested.",
+            "dataType": "date",
+            "childFields": []
+          },
+          {
+            "field": "dateOfBirth",
+            "name": "Date of Birth",
+            "id": 64,
+            "description": "The specific date of birth for an individual.",
+            "dataType": "date",
+            "validationCriteria": "1910-01-01",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -17,6 +39,36 @@
       "position": {
         "x": 1020,
         "y": 205
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "id": 58,
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "id": 28,
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "reason",
+            "name": "Reason",
+            "id": 47,
+            "description": "The reason provided for a given decision.",
+            "dataType": "text-input",
+            "childFields": []
+          }
+        ]
       }
     },
     {

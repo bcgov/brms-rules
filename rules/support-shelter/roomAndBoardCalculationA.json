@@ -8,6 +8,64 @@
       "position": {
         "x": 10,
         "y": 235
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "familyUnitSize",
+            "name": "Family Unit Size",
+            "id": 21,
+            "description": "The number of people in a family unit. This includes all currently active members of that family unit.",
+            "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "field": "shelterCosts",
+            "name": "Shelter Costs",
+            "id": 55,
+            "description": "Amount of shelter costs declared by a family unit.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "person1age",
+            "name": "Person 1 Age",
+            "id": 41,
+            "description": "The age of person 1 in a family unit in years.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "person1HasPWDStatus",
+            "name": "Person 1 Has PWD Status",
+            "id": 45,
+            "description": "If person 1 in a family unit has PWD status.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person2age",
+            "name": "Person 2 Age",
+            "id": 42,
+            "description": "The age of person 2 in a family unit in years.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "person2HasPWDStatus",
+            "name": "Person 2 Has PWD Status",
+            "id": 46,
+            "description": "If person 2 in a family unit has PWD status.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -17,6 +75,20 @@
       "position": {
         "x": 840,
         "y": 235
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "roomAndBoardCalculationAAmount",
+            "name": "Room And Board - Calculation A Amount",
+            "id": 85,
+            "description": "The calculation of possible room and board supplement for an individual based on family unit composition and shelter costs. ",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -148,15 +220,7 @@
       "name": "Room and Board Amount",
       "type": "decisionTableNode",
       "content": {
-        "rules": [
-          {
-            "_id": "995bd057-7f78-44b8-a84c-f90aacd49b22",
-            "4eeec7e4-d3c2-4293-9691-d4d5fb0c0b80": "",
-            "7ded162c-6a47-4638-986d-a90ef31d7ebd": "",
-            "dd14661d-ee13-4854-9fa8-7fd1951de299": "baseSupportAmount + pwdAmount + confirmedShelterCosts",
-            "f5a2a63c-ef10-421e-adc8-14f17359dd45": ""
-          }
-        ],
+        "hitPolicy": "first",
         "inputs": [
           {
             "id": "7ded162c-6a47-4638-986d-a90ef31d7ebd",
@@ -174,7 +238,7 @@
             "id": "4eeec7e4-d3c2-4293-9691-d4d5fb0c0b80",
             "name": "Confirmed Shelter Costs",
             "type": "expression",
-            "field": "confirmedShelterCosts"
+            "field": "shelterCosts"
           }
         ],
         "outputs": [
@@ -185,7 +249,15 @@
             "field": "roomAndBoardCalculationAAmount"
           }
         ],
-        "hitPolicy": "first"
+        "rules": [
+          {
+            "_id": "995bd057-7f78-44b8-a84c-f90aacd49b22",
+            "7ded162c-6a47-4638-986d-a90ef31d7ebd": "",
+            "f5a2a63c-ef10-421e-adc8-14f17359dd45": "",
+            "4eeec7e4-d3c2-4293-9691-d4d5fb0c0b80": "",
+            "dd14661d-ee13-4854-9fa8-7fd1951de299": "baseSupportAmount + pwdAmount + confirmedShelterCosts"
+          }
+        ]
       },
       "position": {
         "x": 540,

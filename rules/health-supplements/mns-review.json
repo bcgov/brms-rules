@@ -8,6 +8,20 @@
       "position": {
         "x": 120,
         "y": 170
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "mnsEligibilityAssessmentDate",
+            "name": "MNS Eligibility Assessment Date",
+            "id": 31,
+            "description": "The date an individual was assessed as eligible for the Monthly Nutritional Supplement.",
+            "dataType": "date",
+            "validationCriteria": "1950-01-01",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -17,6 +31,28 @@
       "position": {
         "x": 710,
         "y": 170
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "errorMsg",
+            "name": "Error Message",
+            "id": 13,
+            "description": "System-returned error message.",
+            "dataType": "text-input",
+            "childFields": []
+          },
+          {
+            "field": "mnsReviewDate",
+            "name": "MNS Review Date",
+            "id": 33,
+            "description": "The scheduled date of review for eligibility for the monthly nutritional supplement to be reviewed.",
+            "dataType": "date",
+            "validationCriteria": "1950-01-01",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -24,22 +60,7 @@
       "name": "Generate Review Date based on date of last Assessment",
       "type": "decisionTableNode",
       "content": {
-        "rules": [
-          {
-            "_id": "ca90e81f-7700-43a4-8349-00f09660eeb7",
-            "51a27303-aa40-4f36-946b-d5f536a203b4": "",
-            "83c28e9b-8575-415a-a9e9-8d1888c401aa": "",
-            "defe8c0a-a6ed-45cd-8b9d-005f83599275": "dateString(date(mnsEligibilityAssessmentDate) + duration('12months'))",
-            "f3041dde-6a4b-4358-bdf0-c6e7ee48fcd6": "personID"
-          },
-          {
-            "_id": "e0e8aed3-b7cc-4fb8-a51b-de73eac0a423",
-            "51a27303-aa40-4f36-946b-d5f536a203b4": "null",
-            "83c28e9b-8575-415a-a9e9-8d1888c401aa": "'Person is not shown in the system as receiving MNS.'",
-            "defe8c0a-a6ed-45cd-8b9d-005f83599275": "",
-            "f3041dde-6a4b-4358-bdf0-c6e7ee48fcd6": "personID"
-          }
-        ],
+        "hitPolicy": "first",
         "inputs": [
           {
             "id": "51a27303-aa40-4f36-946b-d5f536a203b4",
@@ -49,12 +70,6 @@
           }
         ],
         "outputs": [
-          {
-            "id": "f3041dde-6a4b-4358-bdf0-c6e7ee48fcd6",
-            "name": "Person ID",
-            "type": "expression",
-            "field": "personID"
-          },
           {
             "id": "defe8c0a-a6ed-45cd-8b9d-005f83599275",
             "name": "MNS Eligibility Review Date",
@@ -68,7 +83,20 @@
             "field": "errorMsg"
           }
         ],
-        "hitPolicy": "first"
+        "rules": [
+          {
+            "_id": "ca90e81f-7700-43a4-8349-00f09660eeb7",
+            "51a27303-aa40-4f36-946b-d5f536a203b4": "",
+            "defe8c0a-a6ed-45cd-8b9d-005f83599275": "dateString(date(mnsEligibilityAssessmentDate) + duration('12months'))",
+            "83c28e9b-8575-415a-a9e9-8d1888c401aa": ""
+          },
+          {
+            "_id": "e0e8aed3-b7cc-4fb8-a51b-de73eac0a423",
+            "51a27303-aa40-4f36-946b-d5f536a203b4": "null",
+            "defe8c0a-a6ed-45cd-8b9d-005f83599275": "",
+            "83c28e9b-8575-415a-a9e9-8d1888c401aa": "'Person is not shown in the system as receiving MNS.'"
+          }
+        ]
       },
       "position": {
         "x": 400,

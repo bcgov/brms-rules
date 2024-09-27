@@ -4,19 +4,149 @@
       "id": "9412c2c5-1837-4377-8181-e4b95d95fb11",
       "type": "inputNode",
       "position": {
-        "x": -395,
-        "y": 245
+        "x": -460,
+        "y": 140
       },
-      "name": "request"
+      "name": "request",
+      "content": {
+        "fields": [
+          {
+            "field": "familyUnitSize",
+            "name": "Family Unit Size",
+            "id": 21,
+            "description": "The number of people in a family unit. This includes all currently active members of that family unit.",
+            "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "field": "person1age",
+            "name": "Person 1 Age",
+            "id": 41,
+            "description": "The age of person 1 in a family unit in years.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "person2age",
+            "name": "Person 2 Age",
+            "id": 42,
+            "description": "The age of person 2 in a family unit in years.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "shelterCosts",
+            "name": "Shelter Costs",
+            "id": 55,
+            "description": "Amount of shelter costs declared by a family unit.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "person1ReceivingOASGIS",
+            "name": "Person 1 Receiving OAS/GIS",
+            "id": 76,
+            "description": "Person 1 on a request is in receipt of OAS/GIS.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person1Warrant",
+            "name": "Person 1 Has Warrant",
+            "id": 79,
+            "description": "There is an outstanding warrant for person 1 on the file.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person1hasPPMBStatus",
+            "name": "Person 1 Has PPMB Status",
+            "id": 43,
+            "description": "If person 1 in a family unit has PPMB status.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person1HasPWDStatus",
+            "name": "Person 1 Has PWD Status",
+            "id": 45,
+            "description": "If person 1 in a family unit has PWD status.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person2Warrant",
+            "name": "Person 2 Has a Warrant",
+            "id": 80,
+            "description": "There is an outstanding warrant for person 2 on the file.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person2hasPPMBStatus",
+            "name": "Person 2 Has PPMB Status",
+            "id": 44,
+            "description": "If person 2 in a family unit has PPMB status",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person2HasPWDStatus",
+            "name": "Person 2 Has PWD Status",
+            "id": 46,
+            "description": "If person 2 in a family unit has PWD status.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person2ReceivingOASGIS",
+            "name": "Person 2 Receiving OAS/GIS",
+            "id": 77,
+            "description": "Person 2 on a request is in receipt of OAS/GIS.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
+      }
     },
     {
       "id": "f6123455-b9a6-4ff1-bfd4-be1a33cfa07b",
       "type": "outputNode",
       "position": {
-        "x": 1055,
-        "y": 275
+        "x": 1045,
+        "y": 245
       },
-      "name": "response"
+      "name": "response",
+      "content": {
+        "fields": [
+          {
+            "field": "shelterAmount",
+            "name": "Shelter Amount",
+            "id": 78,
+            "description": "Amount to be issued as a shelter payment.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "supportFinalAmount",
+            "name": "Support Amount",
+            "id": 84,
+            "description": "The total support amount to be issued to an eligible family unit.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      }
     },
     {
       "id": "937a5547-71cf-4f91-8020-55780b7c2a9c",
@@ -141,8 +271,8 @@
         "expressions": [
           {
             "id": "04e8d128-1247-4155-9650-46671358563b",
-            "key": "supportAmount",
-            "value": "maximumSupportAmount"
+            "key": "supportFinalAmount",
+            "value": "maximumDASupportAmount"
           }
         ]
       }
@@ -159,8 +289,8 @@
         "expressions": [
           {
             "id": "ae3fcdb0-2827-4a03-8c43-5737955272b3",
-            "key": "supportAmount",
-            "value": "maximumSupportAmount"
+            "key": "supportFinalAmount",
+            "value": "maximumIASupportAmount"
           }
         ]
       }

@@ -2,21 +2,26 @@
   "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
-      "id": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
-      "name": "Calculating MaximumDA Support Request",
-      "type": "inputNode",
-      "position": {
-        "x": 125,
-        "y": 250
-      }
-    },
-    {
       "id": "87a78f50-78f3-4ed8-9368-bcbeb110516d",
       "name": "DA Support Amount Response",
       "type": "outputNode",
       "position": {
         "x": 785,
         "y": 250
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "maximumDASupportAmount",
+            "name": "Maximum DA Support Amount",
+            "id": 67,
+            "description": "The maximum amount of support assessed to a family unit for disability assistance.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -192,20 +197,77 @@
         "x": 455,
         "y": 250
       }
+    },
+    {
+      "type": "inputNode",
+      "id": "df3e2f6d-03b7-4be5-8621-216d2968e540",
+      "name": "request",
+      "position": {
+        "x": 130,
+        "y": 250
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "familyUnitSize",
+            "name": "Family Unit Size",
+            "id": 21,
+            "description": "The number of people in a family unit. This includes all currently active members of that family unit.",
+            "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "field": "person1age",
+            "name": "Person 1 Age",
+            "id": 41,
+            "description": "The age of person 1 in a family unit in years.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "person1HasPWDStatus",
+            "name": "Person 1 Has PWD Status",
+            "id": 45,
+            "description": "If person 1 in a family unit has PWD status.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person2age",
+            "name": "Person 2 Age",
+            "id": 42,
+            "description": "The age of person 2 in a family unit in years.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "person2HasPWDStatus",
+            "name": "Person 2 Has PWD Status",
+            "id": 46,
+            "description": "If person 2 in a family unit has PWD status.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
+      }
     }
   ],
   "edges": [
-    {
-      "id": "202ce0bc-fd77-4ee0-90e4-e68baa08a7da",
-      "type": "edge",
-      "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
-      "targetId": "464e51e5-4ce2-45a4-b3b0-7dbd7c87d93e"
-    },
     {
       "id": "6284d22a-a682-41e9-a6d0-17582a3b84b7",
       "type": "edge",
       "sourceId": "464e51e5-4ce2-45a4-b3b0-7dbd7c87d93e",
       "targetId": "87a78f50-78f3-4ed8-9368-bcbeb110516d"
+    },
+    {
+      "id": "c5714d41-f338-4e59-a0aa-d606c8e34f50",
+      "sourceId": "df3e2f6d-03b7-4be5-8621-216d2968e540",
+      "type": "edge",
+      "targetId": "464e51e5-4ce2-45a4-b3b0-7dbd7c87d93e"
     }
   ]
 }

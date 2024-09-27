@@ -8,6 +8,45 @@
       "position": {
         "x": -880,
         "y": 385
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "adjustedFamilyNetIncome",
+            "name": "Adjusted Family Net Income",
+            "id": 72,
+            "description": "The Adjusted Family Net Income as reported in the data match for Canada Child Benefits.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "dependentsList",
+            "name": "Dependents List",
+            "id": 8,
+            "description": "A list of dependent active on a case with their relevant properties.",
+            "dataType": "object-array",
+            "childFields": [
+              {
+                "id": 64,
+                "name": "dateOfBirth",
+                "field": "Date of Birth",
+                "description": "The specific date of birth for an individual.",
+                "dataType": "date",
+                "validationCriteria": "1910-01-01",
+                "validationType": ">="
+              },
+              {
+                "id": 69,
+                "name": "inSchool",
+                "field": "In School",
+                "description": "Individual is currently in school.",
+                "dataType": "true-false"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -15,8 +54,32 @@
       "name": "response",
       "type": "outputNode",
       "position": {
-        "x": 0,
-        "y": 440
+        "x": 215,
+        "y": 500
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "monthlyCCBTopupInLieuAmount",
+            "name": "Monthly CCB Topup In Lieu Amount",
+            "id": 74,
+            "description": "The amount to issue to a family unit for Support in Lieu of CCB, based on the number of children in the family unit who would receive CCB and those who are deemed eligible to receive support in lieu.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "monthlyCCBAutoTopupAmount",
+            "name": "Monthly Child Benefit Auto Topup Amount",
+            "id": 75,
+            "description": "The amount the system provides as an automatic topup to family units based on the number of children eligible to receive CCB, and the adjusted family net income of the family unit.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -54,15 +117,93 @@
       "content": {
         "key": "general-supplements/ccb/ccb-eligible-child-count.json"
       }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "afd14f7f-af3e-4c80-92a3-8d4402ec33d9",
+            "field": "childCountCCBEligible",
+            "name": "Number of Children Eligible for CCB"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "44e23806-b76d-4f78-929b-0a5c006da002",
+            "name": "Base Topup Amount of Children",
+            "field": "sdprChildBenefitSupplementAmount"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "c13bf92e-3683-4dfe-9aea-2d24e3652eb3",
+            "afd14f7f-af3e-4c80-92a3-8d4402ec33d9": "==1",
+            "44e23806-b76d-4f78-929b-0a5c006da002": "237.33"
+          },
+          {
+            "_id": "de3fef5c-0532-419a-b045-65bae251ed98",
+            "afd14f7f-af3e-4c80-92a3-8d4402ec33d9": "==2",
+            "44e23806-b76d-4f78-929b-0a5c006da002": "(237.33 + 209.92 )"
+          },
+          {
+            "_id": "e35e35cd-98c8-4caa-a2a1-3e3db19c58e0",
+            "afd14f7f-af3e-4c80-92a3-8d4402ec33d9": "==3",
+            "44e23806-b76d-4f78-929b-0a5c006da002": "(237.33 + 209.92 + ((childCountCCBEligible-2)*199.75))"
+          },
+          {
+            "_id": "f605c54d-13a5-49c1-8cc1-61912059acaa",
+            "afd14f7f-af3e-4c80-92a3-8d4402ec33d9": "",
+            "44e23806-b76d-4f78-929b-0a5c006da002": "0"
+          }
+        ]
+      },
+      "id": "a2619b04-3807-48d6-827f-01ab4f5111de",
+      "name": "CB Supplement Amounts",
+      "position": {
+        "x": -310,
+        "y": 240
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "a12378b6-702b-42a1-99a0-d7bbd7a3ecdd",
+            "key": "monthlyCCBAutoTopupAmount",
+            "value": "max([(sdprChildBenefitSupplementAmount -monthlyChildBenefitTopupAmount), 0])"
+          }
+        ]
+      },
+      "id": "0f61b3a8-2b67-41ed-a8a1-06dbd9481004",
+      "name": "Auto Topup Amount",
+      "position": {
+        "x": -20,
+        "y": 355
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "7b6fca8c-eebb-4e56-b010-b5903b3b58cc",
+            "key": "fillerInput",
+            "value": "dependentsList"
+          }
+        ]
+      },
+      "id": "0a486204-4d85-4ffc-a369-59230f1da65d",
+      "name": "Mark Used Input",
+      "position": {
+        "x": -595,
+        "y": 580
+      }
     }
   ],
   "edges": [
-    {
-      "id": "ada3dbb4-9f7e-4607-b2af-a0419db59ddc",
-      "sourceId": "3c35a5d6-8574-4ad4-8b3e-f1c21f4259e1",
-      "type": "edge",
-      "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
-    },
     {
       "id": "c8113b03-ec2c-4eac-a3ea-dbc563768af8",
       "sourceId": "7749efa8-50c5-47d6-b5fb-bce302fac8cc",
@@ -92,7 +233,42 @@
       "sourceId": "17119358-634b-4f74-b48b-d49d5163a0fc",
       "type": "edge",
       "targetId": "fb8102ea-0e32-415b-866d-ff90dfa5dfcd"
+    },
+    {
+      "id": "dae0dce9-bbb2-4ec7-95ef-c5bc4eacee33",
+      "sourceId": "fb8102ea-0e32-415b-866d-ff90dfa5dfcd",
+      "type": "edge",
+      "targetId": "a2619b04-3807-48d6-827f-01ab4f5111de"
+    },
+    {
+      "id": "19b73f9e-b97f-496f-9812-f6cc8be0a42a",
+      "sourceId": "a2619b04-3807-48d6-827f-01ab4f5111de",
+      "type": "edge",
+      "targetId": "0f61b3a8-2b67-41ed-a8a1-06dbd9481004"
+    },
+    {
+      "id": "9cacb464-9025-4ddb-b13d-f93693993e2a",
+      "sourceId": "3c35a5d6-8574-4ad4-8b3e-f1c21f4259e1",
+      "type": "edge",
+      "targetId": "0f61b3a8-2b67-41ed-a8a1-06dbd9481004"
+    },
+    {
+      "id": "208098db-38a0-40c6-b506-528f2ed92418",
+      "sourceId": "0f61b3a8-2b67-41ed-a8a1-06dbd9481004",
+      "type": "edge",
+      "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
+    },
+    {
+      "id": "02f663a6-73df-4ff4-85a1-e7e96c3e87d9",
+      "sourceId": "17119358-634b-4f74-b48b-d49d5163a0fc",
+      "type": "edge",
+      "targetId": "0a486204-4d85-4ffc-a369-59230f1da65d"
+    },
+    {
+      "id": "c8e9227b-b846-4052-902e-ff189e1a6845",
+      "sourceId": "0a486204-4d85-4ffc-a369-59230f1da65d",
+      "type": "edge",
+      "targetId": "fb8102ea-0e32-415b-866d-ff90dfa5dfcd"
     }
-  ],
-  "tests": []
+  ]
 }

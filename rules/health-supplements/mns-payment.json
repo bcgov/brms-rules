@@ -6,8 +6,102 @@
       "name": "request",
       "type": "inputNode",
       "position": {
-        "x": -1095,
-        "y": 1035
+        "x": -1200,
+        "y": 965
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "hasPWDDesignation",
+            "name": "Has PWD Designation",
+            "id": 23,
+            "description": "Individual has PWD designation.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "inPayOfDA",
+            "name": "In Pay Of DA",
+            "id": 26,
+            "description": "Individual is in a family unit that is in pay of Disability Assistance.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "mnsPaymentAlreadyMade",
+            "name": "MNS Payment Already Made",
+            "id": 32,
+            "description": "The payment for a monthly nutritional supplement has already been made in this benefit period.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "residingInCareFacility",
+            "name": "Residing In Care Facility",
+            "id": 52,
+            "description": "Individual is residing in a care facility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isAlcoholOrDrugFacility",
+            "name": "Facility is an Alcohol Or Drug Care Facility",
+            "id": 53,
+            "description": "The given facility is an alcohol or drug care facility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "verificationOfNeedConfirmed",
+            "name": "Verification Of Need Confirmed",
+            "id": 60,
+            "description": "Verification of need for the requested item has been confirmed.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "receivingInKindNutrition",
+            "name": "Receiving In-Kind Nutrition-Related Supplement",
+            "id": 50,
+            "description": "The individual is receiving tube feed an in-kind nutrition-related supplement.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "receivingScheduleCAppealAwardGP",
+            "name": "Receiving Schedule C Appeal Award (code 29)",
+            "id": 51,
+            "description": "Individual is in receipt of Schedule C Appeal Award (code 29).",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "mnsType",
+            "name": "MNS Type",
+            "id": 34,
+            "description": "The type of monthly nutritional supplement requested.",
+            "dataType": "text-input",
+            "validationCriteria": "additionalNutritionalItems, vitaminsOrMinerals, both",
+            "validationType": "[=text]",
+            "childFields": []
+          },
+          {
+            "field": "receivingDietSupplement",
+            "name": "Receiving Diet Supplement",
+            "id": 49,
+            "description": "Individual is currently receiving a diet supplement.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "familyUnitDeemedIneligible",
+            "name": "Family Unit Deemed Ineligible",
+            "id": 17,
+            "description": "Family Unit is currently deemed ineligible for assistance.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -15,8 +109,48 @@
       "name": "response",
       "type": "outputNode",
       "position": {
-        "x": 1005,
-        "y": 1315
+        "x": 580,
+        "y": 1165
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "reason",
+            "name": "Reason",
+            "id": 47,
+            "description": "The reason provided for a given decision.",
+            "dataType": "text-input",
+            "childFields": []
+          },
+          {
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "id": 28,
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "nutritionalSupplementDietPayment",
+            "name": "Nutritional Supplement Diet Payment",
+            "id": 38,
+            "description": "The amount to be paid out for the nutritional diet supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "nutritionalSupplementVitaminsPayment",
+            "name": "Nutritional Supplement Vitamins Payment",
+            "id": 39,
+            "description": "The amount to be paid out for the nutritional vitamin supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -109,8 +243,8 @@
         "hitPolicy": "first"
       },
       "position": {
-        "x": 270,
-        "y": 995
+        "x": 225,
+        "y": 920
       }
     },
     {
@@ -149,164 +283,8 @@
         "hitPolicy": "first"
       },
       "position": {
-        "x": 270,
-        "y": 1300
-      }
-    },
-    {
-      "id": "cba338c5-a24e-4d01-91f8-ceb95afa3b3f",
-      "name": "Receiving other Nutritional Supplement?",
-      "type": "decisionTableNode",
-      "content": {
-        "rules": [
-          {
-            "_id": "e996df6f-b67d-431d-a261-2bc6ec365d4f",
-            "31a6e9fd-31ba-48ef-b798-58e124342e7b": "benefitMonth",
-            "32a84324-db15-4f3b-adb9-5423aeb8066b": "true",
-            "433aac2d-556c-4b54-9a1f-4f466cc140fe": "true",
-            "91bb3648-57ef-4def-b6b2-e83a444715c3": "false",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "",
-            "d6a4b0f0-7c06-441e-8e1d-a1201c9339ce": "true",
-            "d8177aa8-1892-40fc-8abc-9d9360645ee0": "personID",
-            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "true",
-            "eae67c55-d087-41d3-a7ad-2281d93b96d9": "false",
-            "f18e1192-0e30-421b-8e84-ac20850c49e2": "caseID"
-          },
-          {
-            "_id": "75c515a6-cbd8-4f43-a4cb-81bab8acf01b",
-            "31a6e9fd-31ba-48ef-b798-58e124342e7b": "benefitMonth",
-            "32a84324-db15-4f3b-adb9-5423aeb8066b": "true",
-            "433aac2d-556c-4b54-9a1f-4f466cc140fe": "",
-            "91bb3648-57ef-4def-b6b2-e83a444715c3": "true",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "",
-            "d6a4b0f0-7c06-441e-8e1d-a1201c9339ce": "",
-            "d8177aa8-1892-40fc-8abc-9d9360645ee0": "personID",
-            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "true",
-            "eae67c55-d087-41d3-a7ad-2281d93b96d9": "",
-            "f18e1192-0e30-421b-8e84-ac20850c49e2": "caseID"
-          },
-          {
-            "_id": "af3ccf89-6d6d-44d8-baa7-6630026907db",
-            "31a6e9fd-31ba-48ef-b798-58e124342e7b": "benefitMonth",
-            "32a84324-db15-4f3b-adb9-5423aeb8066b": "false",
-            "433aac2d-556c-4b54-9a1f-4f466cc140fe": "",
-            "91bb3648-57ef-4def-b6b2-e83a444715c3": "",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"Need for supplement has not been verified by an adjudicator\"",
-            "d6a4b0f0-7c06-441e-8e1d-a1201c9339ce": "",
-            "d8177aa8-1892-40fc-8abc-9d9360645ee0": "personID",
-            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "false",
-            "eae67c55-d087-41d3-a7ad-2281d93b96d9": "",
-            "f18e1192-0e30-421b-8e84-ac20850c49e2": "caseID"
-          },
-          {
-            "_id": "45c19c52-08b0-42dd-b8a9-7101c6424eb0",
-            "31a6e9fd-31ba-48ef-b798-58e124342e7b": "benefitMonth",
-            "32a84324-db15-4f3b-adb9-5423aeb8066b": "false",
-            "433aac2d-556c-4b54-9a1f-4f466cc140fe": "false",
-            "91bb3648-57ef-4def-b6b2-e83a444715c3": "",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"Person is not designated as PWD\"",
-            "d6a4b0f0-7c06-441e-8e1d-a1201c9339ce": "",
-            "d8177aa8-1892-40fc-8abc-9d9360645ee0": "personID",
-            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "",
-            "eae67c55-d087-41d3-a7ad-2281d93b96d9": "",
-            "f18e1192-0e30-421b-8e84-ac20850c49e2": "caseID"
-          },
-          {
-            "_id": "0cda4532-3cac-43d8-add3-1d31c245210a",
-            "31a6e9fd-31ba-48ef-b798-58e124342e7b": "benefitMonth",
-            "32a84324-db15-4f3b-adb9-5423aeb8066b": "false",
-            "433aac2d-556c-4b54-9a1f-4f466cc140fe": "",
-            "91bb3648-57ef-4def-b6b2-e83a444715c3": "",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"Person not in pay of Disability Assistance for the month specified\"",
-            "d6a4b0f0-7c06-441e-8e1d-a1201c9339ce": "false",
-            "d8177aa8-1892-40fc-8abc-9d9360645ee0": "personID",
-            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "",
-            "eae67c55-d087-41d3-a7ad-2281d93b96d9": "",
-            "f18e1192-0e30-421b-8e84-ac20850c49e2": "caseID"
-          },
-          {
-            "_id": "7b76513c-ad0f-4e8b-8e4f-4c5fc2a99515",
-            "31a6e9fd-31ba-48ef-b798-58e124342e7b": "benefitMonth",
-            "32a84324-db15-4f3b-adb9-5423aeb8066b": "false",
-            "433aac2d-556c-4b54-9a1f-4f466cc140fe": "",
-            "91bb3648-57ef-4def-b6b2-e83a444715c3": "",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"Person is residing in a care facility other than an alcohol or drug treatment centre\"",
-            "d6a4b0f0-7c06-441e-8e1d-a1201c9339ce": "",
-            "d8177aa8-1892-40fc-8abc-9d9360645ee0": "personID",
-            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "",
-            "eae67c55-d087-41d3-a7ad-2281d93b96d9": "true",
-            "f18e1192-0e30-421b-8e84-ac20850c49e2": "caseID"
-          }
-        ],
-        "inputs": [
-          {
-            "id": "433aac2d-556c-4b54-9a1f-4f466cc140fe",
-            "name": "PWD Designation",
-            "type": "expression",
-            "field": "hasPWDDesignation"
-          },
-          {
-            "id": "d6a4b0f0-7c06-441e-8e1d-a1201c9339ce",
-            "name": "In Pay of Disability Assistance",
-            "type": "expression",
-            "field": "inPayOfDA"
-          },
-          {
-            "id": "eae67c55-d087-41d3-a7ad-2281d93b96d9",
-            "name": "Residing in a Special Care Facility (other than alcohol or drug treatment centre)",
-            "type": "expression",
-            "field": "residingInCareFacility"
-          },
-          {
-            "id": "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d",
-            "name": "Has provided necessary verification that health situation meets criteria in the MNS Symptoms list",
-            "type": "expression",
-            "field": "verificationOfNeedProvided"
-          },
-          {
-            "id": "91bb3648-57ef-4def-b6b2-e83a444715c3",
-            "name": "Is Receiving Another Nutritional Supplement",
-            "type": "expression",
-            "field": "isReceivingAnotherNutritionalSupplement"
-          }
-        ],
-        "outputs": [
-          {
-            "id": "31a6e9fd-31ba-48ef-b798-58e124342e7b",
-            "name": "Benefit Month",
-            "type": "expression",
-            "field": "benefitMonth"
-          },
-          {
-            "id": "d8177aa8-1892-40fc-8abc-9d9360645ee0",
-            "name": "Person ID",
-            "type": "expression",
-            "field": "personID"
-          },
-          {
-            "id": "f18e1192-0e30-421b-8e84-ac20850c49e2",
-            "name": "Case ID",
-            "type": "expression",
-            "field": "caseID"
-          },
-          {
-            "id": "32a84324-db15-4f3b-adb9-5423aeb8066b",
-            "name": "Is Eligible",
-            "type": "expression",
-            "field": "isEligible"
-          },
-          {
-            "id": "9e52fae8-e6a5-4878-ad99-70de7b33fe1f",
-            "name": "Explanation",
-            "type": "expression",
-            "field": "explanation"
-          }
-        ],
-        "hitPolicy": "first"
-      },
-      "position": {
-        "x": 1885,
-        "y": -225
+        "x": 230,
+        "y": 1040
       }
     },
     {
@@ -354,25 +332,17 @@
       "name": "Residing in Special Care Facility (other than Alcohol/Drug)?",
       "type": "decisionTableNode",
       "content": {
-        "rules": [
-          {
-            "_id": "e996df6f-b67d-431d-a261-2bc6ec365d4f",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"\"",
-            "eae67c55-d087-41d3-a7ad-2281d93b96d9": "false"
-          },
-          {
-            "_id": "7b76513c-ad0f-4e8b-8e4f-4c5fc2a99515",
-            "_description": "",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"To qualify, persons may not be residing in a care facility other than an alcohol or drug treatment centre.\"",
-            "eae67c55-d087-41d3-a7ad-2281d93b96d9": "true"
-          }
-        ],
+        "hitPolicy": "first",
         "inputs": [
           {
-            "id": "eae67c55-d087-41d3-a7ad-2281d93b96d9",
-            "name": "Residing in a Special Care Facility (other than alcohol or drug treatment centre)",
-            "type": "expression",
-            "field": "residingInCareFacilityOtherThanAlcoholOrDrug"
+            "id": "79ee77c9-88c5-4c1a-a7f0-b7fb7a182efb",
+            "field": "residingInCareFacility",
+            "name": "Residing In Care Facility"
+          },
+          {
+            "id": "0eae7297-d8da-455a-921d-28249ed1546a",
+            "field": "isAlcoholOrDrugFacility",
+            "name": "An Alcohol Or Drug Care Facility"
           }
         ],
         "outputs": [
@@ -383,7 +353,27 @@
             "field": "residingInCareFacilityComments"
           }
         ],
-        "hitPolicy": "first"
+        "rules": [
+          {
+            "_id": "e996df6f-b67d-431d-a261-2bc6ec365d4f",
+            "79ee77c9-88c5-4c1a-a7f0-b7fb7a182efb": "false",
+            "0eae7297-d8da-455a-921d-28249ed1546a": "",
+            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"\""
+          },
+          {
+            "_id": "7b76513c-ad0f-4e8b-8e4f-4c5fc2a99515",
+            "_description": "",
+            "79ee77c9-88c5-4c1a-a7f0-b7fb7a182efb": "true",
+            "0eae7297-d8da-455a-921d-28249ed1546a": "false",
+            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"To qualify, persons may not be residing in a care facility other than an alcohol or drug treatment centre.\""
+          },
+          {
+            "_id": "b80ba4fe-09ee-4186-b090-8ea92856fd14",
+            "79ee77c9-88c5-4c1a-a7f0-b7fb7a182efb": "",
+            "0eae7297-d8da-455a-921d-28249ed1546a": "",
+            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"\""
+          }
+        ]
       },
       "position": {
         "x": -740,
@@ -435,6 +425,23 @@
       "name": "MNS payment already received?",
       "type": "decisionTableNode",
       "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "433aac2d-556c-4b54-9a1f-4f466cc140fe",
+            "name": "MNS Payment Already Made",
+            "type": "expression",
+            "field": "mnsPaymentAlreadyMade"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "9e52fae8-e6a5-4878-ad99-70de7b33fe1f",
+            "name": "Comments",
+            "type": "expression",
+            "field": "paymentAlreadyMadeComments"
+          }
+        ],
         "rules": [
           {
             "_id": "e996df6f-b67d-431d-a261-2bc6ec365d4f",
@@ -446,24 +453,7 @@
             "433aac2d-556c-4b54-9a1f-4f466cc140fe": "true",
             "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"A Monthly Nutritional Supplement payment has already been made for the person for this benefit month.\""
           }
-        ],
-        "inputs": [
-          {
-            "id": "433aac2d-556c-4b54-9a1f-4f466cc140fe",
-            "name": "Person has already received an MNS payment for the benefit month",
-            "type": "expression",
-            "field": "MNSPaymentAlreadyMade"
-          }
-        ],
-        "outputs": [
-          {
-            "id": "9e52fae8-e6a5-4878-ad99-70de7b33fe1f",
-            "name": "Comments",
-            "type": "expression",
-            "field": "paymentAlreadyMadeComments"
-          }
-        ],
-        "hitPolicy": "first"
+        ]
       },
       "position": {
         "x": -745,
@@ -475,44 +465,7 @@
       "name": "Eligibility for Payment",
       "type": "decisionTableNode",
       "content": {
-        "rules": [
-          {
-            "_id": "f42edef3-4db8-4fa3-aa2c-543302cd4cc8",
-            "01aaa60c-f269-4058-bbe2-9cfb68c71bab": "mnsType",
-            "0663ea05-3cb8-4c93-ad28-c15aaccbc6ac": "",
-            "10408504-f96d-4057-80cd-5177a43e21b4": "dietSupplementAmount",
-            "151d2b93-e1df-47ec-9208-878f600b9274": "false",
-            "2e5383aa-272d-429e-ae01-9796e04f7abb": "benefitMonth",
-            "575892db-853a-4153-ab72-fe1a0bc1816e": "personID",
-            "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "false",
-            "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "true",
-            "734bc693-aa56-4ab5-903c-65d1a58d453c": "true",
-            "7f5afc86-85b1-401e-8f35-afe1138caf4d": "false",
-            "9a016649-3e84-45dc-b774-b8d3b54f5bd5": "false",
-            "b3e2189c-cb2f-484e-b058-64858cb99ebe": "true",
-            "b58041b1-f75f-447b-a138-19e241f76d7f": "receivingDietSupplement",
-            "c1bf0321-88ca-4dd5-a773-330124859839": "false",
-            "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868": "true"
-          },
-          {
-            "_id": "f90c8a54-0159-4b4d-a2cc-776dcaeba7cb",
-            "01aaa60c-f269-4058-bbe2-9cfb68c71bab": "",
-            "0663ea05-3cb8-4c93-ad28-c15aaccbc6ac": "string(PWDComments + inPayOfDAComments + paymentAlreadyMadeComments + residingInCareFacilityComments + verificationOfNeedConfirmedComments + receivingScheduleCAppealAwardGPComments + receivingInKindComments + familyUnitDeemedIneligibleComments)",
-            "10408504-f96d-4057-80cd-5177a43e21b4": "",
-            "151d2b93-e1df-47ec-9208-878f600b9274": "",
-            "2e5383aa-272d-429e-ae01-9796e04f7abb": "benefitMonth",
-            "575892db-853a-4153-ab72-fe1a0bc1816e": "personID",
-            "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "",
-            "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "false",
-            "734bc693-aa56-4ab5-903c-65d1a58d453c": "",
-            "7f5afc86-85b1-401e-8f35-afe1138caf4d": "",
-            "9a016649-3e84-45dc-b774-b8d3b54f5bd5": "",
-            "b3e2189c-cb2f-484e-b058-64858cb99ebe": "",
-            "b58041b1-f75f-447b-a138-19e241f76d7f": "",
-            "c1bf0321-88ca-4dd5-a773-330124859839": "",
-            "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868": ""
-          }
-        ],
+        "hitPolicy": "first",
         "inputs": [
           {
             "id": "734bc693-aa56-4ab5-903c-65d1a58d453c",
@@ -528,15 +481,15 @@
           },
           {
             "id": "7f5afc86-85b1-401e-8f35-afe1138caf4d",
-            "name": "MNS Payment Already Made? ",
+            "name": "MNS Payment Already Made",
             "type": "expression",
-            "field": "MNSPaymentAlreadyMade"
+            "field": "mnsPaymentAlreadyMade"
           },
           {
             "id": "c1bf0321-88ca-4dd5-a773-330124859839",
-            "name": "Residing in Special Care Facility (other than Alcohol or Drug)?",
+            "name": "An Alcohol Or Drug Care Facility",
             "type": "expression",
-            "field": "residingInCareFacilityOtherThanAlcoholOrDrug"
+            "field": "isAlcoholOrDrugFacility"
           },
           {
             "id": "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868",
@@ -546,9 +499,9 @@
           },
           {
             "id": "151d2b93-e1df-47ec-9208-878f600b9274",
-            "name": "Receiving Tube Feed or another nutrition-related in-kind supplement (including STNS)",
+            "name": "Receiving In-Kind Nutrition-Related Supplement",
             "type": "expression",
-            "field": "receivingInKind"
+            "field": "receivingInKindNutrition"
           },
           {
             "id": "5b0a036e-808e-4c9a-b1e6-5aa7760d9570",
@@ -566,52 +519,41 @@
         "outputs": [
           {
             "id": "615dcb0c-70ef-4a8b-9687-26d63ef3993c",
-            "name": "Is Eligible for Payment?",
+            "name": "Is Eligible",
             "type": "expression",
-            "field": "isEligibleForPayment"
-          },
-          {
-            "id": "2e5383aa-272d-429e-ae01-9796e04f7abb",
-            "name": "Benefit Month",
-            "type": "expression",
-            "field": "benefitMonth"
-          },
-          {
-            "id": "575892db-853a-4153-ab72-fe1a0bc1816e",
-            "name": "Person ID",
-            "type": "expression",
-            "field": "personID"
-          },
-          {
-            "id": "0663ea05-3cb8-4c93-ad28-c15aaccbc6ac",
-            "name": "Reason(s) for Ineligibility",
-            "type": "expression",
-            "field": "reasonsForIneligibility"
-          },
-          {
-            "id": "01aaa60c-f269-4058-bbe2-9cfb68c71bab",
-            "name": "MNS Type",
-            "type": "expression",
-            "field": "mnsType"
-          },
-          {
-            "id": "b58041b1-f75f-447b-a138-19e241f76d7f",
-            "name": "Receiving Diet Supplement?",
-            "type": "expression",
-            "field": "receivingDietSupplement"
-          },
-          {
-            "id": "10408504-f96d-4057-80cd-5177a43e21b4",
-            "name": "Diet Supplement Amount",
-            "type": "expression",
-            "field": "dietSupplementAmount"
+            "field": "isEligible"
           }
         ],
-        "hitPolicy": "first"
+        "rules": [
+          {
+            "_id": "f42edef3-4db8-4fa3-aa2c-543302cd4cc8",
+            "734bc693-aa56-4ab5-903c-65d1a58d453c": "true",
+            "b3e2189c-cb2f-484e-b058-64858cb99ebe": "true",
+            "7f5afc86-85b1-401e-8f35-afe1138caf4d": "false",
+            "c1bf0321-88ca-4dd5-a773-330124859839": "isAlcoholOrDrugFacility == true or residingInCareFacility == false",
+            "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868": "true",
+            "151d2b93-e1df-47ec-9208-878f600b9274": "false",
+            "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "false",
+            "9a016649-3e84-45dc-b774-b8d3b54f5bd5": "false",
+            "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "true"
+          },
+          {
+            "_id": "f90c8a54-0159-4b4d-a2cc-776dcaeba7cb",
+            "734bc693-aa56-4ab5-903c-65d1a58d453c": "",
+            "b3e2189c-cb2f-484e-b058-64858cb99ebe": "",
+            "7f5afc86-85b1-401e-8f35-afe1138caf4d": "",
+            "c1bf0321-88ca-4dd5-a773-330124859839": "",
+            "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868": "",
+            "151d2b93-e1df-47ec-9208-878f600b9274": "",
+            "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "",
+            "9a016649-3e84-45dc-b774-b8d3b54f5bd5": "",
+            "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "false"
+          }
+        ]
       },
       "position": {
-        "x": -385,
-        "y": 1030
+        "x": -395,
+        "y": 1100
       }
     },
     {
@@ -623,17 +565,17 @@
         "statements": [
           {
             "id": "03123220-6e98-47d0-9803-7a5e2f391075",
-            "condition": "isEligibleForPayment == true"
+            "condition": "isEligible == true"
           },
           {
             "id": "35712b6e-83b2-4648-9490-60d56fae0eca",
-            "condition": "isEligibleForPayment == false"
+            "condition": "isEligible == false"
           }
         ]
       },
       "position": {
-        "x": -65,
-        "y": 1030
+        "x": -90,
+        "y": 1040
       }
     },
     {
@@ -641,20 +583,7 @@
       "name": "Calculate Amounts to Pay",
       "type": "decisionTableNode",
       "content": {
-        "rules": [
-          {
-            "_id": "8d80eb57-b335-46c1-a0c6-0e638d9e43df",
-            "10006dac-0602-4768-aee1-f123e3721e11": "",
-            "3598171e-af81-4ba4-8d44-a77305601499": "personID",
-            "4c00e14f-de54-438a-ba7a-433eaa8e2e5c": "benefitMonth",
-            "4d1337a7-481b-48e1-9c9f-7e781526c5f1": "true",
-            "57669f33-eae2-4b89-9bfa-d8b74c46b689": "additionalNutritionalItemsAmount - dietSupplementAmount",
-            "5a1dfbff-aae4-4666-b801-91a3104d65b9": "",
-            "be7b38a2-978a-401d-976c-4cc7e733c718": "",
-            "cb2ba9b6-0ceb-447a-8e9e-31f893d6a601": "vitaminsOrMineralsAmount",
-            "f5471bf2-bd3a-404c-9e9f-b2da00743153": ""
-          }
-        ],
+        "hitPolicy": "first",
         "inputs": [
           {
             "id": "5a1dfbff-aae4-4666-b801-91a3104d65b9",
@@ -673,33 +602,9 @@
             "name": "Diet Supplement Amount",
             "type": "expression",
             "field": "dietSupplementAmount"
-          },
-          {
-            "id": "10006dac-0602-4768-aee1-f123e3721e11",
-            "name": "Schedule C Amount",
-            "type": "expression",
-            "field": "scheduleCAmount"
           }
         ],
         "outputs": [
-          {
-            "id": "3598171e-af81-4ba4-8d44-a77305601499",
-            "name": "Person ID",
-            "type": "expression",
-            "field": "personID"
-          },
-          {
-            "id": "4c00e14f-de54-438a-ba7a-433eaa8e2e5c",
-            "name": "Benefit Month",
-            "type": "expression",
-            "field": "benefitMonth"
-          },
-          {
-            "id": "4d1337a7-481b-48e1-9c9f-7e781526c5f1",
-            "name": "Eligible for Payment?",
-            "type": "expression",
-            "field": "isEligibleForPayment"
-          },
           {
             "id": "cb2ba9b6-0ceb-447a-8e9e-31f893d6a601",
             "name": "Payment Amount for Code 28 (Nutritional Supplement - Vitamins)",
@@ -711,13 +616,34 @@
             "name": "Payment Amount for Code 22 (Nutritional Supplement - Diet)",
             "type": "expression",
             "field": "nutritionalSupplementDietPayment"
+          },
+          {
+            "id": "843dbcce-69c3-403b-aa17-7655fac1703b",
+            "field": "isEligible",
+            "name": "Is Eligible"
+          },
+          {
+            "id": "d0aa3d54-041a-4fd5-8cff-de0fd9a25cdd",
+            "field": "reason",
+            "name": "Reason"
           }
         ],
-        "hitPolicy": "first"
+        "rules": [
+          {
+            "_id": "8d80eb57-b335-46c1-a0c6-0e638d9e43df",
+            "5a1dfbff-aae4-4666-b801-91a3104d65b9": "",
+            "be7b38a2-978a-401d-976c-4cc7e733c718": "",
+            "f5471bf2-bd3a-404c-9e9f-b2da00743153": "",
+            "cb2ba9b6-0ceb-447a-8e9e-31f893d6a601": "vitaminsOrMineralsAmount",
+            "57669f33-eae2-4b89-9bfa-d8b74c46b689": "additionalNutritionalItemsAmount - dietSupplementAmount",
+            "843dbcce-69c3-403b-aa17-7655fac1703b": "true",
+            "d0aa3d54-041a-4fd5-8cff-de0fd9a25cdd": "null"
+          }
+        ]
       },
       "position": {
-        "x": 635,
-        "y": 1100
+        "x": 555,
+        "y": 945
       }
     },
     {
@@ -725,24 +651,13 @@
       "name": "Receiving In-Kind?",
       "type": "decisionTableNode",
       "content": {
-        "rules": [
-          {
-            "_id": "e996df6f-b67d-431d-a261-2bc6ec365d4f",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"Persons cannot receive payments for Monthly Nutritional Supplement at the same time as they are receiving an in-kind nutrition-related supplement.\"",
-            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "true"
-          },
-          {
-            "_id": "af3ccf89-6d6d-44d8-baa7-6630026907db",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"\"",
-            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "false"
-          }
-        ],
+        "hitPolicy": "first",
         "inputs": [
           {
             "id": "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d",
-            "name": "Receiving Tube Feed or another nutrition-related in-kind supplement (including STNS)",
+            "name": "Receiving In-Kind Nutrition-Related Supplement",
             "type": "expression",
-            "field": "receivingInKind"
+            "field": "receivingInKindNutrition"
           }
         ],
         "outputs": [
@@ -753,7 +668,18 @@
             "field": "receivingInKindComments"
           }
         ],
-        "hitPolicy": "first"
+        "rules": [
+          {
+            "_id": "e996df6f-b67d-431d-a261-2bc6ec365d4f",
+            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "true",
+            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"Persons cannot receive payments for Monthly Nutritional Supplement at the same time as they are receiving an in-kind nutrition-related supplement.\""
+          },
+          {
+            "_id": "af3ccf89-6d6d-44d8-baa7-6630026907db",
+            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "false",
+            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"\""
+          }
+        ]
       },
       "position": {
         "x": -745,
@@ -838,6 +764,29 @@
       "position": {
         "x": -745,
         "y": 1320
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "643b5f01-1cb3-452c-a698-90f822538f92",
+            "key": "isEligible",
+            "value": "isEligible"
+          },
+          {
+            "id": "47823af6-b160-4599-8988-9942fdde5875",
+            "key": "reason",
+            "value": "string(PWDComments + inPayOfDAComments + paymentAlreadyMadeComments + residingInCareFacilityComments + verificationOfNeedConfirmedComments + receivingScheduleCAppealAwardGPComments + receivingInKindComments + familyUnitDeemedIneligibleComments)"
+          }
+        ]
+      },
+      "id": "faf6749c-ea23-4394-b443-477f69e94bcf",
+      "name": "Ineligible Reason",
+      "position": {
+        "x": -90,
+        "y": 1310
       }
     }
   ],
@@ -925,13 +874,6 @@
       "targetId": "5f8aaaa5-1a18-4baa-afc1-515a551e79a8"
     },
     {
-      "id": "efce16a9-a601-4e3f-8b9a-b7043b97a478",
-      "type": "edge",
-      "sourceId": "064f4995-bc7c-4bed-8c44-e66af5427c87",
-      "targetId": "84207ef0-f655-4d3d-81cd-998ba75e76ff",
-      "sourceHandle": "35712b6e-83b2-4648-9490-60d56fae0eca"
-    },
-    {
       "id": "2ca2d98b-08cb-47cf-b98b-3d1773900005",
       "type": "edge",
       "sourceId": "14d83ef9-f602-42cd-a53b-f804f9f514d8",
@@ -1002,6 +944,73 @@
       "type": "edge",
       "sourceId": "b2e9e49a-56aa-4a97-bc32-67c75e96baad",
       "targetId": "f9ca2047-7159-4d0a-aba2-6b6df7436920"
+    },
+    {
+      "id": "2475909d-dd2a-43d4-8349-861d55d45ace",
+      "sourceId": "37f1e8ea-3729-48ea-b9fe-21e8a06f0ef4",
+      "type": "edge",
+      "targetId": "064f4995-bc7c-4bed-8c44-e66af5427c87"
+    },
+    {
+      "id": "48842972-1c96-40ed-bf4e-2b551613a7a6",
+      "sourceId": "064f4995-bc7c-4bed-8c44-e66af5427c87",
+      "type": "edge",
+      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf",
+      "sourceHandle": "35712b6e-83b2-4648-9490-60d56fae0eca"
+    },
+    {
+      "id": "d6c31cac-a288-4147-87cf-d0b31c50331f",
+      "sourceId": "faf6749c-ea23-4394-b443-477f69e94bcf",
+      "type": "edge",
+      "targetId": "84207ef0-f655-4d3d-81cd-998ba75e76ff"
+    },
+    {
+      "id": "19d98ab2-438a-4b2c-b3e5-7a7b0305859b",
+      "sourceId": "711c9a25-7b13-4580-aa38-16ab482eae35",
+      "type": "edge",
+      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf"
+    },
+    {
+      "id": "7f8b4fe8-07be-40c2-9ee3-2d3adf9d5c8e",
+      "sourceId": "596ad9af-199f-4225-a5e1-2e885d3ef17a",
+      "type": "edge",
+      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf"
+    },
+    {
+      "id": "a31f543d-7030-4641-a4ae-ba7ac19b683f",
+      "sourceId": "780a31ac-9d63-48d0-8d09-0f1cacb09919",
+      "type": "edge",
+      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf"
+    },
+    {
+      "id": "7176777f-98a2-471b-88b7-767de73b2813",
+      "sourceId": "19173f76-c902-4bab-86bd-0ff13642e685",
+      "type": "edge",
+      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf"
+    },
+    {
+      "id": "042b4378-7b5d-479e-8629-b0772478962b",
+      "sourceId": "14d83ef9-f602-42cd-a53b-f804f9f514d8",
+      "type": "edge",
+      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf"
+    },
+    {
+      "id": "9c7a95e5-f2fb-4d5b-823d-74f052f1c4fb",
+      "sourceId": "9b2dc08d-68ad-4885-88da-c2e46e43048d",
+      "type": "edge",
+      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf"
+    },
+    {
+      "id": "9809d0bb-861f-4d89-9e3d-26dcffb6a252",
+      "sourceId": "b2e9e49a-56aa-4a97-bc32-67c75e96baad",
+      "type": "edge",
+      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf"
+    },
+    {
+      "id": "b658a8eb-e4ca-45e6-bfba-5a43d442198c",
+      "sourceId": "129f54bb-e711-4827-bd8a-1e39f289a2ef",
+      "type": "edge",
+      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf"
     }
   ]
 }

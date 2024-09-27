@@ -8,6 +8,30 @@
       "position": {
         "x": -270,
         "y": 220
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "childCountDeemedEligible",
+            "name": "Children Deemed Eligible for Support In Lieu",
+            "id": 71,
+            "description": "A count of the children that would be 'deemed' eligible for support in lieu, as they are not eligible for CCB due to their age.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "childCountCCBEligible",
+            "name": "Count of children eligible for CCB",
+            "id": 70,
+            "description": "A count of the children in a family unit that would be eligible for CCB based on their age.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -17,6 +41,20 @@
       "position": {
         "x": 705,
         "y": 285
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "monthlyCCBTopupInLieuAmount",
+            "name": "Monthly CCB Topup In Lieu Amount",
+            "id": 74,
+            "description": "The amount to issue to a family unit for Support in Lieu of CCB, based on the number of children in the family unit who would receive CCB and those who are deemed eligible to receive support in lieu.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
       }
     },
     {

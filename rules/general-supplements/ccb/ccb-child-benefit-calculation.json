@@ -8,6 +8,30 @@
       "position": {
         "x": 15,
         "y": 195
+      },
+      "content": {
+        "fields": [
+          {
+            "name": "Count of children eligible for CCB",
+            "field": "childCountCCBEligible",
+            "id": 70,
+            "description": "A count of the children in a family unit that would be eligible for CCB based on their age.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "adjustedFamilyNetIncome",
+            "name": "Adjusted Family Net Income",
+            "id": 72,
+            "description": "The Adjusted Family Net Income as reported in the data match for Canada Child Benefits.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -17,6 +41,20 @@
       "position": {
         "x": 1580,
         "y": 205
+      },
+      "content": {
+        "fields": [
+          {
+            "name": "Monthly Child Benefit Topup Amount",
+            "field": "monthlyChildBenefitTopupAmount",
+            "id": 73,
+            "description": "The calculated monthly child benefit top-up amount. This is the amount calculated as a family unit having 'received' in child benefits from the federal government per month based on the number of children in their family unit and the adjusted family net income.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -69,18 +107,7 @@
       "name": "incomeCalculation",
       "type": "decisionTableNode",
       "content": {
-        "rules": [
-          {
-            "_id": "9cb85ac4-352a-4006-82eb-b4531a012623",
-            "4cf57968-f6c6-4428-b961-c663319fba99": "adjustedFamilyNetIncome-31220.7",
-            "b95474de-3dce-4306-9a50-873aa0c16220": ">31220.7"
-          },
-          {
-            "_id": "dca9ab86-e969-4703-b76a-a8332b0115f4",
-            "4cf57968-f6c6-4428-b961-c663319fba99": "0",
-            "b95474de-3dce-4306-9a50-873aa0c16220": "<=31220.7"
-          }
-        ],
+        "hitPolicy": "first",
         "inputs": [
           {
             "id": "b95474de-3dce-4306-9a50-873aa0c16220",
@@ -97,7 +124,18 @@
             "field": "remainingFamilyNetIncome"
           }
         ],
-        "hitPolicy": "first"
+        "rules": [
+          {
+            "_id": "9cb85ac4-352a-4006-82eb-b4531a012623",
+            "4cf57968-f6c6-4428-b961-c663319fba99": "adjustedFamilyNetIncome-32688.07",
+            "b95474de-3dce-4306-9a50-873aa0c16220": ">32688.07"
+          },
+          {
+            "_id": "dca9ab86-e969-4703-b76a-a8332b0115f4",
+            "4cf57968-f6c6-4428-b961-c663319fba99": "0",
+            "b95474de-3dce-4306-9a50-873aa0c16220": "<=32688.07"
+          }
+        ]
       },
       "position": {
         "x": 360,

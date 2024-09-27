@@ -5,14 +5,45 @@
       "id": "138b7ca6-85a6-4f27-b7ff-69d619e2b362",
       "type": "inputNode",
       "position": {
-        "x": -420,
-        "y": 30
+        "x": -390,
+        "y": -25
       },
       "name": "request",
       "content": {
         "fields": [
           {
-            "name": ""
+            "name": "Family Unit In Pay",
+            "field": "familyUnitInPay",
+            "id": 18,
+            "description": "Family unit is in pay.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isActiveOnCase",
+            "name": "Is Active On Case",
+            "id": 27,
+            "description": "Individual is 'active' on case.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isIDRequired",
+            "name": "ID is Required",
+            "id": 97,
+            "description": "ID is considered a required piece of identification.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "idCost",
+            "name": "Cost of ID",
+            "id": 98,
+            "description": "The declared cost of obtaining a piece of identification.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
           }
         ]
       }
@@ -21,14 +52,29 @@
       "id": "430d94ce-ca8b-4141-a249-73aab3e989f7",
       "type": "outputNode",
       "position": {
-        "x": 265,
-        "y": 10
+        "x": 215,
+        "y": -10
       },
       "name": "response",
       "content": {
         "fields": [
           {
-            "name": ""
+            "name": "Is Eligible",
+            "field": "isEligible",
+            "id": 28,
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "id": 58,
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
           }
         ]
       }
@@ -46,9 +92,9 @@
         "inputs": [
           {
             "id": "2b5bfae7-855a-402f-b857-40fc40de159b",
-            "name": "inPay",
+            "name": "Family Unit In Pay",
             "type": "expression",
-            "field": "inPay"
+            "field": "familyUnitInPay"
           },
           {
             "id": "6cc9445e-8787-4dff-9b22-412eb7e26948",

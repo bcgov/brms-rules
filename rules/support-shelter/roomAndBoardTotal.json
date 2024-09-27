@@ -180,7 +180,7 @@
           {
             "id": "bb5eb9f9-9ca3-4afb-8395-549910133923",
             "key": "roomAndBoardCalculationBAmount",
-            "value": "shelterAmount + supportAmount"
+            "value": "shelterAmount + supportFinalAmount"
           }
         ]
       }

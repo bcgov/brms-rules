@@ -5,8 +5,8 @@
       "id": "358e427e-ba5e-4811-b851-fb41a73d34ad",
       "name": "request",
       "position": {
-        "x": 0,
-        "y": 185
+        "x": -20,
+        "y": 205
       },
       "content": {
         "fields": [
@@ -15,14 +15,6 @@
             "name": "Family unit is eligible for IA, DA, or HA",
             "id": 81,
             "description": "Family unit is eligible for income assistance, disability assistance or hardship assistance.",
-            "dataType": "true-false",
-            "childFields": []
-          },
-          {
-            "field": "isDepositNecessary",
-            "name": "Family unit requires the security deposit in order to obtain/retain accommodation?",
-            "id": 109,
-            "description": null,
             "dataType": "true-false",
             "childFields": []
           },
@@ -40,6 +32,14 @@
             "id": 111,
             "description": null,
             "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "field": "isDepositNecessary",
+            "name": "Family unit requires the deposit in order to obtain/retain accommodation?",
+            "id": 109,
+            "description": null,
+            "dataType": "true-false",
             "childFields": []
           }
         ]

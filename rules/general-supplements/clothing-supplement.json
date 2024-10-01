@@ -1,0 +1,210 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "type": "inputNode",
+      "id": "1fd86f8b-c51d-4d29-8949-42185acb1201",
+      "name": "request",
+      "position": {
+        "x": -50,
+        "y": 115
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "isEligibleForAssistance",
+            "name": "Family unit is eligible for IA, DA, or HA",
+            "id": 81,
+            "description": "Family unit is eligible for income assistance, disability assistance or hardship assistance.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isRisidingInSpecialCareFacility ",
+            "name": "Residing in a special care facility",
+            "id": 112,
+            "description": null,
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isReceivingComfortsAllowance",
+            "name": "Receiving comforts allowance",
+            "id": 113,
+            "description": "Person is receiving comforts allowance",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isClothingProvided",
+            "name": "Is clothing provided by the facility",
+            "id": 114,
+            "description": null,
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "clothingCosts",
+            "name": "Requested amount for clothing supplement",
+            "id": 116,
+            "description": null,
+            "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "field": "isAlternateFundingAvailable",
+            "name": "isAlternateFundingAvailable",
+            "id": 115,
+            "description": "Person requesting supplement (& their family unit) do not have access to other resources to purchase clothing. Usually verbal or paper confirmation required. If facility is requesting, they may provide this detail.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "type": "outputNode",
+      "id": "f494aca4-0945-47fd-8e03-3fe83f533484",
+      "name": "response",
+      "position": {
+        "x": 640,
+        "y": 115
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "id": 58,
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "id": 28,
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "6f4dc495-11db-4791-8608-a58df8ffb5b2",
+            "field": "isEligibleForAssistance",
+            "name": "Family unit is eligible for IA, DA, or HA"
+          },
+          {
+            "id": "2e10d339-1431-4ccb-9a92-c476ecf4834a",
+            "name": "Residing in a special care facility",
+            "field": "isRisidingInSpecialCareFacility "
+          },
+          {
+            "id": "4bd6fa7d-e72a-4e53-bd13-8b6085094216",
+            "field": "isReceivingComfortsAllowance",
+            "name": "Receiving comforts allowance"
+          },
+          {
+            "id": "5cdaf4ea-cd47-4586-bc7d-7fae88827419",
+            "field": "isClothingProvided",
+            "name": "Is clothing provided by the facility"
+          },
+          {
+            "id": "4123b6cd-c306-4aed-8801-7c8e0e0abcd7",
+            "field": "isAlternateFundingAvailable",
+            "name": "isAlternateFundingAvailable"
+          },
+          {
+            "id": "41421b9c-5b39-4631-8afd-7bbf85dcf07f",
+            "field": "clothingCosts",
+            "name": "Requested amount for clothing supplement"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "bd7918f3-c5ef-48f0-b5bd-b9493f528980",
+            "name": "Is Eligible",
+            "field": "isEligible"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "fa46453a-b929-4844-97e8-ce6fa91891de",
+            "6f4dc495-11db-4791-8608-a58df8ffb5b2": "true",
+            "2e10d339-1431-4ccb-9a92-c476ecf4834a": "true",
+            "4bd6fa7d-e72a-4e53-bd13-8b6085094216": "true",
+            "5cdaf4ea-cd47-4586-bc7d-7fae88827419": "false",
+            "4123b6cd-c306-4aed-8801-7c8e0e0abcd7": "false",
+            "41421b9c-5b39-4631-8afd-7bbf85dcf07f": "",
+            "bd7918f3-c5ef-48f0-b5bd-b9493f528980": "true"
+          }
+        ]
+      },
+      "id": "39ffe434-5079-4fe3-892a-57aa6b6f65ad",
+      "name": "Eligibility",
+      "position": {
+        "x": 285,
+        "y": 115
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "33e95425-7de2-4ea0-8e6c-34e0f7f109eb",
+            "key": "supplementAmount",
+            "value": "isEligible == true and clothingCosts > 0 ? clothingCosts: 0"
+          }
+        ]
+      },
+      "id": "ffae526e-e77f-4e4d-8b86-fa9faef93cc2",
+      "name": "SupplementCalculation",
+      "position": {
+        "x": 305,
+        "y": 305
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "29cccb58-9642-4651-af15-7e0fa519aed6",
+      "sourceId": "1fd86f8b-c51d-4d29-8949-42185acb1201",
+      "type": "edge",
+      "targetId": "39ffe434-5079-4fe3-892a-57aa6b6f65ad"
+    },
+    {
+      "id": "87f8c4f4-f9cf-4d96-86ca-d97a77144a31",
+      "sourceId": "39ffe434-5079-4fe3-892a-57aa6b6f65ad",
+      "type": "edge",
+      "targetId": "ffae526e-e77f-4e4d-8b86-fa9faef93cc2"
+    },
+    {
+      "id": "893bd0dd-2a5a-42f5-bd20-beaf9696388b",
+      "sourceId": "1fd86f8b-c51d-4d29-8949-42185acb1201",
+      "type": "edge",
+      "targetId": "ffae526e-e77f-4e4d-8b86-fa9faef93cc2"
+    },
+    {
+      "id": "04ec64d8-6496-4d37-bd23-25b0f0fffb9c",
+      "sourceId": "ffae526e-e77f-4e4d-8b86-fa9faef93cc2",
+      "type": "edge",
+      "targetId": "f494aca4-0945-47fd-8e03-3fe83f533484"
+    },
+    {
+      "id": "31410f55-19fe-47e4-aa6a-4b8742dac7db",
+      "sourceId": "39ffe434-5079-4fe3-892a-57aa6b6f65ad",
+      "type": "edge",
+      "targetId": "f494aca4-0945-47fd-8e03-3fe83f533484"
+    }
+  ]
+}

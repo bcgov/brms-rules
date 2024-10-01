@@ -8,6 +8,72 @@
       "position": {
         "x": 25,
         "y": 385
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "hasPWDDesignation",
+            "name": "Has PWD Designation",
+            "id": 23,
+            "description": "Individual has PWD designation.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isEligibleForNextBenefitPeriod",
+            "name": "Is Eligible for the Next Benefit Period",
+            "id": 87,
+            "description": "The individual is eligible for assistance in the next benefit period.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isEligiblePreviousBenefitPeriod",
+            "name": "Was Eligible in Previous Benefit Period",
+            "id": 88,
+            "description": "The individual was eligible for assistance in the previous benefit period.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isMSOStatus",
+            "name": "Family Unit is MSO Status",
+            "id": 89,
+            "description": "Family unit currently has MSO status.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "currentDate",
+            "name": "The Current Date",
+            "id": 90,
+            "description": "This is the current date.",
+            "dataType": "date",
+            "validationCriteria": "1950-01-01",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "selectedPaymentOption",
+            "name": "Selected Payment Option ",
+            "id": 91,
+            "description": "The payment option selected for disbursement of this supplement.",
+            "dataType": "text-input",
+            "validationCriteria": "pass, cash",
+            "validationType": "[=text]",
+            "childFields": []
+          },
+          {
+            "field": "msoReason",
+            "name": "MSO Reason",
+            "id": 92,
+            "description": "The reason for why a family unit is in MSO status.",
+            "dataType": "text-input",
+            "validationCriteria": "AEE, Other",
+            "validationType": "[=text]",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -17,6 +83,58 @@
       "position": {
         "x": 1105,
         "y": 445
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "transportationSupplementType",
+            "name": "Transportation Supplement Type",
+            "id": 93,
+            "description": "The type of transportation supplement disbursed.",
+            "dataType": "text-input",
+            "validationCriteria": "In-kind Bus Pass, Cash",
+            "validationType": "[=text]",
+            "childFields": []
+          },
+          {
+            "field": "transportationSupplementAmount",
+            "name": "Transportation Supplement Amount",
+            "id": 94,
+            "description": "The amount to provide for the transportation supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "id": 28,
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "msoTransportationType",
+            "name": "MSO Transportation Type",
+            "id": 95,
+            "description": "The different types of transportation statuses for people with MSO status. If individuals entered MSO due to exhausting AEE, their eligibility is for the AEE Year, otherwise they are eligible for the current year only.",
+            "dataType": "text-input",
+            "validationCriteria": "AEE Year, Current Year",
+            "validationType": "[=text]",
+            "childFields": []
+          },
+          {
+            "field": "msoEligibleYear",
+            "name": "Year of MSO eligiblity for Transportation Supplement",
+            "id": 96,
+            "description": "The year that a family unit with MSO status has been found to be eligible for the transitional transportation supplement.",
+            "dataType": "date",
+            "validationCriteria": "1950-01-01",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -34,15 +152,15 @@
           },
           {
             "id": "e15293b5-0521-4242-9ee9-b9932557d791",
-            "name": "Next Benefit Period is Eligible for DA",
+            "name": "Is Eligible for the Next Benefit Period",
             "type": "expression",
             "field": "isEligibleForNextBenefitPeriod"
           },
           {
             "id": "501a514c-1b7e-49a8-8b7a-75704fe9c665",
-            "name": "Person was eligible for DA or HA in previous benefit period",
+            "name": "Was Eligible in Previous Benefit Period",
             "type": "expression",
-            "field": "isEligibleForPreviousBenefitPeriod"
+            "field": "isEligiblePreviousBenefitPeriod"
           },
           {
             "id": "90c2b6ab-3d20-4b4c-b895-ec8ed6872b06",
@@ -197,25 +315,25 @@
             "id": "0dddf43e-118f-4b2c-afa8-f97ab2685c3d",
             "name": "Person is Eligible for Transportation Supplement",
             "type": "expression",
-            "field": "eligibleForTransportationSupplement"
+            "field": "isEligible"
           }
         ],
         "rules": [
           {
             "_id": "c500bead-0c14-4d3c-ab25-82b0c0bb9e27",
-            "0dddf43e-118f-4b2c-afa8-f97ab2685c3d": "true",
+            "_description": "In-kind (concession bus pass costing $52)",
             "49890ec0-8f95-4750-98db-ebfad5f1a284": "== 'pass'",
-            "500d014f-fd23-4af8-8249-23727b89d54f": "",
             "b0819074-4d3c-4402-acbc-f79d7b39beb0": "\"In-kind Bus Pass\"",
-            "_description": "In-kind  (concession bus pass costing $52)"
+            "500d014f-fd23-4af8-8249-23727b89d54f": "",
+            "0dddf43e-118f-4b2c-afa8-f97ab2685c3d": "true"
           },
           {
             "_id": "20671669-3023-418a-9fe0-6e745a272dc2",
-            "0dddf43e-118f-4b2c-afa8-f97ab2685c3d": "true",
+            "_description": "",
             "49890ec0-8f95-4750-98db-ebfad5f1a284": "",
-            "500d014f-fd23-4af8-8249-23727b89d54f": "52",
             "b0819074-4d3c-4402-acbc-f79d7b39beb0": "\"Cash\"",
-            "_description": ""
+            "500d014f-fd23-4af8-8249-23727b89d54f": "52",
+            "0dddf43e-118f-4b2c-afa8-f97ab2685c3d": "true"
           }
         ]
       },
@@ -232,7 +350,7 @@
         "expressions": [
           {
             "id": "95932ee6-a39b-40e3-b2fe-8f9f1ad351cb",
-            "key": "eligibleForTransportationSupplement",
+            "key": "isEligible",
             "value": "isEligibleForTransportationSupplement"
           }
         ]
@@ -253,7 +371,7 @@
             "id": "49becb9a-dc07-4ca1-9307-d49e084b66b2",
             "name": "Person with MSO Status",
             "type": "expression",
-            "field": "isFamilyUnitMsoligible"
+            "field": "isMSOStatus"
           },
           {
             "id": "f83fde2c-312b-4d60-b271-e4184282b33a",

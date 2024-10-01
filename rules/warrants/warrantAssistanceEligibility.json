@@ -7,7 +7,43 @@
         "x": 0,
         "y": 195
       },
-      "name": "request"
+      "name": "request",
+      "content": {
+        "fields": [
+          {
+            "field": "person1Warrant",
+            "name": "Person 1 Has Warrant",
+            "id": 79,
+            "description": "There is an outstanding warrant for person 1 on the file.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person2Warrant",
+            "name": "Person 2 Has a Warrant",
+            "id": 80,
+            "description": "There is an outstanding warrant for person 2 on the file.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person1ExemptWarrant",
+            "name": "Person 1 is Exempt from their Warrant",
+            "id": 82,
+            "description": "Person 1 on a file is exempt from the status of having a warrant, and it will not impact their eligibility for assistance.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person2ExemptWarrant",
+            "name": "Person 2 is Exempt from their Warrant",
+            "id": 83,
+            "description": "Person 2 on a file is exempt from their warrant, and their warrant status will not impact the eligibility of the family unit for assistance.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
+      }
     },
     {
       "id": "0a5db759-bccd-4f31-a9f4-e0b060a0959c",
@@ -16,7 +52,19 @@
         "x": 570,
         "y": 195
       },
-      "name": "response"
+      "name": "response",
+      "content": {
+        "fields": [
+          {
+            "field": "isEligibleForAssistance",
+            "name": "Family unit is eligible for IA, DA, or HA",
+            "id": 81,
+            "description": "Family unit is eligible for income assistance, disability assistance or hardship assistance.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
+      }
     },
     {
       "id": "738d101c-af1e-4fb7-9401-2d8e84a4fbf2",
@@ -58,7 +106,7 @@
           {
             "id": "b7988629-7bf9-4c05-abea-4fc3a6ff1131",
             "field": "isEligibleForAssistance",
-            "name": "Eligible for regular assistance?",
+            "name": "Family unit is eligible for IA, DA, or HA",
             "type": "expression"
           }
         ],

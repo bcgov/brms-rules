@@ -4,10 +4,100 @@
       "id": "1eaca8a6-a20c-466c-9362-3b727d4810c4",
       "type": "inputNode",
       "position": {
-        "x": 180,
-        "y": 300
+        "x": 155,
+        "y": 150
       },
-      "name": "request"
+      "name": "request",
+      "content": {
+        "fields": [
+          {
+            "field": "familyUnitSize",
+            "name": "Family Unit Size",
+            "id": 21,
+            "description": "The number of people in a family unit. This includes all currently active members of that family unit.",
+            "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "field": "person1age",
+            "name": "Person 1 Age",
+            "id": 41,
+            "description": "The age of person 1 in a family unit in years.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "person1HasPWDStatus",
+            "name": "Person 1 Has PWD Status",
+            "id": 45,
+            "description": "If person 1 in a family unit has PWD status.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person1hasPPMBStatus",
+            "name": "Person 1 Has PPMB Status",
+            "id": 43,
+            "description": "If person 1 in a family unit has PPMB status.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person1ReceivingOASGIS",
+            "name": "Person 1 Receiving OAS/GIS",
+            "id": 76,
+            "description": "Person 1 on a request is in receipt of OAS/GIS.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person2age",
+            "name": "Person 2 Age",
+            "id": 42,
+            "description": "The age of person 2 in a family unit in years.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "person2HasPWDStatus",
+            "name": "Person 2 Has PWD Status",
+            "id": 46,
+            "description": "If person 2 in a family unit has PWD status.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person2hasPPMBStatus",
+            "name": "Person 2 Has PPMB Status",
+            "id": 44,
+            "description": "If person 2 in a family unit has PPMB status",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person2ReceivingOASGIS",
+            "name": "Person 2 Receiving OAS/GIS",
+            "id": 77,
+            "description": "Person 2 on a request is in receipt of OAS/GIS.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "shelterCosts",
+            "name": "Shelter Costs",
+            "id": 55,
+            "description": "Amount of shelter costs declared by a family unit.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      }
     },
     {
       "id": "1bf11c5e-f7e1-4373-bb4e-c314941284bf",
@@ -16,7 +106,21 @@
         "x": 1325,
         "y": 320
       },
-      "name": "response"
+      "name": "response",
+      "content": {
+        "fields": [
+          {
+            "field": "totalRoomAndBoard",
+            "name": "Total Room And Board",
+            "id": 86,
+            "description": "The total room and board payment amount to be issued.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      }
     },
     {
       "id": "97548ae9-a0c4-4a26-842d-f4e4826b0e6c",
@@ -76,7 +180,7 @@
           {
             "id": "bb5eb9f9-9ca3-4afb-8395-549910133923",
             "key": "roomAndBoardCalculationBAmount",
-            "value": "shelterAmount + supportAmount"
+            "value": "shelterAmount + supportFinalAmount"
           }
         ]
       }

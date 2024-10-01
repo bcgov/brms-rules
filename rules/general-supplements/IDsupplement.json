@@ -1,0 +1,212 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "138b7ca6-85a6-4f27-b7ff-69d619e2b362",
+      "type": "inputNode",
+      "position": {
+        "x": -390,
+        "y": -25
+      },
+      "name": "request",
+      "content": {
+        "fields": [
+          {
+            "name": "Family Unit In Pay",
+            "field": "familyUnitInPay",
+            "id": 18,
+            "description": "Family unit is in pay.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isActiveOnCase",
+            "name": "Is Active On Case",
+            "id": 27,
+            "description": "Individual is 'active' on case.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isIDRequired",
+            "name": "ID is Required",
+            "id": 97,
+            "description": "ID is considered a required piece of identification.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "idCost",
+            "name": "Cost of ID",
+            "id": 98,
+            "description": "The declared cost of obtaining a piece of identification.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "430d94ce-ca8b-4141-a249-73aab3e989f7",
+      "type": "outputNode",
+      "position": {
+        "x": 215,
+        "y": -10
+      },
+      "name": "response",
+      "content": {
+        "fields": [
+          {
+            "name": "Is Eligible",
+            "field": "isEligible",
+            "id": 28,
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "id": 58,
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "266080b4-4be8-4370-9b30-ba0407023b64",
+      "type": "decisionTableNode",
+      "position": {
+        "x": -90,
+        "y": -15
+      },
+      "name": "Eligibility",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "2b5bfae7-855a-402f-b857-40fc40de159b",
+            "name": "Family Unit In Pay",
+            "type": "expression",
+            "field": "familyUnitInPay"
+          },
+          {
+            "id": "6cc9445e-8787-4dff-9b22-412eb7e26948",
+            "type": "expression",
+            "field": "isActiveOnCase",
+            "name": "isActiveOnCase"
+          },
+          {
+            "id": "181b4040-97ae-40ce-aa1c-d13bc45ff62a",
+            "type": "expression",
+            "field": "isIDRequired",
+            "name": "isIDRequired"
+          },
+          {
+            "id": "637c19b7-bead-4b33-a6be-bc37a25e3277",
+            "field": "idCost",
+            "name": "idCost"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "eeff18df-0ba3-48e0-b2e8-22cfdb38c291",
+            "field": "isEligible",
+            "name": "isEligible",
+            "type": "expression"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "9b7025f7-959f-45ce-bb83-2ee125dd2983",
+            "2b5bfae7-855a-402f-b857-40fc40de159b": "true",
+            "6cc9445e-8787-4dff-9b22-412eb7e26948": "true",
+            "181b4040-97ae-40ce-aa1c-d13bc45ff62a": "true",
+            "637c19b7-bead-4b33-a6be-bc37a25e3277": "",
+            "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "true"
+          },
+          {
+            "_id": "eb1d8bfc-40e4-4e3b-b767-86535b55857f",
+            "2b5bfae7-855a-402f-b857-40fc40de159b": "false",
+            "6cc9445e-8787-4dff-9b22-412eb7e26948": "",
+            "181b4040-97ae-40ce-aa1c-d13bc45ff62a": "",
+            "637c19b7-bead-4b33-a6be-bc37a25e3277": "",
+            "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "false"
+          },
+          {
+            "_id": "c022abe0-d515-4a0a-89fb-9e940942d96c",
+            "2b5bfae7-855a-402f-b857-40fc40de159b": "",
+            "6cc9445e-8787-4dff-9b22-412eb7e26948": "false",
+            "181b4040-97ae-40ce-aa1c-d13bc45ff62a": "",
+            "637c19b7-bead-4b33-a6be-bc37a25e3277": "",
+            "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "false"
+          },
+          {
+            "_id": "56b1156f-7f4a-4358-bd93-443b2b102c08",
+            "2b5bfae7-855a-402f-b857-40fc40de159b": "",
+            "6cc9445e-8787-4dff-9b22-412eb7e26948": "",
+            "181b4040-97ae-40ce-aa1c-d13bc45ff62a": "false",
+            "637c19b7-bead-4b33-a6be-bc37a25e3277": "",
+            "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "false"
+          }
+        ]
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "db5beaf9-13ca-44c1-9ac6-0c82477b42ff",
+            "key": "supplementAmount",
+            "value": "isEligible == true and idCost > 0 ? idCost : 0"
+          }
+        ]
+      },
+      "id": "3e220bcb-7f69-4016-ab7c-239d4cae7ed4",
+      "name": "Supplement Calculation",
+      "position": {
+        "x": -90,
+        "y": 105
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "77fd5fd8-50db-4e8e-b515-185d6e22a4cb",
+      "sourceId": "138b7ca6-85a6-4f27-b7ff-69d619e2b362",
+      "type": "edge",
+      "targetId": "266080b4-4be8-4370-9b30-ba0407023b64"
+    },
+    {
+      "id": "53c925af-1af8-4755-a6c3-fda84def369c",
+      "sourceId": "266080b4-4be8-4370-9b30-ba0407023b64",
+      "type": "edge",
+      "targetId": "430d94ce-ca8b-4141-a249-73aab3e989f7"
+    },
+    {
+      "id": "45358048-3ed3-416b-9796-00af7edc0595",
+      "sourceId": "138b7ca6-85a6-4f27-b7ff-69d619e2b362",
+      "type": "edge",
+      "targetId": "3e220bcb-7f69-4016-ab7c-239d4cae7ed4"
+    },
+    {
+      "id": "efb17d57-102a-47d4-9954-95dbb8d604b1",
+      "sourceId": "266080b4-4be8-4370-9b30-ba0407023b64",
+      "type": "edge",
+      "targetId": "3e220bcb-7f69-4016-ab7c-239d4cae7ed4"
+    },
+    {
+      "id": "dbd83884-dfc3-45f9-b541-3b9eb8ce627a",
+      "sourceId": "3e220bcb-7f69-4016-ab7c-239d4cae7ed4",
+      "type": "edge",
+      "targetId": "430d94ce-ca8b-4141-a249-73aab3e989f7"
+    }
+  ]
+}

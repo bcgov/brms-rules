@@ -7,6 +7,70 @@
       "position": {
         "x": -100,
         "y": 295
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "person1age",
+            "name": "Person 1 Age",
+            "id": 41,
+            "description": "The age of person 1 in a family unit in years.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "person1hasPPMBStatus",
+            "name": "Person 1 Has PPMB Status",
+            "id": 43,
+            "description": "If person 1 in a family unit has PPMB status.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "familyUnitSize",
+            "name": "Family Unit Size",
+            "id": 21,
+            "description": "The number of people in a family unit. This includes all currently active members of that family unit.",
+            "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "field": "person2age",
+            "name": "Person 2 Age",
+            "id": 42,
+            "description": "The age of person 2 in a family unit in years.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "person2hasPPMBStatus",
+            "name": "Person 2 Has PPMB Status",
+            "id": 44,
+            "description": "If person 2 in a family unit has PPMB status",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person1Warrant",
+            "name": "Person 1 Has Warrant",
+            "id": 79,
+            "description": "There is an outstanding warrant for person 1 on the file.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "person2Warrant",
+            "name": "Person 2 Has a Warrant",
+            "id": 80,
+            "description": "There is an outstanding warrant for person 2 on the file.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -60,43 +124,43 @@
         "outputs": [
           {
             "id": "aed03151-e8ba-4284-b360-29b70f07a573",
-            "name": "Maximum Support Amount",
+            "name": "Maximum IA Support Amount",
             "type": "expression",
-            "field": "maximumSupportAmount"
+            "field": "maximumIASupportAmount"
           }
         ],
         "rules": [
           {
             "_id": "1e20c7a4-e759-4f2e-ae7b-03b409963a6e",
             "_description": "",
+            "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": "",
             "564db848-f951-461f-b572-0b14f4499e05": "",
-            "aed03151-e8ba-4284-b360-29b70f07a573": "0",
             "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c": "== 1",
-            "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": ""
+            "aed03151-e8ba-4284-b360-29b70f07a573": "0"
           },
           {
             "_id": "553c0645-0282-429a-b473-9d09a1886798",
             "_description": "",
+            "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": "< 65",
             "564db848-f951-461f-b572-0b14f4499e05": "false",
-            "aed03151-e8ba-4284-b360-29b70f07a573": "610",
             "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c": "> 1",
-            "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": "< 65"
+            "aed03151-e8ba-4284-b360-29b70f07a573": "610"
           },
           {
             "_id": "45c88acb-3683-43fe-ac20-c06e07cd6882",
             "_description": "",
+            "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": "< 65",
             "564db848-f951-461f-b572-0b14f4499e05": "true",
-            "aed03151-e8ba-4284-b360-29b70f07a573": "660",
             "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c": "> 1",
-            "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": "< 65"
+            "aed03151-e8ba-4284-b360-29b70f07a573": "660"
           },
           {
             "_id": "9132f40b-c333-4211-914a-3c61ed60724a",
             "_description": "",
+            "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": ">= 65",
             "564db848-f951-461f-b572-0b14f4499e05": "",
-            "aed03151-e8ba-4284-b360-29b70f07a573": "910",
             "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c": "> 1",
-            "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": ">= 65"
+            "aed03151-e8ba-4284-b360-29b70f07a573": "910"
           }
         ]
       },
@@ -112,6 +176,20 @@
       "position": {
         "x": 1255,
         "y": 385
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "maximumIASupportAmount",
+            "name": "Maximum IA Support Amount",
+            "id": 68,
+            "description": "The maximum amount of support a family unit is eligible for in income assistance.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -182,9 +260,9 @@
         "outputs": [
           {
             "id": "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6",
-            "name": "Maximum Support Amount",
+            "name": "Maximum IA Support Amount",
             "type": "expression",
-            "field": "maximumSupportAmount"
+            "field": "maximumIASupportAmount"
           }
         ],
         "rules": [
@@ -450,9 +528,9 @@
         "outputs": [
           {
             "id": "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6",
-            "name": "Maximum Support Amount",
+            "name": "Maximum IA Support Amount",
             "type": "expression",
-            "field": "maximumSupportAmount"
+            "field": "maximumIASupportAmount"
           }
         ],
         "rules": [

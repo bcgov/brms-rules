@@ -8,6 +8,44 @@
       "position": {
         "x": -420,
         "y": -45
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "isPregnant",
+            "name": "Is Pregnant",
+            "id": 30,
+            "description": "Individual is pregnant.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "estimatedDeliveryDate",
+            "name": "Estimated Delivery Date",
+            "id": 14,
+            "description": "The estimated delivery date for a pregnancy.",
+            "dataType": "date",
+            "validationCriteria": "1910-01-01",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "isMultiplePregnancy",
+            "name": "Is Multiple Pregnancy",
+            "id": 57,
+            "description": "Whether or not the pregnancy is a multiple or single. True indicates a multiple pregnancy.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "benefitMonth",
+            "name": "Benefit Month",
+            "id": 2,
+            "description": "The month for which the benefit is being requested.",
+            "dataType": "date",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -15,8 +53,38 @@
       "name": "response",
       "type": "outputNode",
       "position": {
-        "x": 895,
-        "y": 75
+        "x": 885,
+        "y": 95
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "reason",
+            "name": "Reason",
+            "id": 47,
+            "description": "The reason provided for a given decision.",
+            "dataType": "text-input",
+            "childFields": []
+          },
+          {
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "id": 58,
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "id": 28,
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
       }
     },
     {
@@ -24,44 +92,7 @@
       "name": "Determine Eligibility",
       "type": "decisionTableNode",
       "content": {
-        "rules": [
-          {
-            "_id": "8b9df043-5b0b-431c-89bb-2589e4fdbf7a",
-            "32063f92-2c2e-43f5-9905-af37bba7132e": "personID",
-            "3bd6ebf0-924f-4276-88b9-ea5a6c7240d4": "benefitMonth\n\n",
-            "47c67489-a7a9-4165-ac08-af84c9883ad7": "",
-            "98513006-75bf-46e3-8f67-79fb98f59a24": "date(benefitMonth) <= date(estimatedDeliveryDate)",
-            "abc1e75e-c580-40db-91c4-e21aa5b211f5": "true",
-            "d37234fb-d01d-4f6e-b8f0-f826cb33a615": "true"
-          },
-          {
-            "_id": "cedc93e3-feea-4a2c-94ac-395ec769d9c2",
-            "32063f92-2c2e-43f5-9905-af37bba7132e": "personID",
-            "3bd6ebf0-924f-4276-88b9-ea5a6c7240d4": "benefitMonth\n\n",
-            "47c67489-a7a9-4165-ac08-af84c9883ad7": "'Date of expected delivery has already passed'",
-            "98513006-75bf-46e3-8f67-79fb98f59a24": "",
-            "abc1e75e-c580-40db-91c4-e21aa5b211f5": "false",
-            "d37234fb-d01d-4f6e-b8f0-f826cb33a615": "true"
-          },
-          {
-            "_id": "931f8763-1436-4ec0-b090-49742a72df7b",
-            "32063f92-2c2e-43f5-9905-af37bba7132e": "personID",
-            "3bd6ebf0-924f-4276-88b9-ea5a6c7240d4": "benefitMonth\n\n",
-            "47c67489-a7a9-4165-ac08-af84c9883ad7": "'Has not provided written confirmation of pregnancy'",
-            "98513006-75bf-46e3-8f67-79fb98f59a24": "",
-            "abc1e75e-c580-40db-91c4-e21aa5b211f5": "false",
-            "d37234fb-d01d-4f6e-b8f0-f826cb33a615": "false"
-          },
-          {
-            "_id": "4c87b6cb-49b6-4aa0-b1ea-552e373e32ef",
-            "32063f92-2c2e-43f5-9905-af37bba7132e": "",
-            "3bd6ebf0-924f-4276-88b9-ea5a6c7240d4": "",
-            "47c67489-a7a9-4165-ac08-af84c9883ad7": "",
-            "98513006-75bf-46e3-8f67-79fb98f59a24": "",
-            "abc1e75e-c580-40db-91c4-e21aa5b211f5": "",
-            "d37234fb-d01d-4f6e-b8f0-f826cb33a615": ""
-          }
-        ],
+        "hitPolicy": "first",
         "inputs": [
           {
             "id": "d37234fb-d01d-4f6e-b8f0-f826cb33a615",
@@ -73,36 +104,62 @@
             "id": "98513006-75bf-46e3-8f67-79fb98f59a24",
             "name": "Within Allowed Benefit Period (Pregnancy)",
             "type": "expression",
-            "field": "withinAllowedBenefitPeriodPregnancy"
+            "field": "estimatedDeliveryDate"
+          },
+          {
+            "id": "9f018f81-8b85-41b8-9b88-a6e5a474db76",
+            "field": "benefitMonth",
+            "name": "Benefit Month"
           }
         ],
         "outputs": [
           {
             "id": "abc1e75e-c580-40db-91c4-e21aa5b211f5",
-            "name": "Eligible for Pregnancy Amount",
+            "name": "Is Eligible",
             "type": "expression",
-            "field": "eligibleForPregnancyAmount"
+            "field": "isEligible"
           },
           {
             "id": "47c67489-a7a9-4165-ac08-af84c9883ad7",
-            "name": "Reason for Ineligibility",
+            "name": "Reason",
             "type": "expression",
-            "field": "reasonForIneligibility"
-          },
-          {
-            "id": "3bd6ebf0-924f-4276-88b9-ea5a6c7240d4",
-            "name": "Benefit Month",
-            "type": "expression",
-            "field": "benefitMonth"
-          },
-          {
-            "id": "32063f92-2c2e-43f5-9905-af37bba7132e",
-            "name": "Person ID",
-            "type": "expression",
-            "field": "personID"
+            "field": "reason"
           }
         ],
-        "hitPolicy": "first"
+        "rules": [
+          {
+            "_id": "8b9df043-5b0b-431c-89bb-2589e4fdbf7a",
+            "d37234fb-d01d-4f6e-b8f0-f826cb33a615": "true",
+            "98513006-75bf-46e3-8f67-79fb98f59a24": "date(benefitMonth) <= date(estimatedDeliveryDate)",
+            "9f018f81-8b85-41b8-9b88-a6e5a474db76": "",
+            "abc1e75e-c580-40db-91c4-e21aa5b211f5": "true",
+            "47c67489-a7a9-4165-ac08-af84c9883ad7": ""
+          },
+          {
+            "_id": "cedc93e3-feea-4a2c-94ac-395ec769d9c2",
+            "d37234fb-d01d-4f6e-b8f0-f826cb33a615": "true",
+            "98513006-75bf-46e3-8f67-79fb98f59a24": "",
+            "9f018f81-8b85-41b8-9b88-a6e5a474db76": "",
+            "abc1e75e-c580-40db-91c4-e21aa5b211f5": "false",
+            "47c67489-a7a9-4165-ac08-af84c9883ad7": "'Date of expected delivery has already passed'"
+          },
+          {
+            "_id": "931f8763-1436-4ec0-b090-49742a72df7b",
+            "d37234fb-d01d-4f6e-b8f0-f826cb33a615": "false",
+            "98513006-75bf-46e3-8f67-79fb98f59a24": "",
+            "9f018f81-8b85-41b8-9b88-a6e5a474db76": "",
+            "abc1e75e-c580-40db-91c4-e21aa5b211f5": "false",
+            "47c67489-a7a9-4165-ac08-af84c9883ad7": "'Has not provided written confirmation of pregnancy'"
+          },
+          {
+            "_id": "4c87b6cb-49b6-4aa0-b1ea-552e373e32ef",
+            "d37234fb-d01d-4f6e-b8f0-f826cb33a615": "",
+            "98513006-75bf-46e3-8f67-79fb98f59a24": "",
+            "9f018f81-8b85-41b8-9b88-a6e5a474db76": "",
+            "abc1e75e-c580-40db-91c4-e21aa5b211f5": "",
+            "47c67489-a7a9-4165-ac08-af84c9883ad7": ""
+          }
+        ]
       },
       "position": {
         "x": -85,
@@ -114,32 +171,19 @@
       "name": "Calculate Amount",
       "type": "decisionTableNode",
       "content": {
-        "rules": [
-          {
-            "_id": "ccc8738b-4ac3-4170-9a49-c9c4bc988464",
-            "02f97ff2-08bd-4404-84ba-56422019da1f": "80",
-            "2d5c2c31-a9c9-4e13-bf60-f48e71b108df": "\"single\"",
-            "a98ef9e9-bdeb-4acf-81ce-e7b93c4b8813": "true"
-          },
-          {
-            "_id": "8e99d4c3-366e-4007-b911-a16cf896167f",
-            "02f97ff2-08bd-4404-84ba-56422019da1f": "160",
-            "2d5c2c31-a9c9-4e13-bf60-f48e71b108df": "\"multiple\"",
-            "a98ef9e9-bdeb-4acf-81ce-e7b93c4b8813": "true"
-          }
-        ],
+        "hitPolicy": "first",
         "inputs": [
           {
             "id": "a98ef9e9-bdeb-4acf-81ce-e7b93c4b8813",
             "name": "Eligible for Pregnancy Amount",
             "type": "expression",
-            "field": "eligibleForPregnancyAmount"
+            "field": "isEligible"
           },
           {
             "id": "2d5c2c31-a9c9-4e13-bf60-f48e71b108df",
-            "name": "Single or Multiple (Pregnancy)",
+            "name": "Is Multiple Pregnancy",
             "type": "expression",
-            "field": "singleOrMultiplePregnancy"
+            "field": "isMultiplePregnancy"
           }
         ],
         "outputs": [
@@ -150,7 +194,20 @@
             "field": "supplementAmount"
           }
         ],
-        "hitPolicy": "first"
+        "rules": [
+          {
+            "_id": "ccc8738b-4ac3-4170-9a49-c9c4bc988464",
+            "a98ef9e9-bdeb-4acf-81ce-e7b93c4b8813": "true",
+            "2d5c2c31-a9c9-4e13-bf60-f48e71b108df": "false",
+            "02f97ff2-08bd-4404-84ba-56422019da1f": "80"
+          },
+          {
+            "_id": "8e99d4c3-366e-4007-b911-a16cf896167f",
+            "a98ef9e9-bdeb-4acf-81ce-e7b93c4b8813": "true",
+            "2d5c2c31-a9c9-4e13-bf60-f48e71b108df": "true",
+            "02f97ff2-08bd-4404-84ba-56422019da1f": "160"
+          }
+        ]
       },
       "position": {
         "x": 590,

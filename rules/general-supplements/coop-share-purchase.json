@@ -1,0 +1,241 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "id": "eddd8ff1-d068-442e-9f1e-309463d2cefa",
+      "type": "inputNode",
+      "position": {
+        "x": -200,
+        "y": 120
+      },
+      "name": "request",
+      "content": {
+        "fields": [
+          {
+            "field": "",
+            "name": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "82750d8f-e85c-4c34-805e-467f76aa2280",
+      "type": "outputNode",
+      "position": {
+        "x": 1155,
+        "y": 115
+      },
+      "name": "response",
+      "content": {
+        "fields": [
+          {
+            "field": "",
+            "name": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "931b441f-b3da-46b6-8361-69dc383e93f5",
+      "type": "decisionTableNode",
+      "position": {
+        "x": 90,
+        "y": 200
+      },
+      "name": "Eligibility",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "371a8c6c-f0e3-4636-9af4-82aa299ec2b8",
+            "name": "inPay of DA or IA",
+            "type": "expression",
+            "field": "inPay"
+          },
+          {
+            "id": "5794af06-d825-4e36-b908-de57d65838cc",
+            "type": "expression",
+            "field": "inRecieptLast3months",
+            "name": "In Receipt of IA or DA for last 3 months"
+          },
+          {
+            "id": "72e74f2a-8913-4616-8416-0d9abf80791c",
+            "type": "expression",
+            "field": "hasRepaymentAgreement",
+            "name": "Has repayment agreement or promise to pay"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "601b36c4-766f-4516-b051-7ad56535d768",
+            "field": "isEligible",
+            "name": "isEligible",
+            "type": "expression"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "e7032415-0127-4f8f-97b5-6fae749d3b4d",
+            "371a8c6c-f0e3-4636-9af4-82aa299ec2b8": "true",
+            "5794af06-d825-4e36-b908-de57d65838cc": "true",
+            "72e74f2a-8913-4616-8416-0d9abf80791c": "true",
+            "601b36c4-766f-4516-b051-7ad56535d768": "true"
+          },
+          {
+            "_id": "a2691bf2-9f27-4e6e-b8ab-aa19a8616315",
+            "371a8c6c-f0e3-4636-9af4-82aa299ec2b8": "false",
+            "5794af06-d825-4e36-b908-de57d65838cc": "",
+            "72e74f2a-8913-4616-8416-0d9abf80791c": "",
+            "601b36c4-766f-4516-b051-7ad56535d768": "false"
+          },
+          {
+            "_id": "5a5f8de5-278f-4f8d-a304-61e42cbee3e6",
+            "371a8c6c-f0e3-4636-9af4-82aa299ec2b8": "",
+            "5794af06-d825-4e36-b908-de57d65838cc": "false",
+            "72e74f2a-8913-4616-8416-0d9abf80791c": "",
+            "601b36c4-766f-4516-b051-7ad56535d768": "false"
+          },
+          {
+            "_id": "3ee8612e-5eac-4c5b-b55e-562a6f4c120a",
+            "371a8c6c-f0e3-4636-9af4-82aa299ec2b8": "",
+            "5794af06-d825-4e36-b908-de57d65838cc": "",
+            "72e74f2a-8913-4616-8416-0d9abf80791c": "false",
+            "601b36c4-766f-4516-b051-7ad56535d768": "false"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ac0e5b55-f2bd-4c57-b088-a006d34bab7c",
+      "type": "decisionTableNode",
+      "position": {
+        "x": 720,
+        "y": 55
+      },
+      "name": "Supplement Calculation",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "e3b357f9-8e0b-41d3-a4ce-5b6203a8eca8",
+            "name": "Total cost of the co-op shares",
+            "type": "expression",
+            "field": "lumpSum"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "649c5d25-f429-4d0c-8226-39a7abe84cf0",
+            "type": "expression",
+            "field": "isEligible",
+            "name": "is Eligible"
+          },
+          {
+            "id": "8551c8ca-4e7a-4988-8b73-56f5cbf99bce",
+            "type": "expression",
+            "field": "supplementAmount",
+            "name": "Supplement Amount"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "b8c2dcdb-86cd-4323-bb4e-f4b31ae46dc0",
+            "e3b357f9-8e0b-41d3-a4ce-5b6203a8eca8": "",
+            "649c5d25-f429-4d0c-8226-39a7abe84cf0": "true",
+            "8551c8ca-4e7a-4988-8b73-56f5cbf99bce": "min([(lumpSum/2),850])"
+          }
+        ]
+      }
+    },
+    {
+      "id": "31415b4e-9938-4cbd-9a6b-9ea17832ea85",
+      "type": "switchNode",
+      "position": {
+        "x": 405,
+        "y": 140
+      },
+      "name": "isEligible",
+      "content": {
+        "statements": [
+          {
+            "id": "1b7551bb-6f7f-43e5-be2d-2fde2df672f0",
+            "condition": "isEligible == true"
+          },
+          {
+            "id": "38e60f26-9a81-4116-bbcb-90862fdc9b5e",
+            "condition": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6591d1d-b9ba-4744-9f2e-a3c546973332",
+      "type": "expressionNode",
+      "position": {
+        "x": 720,
+        "y": 220
+      },
+      "name": "Ineligible",
+      "content": {
+        "expressions": [
+          {
+            "id": "7b95ad3e-b809-4c86-b62e-7fc38650dfd4",
+            "key": "isEligible",
+            "value": "isEligible"
+          },
+          {
+            "id": "4c448be7-7acc-4955-b949-75c30f8c0191",
+            "key": "supplementAmount",
+            "value": "supplementAmount"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "83bdb7f9-2509-4674-bce2-925b9d8bec4a",
+      "sourceId": "eddd8ff1-d068-442e-9f1e-309463d2cefa",
+      "type": "edge",
+      "targetId": "931b441f-b3da-46b6-8361-69dc383e93f5"
+    },
+    {
+      "id": "5f0e5a35-eca1-4fd0-a2fa-700c4cdc22fc",
+      "sourceId": "ac0e5b55-f2bd-4c57-b088-a006d34bab7c",
+      "type": "edge",
+      "targetId": "82750d8f-e85c-4c34-805e-467f76aa2280"
+    },
+    {
+      "id": "072eb054-03df-4335-ac9e-9e2b0f364431",
+      "sourceId": "931b441f-b3da-46b6-8361-69dc383e93f5",
+      "type": "edge",
+      "targetId": "31415b4e-9938-4cbd-9a6b-9ea17832ea85"
+    },
+    {
+      "id": "ba944654-f6a9-4ca4-a469-46c2e6963805",
+      "sourceId": "31415b4e-9938-4cbd-9a6b-9ea17832ea85",
+      "type": "edge",
+      "targetId": "ac0e5b55-f2bd-4c57-b088-a006d34bab7c",
+      "sourceHandle": "1b7551bb-6f7f-43e5-be2d-2fde2df672f0"
+    },
+    {
+      "id": "3ec5b7b8-b803-4fbf-a3ce-edee9ed438f7",
+      "sourceId": "31415b4e-9938-4cbd-9a6b-9ea17832ea85",
+      "type": "edge",
+      "targetId": "c6591d1d-b9ba-4744-9f2e-a3c546973332",
+      "sourceHandle": "38e60f26-9a81-4116-bbcb-90862fdc9b5e"
+    },
+    {
+      "id": "f8479dc3-afc8-48f5-80d7-b2e20b2f7937",
+      "sourceId": "c6591d1d-b9ba-4744-9f2e-a3c546973332",
+      "type": "edge",
+      "targetId": "82750d8f-e85c-4c34-805e-467f76aa2280"
+    },
+    {
+      "id": "939b4c8d-2109-4d7f-b438-0f9c9278371c",
+      "sourceId": "eddd8ff1-d068-442e-9f1e-309463d2cefa",
+      "type": "edge",
+      "targetId": "ac0e5b55-f2bd-4c57-b088-a006d34bab7c"
+    }
+  ]
+}

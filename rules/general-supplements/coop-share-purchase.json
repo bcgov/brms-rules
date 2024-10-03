@@ -5,15 +5,43 @@
       "id": "eddd8ff1-d068-442e-9f1e-309463d2cefa",
       "type": "inputNode",
       "position": {
-        "x": -200,
-        "y": 120
+        "x": -335,
+        "y": 125
       },
       "name": "request",
       "content": {
         "fields": [
           {
-            "field": "",
-            "name": ""
+            "field": "familyUnitInPay",
+            "name": "Family Unit In Pay",
+            "id": 18,
+            "description": "Family unit is in pay.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "inRecieptLast3months",
+            "name": "In Receipt of IA or DA for last 3 months",
+            "id": 119,
+            "description": null,
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "hasRepaymentAgreement",
+            "name": "Has repayment agreement or promise to pay",
+            "id": 120,
+            "description": null,
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "lumpSum",
+            "name": "Total cost of the co-op shares",
+            "id": 121,
+            "description": null,
+            "dataType": "number-input",
+            "childFields": []
           }
         ]
       }
@@ -29,8 +57,22 @@
       "content": {
         "fields": [
           {
-            "field": "",
-            "name": ""
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "id": 28,
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "id": 58,
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
           }
         ]
       }
@@ -48,9 +90,9 @@
         "inputs": [
           {
             "id": "371a8c6c-f0e3-4636-9af4-82aa299ec2b8",
-            "name": "inPay of DA or IA",
+            "name": "Family Unit In Pay",
             "type": "expression",
-            "field": "inPay"
+            "field": "familyUnitInPay"
           },
           {
             "id": "5794af06-d825-4e36-b908-de57d65838cc",

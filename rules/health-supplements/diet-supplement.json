@@ -42,6 +42,12 @@
       "sourceId": "abf265d1-76e8-4818-9b41-3b87dab0d20a",
       "type": "edge",
       "targetId": "0eb8bf1e-4396-43e4-8b35-9d87cc63a1b5"
+    },
+    {
+      "id": "d16cf913-a08e-4092-8c9e-8f538b16c808",
+      "sourceId": "abf265d1-76e8-4818-9b41-3b87dab0d20a",
+      "type": "edge",
+      "targetId": "769e2dca-eb74-4296-a11c-f801ad5dcae7"
     }
   ],
   "nodes": [
@@ -94,7 +100,7 @@
             "description": "The condition that an individual is claiming for the purposes of eligibility for the diet supplement.",
             "dataType": "text-input",
             "validationCriteria": "Restricted Sodium Diet, Diabetes, Kidney Dialysis, Gluten-Free Diet, Dysphagia, Cystic Fibrosis, Ketogenic Diet, Low Phenylalanine Diet (PKU), Cancer, Chronic Inflammatory Bowel Disease, Crohn’s Disease, Ulcerative Colitis, HIV Positive Diagnosis, AIDS, Chronic Bacterial Infection, Tuberculosis, Hyperthyroidism, Osteoporosis, Hepatitis B, Hepatitis C",
-            "validationType": "[=text]",
+            "validationType": "[=texts]",
             "childFields": []
           }
         ]
@@ -257,6 +263,11 @@
         "hitPolicy": "first",
         "inputs": [
           {
+            "id": "5615069d-856d-449b-a761-9da8361c34d8",
+            "field": "isEligible",
+            "name": "isEligible"
+          },
+          {
             "id": "c73b0422-bde1-4e7a-9d1b-e84de59b7819",
             "field": "eligibleForHighProteinSupplement",
             "name": "Eligible for High Protein Supplement"
@@ -292,7 +303,26 @@
         ],
         "rules": [
           {
+            "_id": "61603e1a-6932-4079-9a3a-6ba364614cec",
+            "5615069d-856d-449b-a761-9da8361c34d8": "false",
+            "c73b0422-bde1-4e7a-9d1b-e84de59b7819": "",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "",
+            "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "false",
+            "929d5c8a-9f93-4620-96fe-2bfac31a307c": "null",
+            "8f4130c8-c03e-4503-8208-4a32a726af3a": "false"
+          },
+          {
+            "_id": "333bb206-3fb8-48b8-bb30-e301f88308b6",
+            "5615069d-856d-449b-a761-9da8361c34d8": "",
+            "c73b0422-bde1-4e7a-9d1b-e84de59b7819": "",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Cystic Fibrosis\" in $",
+            "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
+            "929d5c8a-9f93-4620-96fe-2bfac31a307c": "80",
+            "8f4130c8-c03e-4503-8208-4a32a726af3a": "false"
+          },
+          {
             "_id": "6e79b680-135d-4867-8493-78980e3c6f74",
+            "5615069d-856d-449b-a761-9da8361c34d8": "",
             "c73b0422-bde1-4e7a-9d1b-e84de59b7819": "true",
             "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
@@ -300,71 +330,71 @@
             "8f4130c8-c03e-4503-8208-4a32a726af3a": "true"
           },
           {
-            "_id": "333bb206-3fb8-48b8-bb30-e301f88308b6",
-            "c73b0422-bde1-4e7a-9d1b-e84de59b7819": "",
-            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "$ == \"Cystic Fibrosis\"",
-            "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
-            "929d5c8a-9f93-4620-96fe-2bfac31a307c": "80",
-            "8f4130c8-c03e-4503-8208-4a32a726af3a": "false"
-          },
-          {
             "_id": "59432e1a-280a-419b-96a6-79e59192729e",
+            "5615069d-856d-449b-a761-9da8361c34d8": "",
             "c73b0422-bde1-4e7a-9d1b-e84de59b7819": "",
-            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "$ == \"Dysphagia\"",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Dysphagia\" in $",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "65",
             "8f4130c8-c03e-4503-8208-4a32a726af3a": "true"
           },
           {
             "_id": "02cfdaab-62c7-4c04-8044-17a68e82eab5",
+            "5615069d-856d-449b-a761-9da8361c34d8": "",
             "c73b0422-bde1-4e7a-9d1b-e84de59b7819": "",
-            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "$ == \"Gluten-Free Diet\"",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Gluten-Free Diet\" in $",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "65",
             "8f4130c8-c03e-4503-8208-4a32a726af3a": "false"
           },
           {
             "_id": "4833f6c0-a2cb-428d-9593-8fd5062fed67",
+            "5615069d-856d-449b-a761-9da8361c34d8": "",
             "c73b0422-bde1-4e7a-9d1b-e84de59b7819": "",
-            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "$ == \"Ketogenic Diet\"",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Ketogenic Diet\" in $",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "65",
             "8f4130c8-c03e-4503-8208-4a32a726af3a": "false"
           },
           {
             "_id": "752c7ef8-4b34-4c3a-a5c9-06784247ca53",
+            "5615069d-856d-449b-a761-9da8361c34d8": "",
             "c73b0422-bde1-4e7a-9d1b-e84de59b7819": "",
-            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "$ == \"Low Phenylalanine\"",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Low Phenylalanine\" in $",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "65",
             "8f4130c8-c03e-4503-8208-4a32a726af3a": "false"
           },
           {
             "_id": "b5d41c72-e196-47d3-bcb2-9f7517b8b1dc",
+            "5615069d-856d-449b-a761-9da8361c34d8": "",
             "c73b0422-bde1-4e7a-9d1b-e84de59b7819": "",
-            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "$ == \"Diabetes\"",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Diabetes\" in $",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "60",
             "8f4130c8-c03e-4503-8208-4a32a726af3a": "false"
           },
           {
             "_id": "e7c27251-b693-477f-bbe6-2d13af8eefdb",
+            "5615069d-856d-449b-a761-9da8361c34d8": "",
             "c73b0422-bde1-4e7a-9d1b-e84de59b7819": "",
-            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "$ == \"Kidney Dialysis\"",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Kidney Dialysis\" in $",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "50",
             "8f4130c8-c03e-4503-8208-4a32a726af3a": "false"
           },
           {
             "_id": "eb4e9c51-9753-41cb-83f4-8f4de7188fc3",
+            "5615069d-856d-449b-a761-9da8361c34d8": "",
             "c73b0422-bde1-4e7a-9d1b-e84de59b7819": "",
-            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "$ == \"Restricted Sodium\"",
+            "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Restricted Sodium\" in $",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "15",
             "8f4130c8-c03e-4503-8208-4a32a726af3a": "false"
           },
           {
             "_id": "4a1135b3-2f5e-4106-aa1c-6feba8e14045",
+            "5615069d-856d-449b-a761-9da8361c34d8": "",
             "c73b0422-bde1-4e7a-9d1b-e84de59b7819": "",
             "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "false",
@@ -405,62 +435,62 @@
         "rules": [
           {
             "_id": "48c95eef-3fee-4149-bca8-dda570ae1897",
-            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "$ == 'Cancer'",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Cancer' in $",
             "8b24542d-1794-4729-bc32-690b317e158d": "true"
           },
           {
             "_id": "cd565aa0-eeee-47d2-8f8e-8fbed423d23c",
-            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "$ == 'Chronic Inflammatory Bowel Disease'",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Chronic Inflammatory Bowel Disease' in $",
             "8b24542d-1794-4729-bc32-690b317e158d": "true"
           },
           {
             "_id": "36910e19-2139-48ee-8b1a-e48a452e5ef6",
-            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "$ == \"Crohn's Disease\"",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "\"Crohn's Disease\" in $",
             "8b24542d-1794-4729-bc32-690b317e158d": "true"
           },
           {
             "_id": "560d61ec-759f-4ead-a63c-b978eaee3d6b",
-            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "$ == 'Ulcerative Colitis'",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Ulcerative Colitis' in $",
             "8b24542d-1794-4729-bc32-690b317e158d": "true"
           },
           {
             "_id": "73f46b58-bd62-4711-8d83-237a7cf79584",
-            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "$ == 'HIV Positive Diagnosis'",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'HIV Positive Diagnosis' in $",
             "8b24542d-1794-4729-bc32-690b317e158d": "true"
           },
           {
             "_id": "0ed9ac10-da32-470c-ba3a-c76c3fbf0250",
-            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "$ == 'AIDS'",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'AIDS' in $",
             "8b24542d-1794-4729-bc32-690b317e158d": "true"
           },
           {
             "_id": "b739df96-19a9-4538-9ab5-540dd11a5989",
-            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "$ == 'Chronic Bacterial Infection'",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Chronic Bacterial Infection' in $",
             "8b24542d-1794-4729-bc32-690b317e158d": "true"
           },
           {
             "_id": "6909a27c-e6db-44fc-9adb-006fa1d9c09b",
-            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "$ == 'Tuberculosis'",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Tuberculosis' in $",
             "8b24542d-1794-4729-bc32-690b317e158d": "true"
           },
           {
             "_id": "01644735-15f0-4649-b010-238699bf0442",
-            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "$ == 'Hyperthyroidism'",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Hyperthyroidism' in $",
             "8b24542d-1794-4729-bc32-690b317e158d": "true"
           },
           {
             "_id": "08d724ed-a154-4ac2-bb68-f8c48f1b253a",
-            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "$ == 'Osteoporosis' in $",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Osteoporosis' in $",
             "8b24542d-1794-4729-bc32-690b317e158d": "true"
           },
           {
             "_id": "5ca6cc41-66c0-4b86-9421-e67e0bce53a1",
-            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "$ == 'Hepatitis B'",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Hepatitis B' in $",
             "8b24542d-1794-4729-bc32-690b317e158d": "true"
           },
           {
             "_id": "9b64ef15-c179-4096-8620-6f8db67af588",
-            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "$ == 'Hepatitis C'",
+            "87eeb68c-ca4b-4914-8a5f-438dcaf977f5": "'Hepatitis C' in $",
             "8b24542d-1794-4729-bc32-690b317e158d": "true"
           },
           {

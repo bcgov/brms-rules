@@ -1,0 +1,366 @@
+{
+  "nodes": [
+    {
+      "id": "138b7ca6-85a6-4f27-b7ff-69d619e2b362",
+      "type": "inputNode",
+      "position": {
+        "x": -420,
+        "y": 30
+      },
+      "name": "request"
+    },
+    {
+      "id": "430d94ce-ca8b-4141-a249-73aab3e989f7",
+      "type": "outputNode",
+      "position": {
+        "x": 1510,
+        "y": 70
+      },
+      "name": "response"
+    },
+    {
+      "id": "266080b4-4be8-4370-9b30-ba0407023b64",
+      "type": "decisionTableNode",
+      "position": {
+        "x": -100,
+        "y": 110
+      },
+      "name": "Eligibility",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "2b5bfae7-855a-402f-b857-40fc40de159b",
+            "name": "inPay",
+            "type": "expression",
+            "field": "inPay"
+          },
+          {
+            "id": "6cc9445e-8787-4dff-9b22-412eb7e26948",
+            "type": "expression",
+            "field": "isResidingInSpecialCareFacility",
+            "name": "isResidingInSpecialCareFacility"
+          },
+          {
+            "id": "7ca0fe2f-185e-43f0-ab38-941cf90c8333",
+            "type": "expression",
+            "field": "isIndividual",
+            "name": "isIndividual "
+          },
+          {
+            "id": "d5a0e53b-01d7-4e56-89ee-fc80a6be5c16",
+            "type": "expression",
+            "field": "isFamilyUnit",
+            "name": "isFamilyUnit"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "eeff18df-0ba3-48e0-b2e8-22cfdb38c291",
+            "field": "isEligible",
+            "name": "isEligible",
+            "type": "expression"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "9b7025f7-959f-45ce-bb83-2ee125dd2983",
+            "2b5bfae7-855a-402f-b857-40fc40de159b": "true",
+            "6cc9445e-8787-4dff-9b22-412eb7e26948": "true",
+            "7ca0fe2f-185e-43f0-ab38-941cf90c8333": "isIndividual == true or isFamilyUnit == true",
+            "d5a0e53b-01d7-4e56-89ee-fc80a6be5c16": "isIndividual == true or isFamilyUnit == true",
+            "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "true"
+          },
+          {
+            "_id": "eb1d8bfc-40e4-4e3b-b767-86535b55857f",
+            "2b5bfae7-855a-402f-b857-40fc40de159b": "false",
+            "6cc9445e-8787-4dff-9b22-412eb7e26948": "",
+            "7ca0fe2f-185e-43f0-ab38-941cf90c8333": "",
+            "d5a0e53b-01d7-4e56-89ee-fc80a6be5c16": "",
+            "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "false"
+          },
+          {
+            "_id": "c022abe0-d515-4a0a-89fb-9e940942d96c",
+            "2b5bfae7-855a-402f-b857-40fc40de159b": "",
+            "6cc9445e-8787-4dff-9b22-412eb7e26948": "false",
+            "7ca0fe2f-185e-43f0-ab38-941cf90c8333": "",
+            "d5a0e53b-01d7-4e56-89ee-fc80a6be5c16": "",
+            "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "false"
+          },
+          {
+            "_id": "56b1156f-7f4a-4358-bd93-443b2b102c08",
+            "2b5bfae7-855a-402f-b857-40fc40de159b": "",
+            "6cc9445e-8787-4dff-9b22-412eb7e26948": "",
+            "7ca0fe2f-185e-43f0-ab38-941cf90c8333": "",
+            "d5a0e53b-01d7-4e56-89ee-fc80a6be5c16": "",
+            "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "false"
+          }
+        ]
+      }
+    },
+    {
+      "id": "41eea16c-6a1b-40d6-9de3-7b96621b4dcf",
+      "type": "decisionTableNode",
+      "position": {
+        "x": 915,
+        "y": 80
+      },
+      "name": "isFamilyUnit",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "0a03d057-0653-4469-93c9-29a1333637f1",
+            "type": "expression",
+            "field": "isFamilyUnit",
+            "name": "isFamilyUnit"
+          },
+          {
+            "id": "9bd4737e-7a5b-4fec-80f0-70cc4f0bf41d",
+            "name": "isResidingTogether",
+            "type": "expression",
+            "field": "isResidingTogether"
+          },
+          {
+            "id": "a4499c65-48e3-4207-a37e-fddd5eb868fc",
+            "type": "expression",
+            "field": "isLongTermFacility",
+            "name": "isLongTermFacility"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "4a877ebc-692b-4f42-8fd2-158e4ff13692",
+            "type": "expression",
+            "field": "isCaseSeparationRequired",
+            "name": "Is Case Separation Required"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "69716c73-1420-48dd-b240-0339dd408fd4",
+            "_description": "Policy requires a family unit to be residing together - which is no longer the case if someone is going into long term care. Spouse needs to be moved onto their own case.",
+            "0a03d057-0653-4469-93c9-29a1333637f1": "true",
+            "9bd4737e-7a5b-4fec-80f0-70cc4f0bf41d": "true",
+            "a4499c65-48e3-4207-a37e-fddd5eb868fc": "false",
+            "4a877ebc-692b-4f42-8fd2-158e4ff13692": "false"
+          },
+          {
+            "_id": "2e5db9ca-c1ea-4dd5-950d-6ce043062dfe",
+            "0a03d057-0653-4469-93c9-29a1333637f1": "true",
+            "9bd4737e-7a5b-4fec-80f0-70cc4f0bf41d": "false",
+            "a4499c65-48e3-4207-a37e-fddd5eb868fc": "true",
+            "4a877ebc-692b-4f42-8fd2-158e4ff13692": "true"
+          },
+          {
+            "_id": "bb06d471-c523-4333-b9bc-7884eb2aea0d",
+            "0a03d057-0653-4469-93c9-29a1333637f1": "",
+            "9bd4737e-7a5b-4fec-80f0-70cc4f0bf41d": "",
+            "a4499c65-48e3-4207-a37e-fddd5eb868fc": "",
+            "4a877ebc-692b-4f42-8fd2-158e4ff13692": "false"
+          }
+        ]
+      }
+    },
+    {
+      "id": "3bee5b5e-1b0f-48ef-ad49-9a582923be7c",
+      "type": "switchNode",
+      "position": {
+        "x": 215,
+        "y": 10
+      },
+      "name": "isEligible",
+      "content": {
+        "statements": [
+          {
+            "id": "b94d9aba-f836-4239-81b7-a8dfeea3a461",
+            "condition": "isEligible == true"
+          },
+          {
+            "id": "43d9ddf4-2427-4866-ad13-650caac187f1",
+            "condition": "isEligible == false"
+          }
+        ]
+      }
+    },
+    {
+      "id": "8e19570d-c370-44b3-9a58-32e9a5ee0523",
+      "type": "expressionNode",
+      "position": {
+        "x": 810,
+        "y": 285
+      },
+      "name": "Ineligible",
+      "content": {
+        "expressions": [
+          {
+            "id": "7cb6f2dd-01af-487c-b020-b0fabcdaf14a",
+            "key": "isEligible",
+            "value": "isEligible"
+          },
+          {
+            "id": "cf6fe3ca-31fb-407d-be47-cf5a4eb7e0f4",
+            "key": "supplementAmount",
+            "value": "supplementAmount"
+          }
+        ]
+      }
+    },
+    {
+      "id": "7cdbc5e8-c85b-40c2-99ce-1587bf4c609c",
+      "type": "switchNode",
+      "position": {
+        "x": 585,
+        "y": -70
+      },
+      "name": "Family Unit",
+      "content": {
+        "statements": [
+          {
+            "id": "112cd91b-c619-4864-b443-1e50b84e9239",
+            "condition": "isIndividual == true"
+          },
+          {
+            "id": "23939a2a-7d74-4665-8673-b553473360bd",
+            "condition": "isFamilyUnit == true"
+          }
+        ]
+      }
+    },
+    {
+      "id": "b73e4f5d-b3f4-49c7-9833-1ac679940629",
+      "type": "decisionTableNode",
+      "position": {
+        "x": 1215,
+        "y": -75
+      },
+      "name": "Supplement Calculation",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "0d414ece-80a9-4c4b-a666-bbc108bfa6a3",
+            "type": "expression",
+            "field": "isCaseSeparationRequired",
+            "name": "isCaseSeparationRequired"
+          },
+          {
+            "id": "50871ae9-5133-450f-a4f8-1f417af37a71",
+            "name": "hasPWDDesignation",
+            "type": "expression",
+            "field": "hasPWDDesignation"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "fd59b30f-3eba-4f8a-882b-1b946b57d969",
+            "type": "expression",
+            "field": "supplementAmount",
+            "name": "Supplement Amount"
+          },
+          {
+            "id": "d5a8549c-b09a-4b14-b175-cccffc58a36e",
+            "type": "expression",
+            "field": "isEligible",
+            "name": "isEligible"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "13046b42-512e-4c99-95b7-00d77404921f",
+            "0d414ece-80a9-4c4b-a666-bbc108bfa6a3": "== true",
+            "50871ae9-5133-450f-a4f8-1f417af37a71": "",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "0.00",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "false"
+          },
+          {
+            "_id": "57a08f65-62ff-4498-a493-5daab8cb5605",
+            "0d414ece-80a9-4c4b-a666-bbc108bfa6a3": "",
+            "50871ae9-5133-450f-a4f8-1f417af37a71": "true",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "222",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
+          },
+          {
+            "_id": "2e51cece-03c7-424f-b3ad-d7308a080568",
+            "0d414ece-80a9-4c4b-a666-bbc108bfa6a3": "",
+            "50871ae9-5133-450f-a4f8-1f417af37a71": "false",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "115",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "77fd5fd8-50db-4e8e-b515-185d6e22a4cb",
+      "sourceId": "138b7ca6-85a6-4f27-b7ff-69d619e2b362",
+      "type": "edge",
+      "targetId": "266080b4-4be8-4370-9b30-ba0407023b64"
+    },
+    {
+      "id": "eede4c41-255d-44b4-998a-5a30ab017604",
+      "sourceId": "266080b4-4be8-4370-9b30-ba0407023b64",
+      "type": "edge",
+      "targetId": "3bee5b5e-1b0f-48ef-ad49-9a582923be7c"
+    },
+    {
+      "id": "8b1968bc-fd69-42e5-85e0-1b6003496f8b",
+      "sourceId": "138b7ca6-85a6-4f27-b7ff-69d619e2b362",
+      "type": "edge",
+      "targetId": "3bee5b5e-1b0f-48ef-ad49-9a582923be7c"
+    },
+    {
+      "id": "52776891-173b-4623-bd88-aa94fd45ed87",
+      "sourceId": "3bee5b5e-1b0f-48ef-ad49-9a582923be7c",
+      "type": "edge",
+      "targetId": "8e19570d-c370-44b3-9a58-32e9a5ee0523",
+      "sourceHandle": "43d9ddf4-2427-4866-ad13-650caac187f1"
+    },
+    {
+      "id": "30831127-11a1-46eb-899a-be6b4b9fca8a",
+      "sourceId": "8e19570d-c370-44b3-9a58-32e9a5ee0523",
+      "type": "edge",
+      "targetId": "430d94ce-ca8b-4141-a249-73aab3e989f7"
+    },
+    {
+      "id": "3cd058f7-b0e1-4c99-b2a6-15acbb0db422",
+      "sourceId": "3bee5b5e-1b0f-48ef-ad49-9a582923be7c",
+      "type": "edge",
+      "targetId": "7cdbc5e8-c85b-40c2-99ce-1587bf4c609c",
+      "sourceHandle": "b94d9aba-f836-4239-81b7-a8dfeea3a461"
+    },
+    {
+      "id": "5ce6c43e-1401-4f4c-b7ad-16914643f338",
+      "sourceId": "7cdbc5e8-c85b-40c2-99ce-1587bf4c609c",
+      "type": "edge",
+      "targetId": "41eea16c-6a1b-40d6-9de3-7b96621b4dcf",
+      "sourceHandle": "23939a2a-7d74-4665-8673-b553473360bd"
+    },
+    {
+      "id": "7a602b62-4418-466d-a864-45711e4a588f",
+      "sourceId": "41eea16c-6a1b-40d6-9de3-7b96621b4dcf",
+      "type": "edge",
+      "targetId": "b73e4f5d-b3f4-49c7-9833-1ac679940629"
+    },
+    {
+      "id": "eae62965-98e4-47a4-a9f6-446a4a0b212d",
+      "sourceId": "7cdbc5e8-c85b-40c2-99ce-1587bf4c609c",
+      "type": "edge",
+      "targetId": "b73e4f5d-b3f4-49c7-9833-1ac679940629",
+      "sourceHandle": "112cd91b-c619-4864-b443-1e50b84e9239"
+    },
+    {
+      "id": "d35e7dfd-9991-4a59-abc7-f842cd8a8272",
+      "sourceId": "b73e4f5d-b3f4-49c7-9833-1ac679940629",
+      "type": "edge",
+      "targetId": "430d94ce-ca8b-4141-a249-73aab3e989f7"
+    },
+    {
+      "id": "9ed78bd0-e510-4a71-8f24-2d02f9241bbe",
+      "sourceId": "138b7ca6-85a6-4f27-b7ff-69d619e2b362",
+      "type": "edge",
+      "targetId": "b73e4f5d-b3f4-49c7-9833-1ac679940629"
+    }
+  ]
+}

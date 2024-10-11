@@ -5,7 +5,7 @@
       "name": "request",
       "type": "inputNode",
       "position": {
-        "x": -1060,
+        "x": -1085,
         "y": 425
       },
       "content": {
@@ -19,21 +19,43 @@
             "childFields": [
               {
                 "id": 64,
-                "name": "dateOfBirth",
-                "field": "Date of Birth",
+                "name": "Date of Birth",
+                "field": "dateOfBirth",
                 "description": "The specific date of birth for an individual.",
                 "dataType": "date",
                 "validationCriteria": "1910-01-01",
                 "validationType": ">="
               },
               {
+                "id": 40,
+                "name": "Person ID",
+                "field": "personID",
+                "description": "The unique id on a person's contact.",
+                "dataType": "text-input"
+              },
+              {
                 "id": 69,
-                "name": "inSchool",
-                "field": "In School",
+                "name": "In School",
+                "field": "inSchool",
                 "description": "Individual is currently in school.",
+                "dataType": "true-false"
+              },
+              {
+                "id": 124,
+                "name": "CCB Data Matched",
+                "field": "ccbDataMatched",
+                "description": "Federal benefit data report indicates that this dependent is counted in the calculation of federal benefits allocated to this family unit.",
                 "dataType": "true-false"
               }
             ]
+          },
+          {
+            "field": "benefitMonth",
+            "name": "Benefit Month",
+            "id": 2,
+            "description": "The month for which the benefit is being requested.",
+            "dataType": "date",
+            "childFields": []
           }
         ]
       }
@@ -43,7 +65,7 @@
       "name": "response",
       "type": "outputNode",
       "position": {
-        "x": -210,
+        "x": -85,
         "y": 450
       },
       "content": {
@@ -67,20 +89,18 @@
             "validationCriteria": "0",
             "validationType": ">=",
             "childFields": []
+          },
+          {
+            "field": "childCountCCBDataMatched",
+            "name": "Count of children eligible for CCB with federal data match",
+            "id": 125,
+            "description": "A count of the children in a family unit where the federal benefit data report indicates that this dependent is counted in the calculation of federal benefits allocated to this family unit.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
           }
         ]
-      }
-    },
-    {
-      "type": "functionNode",
-      "content": {
-        "source": "export const handler = async (input) => {\n  const dependents = input.dependentsList;\n  const twoMonthsOld = new Date();\n  twoMonthsOld.setMonth(twoMonthsOld.getMonth() - 2);\n\n  const eighteenYearsOld = new Date();\n  eighteenYearsOld.setFullYear(eighteenYearsOld.getFullYear() - 18);\n\n  const nineteenYearsOld = new Date();\n  nineteenYearsOld.setFullYear(nineteenYearsOld.getFullYear() - 19);\n\n  // Count children older than or equal to 2 months of age, and less than or equal to 18 years of age\n  const childCountCCBEligible = dependents.filter(dependent => {\n    const dateOfBirth = new Date(dependent.dateOfBirth);\n    return dateOfBirth <= twoMonthsOld && dateOfBirth >= eighteenYearsOld;\n  }).length;\n\n  // Count children less than 2 months of age, older than 18 but less than 19, or 19+ but in school\n  const childCountDeemedEligible = dependents.filter(dependent => {\n    const dateOfBirth = new Date(dependent.dateOfBirth);\n    const isLessThanTwoMonthsOld = dateOfBirth > twoMonthsOld;\n    const isBetweenEighteenAndNineteenYearsOld = dateOfBirth <= eighteenYearsOld && dateOfBirth > nineteenYearsOld;\n    const isNineteenOrOlderAndInSchool = dateOfBirth <= nineteenYearsOld && dependent.inSchool === true;\n\n    return isLessThanTwoMonthsOld || isBetweenEighteenAndNineteenYearsOld || isNineteenOrOlderAndInSchool;\n  }).length;\n  return {\n    childCountCCBEligible,\n    childCountDeemedEligible,\n  }\n};\n"
-      },
-      "id": "be5c7626-8f52-4ce8-b01f-d9eee1cd71d6",
-      "name": "Youth Count",
-      "position": {
-        "x": -480,
-        "y": 465
       }
     },
     {
@@ -103,7 +123,7 @@
       "id": "7c2595a1-56dd-4ce4-89b3-f652084ef761",
       "name": "Check if dependents exist",
       "position": {
-        "x": -775,
+        "x": -795,
         "y": 425
       }
     },
@@ -120,14 +140,19 @@
             "id": "6733d70e-d443-4191-84ec-7ed1a64ab1d6",
             "key": "childCountDeemedEligible",
             "value": "0 + 0"
+          },
+          {
+            "id": "0497b26b-6caa-4878-b5cc-508f7e8d845b",
+            "key": "",
+            "value": ""
           }
         ]
       },
       "id": "5038060c-b9a3-401e-a1e2-7a54f235abee",
       "name": "Default 0",
       "position": {
-        "x": -480,
-        "y": 565
+        "x": -430,
+        "y": 690
       }
     },
     {
@@ -135,27 +160,105 @@
       "content": {
         "expressions": [
           {
-            "id": "ccfb4915-9542-48dd-83cb-ede6fe066012",
-            "key": "unusedInput",
+            "id": "f2c8dd4e-c924-436e-a087-3ead62c30518",
+            "key": "benefitMonthYear",
+            "value": "year(date(benefitMonth))"
+          },
+          {
+            "id": "d315c552-7667-4173-975d-8a45d6b8d848",
+            "key": "benefitMonthMonth",
+            "value": "monthOfYear(date(benefitMonth))"
+          },
+          {
+            "id": "84644af0-c783-4d3c-bcf2-4eb8766351e3",
+            "key": "markAsUsed",
             "value": "dependentsList"
+          },
+          {
+            "id": "3196a20c-26a7-49c3-8790-69712b6fa094",
+            "key": "markAsUsed",
+            "value": "benefitMonth"
           }
         ]
       },
-      "id": "b472d5c1-83ff-4f5a-889a-c19aeeaaafe4",
-      "name": "Mark Used Input",
+      "id": "052c60ea-55a7-4446-9995-08edf3e10c93",
+      "name": "Format Benefit Month",
       "position": {
-        "x": -480,
-        "y": 365
+        "x": -500,
+        "y": 325
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "a6d1f32f-035d-492d-a244-9a6b544a1571",
+            "key": "dependentsListYearandMonth",
+            "value": "map(dependentsList, ({ageInYears:(benefitMonthYear - year(date(#.dateOfBirth))), ageInMonths: ((benefitMonthYear - year(date(#.dateOfBirth))) * 12 + (benefitMonthMonth - monthOfYear(date(#.dateOfBirth)))), inSchool: #.inSchool, ccbDataMatched: #.ccbDataMatched} ))"
+          }
+        ]
+      },
+      "id": "40a5b4e8-0217-4b1c-b35d-e5e9155c8682",
+      "name": "Add YearMonth Dependents",
+      "position": {
+        "x": -425,
+        "y": 430
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "8261c9db-da6b-4dc3-96bc-eeac80b70380",
+            "key": "testingCCBEligible",
+            "value": "filter(dependentsListYearandMonth, (#.ageInMonths >= 2 and #.ageInYears < 18))"
+          },
+          {
+            "id": "e1d25c91-2e44-4842-8d2f-987b51fd1b11",
+            "key": "testingDeemed",
+            "value": "filter(dependentsListYearandMonth, (#.ageInMonths < 2 or (#.ageInYears >= 18 and #.ageInYears < 19) or (#.ageInYears >= 19 and #.inSchool == true)))"
+          }
+        ]
+      },
+      "id": "1580189a-4982-48b3-af20-dfb4f2d25cec",
+      "name": "Filter Dependents",
+      "position": {
+        "x": -425,
+        "y": 520
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "94ec3f7a-22ae-48db-8541-85b401a84dfd",
+            "key": "childCountCCBEligible",
+            "value": "len(testingCCBEligible)"
+          },
+          {
+            "id": "068e69f5-1efe-4461-ac43-767f3124252d",
+            "key": "childCountDeemedEligible",
+            "value": "len(testingDeemed)"
+          },
+          {
+            "id": "f465321c-3c56-4539-8194-6017307d3e00",
+            "key": "childCountCCBDataMatched",
+            "value": "count(testingCCBEligible, (#.ccbDataMatched == true))"
+          }
+        ]
+      },
+      "id": "6bacdcb2-46d2-424d-9b21-07514c587044",
+      "name": "Count Dependents",
+      "position": {
+        "x": -430,
+        "y": 605
       }
     }
   ],
   "edges": [
-    {
-      "id": "1264884f-17c4-43de-998d-d6de0f0bc9d0",
-      "sourceId": "be5c7626-8f52-4ce8-b01f-d9eee1cd71d6",
-      "type": "edge",
-      "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
-    },
     {
       "id": "f237ce32-5cdd-4a66-adb2-f948f94b3963",
       "sourceId": "5038060c-b9a3-401e-a1e2-7a54f235abee",
@@ -169,13 +272,6 @@
       "targetId": "7c2595a1-56dd-4ce4-89b3-f652084ef761"
     },
     {
-      "id": "a906d2f5-c980-48c8-84bc-6389b46e9d22",
-      "sourceId": "7c2595a1-56dd-4ce4-89b3-f652084ef761",
-      "type": "edge",
-      "targetId": "be5c7626-8f52-4ce8-b01f-d9eee1cd71d6",
-      "sourceHandle": "f9f1f545-7595-44cf-9785-3c52eee65b52"
-    },
-    {
       "id": "0c3f2e62-fb43-4fa2-b615-bdb85db8bdc9",
       "sourceId": "7c2595a1-56dd-4ce4-89b3-f652084ef761",
       "type": "edge",
@@ -183,17 +279,42 @@
       "sourceHandle": "547d8e4d-304c-41ef-a9d0-3f59937e08ba"
     },
     {
-      "id": "2c37fa54-63d3-44e2-9859-0086e513b544",
+      "id": "21052656-03f8-424b-a77f-1d9f25b2ff4a",
       "sourceId": "7c2595a1-56dd-4ce4-89b3-f652084ef761",
       "type": "edge",
-      "targetId": "b472d5c1-83ff-4f5a-889a-c19aeeaaafe4",
+      "targetId": "40a5b4e8-0217-4b1c-b35d-e5e9155c8682",
       "sourceHandle": "f9f1f545-7595-44cf-9785-3c52eee65b52"
     },
     {
-      "id": "4764a1a1-e2e7-4df4-a177-fba25918bbf5",
-      "sourceId": "b472d5c1-83ff-4f5a-889a-c19aeeaaafe4",
+      "id": "3071329b-8fb5-4a52-8656-a6001b65cae6",
+      "sourceId": "7c2595a1-56dd-4ce4-89b3-f652084ef761",
       "type": "edge",
-      "targetId": "be5c7626-8f52-4ce8-b01f-d9eee1cd71d6"
+      "targetId": "052c60ea-55a7-4446-9995-08edf3e10c93",
+      "sourceHandle": "f9f1f545-7595-44cf-9785-3c52eee65b52"
+    },
+    {
+      "id": "8a1212f7-5987-4f8f-bbc1-05e58a2e7250",
+      "sourceId": "052c60ea-55a7-4446-9995-08edf3e10c93",
+      "type": "edge",
+      "targetId": "40a5b4e8-0217-4b1c-b35d-e5e9155c8682"
+    },
+    {
+      "id": "922fc42c-4465-4896-a5b0-67e4c0c83ae7",
+      "sourceId": "40a5b4e8-0217-4b1c-b35d-e5e9155c8682",
+      "type": "edge",
+      "targetId": "1580189a-4982-48b3-af20-dfb4f2d25cec"
+    },
+    {
+      "id": "d4a8f6fe-12cf-4525-a4a4-159069fbcbc8",
+      "sourceId": "6bacdcb2-46d2-424d-9b21-07514c587044",
+      "type": "edge",
+      "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
+    },
+    {
+      "id": "fb3061b8-35e7-4802-9301-c52650ef3f93",
+      "sourceId": "1580189a-4982-48b3-af20-dfb4f2d25cec",
+      "type": "edge",
+      "targetId": "6bacdcb2-46d2-424d-9b21-07514c587044"
     }
   ]
 }

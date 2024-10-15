@@ -7,7 +7,15 @@
         "x": -420,
         "y": 30
       },
-      "name": "request"
+      "name": "request",
+      "content": {
+        "fields": [
+          {
+            "field": "",
+            "name": ""
+          }
+        ]
+      }
     },
     {
       "id": "430d94ce-ca8b-4141-a249-73aab3e989f7",
@@ -16,7 +24,15 @@
         "x": 1510,
         "y": 70
       },
-      "name": "response"
+      "name": "response",
+      "content": {
+        "fields": [
+          {
+            "field": "",
+            "name": ""
+          }
+        ]
+      }
     },
     {
       "id": "266080b4-4be8-4370-9b30-ba0407023b64",

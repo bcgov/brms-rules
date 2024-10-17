@@ -1,0 +1,206 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "type": "inputNode",
+      "id": "358e427e-ba5e-4811-b851-fb41a73d34ad",
+      "name": "request",
+      "position": {
+        "x": 0,
+        "y": 185
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "isEligibleForAssistance",
+            "name": "Family unit is eligible for IA, DA, or HA",
+            "id": 81,
+            "description": "Family unit is eligible for income assistance, disability assistance or hardship assistance.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isDepositNecessary",
+            "name": "Family unit requires the security deposit in order to obtain/retain accommodation?",
+            "id": 109,
+            "description": null,
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isTenacyValid",
+            "name": "Tenancy is a valid tenancy under the Residential Tenancy Act",
+            "id": 110,
+            "description": null,
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "totalRentAmount",
+            "name": "Total amount of rent, including subsidies and portion of the rent payable by roommates/co-tenants",
+            "id": 111,
+            "description": null,
+            "dataType": "number-input",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "type": "outputNode",
+      "id": "a6a646e9-45a2-4aeb-857d-7da154f32db4",
+      "name": "response",
+      "position": {
+        "x": 765,
+        "y": 205
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "id": 28,
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "id": 58,
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "caa6534f-8b32-4cda-b4e7-c92df196b5b7",
+            "field": "isEligibleForAssistance",
+            "name": "Family unit is eligible for IA, DA, or HA"
+          },
+          {
+            "id": "b9555d9f-0873-4862-a35b-19693e9e2dba",
+            "field": "isDepositNecessary",
+            "name": "Family unit requires the security deposit in order to obtain/retain accommodation?"
+          },
+          {
+            "id": "13790d55-bc2d-4f2b-bb5a-bf91ae22807c",
+            "field": "isTenacyValid",
+            "name": "Tenancy is a valid tenancy under the Residential Tenancy Act"
+          },
+          {
+            "id": "21818a11-72a9-478c-8a36-4a88b1e23149",
+            "field": "totalRentAmount",
+            "name": "Total amount of rent, including subsidies and portion of the rent payable by roommates/co-tenants"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "91b8c950-b27a-4471-8ab5-c836d12454fb",
+            "name": "isEligible",
+            "field": "isEligible"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "daed1342-9f69-4021-aa10-8a9c23818497",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "true",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "true",
+            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "true",
+            "21818a11-72a9-478c-8a36-4a88b1e23149": "",
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "true"
+          },
+          {
+            "_id": "bc92a8ab-07fb-4d3e-9ac8-c84036a6f49e",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "true",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "false",
+            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "true",
+            "21818a11-72a9-478c-8a36-4a88b1e23149": "",
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
+          },
+          {
+            "_id": "1866e17f-c260-4cd1-a9ec-0923a9e8bd72",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "true",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "true",
+            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "false",
+            "21818a11-72a9-478c-8a36-4a88b1e23149": "",
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
+          },
+          {
+            "_id": "a7ca19f8-bfd1-4341-989e-22cf5acea253",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "false",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "true",
+            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "true",
+            "21818a11-72a9-478c-8a36-4a88b1e23149": "",
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
+          }
+        ]
+      },
+      "id": "82b27ab1-7901-4fe5-a3a5-f203f6b715de",
+      "name": "Eligibility",
+      "position": {
+        "x": 410,
+        "y": 185
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "226094df-3b74-4918-a33e-bce434c544a1",
+            "key": "supplementAmount",
+            "value": "isEligible == true and totalRentAmount > 0 ? totalRentAmount/2 : 0"
+          }
+        ]
+      },
+      "id": "29e9c534-ebb4-420b-ab5e-4071c44c6798",
+      "name": "Supplement Calculation",
+      "position": {
+        "x": 405,
+        "y": 375
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "2d1c0e05-b2b4-4bfb-8e3e-30e35ffdf091",
+      "sourceId": "358e427e-ba5e-4811-b851-fb41a73d34ad",
+      "type": "edge",
+      "targetId": "82b27ab1-7901-4fe5-a3a5-f203f6b715de"
+    },
+    {
+      "id": "0bb07ce7-51c3-46a3-b709-1ddc2c4640a6",
+      "sourceId": "82b27ab1-7901-4fe5-a3a5-f203f6b715de",
+      "type": "edge",
+      "targetId": "a6a646e9-45a2-4aeb-857d-7da154f32db4"
+    },
+    {
+      "id": "068ebee6-267a-46b2-90b3-296c2dc85267",
+      "sourceId": "82b27ab1-7901-4fe5-a3a5-f203f6b715de",
+      "type": "edge",
+      "targetId": "29e9c534-ebb4-420b-ab5e-4071c44c6798"
+    },
+    {
+      "id": "6cd3e40f-93c7-4a06-91cd-fddc426c62fc",
+      "sourceId": "358e427e-ba5e-4811-b851-fb41a73d34ad",
+      "type": "edge",
+      "targetId": "29e9c534-ebb4-420b-ab5e-4071c44c6798"
+    },
+    {
+      "id": "18773d86-93bf-41c8-8ced-54d5ad9cbfc6",
+      "sourceId": "29e9c534-ebb4-420b-ab5e-4071c44c6798",
+      "type": "edge",
+      "targetId": "a6a646e9-45a2-4aeb-857d-7da154f32db4"
+    }
+  ]
+}

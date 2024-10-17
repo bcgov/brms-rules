@@ -272,7 +272,8 @@
           {
             "id": "04e8d128-1247-4155-9650-46671358563b",
             "key": "supportFinalAmount",
-            "value": "maximumSupportAmount"
+
+            "value": "maximumDASupportAmount"
           }
         ]
       }
@@ -290,7 +291,7 @@
           {
             "id": "ae3fcdb0-2827-4a03-8c43-5737955272b3",
             "key": "supportFinalAmount",
-            "value": "maximumSupportAmount"
+            "value": "maximumIASupportAmount"
           }
         ]
       }

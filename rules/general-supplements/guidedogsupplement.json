@@ -12,39 +12,39 @@
       "content": {
         "fields": [
           {
+            "id": 18,
             "field": "familyUnitInPay",
             "name": "Family Unit In Pay",
-            "id": 18,
             "description": "Family unit is in pay.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 59,
             "field": "usesGuideDog",
             "name": "Uses Guide Dog",
-            "id": 59,
             "description": "Individual uses a guide dog.",
             "dataType": "true-false",
             "childFields": []
           },
           {
-            "field": "numberOfRecipients",
-            "name": "Number of Recipients",
-            "id": 37,
-            "description": "The number of individuals expected to count for a specific assessment.",
-            "dataType": "number-input",
-            "validationCriteria": "0",
-            "validationType": ">=",
-            "childFields": []
-          },
-          {
+            "id": 22,
             "field": "guideDogDocumentationType",
             "name": "Guide Dog Documentation Type",
-            "id": 22,
             "description": "The type of documentation received for the guide dog.",
             "dataType": "text-input",
             "validationCriteria": "certification, testBooked",
             "validationType": "[=text]",
+            "childFields": []
+          },
+          {
+            "id": 129,
+            "field": "numberOfDogTeams",
+            "name": "Number of Dog Teams",
+            "description": "The number of guide dog, service dog and/or retired guide or service dog teams certified under the Guide Dog and Service Dog Act for this individual.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
             "childFields": []
           }
         ]
@@ -137,25 +137,25 @@
       "content": {
         "fields": [
           {
-            "field": "twoMonthEligibility",
-            "name": "Two Month Eligibility",
             "id": 65,
-            "description": "Whether or not an individual must pass the two month eligibility period to be eligible for a supplement.",
+            "field": "twoMonthEligibility",
+            "name": "Up To Two Months of Eligibility",
+            "description": "Whether or not an individual is within the two month eligibility period to be eligible for a guide dog supplement.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 28,
             "field": "isEligible",
             "name": "Is Eligible",
-            "id": 28,
             "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 58,
             "field": "supplementAmount",
             "name": "Supplement Amount",
-            "id": 58,
             "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
             "dataType": "number-input",
             "validationCriteria": "0",
@@ -174,9 +174,9 @@
         "inputs": [
           {
             "id": "52ea306d-6249-4ba1-b544-6cc4c54e847a",
-            "name": "Number of Recipients",
+            "name": "Number of Dog Teams",
             "type": "expression",
-            "field": "numberOfRecipients"
+            "field": "numberOfDogTeams"
           },
           {
             "id": "78a77996-923f-4a0e-bc1d-af7cc3486578",
@@ -199,7 +199,7 @@
             "_id": "ba057bc7-9043-4d53-89bc-99d1a1f6c80c",
             "52ea306d-6249-4ba1-b544-6cc4c54e847a": "",
             "78a77996-923f-4a0e-bc1d-af7cc3486578": "true",
-            "c6c3a8bc-99bc-4512-b0e4-94d194df3da0": "numberOfRecipients*95"
+            "c6c3a8bc-99bc-4512-b0e4-94d194df3da0": "numberOfDogTeams*95"
           }
         ]
       },

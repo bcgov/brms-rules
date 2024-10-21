@@ -1,5 +1,4 @@
 {
-  "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
       "id": "d4b75ff1-c189-4c99-befd-34a048ea36dc",
@@ -55,32 +54,7 @@
       "name": "Eligibility",
       "type": "decisionTableNode",
       "content": {
-        "rules": [
-          {
-            "_id": "1468e0db-8faf-468d-b9f7-54b8bdc7ea5d",
-            "17726155-ad08-49e7-901f-7337611630aa": "false",
-            "4eef6312-1689-4e3e-90c8-21efc312aba5": "\"certification\"",
-            "a91c0dbe-4622-41b9-94cd-b5bff7ed1ffc": "true",
-            "d1465f38-5770-41fe-b4c6-64ab07562a67": "true",
-            "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "true"
-          },
-          {
-            "_id": "e07580c9-79a4-46ec-b36a-8b0e0c6e9750",
-            "17726155-ad08-49e7-901f-7337611630aa": "true",
-            "4eef6312-1689-4e3e-90c8-21efc312aba5": "\"testBooked\"",
-            "a91c0dbe-4622-41b9-94cd-b5bff7ed1ffc": "true",
-            "d1465f38-5770-41fe-b4c6-64ab07562a67": "true",
-            "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "true"
-          },
-          {
-            "_id": "9e372954-b632-40f6-8e6e-d34190cf0a1c",
-            "17726155-ad08-49e7-901f-7337611630aa": "",
-            "4eef6312-1689-4e3e-90c8-21efc312aba5": "",
-            "a91c0dbe-4622-41b9-94cd-b5bff7ed1ffc": "",
-            "d1465f38-5770-41fe-b4c6-64ab07562a67": "",
-            "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "false"
-          }
-        ],
+        "hitPolicy": "first",
         "inputs": [
           {
             "id": "a91c0dbe-4622-41b9-94cd-b5bff7ed1ffc",
@@ -119,7 +93,33 @@
             "defaultValue": "false"
           }
         ],
-        "hitPolicy": "first"
+        "rules": [
+          {
+            "_id": "1468e0db-8faf-468d-b9f7-54b8bdc7ea5d",
+            "17726155-ad08-49e7-901f-7337611630aa": "false",
+            "4eef6312-1689-4e3e-90c8-21efc312aba5": "\"certification\"",
+            "a91c0dbe-4622-41b9-94cd-b5bff7ed1ffc": "true",
+            "d1465f38-5770-41fe-b4c6-64ab07562a67": "true",
+            "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "true",
+            "_description": ""
+          },
+          {
+            "_id": "e07580c9-79a4-46ec-b36a-8b0e0c6e9750",
+            "17726155-ad08-49e7-901f-7337611630aa": "true",
+            "4eef6312-1689-4e3e-90c8-21efc312aba5": "\"testBooked\"",
+            "a91c0dbe-4622-41b9-94cd-b5bff7ed1ffc": "true",
+            "d1465f38-5770-41fe-b4c6-64ab07562a67": "true",
+            "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "true"
+          },
+          {
+            "_id": "9e372954-b632-40f6-8e6e-d34190cf0a1c",
+            "17726155-ad08-49e7-901f-7337611630aa": "",
+            "4eef6312-1689-4e3e-90c8-21efc312aba5": "",
+            "a91c0dbe-4622-41b9-94cd-b5bff7ed1ffc": "",
+            "d1465f38-5770-41fe-b4c6-64ab07562a67": "",
+            "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "false"
+          }
+        ]
       },
       "position": {
         "x": 615,

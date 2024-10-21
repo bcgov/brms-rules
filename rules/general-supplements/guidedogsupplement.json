@@ -1,5 +1,4 @@
 {
-  "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
       "id": "d4b75ff1-c189-4c99-befd-34a048ea36dc",
@@ -22,8 +21,8 @@
           {
             "id": 59,
             "field": "usesGuideDog",
-            "name": "Uses Guide Dog",
-            "description": "Individual uses a guide dog.",
+            "name": "Uses Guide Dog or Service Dog",
+            "description": "Individual uses a guide dog, service dog and/or retired guide or service dog certified under the Guide Dog and Service Dog Act.",
             "dataType": "true-false",
             "childFields": []
           },
@@ -66,7 +65,7 @@
           },
           {
             "id": "d1465f38-5770-41fe-b4c6-64ab07562a67",
-            "name": "Uses Guide Dog",
+            "name": "Uses Guide Dog or Service Dog",
             "type": "expression",
             "field": "usesGuideDog",
             "defaultValue": "false"
@@ -97,6 +96,7 @@
         "rules": [
           {
             "_id": "1468e0db-8faf-468d-b9f7-54b8bdc7ea5d",
+            "_description": "Family unit has provided proof of certification which includes: Certified under Guide Dog and Service Dog Act by an accredited/recognized school as defined in Guide Dog and Service Dog Regulation or\nIssued a valid ID card by accredited/recognized school as defined in Guide 3. Dog and Service Dog Regulation or\nDog passes a test administered by the Justice Institute of BC",
             "a91c0dbe-4622-41b9-94cd-b5bff7ed1ffc": "true",
             "d1465f38-5770-41fe-b4c6-64ab07562a67": "true",
             "4eef6312-1689-4e3e-90c8-21efc312aba5": "\"certification\"",
@@ -105,6 +105,7 @@
           },
           {
             "_id": "e07580c9-79a4-46ec-b36a-8b0e0c6e9750",
+            "_description": "A test booked with the Justice Institute for certification for a date within two months of requesting the supplement.",
             "a91c0dbe-4622-41b9-94cd-b5bff7ed1ffc": "true",
             "d1465f38-5770-41fe-b4c6-64ab07562a67": "true",
             "4eef6312-1689-4e3e-90c8-21efc312aba5": "\"testBooked\"",

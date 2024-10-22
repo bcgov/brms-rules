@@ -86,7 +86,7 @@
         "rules": [
           {
             "_id": "1468e0db-8faf-468d-b9f7-54b8bdc7ea5d",
-            "_description": "Family unit has provided proof of certification which includes: Certified under Guide Dog and Service Dog Act by an accredited/recognized school as defined in Guide Dog and Service Dog Regulation or\nIssued a valid ID card by accredited/recognized school as defined in Guide 3. Dog and Service Dog Regulation or\nDog passes a test administered by the Justice Institute of BC",
+            "_description": "",
             "a91c0dbe-4622-41b9-94cd-b5bff7ed1ffc": "true",
             "d1465f38-5770-41fe-b4c6-64ab07562a67": "true",
             "811e33b5-5f7a-4719-a00d-5d8aaa4c6940": "",
@@ -194,7 +194,7 @@
         "rules": [
           {
             "_id": "e07580c9-79a4-46ec-b36a-8b0e0c6e9750",
-            "_description": "A test booked with the Justice Institute for certification for a date within two months of requesting the supplement for one of the teams.",
+            "_description": "A test booked with the Justice Institute for certification for a date within two months of requesting the supplement for at least one of the teams.",
             "f06e8fde-1d31-4ad1-ae94-f8cf6fe0fddf": "$ > 0",
             "6852d88b-574f-44cc-82e0-c1a615e92917": "",
             "2f0b7c62-ebb6-41db-a36e-2d6e83df5f3e": "true",
@@ -204,7 +204,7 @@
           },
           {
             "_id": "1468e0db-8faf-468d-b9f7-54b8bdc7ea5d",
-            "_description": "Family unit has provided proof of certification for all teams. Includes: Certified under Guide Dog and Service Dog Act by an accredited/recognized school as defined in Guide Dog and Service Dog Regulation or\nIssued a valid ID card by accredited/recognized school as defined in Guide 3. Dog and Service Dog Regulation or\nDog passes a test administered by the Justice Institute of BC",
+            "_description": "Proof of certification provided for all dog teams on the which includes: \nA valid Guide Dog and Service Dog Act (GDSDA) Certificate issued by the Registrar of Guide Dogs and Service Dogs OR\n A valid identification (ID) card issued by an accredited training school.",
             "f06e8fde-1d31-4ad1-ae94-f8cf6fe0fddf": "",
             "6852d88b-574f-44cc-82e0-c1a615e92917": "$ > 0",
             "2f0b7c62-ebb6-41db-a36e-2d6e83df5f3e": "true",
@@ -273,6 +273,36 @@
       "position": {
         "x": 205,
         "y": 185
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "If base eligibility passes, dog team count is based on the documentation available for each dog. If no documentation, they are not an eligible dog team. "
+        }
+      },
+      "id": "2c763cbe-bf93-4001-a4a2-ac3dda0ba998",
+      "name": "Note",
+      "position": {
+        "x": 505,
+        "y": 35
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "If base eligibility passes, and at least one dog team has documentation, they are eligible for the supplement. Amount is based on the number of dog teams with documentation."
+        }
+      },
+      "id": "324df88e-49c9-4312-b525-5a322a1c38f6",
+      "name": "Note",
+      "position": {
+        "x": 775,
+        "y": 20
       }
     }
   ],

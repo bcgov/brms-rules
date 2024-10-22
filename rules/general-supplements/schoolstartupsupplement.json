@@ -1,0 +1,413 @@
+{
+  "nodes": [
+    {
+      "id": "eda97a5d-133a-4e15-ae39-002220c424c7",
+      "name": "request",
+      "type": "inputNode",
+      "position": {
+        "x": -480,
+        "y": 100
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "dependentsList",
+            "name": "Dependents List",
+            "id": 8,
+            "description": "A list of dependent active on a case with their relevant properties.",
+            "dataType": "object-array",
+            "childFields": [
+              {
+                "id": 64,
+                "name": "Date of Birth",
+                "field": "dateOfBirth",
+                "description": "The specific date of birth for an individual.",
+                "dataType": "date",
+                "validationCriteria": "1910-01-01",
+                "validationType": ">="
+              },
+              {
+                "id": 40,
+                "name": "Person ID",
+                "field": "personID",
+                "description": "The unique id on a person's contact.",
+                "dataType": "text-input"
+              },
+              {
+                "id": 69,
+                "name": "In School",
+                "field": "inSchool",
+                "description": "Individual is currently in school.",
+                "dataType": "true-false"
+              },
+              {
+                "id": 124,
+                "name": "CCB Data Matched",
+                "field": "ccbDataMatched",
+                "description": "Federal benefit data report indicates that this dependent is counted in the calculation of federal benefits allocated to this family unit.",
+                "dataType": "true-false"
+              }
+            ]
+          },
+          {
+            "field": "benefitYear",
+            "name": "Benefit Year",
+            "id": 131,
+            "description": "The selected year for a benefit to be provided. ",
+            "dataType": "date",
+            "validationCriteria": "[2022-01-01, 2029-12-31]",
+            "validationType": "[date]",
+            "childFields": []
+          },
+          {
+            "field": "familyUnitInPay",
+            "name": "Family Unit In Pay",
+            "id": 18,
+            "description": "Family unit is in pay.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "a8c7c645-b9f8-4d3f-ae19-74cb915b6f1a",
+      "name": "response",
+      "type": "outputNode",
+      "position": {
+        "x": 400,
+        "y": 145
+      },
+      "content": {
+        "fields": [
+          {
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "id": 28,
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "id": 58,
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "ce6c9be1-9d14-4938-a540-256f623c9c03",
+            "field": "familyUnitInPay",
+            "name": "Family Unit In Pay"
+          },
+          {
+            "id": "b42dda88-d8f1-40e5-acb2-be1f870cae7f",
+            "field": "dependentsList",
+            "name": "Dependents List"
+          },
+          {
+            "id": "65e2e8e5-3532-4d49-861a-33dc0d379044",
+            "field": "benefitYear",
+            "name": "Benefit Year"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "bd790f69-6ef3-4f79-b372-e2a11a5d2770",
+            "name": "isEligible",
+            "field": "isEligible"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "ba30308a-e6a1-48dd-85c4-bc1a4f6653ea",
+            "_description": "",
+            "ce6c9be1-9d14-4938-a540-256f623c9c03": "true",
+            "b42dda88-d8f1-40e5-acb2-be1f870cae7f": "",
+            "65e2e8e5-3532-4d49-861a-33dc0d379044": "",
+            "bd790f69-6ef3-4f79-b372-e2a11a5d2770": "true"
+          },
+          {
+            "_id": "b095a1db-cfd9-4e27-bc5b-858de177f4d6",
+            "ce6c9be1-9d14-4938-a540-256f623c9c03": "false",
+            "b42dda88-d8f1-40e5-acb2-be1f870cae7f": "",
+            "65e2e8e5-3532-4d49-861a-33dc0d379044": "",
+            "bd790f69-6ef3-4f79-b372-e2a11a5d2770": "false"
+          },
+          {
+            "_id": "95df6d51-13fe-4a84-96cb-026369ace8a2",
+            "ce6c9be1-9d14-4938-a540-256f623c9c03": "",
+            "b42dda88-d8f1-40e5-acb2-be1f870cae7f": "",
+            "65e2e8e5-3532-4d49-861a-33dc0d379044": "",
+            "bd790f69-6ef3-4f79-b372-e2a11a5d2770": "false"
+          }
+        ]
+      },
+      "id": "c7601f88-3a3d-46e1-8113-f1db6cb41e7e",
+      "name": "Eligibility",
+      "position": {
+        "x": -180,
+        "y": -5
+      }
+    },
+    {
+      "type": "switchNode",
+      "content": {
+        "hitPolicy": "first",
+        "statements": [
+          {
+            "id": "6b3b7268-4537-4de7-8f3f-9fe0ed9271d7",
+            "condition": "isEligible == true and dependentsList != null",
+            "isDefault": false
+          },
+          {
+            "id": "68c9d5bb-3522-4b99-9460-32b65bdd1d46",
+            "condition": "",
+            "isDefault": true
+          }
+        ]
+      },
+      "id": "951fd02c-338a-4506-bf7f-5ed279a1d9bd",
+      "name": "isEligible",
+      "position": {
+        "x": -180,
+        "y": 100
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "f92ef0af-1252-49d8-8af0-5efc546eb532",
+            "key": "isEligible",
+            "value": "isEligible ? false : isEligible"
+          },
+          {
+            "id": "38d91641-837c-407b-b790-fe7e59805d98",
+            "key": "supplementAmount",
+            "value": "supplementAmount"
+          }
+        ]
+      },
+      "id": "0e1adf58-1cc2-42df-bdf5-5040a70f7aeb",
+      "name": "Inelgible",
+      "position": {
+        "x": 110,
+        "y": 245
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "d33f1bf3-cd96-4943-9d64-2939063ee6ba",
+            "key": "count5to11",
+            "value": "count(dependentsList, ((benefitYearOnly - year(date(#.dateOfBirth))) >= 5 and (benefitYearOnly - year(date(#.dateOfBirth))) <= 11 and (#.inSchool == true)))"
+          },
+          {
+            "id": "e4af816e-c1bd-437d-bb7c-7865ccd62ae9",
+            "key": "count12to18",
+            "value": "count(dependentsList, ((benefitYearOnly - year(date(#.dateOfBirth))) >= 12 and (benefitYearOnly - year(date(#.dateOfBirth))) <= 18 and (#.inSchool == true)))"
+          }
+        ]
+      },
+      "id": "fc30615c-092c-49e5-b755-10599c922f8e",
+      "name": "Age Counts",
+      "position": {
+        "x": 110,
+        "y": 20
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "41d577f4-7e29-4a49-94b5-d6e3ad9a974d",
+            "key": "benefitYearOnly",
+            "value": "year(date(benefitYear))"
+          }
+        ]
+      },
+      "id": "b1e1b863-d377-48c1-be88-973f5bfcb67e",
+      "name": "Benefit Month Year",
+      "position": {
+        "x": 110,
+        "y": -90
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "fd2b7646-0286-4a69-b0d2-748e1d47f0ac",
+            "name": "Count of dependents 5 - 11 in school",
+            "field": "count5to11"
+          },
+          {
+            "id": "1db9ef35-b495-4ac6-b645-fa096c3d3bc4",
+            "field": "count12to18",
+            "name": "Count of dependents 12 - 18 in school"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "19a2cb8c-79b6-4ece-8cc0-60d557574d6e",
+            "name": "Supplement Amount",
+            "field": "supplementAmount"
+          },
+          {
+            "id": "2de55825-8575-4fc6-9f4f-963247fefb6b",
+            "field": "isEligible",
+            "name": "Is Eligible"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "8a887c5b-f2ec-48ae-9e3b-65b9bf5c02a0",
+            "fd2b7646-0286-4a69-b0d2-748e1d47f0ac": "> 0",
+            "1db9ef35-b495-4ac6-b645-fa096c3d3bc4": "",
+            "19a2cb8c-79b6-4ece-8cc0-60d557574d6e": "(count5to11 * 120) + (count12to18 * 210)",
+            "2de55825-8575-4fc6-9f4f-963247fefb6b": "true"
+          },
+          {
+            "_id": "5de1b4ae-51e9-4205-b6c1-24045f3e5f75",
+            "fd2b7646-0286-4a69-b0d2-748e1d47f0ac": "",
+            "1db9ef35-b495-4ac6-b645-fa096c3d3bc4": "> 0",
+            "19a2cb8c-79b6-4ece-8cc0-60d557574d6e": "(count5to11 * 120) + (count12to18 * 210)",
+            "2de55825-8575-4fc6-9f4f-963247fefb6b": "true"
+          },
+          {
+            "_id": "5cf3f506-5fbb-4611-a36e-929fed79f8f1",
+            "fd2b7646-0286-4a69-b0d2-748e1d47f0ac": "",
+            "1db9ef35-b495-4ac6-b645-fa096c3d3bc4": "",
+            "19a2cb8c-79b6-4ece-8cc0-60d557574d6e": "",
+            "2de55825-8575-4fc6-9f4f-963247fefb6b": "false"
+          }
+        ]
+      },
+      "id": "a073d661-58db-42fa-89f2-eaa3cad8d0be",
+      "name": "Supplement Amounts",
+      "position": {
+        "x": 105,
+        "y": 135
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "Count the number of dependents on the request who are in school, and what their final ages are at the end of the benefit year, regardless of actual birth date."
+        }
+      },
+      "id": "f8b38688-b4cd-468e-8b39-1216a2feb911",
+      "name": "Note",
+      "position": {
+        "x": 410,
+        "y": -165
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "Enrollment can be verified by Person Status Code \"S\" or manually. Uses the 'In School' property on a dependent."
+        }
+      },
+      "id": "86342331-9568-4295-bbdc-6311df291407",
+      "name": "Note",
+      "position": {
+        "x": 410,
+        "y": -5
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "5088cb44-3c41-4af4-8534-9418659909d0",
+      "sourceId": "eda97a5d-133a-4e15-ae39-002220c424c7",
+      "type": "edge",
+      "targetId": "951fd02c-338a-4506-bf7f-5ed279a1d9bd"
+    },
+    {
+      "id": "6a8adb91-8bcb-4e51-b629-a062ad3589a8",
+      "sourceId": "eda97a5d-133a-4e15-ae39-002220c424c7",
+      "type": "edge",
+      "targetId": "c7601f88-3a3d-46e1-8113-f1db6cb41e7e"
+    },
+    {
+      "id": "9071715b-4131-4323-ab89-31a351ece47d",
+      "sourceId": "c7601f88-3a3d-46e1-8113-f1db6cb41e7e",
+      "type": "edge",
+      "targetId": "951fd02c-338a-4506-bf7f-5ed279a1d9bd"
+    },
+    {
+      "id": "f4ff755a-2545-44a2-b414-a08236b43503",
+      "sourceId": "951fd02c-338a-4506-bf7f-5ed279a1d9bd",
+      "type": "edge",
+      "targetId": "0e1adf58-1cc2-42df-bdf5-5040a70f7aeb",
+      "sourceHandle": "68c9d5bb-3522-4b99-9460-32b65bdd1d46"
+    },
+    {
+      "id": "1faeabcd-0534-4842-9fe1-525a005b6970",
+      "sourceId": "0e1adf58-1cc2-42df-bdf5-5040a70f7aeb",
+      "type": "edge",
+      "targetId": "a8c7c645-b9f8-4d3f-ae19-74cb915b6f1a"
+    },
+    {
+      "id": "a0e381ca-5785-45a0-b724-a1629f0681a7",
+      "sourceId": "951fd02c-338a-4506-bf7f-5ed279a1d9bd",
+      "type": "edge",
+      "targetId": "b1e1b863-d377-48c1-be88-973f5bfcb67e",
+      "sourceHandle": "6b3b7268-4537-4de7-8f3f-9fe0ed9271d7"
+    },
+    {
+      "id": "c9232b7b-3d09-425c-b478-21dcb194ba46",
+      "sourceId": "951fd02c-338a-4506-bf7f-5ed279a1d9bd",
+      "type": "edge",
+      "targetId": "fc30615c-092c-49e5-b755-10599c922f8e",
+      "sourceHandle": "6b3b7268-4537-4de7-8f3f-9fe0ed9271d7"
+    },
+    {
+      "id": "e984137c-e56c-44b8-aa44-c827956e1eec",
+      "sourceId": "b1e1b863-d377-48c1-be88-973f5bfcb67e",
+      "type": "edge",
+      "targetId": "fc30615c-092c-49e5-b755-10599c922f8e"
+    },
+    {
+      "id": "9ee5fbee-37e2-41c3-a667-29c9408fbec6",
+      "sourceId": "fc30615c-092c-49e5-b755-10599c922f8e",
+      "type": "edge",
+      "targetId": "a073d661-58db-42fa-89f2-eaa3cad8d0be"
+    },
+    {
+      "id": "af6c9a8d-be20-43a6-816f-51730d2f11f1",
+      "sourceId": "a073d661-58db-42fa-89f2-eaa3cad8d0be",
+      "type": "edge",
+      "targetId": "a8c7c645-b9f8-4d3f-ae19-74cb915b6f1a"
+    },
+    {
+      "id": "9767b1fe-5e52-493a-910c-ead725567afb",
+      "sourceId": "c7601f88-3a3d-46e1-8113-f1db6cb41e7e",
+      "type": "edge",
+      "targetId": "a073d661-58db-42fa-89f2-eaa3cad8d0be"
+    }
+  ]
+}

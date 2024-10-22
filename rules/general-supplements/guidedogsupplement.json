@@ -5,8 +5,8 @@
       "name": "GuideDogServiceSupplement",
       "type": "inputNode",
       "position": {
-        "x": -110,
-        "y": 190
+        "x": -90,
+        "y": 185
       },
       "content": {
         "fields": [
@@ -257,32 +257,26 @@
         "hitPolicy": "first",
         "statements": [
           {
-            "id": "137127f6-4cd9-49e2-bfca-a150e5ba627a",
-            "condition": "guideOrServiceDogTeams != null and guideOrServiceDogTeams != undefined",
+            "id": "6f4a4ff1-0135-4633-a148-d52d88dc6a39",
+            "condition": "guideOrServiceDogTeams != null",
             "isDefault": false
           },
           {
-            "id": "9582932f-c026-4c02-af4b-7ca3913442df",
+            "id": "d1b49062-f9f5-4f1c-a911-0fab03b714d2",
             "condition": "",
             "isDefault": true
           }
         ]
       },
-      "id": "44b9c63c-9c5c-477c-ae9b-661fd00cd43b",
-      "name": "switch1",
+      "id": "0e67fe53-6035-45bb-92dc-08b271322328",
+      "name": "Check for any documentation",
       "position": {
-        "x": 190,
-        "y": 200
+        "x": 205,
+        "y": 185
       }
     }
   ],
   "edges": [
-    {
-      "id": "961d84c0-ecf0-4187-9d9c-6e0940c3d094",
-      "type": "edge",
-      "sourceId": "d4b75ff1-c189-4c99-befd-34a048ea36dc",
-      "targetId": "ff32aa69-c432-4205-93f8-7f6e3c57c2f3"
-    },
     {
       "id": "0a09ba8d-42ed-4ab6-b154-f342e4928b0c",
       "sourceId": "ff32aa69-c432-4205-93f8-7f6e3c57c2f3",
@@ -296,43 +290,43 @@
       "targetId": "3d92a47a-f301-4481-a287-84fa41daec6a"
     },
     {
-      "id": "de3b9223-ac06-4f75-a221-f115826a9030",
-      "sourceId": "ff32aa69-c432-4205-93f8-7f6e3c57c2f3",
-      "type": "edge",
-      "targetId": "3d92a47a-f301-4481-a287-84fa41daec6a"
-    },
-    {
       "id": "8eaad5e1-7972-4e0f-b2f0-4dc160b229f5",
       "sourceId": "213b1bcf-0443-4de3-93b6-6644efd409ef",
       "type": "edge",
       "targetId": "f97bbcc0-aae0-4844-82eb-bfa8a7a150e3"
     },
     {
-      "id": "708dbd91-a9c2-4698-b7df-dc5a8b2e50b4",
+      "id": "f30bf4a3-9120-4428-bea0-578425eed943",
       "sourceId": "d4b75ff1-c189-4c99-befd-34a048ea36dc",
       "type": "edge",
-      "targetId": "44b9c63c-9c5c-477c-ae9b-661fd00cd43b"
+      "targetId": "0e67fe53-6035-45bb-92dc-08b271322328"
     },
     {
-      "id": "2790021e-aebc-4881-8a4d-c1aca4b1ac47",
-      "sourceId": "44b9c63c-9c5c-477c-ae9b-661fd00cd43b",
+      "id": "4158319d-c534-409d-a1fe-5c2f64ff160a",
+      "sourceId": "0e67fe53-6035-45bb-92dc-08b271322328",
       "type": "edge",
       "targetId": "213b1bcf-0443-4de3-93b6-6644efd409ef",
-      "sourceHandle": "137127f6-4cd9-49e2-bfca-a150e5ba627a"
+      "sourceHandle": "6f4a4ff1-0135-4633-a148-d52d88dc6a39"
     },
     {
-      "id": "c9c0e00d-4e89-43a5-a8e0-9ca877a7d7f2",
-      "sourceId": "44b9c63c-9c5c-477c-ae9b-661fd00cd43b",
+      "id": "0c6abb27-b575-4d53-b14f-fe2cc767de35",
+      "sourceId": "0e67fe53-6035-45bb-92dc-08b271322328",
       "type": "edge",
       "targetId": "ff32aa69-c432-4205-93f8-7f6e3c57c2f3",
-      "sourceHandle": "137127f6-4cd9-49e2-bfca-a150e5ba627a"
+      "sourceHandle": "6f4a4ff1-0135-4633-a148-d52d88dc6a39"
     },
     {
-      "id": "ff343cf5-5bde-469a-9608-7a8c2ea1a096",
-      "sourceId": "44b9c63c-9c5c-477c-ae9b-661fd00cd43b",
+      "id": "8f3f79fb-cc78-4eb7-81fe-a71a1ee8bf0d",
+      "sourceId": "0e67fe53-6035-45bb-92dc-08b271322328",
       "type": "edge",
       "targetId": "ff32aa69-c432-4205-93f8-7f6e3c57c2f3",
-      "sourceHandle": "9582932f-c026-4c02-af4b-7ca3913442df"
+      "sourceHandle": "d1b49062-f9f5-4f1c-a911-0fab03b714d2"
+    },
+    {
+      "id": "2646c38f-2aad-4a61-8f7f-cfab385cf663",
+      "sourceId": "ff32aa69-c432-4205-93f8-7f6e3c57c2f3",
+      "type": "edge",
+      "targetId": "3d92a47a-f301-4481-a287-84fa41daec6a"
     }
   ]
 }

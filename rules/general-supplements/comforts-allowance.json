@@ -57,8 +57,8 @@
       "id": "430d94ce-ca8b-4141-a249-73aab3e989f7",
       "type": "outputNode",
       "position": {
-        "x": 1235,
-        "y": 105
+        "x": 1220,
+        "y": 100
       },
       "name": "response",
       "content": {
@@ -79,6 +79,14 @@
             "dataType": "number-input",
             "validationCriteria": "0",
             "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "field": "reason",
+            "name": "Reason",
+            "id": 47,
+            "description": "The reason provided for a given decision.",
+            "dataType": "text-input",
             "childFields": []
           }
         ]
@@ -254,7 +262,7 @@
       "id": "b73e4f5d-b3f4-49c7-9833-1ac679940629",
       "type": "decisionTableNode",
       "position": {
-        "x": 960,
+        "x": 950,
         "y": -15
       },
       "name": "Supplement Calculation",
@@ -286,36 +294,46 @@
             "type": "expression",
             "field": "isEligible",
             "name": "isEligible"
+          },
+          {
+            "id": "cd56b88e-f998-40d0-819d-9db93666e90c",
+            "field": "reason",
+            "name": "Reason"
           }
         ],
         "rules": [
           {
             "_id": "13046b42-512e-4c99-95b7-00d77404921f",
+            "_description": "Case Separation Required",
             "0d414ece-80a9-4c4b-a666-bbc108bfa6a3": "== true",
             "50871ae9-5133-450f-a4f8-1f417af37a71": "",
-            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "0.00",
-            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "false"
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "false",
+            "cd56b88e-f998-40d0-819d-9db93666e90c": "\"Individual is entering a Long Term Care Facility. Case separation required prior to assessment for comforts.\""
           },
           {
             "_id": "57a08f65-62ff-4498-a493-5daab8cb5605",
             "0d414ece-80a9-4c4b-a666-bbc108bfa6a3": "",
             "50871ae9-5133-450f-a4f8-1f417af37a71": "true",
             "fd59b30f-3eba-4f8a-882b-1b946b57d969": "222",
-            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true",
+            "cd56b88e-f998-40d0-819d-9db93666e90c": ""
           },
           {
             "_id": "2e51cece-03c7-424f-b3ad-d7308a080568",
             "0d414ece-80a9-4c4b-a666-bbc108bfa6a3": "",
             "50871ae9-5133-450f-a4f8-1f417af37a71": "false",
             "fd59b30f-3eba-4f8a-882b-1b946b57d969": "115",
-            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true",
+            "cd56b88e-f998-40d0-819d-9db93666e90c": ""
           },
           {
             "_id": "b8b88f69-686a-4c23-8af7-dd1b4767eebd",
             "0d414ece-80a9-4c4b-a666-bbc108bfa6a3": "",
             "50871ae9-5133-450f-a4f8-1f417af37a71": "",
-            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "0.00",
-            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "false"
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "false",
+            "cd56b88e-f998-40d0-819d-9db93666e90c": ""
           }
         ]
       }

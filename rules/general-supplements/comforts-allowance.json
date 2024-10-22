@@ -385,6 +385,13 @@
       "sourceId": "b73e4f5d-b3f4-49c7-9833-1ac679940629",
       "type": "edge",
       "targetId": "430d94ce-ca8b-4141-a249-73aab3e989f7"
+    },
+    {
+      "id": "2f690ae1-e1b1-4ad1-a0f6-24208167de8d",
+      "sourceId": "7cdbc5e8-c85b-40c2-99ce-1587bf4c609c",
+      "type": "edge",
+      "targetId": "b73e4f5d-b3f4-49c7-9833-1ac679940629",
+      "sourceHandle": "23939a2a-7d74-4665-8673-b553473360bd"
     }
   ]
 }

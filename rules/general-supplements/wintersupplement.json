@@ -1,4 +1,20 @@
 {
+  "tests": [
+    {
+      "name": "Default test",
+      "input": {
+        "numberOfChildren": 2,
+        "familyComposition": "single",
+        "familyUnitInPayForDecember": true
+      },
+      "output": {
+        "baseAmount": 60,
+        "childrenAmount": 40,
+        "isEligible": true,
+        "supplementAmount": 100
+      }
+    }
+  ],
   "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {

@@ -228,11 +228,6 @@
             "id": "7cb6f2dd-01af-487c-b020-b0fabcdaf14a",
             "key": "isEligible",
             "value": "isEligible"
-          },
-          {
-            "id": "cf6fe3ca-31fb-407d-be47-cf5a4eb7e0f4",
-            "key": "supplementAmount",
-            "value": "0 + 0"
           }
         ]
       }

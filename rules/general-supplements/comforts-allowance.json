@@ -11,42 +11,50 @@
       "content": {
         "fields": [
           {
-            "field": "hasPWDDesignation",
-            "name": "Has PWD Designation",
-            "id": 23,
-            "description": "Individual has PWD designation.",
-            "dataType": "true-false",
-            "childFields": []
-          },
-          {
+            "id": 18,
             "field": "familyUnitInPay",
             "name": "Family Unit In Pay",
-            "id": 18,
             "description": "Family unit is in pay.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 21,
             "field": "familyUnitSize",
             "name": "Family Unit Size",
-            "id": 21,
             "description": "The number of people in a family unit. This includes all currently active members of that family unit.",
             "dataType": "number-input",
             "childFields": []
           },
           {
+            "id": 52,
             "field": "residingInCareFacility",
             "name": "Residing In Care Facility",
-            "id": 52,
-            "description": "Individual is residing in a special care facility.",
+            "description": "Person(s) residing in a special care facility.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 128,
             "field": "isLongTermFacility",
             "name": "Is a Long Term Care Facility ",
-            "id": 128,
-            "description": "The care facility that an individual is entering into is considered to be a long term care facility.",
+            "description": "The care facility is considered to be a long term care facility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 45,
+            "field": "person1HasPWDStatus",
+            "name": "Person 1 Has PWD Status",
+            "description": "If person 1 in a family unit has PWD status.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 46,
+            "field": "person2HasPWDStatus",
+            "name": "Person 2 Has PWD Status",
+            "description": "If person 2 in a family unit has PWD status.",
             "dataType": "true-false",
             "childFields": []
           }
@@ -57,36 +65,28 @@
       "id": "430d94ce-ca8b-4141-a249-73aab3e989f7",
       "type": "outputNode",
       "position": {
-        "x": 1220,
-        "y": 100
+        "x": 690,
+        "y": 110
       },
       "name": "response",
       "content": {
         "fields": [
           {
+            "id": 28,
             "field": "isEligible",
             "name": "Is Eligible",
-            "id": 28,
             "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 58,
             "field": "supplementAmount",
             "name": "Supplement Amount",
-            "id": 58,
             "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
             "dataType": "number-input",
             "validationCriteria": "0",
             "validationType": ">=",
-            "childFields": []
-          },
-          {
-            "field": "reason",
-            "name": "Reason",
-            "id": 47,
-            "description": "The reason provided for a given decision.",
-            "dataType": "text-input",
             "childFields": []
           }
         ]
@@ -116,6 +116,11 @@
             "name": "Residing In Care Facility"
           },
           {
+            "id": "98dfbb4d-1c01-4807-a2fb-1f76ffa4b4d1",
+            "field": "isLongTermFacility",
+            "name": "Is a Long Term Care Facility "
+          },
+          {
             "id": "4b01a3a5-6d92-4edd-adcf-4f69d8076c9e",
             "field": "familyUnitSize",
             "name": "Family Unit Size"
@@ -134,61 +139,17 @@
             "_id": "9b7025f7-959f-45ce-bb83-2ee125dd2983",
             "2b5bfae7-855a-402f-b857-40fc40de159b": "true",
             "6cc9445e-8787-4dff-9b22-412eb7e26948": "true",
-            "4b01a3a5-6d92-4edd-adcf-4f69d8076c9e": "",
+            "98dfbb4d-1c01-4807-a2fb-1f76ffa4b4d1": "true",
+            "4b01a3a5-6d92-4edd-adcf-4f69d8076c9e": "> 0",
             "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "true"
           },
           {
             "_id": "6ac95350-4552-4f0e-8d1a-b6cf50e60fd9",
             "2b5bfae7-855a-402f-b857-40fc40de159b": "",
             "6cc9445e-8787-4dff-9b22-412eb7e26948": "",
+            "98dfbb4d-1c01-4807-a2fb-1f76ffa4b4d1": "",
             "4b01a3a5-6d92-4edd-adcf-4f69d8076c9e": "",
             "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "false"
-          }
-        ]
-      }
-    },
-    {
-      "id": "41eea16c-6a1b-40d6-9de3-7b96621b4dcf",
-      "type": "decisionTableNode",
-      "position": {
-        "x": 675,
-        "y": 100
-      },
-      "name": "Family Unit Separation Required",
-      "content": {
-        "hitPolicy": "first",
-        "inputs": [
-          {
-            "id": "a4499c65-48e3-4207-a37e-fddd5eb868fc",
-            "type": "expression",
-            "field": "isLongTermFacility",
-            "name": "isLongTermFacility"
-          }
-        ],
-        "outputs": [
-          {
-            "id": "4a877ebc-692b-4f42-8fd2-158e4ff13692",
-            "type": "expression",
-            "field": "isCaseSeparationRequired",
-            "name": "Is Case Separation Required"
-          }
-        ],
-        "rules": [
-          {
-            "_id": "69716c73-1420-48dd-b240-0339dd408fd4",
-            "_description": "Policy requires a family unit to be residing together - which is no longer the case if someone is going into long term care. Spouse needs to be moved onto their own case.",
-            "a4499c65-48e3-4207-a37e-fddd5eb868fc": "false",
-            "4a877ebc-692b-4f42-8fd2-158e4ff13692": "false"
-          },
-          {
-            "_id": "2e5db9ca-c1ea-4dd5-950d-6ce043062dfe",
-            "a4499c65-48e3-4207-a37e-fddd5eb868fc": "true",
-            "4a877ebc-692b-4f42-8fd2-158e4ff13692": "true"
-          },
-          {
-            "_id": "bb06d471-c523-4333-b9bc-7884eb2aea0d",
-            "a4499c65-48e3-4207-a37e-fddd5eb868fc": "",
-            "4a877ebc-692b-4f42-8fd2-158e4ff13692": "false"
           }
         ]
       }
@@ -233,48 +194,30 @@
       }
     },
     {
-      "id": "7cdbc5e8-c85b-40c2-99ce-1587bf4c609c",
-      "type": "switchNode",
-      "position": {
-        "x": 390,
-        "y": -40
-      },
-      "name": "Family Unit Size?",
-      "content": {
-        "statements": [
-          {
-            "id": "112cd91b-c619-4864-b443-1e50b84e9239",
-            "condition": "familyUnitSize == 1"
-          },
-          {
-            "id": "23939a2a-7d74-4665-8673-b553473360bd",
-            "condition": "familyUnitSize >= 2"
-          }
-        ]
-      }
-    },
-    {
       "id": "b73e4f5d-b3f4-49c7-9833-1ac679940629",
       "type": "decisionTableNode",
       "position": {
-        "x": 950,
-        "y": -15
+        "x": 390,
+        "y": 60
       },
       "name": "Supplement Calculation",
       "content": {
         "hitPolicy": "first",
         "inputs": [
           {
-            "id": "0d414ece-80a9-4c4b-a666-bbc108bfa6a3",
-            "type": "expression",
-            "field": "isCaseSeparationRequired",
-            "name": "isCaseSeparationRequired"
+            "id": "c6e34d3d-e237-482c-b60f-4dbfcb408913",
+            "field": "familyUnitSize",
+            "name": "Family Unit Size"
           },
           {
-            "id": "50871ae9-5133-450f-a4f8-1f417af37a71",
-            "name": "hasPWDDesignation",
-            "type": "expression",
-            "field": "hasPWDDesignation"
+            "id": "32732ad8-b875-4253-a1ac-da75e94fbed7",
+            "name": "Person 1 Has PWD Status",
+            "field": "person1HasPWDStatus"
+          },
+          {
+            "id": "954e6d6d-0b97-4fb1-bd13-d042f9559e26",
+            "field": "person2HasPWDStatus",
+            "name": "Person 2 Has PWD Status"
           }
         ],
         "outputs": [
@@ -289,46 +232,70 @@
             "type": "expression",
             "field": "isEligible",
             "name": "isEligible"
-          },
-          {
-            "id": "cd56b88e-f998-40d0-819d-9db93666e90c",
-            "field": "reason",
-            "name": "Reason"
           }
         ],
         "rules": [
           {
             "_id": "13046b42-512e-4c99-95b7-00d77404921f",
-            "_description": "Case Separation Required",
-            "0d414ece-80a9-4c4b-a666-bbc108bfa6a3": "== true",
-            "50871ae9-5133-450f-a4f8-1f417af37a71": "",
-            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "",
-            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "false",
-            "cd56b88e-f998-40d0-819d-9db93666e90c": "\"Individual is entering a Long Term Care Facility. Case separation required prior to assessment for comforts.\""
+            "_description": "Couple entering Long Term Care Facility together. Both PWD. ",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": "== 2",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "true",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "true",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "222 * 2",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
           },
           {
             "_id": "57a08f65-62ff-4498-a493-5daab8cb5605",
-            "0d414ece-80a9-4c4b-a666-bbc108bfa6a3": "",
-            "50871ae9-5133-450f-a4f8-1f417af37a71": "true",
-            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "222",
-            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true",
-            "cd56b88e-f998-40d0-819d-9db93666e90c": ""
+            "_description": "Couple entering Long Term Care Facility together. 1 PWD. ",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": "== 2",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "true",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "false",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "222 + 115",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
           },
           {
             "_id": "2e51cece-03c7-424f-b3ad-d7308a080568",
-            "0d414ece-80a9-4c4b-a666-bbc108bfa6a3": "",
-            "50871ae9-5133-450f-a4f8-1f417af37a71": "false",
-            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "115",
-            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true",
-            "cd56b88e-f998-40d0-819d-9db93666e90c": ""
+            "_description": "Couple entering Long Term Care Facility together. 1 PWD. ",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": "== 2",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "false",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "true",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "115 + 222",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
           },
           {
             "_id": "b8b88f69-686a-4c23-8af7-dd1b4767eebd",
-            "0d414ece-80a9-4c4b-a666-bbc108bfa6a3": "",
-            "50871ae9-5133-450f-a4f8-1f417af37a71": "",
+            "_description": "Couple entering Long Term Care Facility together. Neither PWD. ",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": "== 2",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "false",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "false",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "115 * 2",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
+          },
+          {
+            "_id": "dfb4c945-117f-4235-8f74-45b3522a2cd5",
+            "_description": "Individual PWD entering Long Term Care Facility. ",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": "== 1",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "true",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "222",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
+          },
+          {
+            "_id": "534b9974-1651-4533-95d0-b60803d5e3cd",
+            "_description": "Individual non-PWD entering Long Term Care Facility. ",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": "== 1",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "false",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "115",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
+          },
+          {
+            "_id": "0cb1f109-c6fb-4fa5-87e3-4ec3c6f383c0",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": "",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "",
             "fd59b30f-3eba-4f8a-882b-1b946b57d969": "",
-            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "false",
-            "cd56b88e-f998-40d0-819d-9db93666e90c": ""
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "false"
           }
         ]
       }
@@ -367,44 +334,17 @@
       "targetId": "430d94ce-ca8b-4141-a249-73aab3e989f7"
     },
     {
-      "id": "3cd058f7-b0e1-4c99-b2a6-15acbb0db422",
+      "id": "c14e054d-f354-413a-9568-1944245b0518",
       "sourceId": "3bee5b5e-1b0f-48ef-ad49-9a582923be7c",
       "type": "edge",
-      "targetId": "7cdbc5e8-c85b-40c2-99ce-1587bf4c609c",
+      "targetId": "b73e4f5d-b3f4-49c7-9833-1ac679940629",
       "sourceHandle": "b94d9aba-f836-4239-81b7-a8dfeea3a461"
     },
     {
-      "id": "5ce6c43e-1401-4f4c-b7ad-16914643f338",
-      "sourceId": "7cdbc5e8-c85b-40c2-99ce-1587bf4c609c",
-      "type": "edge",
-      "targetId": "41eea16c-6a1b-40d6-9de3-7b96621b4dcf",
-      "sourceHandle": "23939a2a-7d74-4665-8673-b553473360bd"
-    },
-    {
-      "id": "7a602b62-4418-466d-a864-45711e4a588f",
-      "sourceId": "41eea16c-6a1b-40d6-9de3-7b96621b4dcf",
-      "type": "edge",
-      "targetId": "b73e4f5d-b3f4-49c7-9833-1ac679940629"
-    },
-    {
-      "id": "eae62965-98e4-47a4-a9f6-446a4a0b212d",
-      "sourceId": "7cdbc5e8-c85b-40c2-99ce-1587bf4c609c",
-      "type": "edge",
-      "targetId": "b73e4f5d-b3f4-49c7-9833-1ac679940629",
-      "sourceHandle": "112cd91b-c619-4864-b443-1e50b84e9239"
-    },
-    {
-      "id": "d35e7dfd-9991-4a59-abc7-f842cd8a8272",
+      "id": "2346f32c-2a52-46e3-86dd-d67e5ff1020b",
       "sourceId": "b73e4f5d-b3f4-49c7-9833-1ac679940629",
       "type": "edge",
       "targetId": "430d94ce-ca8b-4141-a249-73aab3e989f7"
-    },
-    {
-      "id": "2f690ae1-e1b1-4ad1-a0f6-24208167de8d",
-      "sourceId": "7cdbc5e8-c85b-40c2-99ce-1587bf4c609c",
-      "type": "edge",
-      "targetId": "b73e4f5d-b3f4-49c7-9833-1ac679940629",
-      "sourceHandle": "23939a2a-7d74-4665-8673-b553473360bd"
     }
   ]
 }

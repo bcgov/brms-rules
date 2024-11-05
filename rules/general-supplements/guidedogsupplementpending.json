@@ -31,7 +31,7 @@
                 "field": "guideDogDocumentationType",
                 "description": "The type of documentation received for the guide dog.",
                 "dataType": "text-input",
-                "validationCriteria": "certification, testBooked, certifiedRetired",
+                "validationCriteria": "certifiedActive, testBooked, certifiedRetired",
                 "validationType": "[=text]"
               }
             ]
@@ -216,19 +216,9 @@
       "content": {
         "expressions": [
           {
-            "id": "eda9de75-be42-470e-8538-99aea2de0d00",
-            "key": "certified",
-            "value": "count(guideOrServiceDogTeams, (#.guideDogDocumentationType == 'certification'))"
-          },
-          {
             "id": "7c89301f-b8a0-4f0b-99ef-a5c0bdd1bf08",
             "key": "pending",
             "value": "count(guideOrServiceDogTeams, (#.guideDogDocumentationType == 'testBooked'))"
-          },
-          {
-            "id": "a580083f-8854-49b1-b5bc-317045c966d1",
-            "key": "retired",
-            "value": "count(guideOrServiceDogTeams, (#.guideDogDocumentationType == 'certifiedRetired'))"
           }
         ]
       },
@@ -298,7 +288,7 @@
       "content": {
         "kind": "noteNode",
         "config": {
-          "value": "Determines eligibility for a temporary supplement for guide dog teams where the a test has been booked for a guide dog team, but they are not yet certified."
+          "value": "Determines eligibility for a temporary supplement for guide dog teams where a test has been booked for a guide dog team, but they are not yet certified."
         }
       },
       "id": "02c994c5-18b5-4cf1-a98c-c7da69844426",

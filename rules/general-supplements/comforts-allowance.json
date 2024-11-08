@@ -35,14 +35,6 @@
             "childFields": []
           },
           {
-            "id": 128,
-            "field": "isLongTermFacility",
-            "name": "Is a Long Term Care Facility ",
-            "description": "The care facility is considered to be a long term care facility.",
-            "dataType": "true-false",
-            "childFields": []
-          },
-          {
             "id": 45,
             "field": "person1HasPWDStatus",
             "name": "Person 1 Has PWD Status",
@@ -116,11 +108,6 @@
             "name": "Residing In Care Facility"
           },
           {
-            "id": "98dfbb4d-1c01-4807-a2fb-1f76ffa4b4d1",
-            "field": "isLongTermFacility",
-            "name": "Is a Long Term Care Facility "
-          },
-          {
             "id": "4b01a3a5-6d92-4edd-adcf-4f69d8076c9e",
             "field": "familyUnitSize",
             "name": "Family Unit Size"
@@ -139,7 +126,6 @@
             "_id": "9b7025f7-959f-45ce-bb83-2ee125dd2983",
             "2b5bfae7-855a-402f-b857-40fc40de159b": "true",
             "6cc9445e-8787-4dff-9b22-412eb7e26948": "true",
-            "98dfbb4d-1c01-4807-a2fb-1f76ffa4b4d1": "true",
             "4b01a3a5-6d92-4edd-adcf-4f69d8076c9e": "> 0",
             "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "true"
           },
@@ -147,7 +133,6 @@
             "_id": "6ac95350-4552-4f0e-8d1a-b6cf50e60fd9",
             "2b5bfae7-855a-402f-b857-40fc40de159b": "",
             "6cc9445e-8787-4dff-9b22-412eb7e26948": "",
-            "98dfbb4d-1c01-4807-a2fb-1f76ffa4b4d1": "",
             "4b01a3a5-6d92-4edd-adcf-4f69d8076c9e": "",
             "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "false"
           }

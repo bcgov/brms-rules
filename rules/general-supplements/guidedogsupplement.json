@@ -1,51 +1,40 @@
 {
-  "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
       "id": "d4b75ff1-c189-4c99-befd-34a048ea36dc",
       "name": "GuideDogServiceSupplement",
       "type": "inputNode",
       "position": {
-        "x": 205,
-        "y": 205
+        "x": -90,
+        "y": 185
       },
       "content": {
         "fields": [
           {
+            "id": 18,
             "field": "familyUnitInPay",
             "name": "Family Unit In Pay",
-            "id": 18,
             "description": "Family unit is in pay.",
             "dataType": "true-false",
             "childFields": []
           },
           {
-            "field": "usesGuideDog",
-            "name": "Uses Guide Dog",
-            "id": 59,
-            "description": "Individual uses a guide dog.",
-            "dataType": "true-false",
-            "childFields": []
-          },
-          {
-            "field": "numberOfRecipients",
-            "name": "Number of Recipients",
-            "id": 37,
-            "description": "The number of individuals expected to count for a specific assessment.",
-            "dataType": "number-input",
-            "validationCriteria": "0",
-            "validationType": ">=",
-            "childFields": []
-          },
-          {
-            "field": "guideDogDocumentationType",
-            "name": "Guide Dog Documentation Type",
-            "id": 22,
-            "description": "The type of documentation received for the guide dog.",
-            "dataType": "text-input",
-            "validationCriteria": "certification, testBooked",
-            "validationType": "[=text]",
-            "childFields": []
+            "id": 130,
+            "field": "guideOrServiceDogTeams",
+            "name": "Guide or Service Dog Teams",
+            "description": "Array of dogs with certification documentation types. The number of dogs indicates the number on the family unit, and their specific documentation.",
+            "dataType": "object-array",
+            "childFields": [
+              {
+                "id": 22,
+                "name": "Guide Dog Documentation Type",
+                "field": "guideDogDocumentationType",
+                "description": "The type of documentation received for the guide dog.",
+                "dataType": "text-input",
+                "validationCriteria": "certifiedActive, testBooked, certifiedRetired",
+                "validationType": "[=text]"
+              }
+            ]
           }
         ]
       }
@@ -55,32 +44,7 @@
       "name": "Eligibility",
       "type": "decisionTableNode",
       "content": {
-        "rules": [
-          {
-            "_id": "1468e0db-8faf-468d-b9f7-54b8bdc7ea5d",
-            "17726155-ad08-49e7-901f-7337611630aa": "false",
-            "4eef6312-1689-4e3e-90c8-21efc312aba5": "\"certification\"",
-            "a91c0dbe-4622-41b9-94cd-b5bff7ed1ffc": "true",
-            "d1465f38-5770-41fe-b4c6-64ab07562a67": "true",
-            "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "true"
-          },
-          {
-            "_id": "e07580c9-79a4-46ec-b36a-8b0e0c6e9750",
-            "17726155-ad08-49e7-901f-7337611630aa": "true",
-            "4eef6312-1689-4e3e-90c8-21efc312aba5": "\"testBooked\"",
-            "a91c0dbe-4622-41b9-94cd-b5bff7ed1ffc": "true",
-            "d1465f38-5770-41fe-b4c6-64ab07562a67": "true",
-            "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "true"
-          },
-          {
-            "_id": "9e372954-b632-40f6-8e6e-d34190cf0a1c",
-            "17726155-ad08-49e7-901f-7337611630aa": "",
-            "4eef6312-1689-4e3e-90c8-21efc312aba5": "",
-            "a91c0dbe-4622-41b9-94cd-b5bff7ed1ffc": "",
-            "d1465f38-5770-41fe-b4c6-64ab07562a67": "",
-            "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "false"
-          }
-        ],
+        "hitPolicy": "first",
         "inputs": [
           {
             "id": "a91c0dbe-4622-41b9-94cd-b5bff7ed1ffc",
@@ -90,17 +54,94 @@
             "defaultValue": "false"
           },
           {
-            "id": "d1465f38-5770-41fe-b4c6-64ab07562a67",
-            "name": "Uses Guide Dog",
+            "id": "811e33b5-5f7a-4719-a00d-5d8aaa4c6940",
+            "field": "guideOrServiceDogTeams",
+            "name": "Guide or Service Dog Teams"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "e30caacc-23e4-40d8-b8f3-976bb5bc36f9",
+            "name": "IsEligible",
             "type": "expression",
-            "field": "usesGuideDog",
+            "field": "isEligible",
             "defaultValue": "false"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "1468e0db-8faf-468d-b9f7-54b8bdc7ea5d",
+            "_description": "",
+            "a91c0dbe-4622-41b9-94cd-b5bff7ed1ffc": "true",
+            "811e33b5-5f7a-4719-a00d-5d8aaa4c6940": "len($) > 0",
+            "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "true"
           },
           {
-            "id": "4eef6312-1689-4e3e-90c8-21efc312aba5",
-            "name": "Guide Dog Documentation Type",
-            "type": "expression",
-            "field": "guideDogDocumentationType"
+            "_id": "9e372954-b632-40f6-8e6e-d34190cf0a1c",
+            "a91c0dbe-4622-41b9-94cd-b5bff7ed1ffc": "",
+            "811e33b5-5f7a-4719-a00d-5d8aaa4c6940": "",
+            "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "false"
+          }
+        ]
+      },
+      "position": {
+        "x": 505,
+        "y": 325
+      }
+    },
+    {
+      "id": "3d92a47a-f301-4481-a287-84fa41daec6a",
+      "name": "GuideDogServiceSupplement",
+      "type": "outputNode",
+      "position": {
+        "x": 1070,
+        "y": 210
+      },
+      "content": {
+        "fields": [
+          {
+            "id": 28,
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 58,
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "f97bbcc0-aae0-4844-82eb-bfa8a7a150e3",
+      "name": "Eligible Dog Teams",
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "2f0b7c62-ebb6-41db-a36e-2d6e83df5f3e",
+            "field": "isEligible",
+            "name": "Is eligible"
+          },
+          {
+            "id": "6852d88b-574f-44cc-82e0-c1a615e92917",
+            "field": "certification",
+            "name": "Count of certified guide or service dog teams",
+            "defaultValue": ""
+          },
+          {
+            "id": "91366a2b-67ab-48e9-bee2-aade9b22bee9",
+            "field": "retired",
+            "name": "Count of certified retired guide or service dog teams"
           }
         ],
         "outputs": [
@@ -112,133 +153,174 @@
             "defaultValue": "false"
           },
           {
-            "id": "17726155-ad08-49e7-901f-7337611630aa",
-            "name": "Two MonthEligibility",
-            "type": "expression",
-            "field": "twoMonthEligibility",
-            "defaultValue": "false"
-          }
-        ],
-        "hitPolicy": "first"
-      },
-      "position": {
-        "x": 615,
-        "y": 165
-      }
-    },
-    {
-      "id": "3d92a47a-f301-4481-a287-84fa41daec6a",
-      "name": "GuideDogServiceSupplement",
-      "type": "outputNode",
-      "position": {
-        "x": 1245,
-        "y": 200
-      },
-      "content": {
-        "fields": [
-          {
-            "field": "twoMonthEligibility",
-            "name": "Two Month Eligibility",
-            "id": 65,
-            "description": "Whether or not an individual must pass the two month eligibility period to be eligible for a supplement.",
-            "dataType": "true-false",
-            "childFields": []
-          },
-          {
-            "field": "isEligible",
-            "name": "Is Eligible",
-            "id": 28,
-            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
-            "dataType": "true-false",
-            "childFields": []
-          },
-          {
+            "id": "cee807c7-281e-4f2d-be5a-7be83372701a",
             "field": "supplementAmount",
-            "name": "Supplement Amount",
-            "id": 58,
-            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
-            "dataType": "number-input",
-            "validationCriteria": "0",
-            "validationType": ">=",
-            "childFields": []
-          }
-        ]
-      }
-    },
-    {
-      "id": "1898e029-9790-4352-b3d2-9c2cc7b27da7",
-      "name": "Supplement Calculation",
-      "type": "decisionTableNode",
-      "content": {
-        "hitPolicy": "first",
-        "inputs": [
-          {
-            "id": "52ea306d-6249-4ba1-b544-6cc4c54e847a",
-            "name": "Number of Recipients",
-            "type": "expression",
-            "field": "numberOfRecipients"
-          },
-          {
-            "id": "78a77996-923f-4a0e-bc1d-af7cc3486578",
-            "name": "Is Eligible",
-            "type": "expression",
-            "field": "isEligible",
-            "defaultValue": ""
-          }
-        ],
-        "outputs": [
-          {
-            "id": "c6c3a8bc-99bc-4512-b0e4-94d194df3da0",
-            "name": "Supplement Amount",
-            "type": "expression",
-            "field": "supplementAmount"
+            "name": "Supplement Amount"
           }
         ],
         "rules": [
           {
-            "_id": "ba057bc7-9043-4d53-89bc-99d1a1f6c80c",
-            "52ea306d-6249-4ba1-b544-6cc4c54e847a": "",
-            "78a77996-923f-4a0e-bc1d-af7cc3486578": "true",
-            "c6c3a8bc-99bc-4512-b0e4-94d194df3da0": "numberOfRecipients*95"
+            "_id": "1468e0db-8faf-468d-b9f7-54b8bdc7ea5d",
+            "_description": "Proof of certification provided for all dog teams which includes: \nA valid Guide Dog and Service Dog Act (GDSDA) Certificate issued by the Registrar of Guide Dogs and Service Dogs OR\n A valid identification (ID) card issued by an accredited training school.",
+            "2f0b7c62-ebb6-41db-a36e-2d6e83df5f3e": "true",
+            "6852d88b-574f-44cc-82e0-c1a615e92917": "$ > 0",
+            "91366a2b-67ab-48e9-bee2-aade9b22bee9": "",
+            "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "",
+            "cee807c7-281e-4f2d-be5a-7be83372701a": "((certification + retired) * 95)"
+          },
+          {
+            "_id": "9e372954-b632-40f6-8e6e-d34190cf0a1c",
+            "_description": "Proof of certification provided for all retired dog teams which includes: \nA valid Guide Dog and Service Dog Act (GDSDA) Certificate issued by the Registrar of Guide Dogs and Service Dogs OR\n A valid identification (ID) card issued by an accredited training school.",
+            "2f0b7c62-ebb6-41db-a36e-2d6e83df5f3e": "true",
+            "6852d88b-574f-44cc-82e0-c1a615e92917": "",
+            "91366a2b-67ab-48e9-bee2-aade9b22bee9": "$ > 0",
+            "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "",
+            "cee807c7-281e-4f2d-be5a-7be83372701a": "((certification + retired) * 95)"
+          },
+          {
+            "_id": "6243ad86-e852-401b-a7af-c165256c02a7",
+            "2f0b7c62-ebb6-41db-a36e-2d6e83df5f3e": "",
+            "6852d88b-574f-44cc-82e0-c1a615e92917": "",
+            "91366a2b-67ab-48e9-bee2-aade9b22bee9": "",
+            "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "false",
+            "cee807c7-281e-4f2d-be5a-7be83372701a": ""
           }
         ]
       },
       "position": {
-        "x": 790,
-        "y": 335
+        "x": 775,
+        "y": 205
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "a580083f-8854-49b1-b5bc-317045c966d1",
+            "key": "retired",
+            "value": "count(guideOrServiceDogTeams, (#.guideDogDocumentationType == 'certifiedRetired'))"
+          },
+          {
+            "id": "eda9de75-be42-470e-8538-99aea2de0d00",
+            "key": "certification",
+            "value": "count(guideOrServiceDogTeams, (#.guideDogDocumentationType == 'certifiedActive'))"
+          }
+        ]
+      },
+      "id": "213b1bcf-0443-4de3-93b6-6644efd409ef",
+      "name": "Dog Team Count",
+      "position": {
+        "x": 495,
+        "y": 205
+      }
+    },
+    {
+      "type": "switchNode",
+      "content": {
+        "hitPolicy": "first",
+        "statements": [
+          {
+            "id": "6f4a4ff1-0135-4633-a148-d52d88dc6a39",
+            "condition": "guideOrServiceDogTeams != null",
+            "isDefault": false
+          },
+          {
+            "id": "d1b49062-f9f5-4f1c-a911-0fab03b714d2",
+            "condition": "",
+            "isDefault": true
+          }
+        ]
+      },
+      "id": "0e67fe53-6035-45bb-92dc-08b271322328",
+      "name": "Check for any documentation",
+      "position": {
+        "x": 205,
+        "y": 185
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "If base eligibility passes, dog team count is based on the documentation available for each dog. If no documentation, they are not an eligible dog team. "
+        }
+      },
+      "id": "2c763cbe-bf93-4001-a4a2-ac3dda0ba998",
+      "name": "Note",
+      "position": {
+        "x": 505,
+        "y": 35
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "If base eligibility passes, and at least one dog team has documentation, they are eligible for the supplement. Amount is based on the number of dog teams with documentation."
+        }
+      },
+      "id": "324df88e-49c9-4312-b525-5a322a1c38f6",
+      "name": "Note",
+      "position": {
+        "x": 775,
+        "y": 20
       }
     }
   ],
   "edges": [
     {
-      "id": "961d84c0-ecf0-4187-9d9c-6e0940c3d094",
-      "type": "edge",
-      "sourceId": "d4b75ff1-c189-4c99-befd-34a048ea36dc",
-      "targetId": "ff32aa69-c432-4205-93f8-7f6e3c57c2f3"
-    },
-    {
-      "id": "6e953442-2b52-4533-bb3c-3bd7add51a0e",
-      "type": "edge",
+      "id": "0a09ba8d-42ed-4ab6-b154-f342e4928b0c",
       "sourceId": "ff32aa69-c432-4205-93f8-7f6e3c57c2f3",
-      "targetId": "1898e029-9790-4352-b3d2-9c2cc7b27da7"
+      "type": "edge",
+      "targetId": "f97bbcc0-aae0-4844-82eb-bfa8a7a150e3"
     },
     {
-      "id": "d7aad29f-df79-4c0e-ac35-ece0acf08109",
+      "id": "79a450d8-9689-47da-821a-f1b7edcfed0a",
+      "sourceId": "f97bbcc0-aae0-4844-82eb-bfa8a7a150e3",
       "type": "edge",
-      "sourceId": "1898e029-9790-4352-b3d2-9c2cc7b27da7",
       "targetId": "3d92a47a-f301-4481-a287-84fa41daec6a"
     },
     {
-      "id": "95554aa5-7fb5-4c98-8e5e-92977de919ae",
+      "id": "f30bf4a3-9120-4428-bea0-578425eed943",
+      "sourceId": "d4b75ff1-c189-4c99-befd-34a048ea36dc",
       "type": "edge",
+      "targetId": "0e67fe53-6035-45bb-92dc-08b271322328"
+    },
+    {
+      "id": "4158319d-c534-409d-a1fe-5c2f64ff160a",
+      "sourceId": "0e67fe53-6035-45bb-92dc-08b271322328",
+      "type": "edge",
+      "targetId": "213b1bcf-0443-4de3-93b6-6644efd409ef",
+      "sourceHandle": "6f4a4ff1-0135-4633-a148-d52d88dc6a39"
+    },
+    {
+      "id": "0c6abb27-b575-4d53-b14f-fe2cc767de35",
+      "sourceId": "0e67fe53-6035-45bb-92dc-08b271322328",
+      "type": "edge",
+      "targetId": "ff32aa69-c432-4205-93f8-7f6e3c57c2f3",
+      "sourceHandle": "6f4a4ff1-0135-4633-a148-d52d88dc6a39"
+    },
+    {
+      "id": "8f3f79fb-cc78-4eb7-81fe-a71a1ee8bf0d",
+      "sourceId": "0e67fe53-6035-45bb-92dc-08b271322328",
+      "type": "edge",
+      "targetId": "ff32aa69-c432-4205-93f8-7f6e3c57c2f3",
+      "sourceHandle": "d1b49062-f9f5-4f1c-a911-0fab03b714d2"
+    },
+    {
+      "id": "2646c38f-2aad-4a61-8f7f-cfab385cf663",
       "sourceId": "ff32aa69-c432-4205-93f8-7f6e3c57c2f3",
+      "type": "edge",
       "targetId": "3d92a47a-f301-4481-a287-84fa41daec6a"
     },
     {
-      "id": "34aec31e-0d2a-4cfb-b938-8a3e2b2513af",
+      "id": "a4ecb6c2-7574-4917-b14b-789fafff2f22",
+      "sourceId": "213b1bcf-0443-4de3-93b6-6644efd409ef",
       "type": "edge",
-      "sourceId": "d4b75ff1-c189-4c99-befd-34a048ea36dc",
-      "targetId": "1898e029-9790-4352-b3d2-9c2cc7b27da7"
+      "targetId": "f97bbcc0-aae0-4844-82eb-bfa8a7a150e3"
     }
   ]
 }

@@ -22,7 +22,7 @@
             "id": 21,
             "field": "familyUnitSize",
             "name": "Family Unit Size",
-            "description": "The number of people in a family unit. This includes all currently active members of that family unit.",
+            "description": "The number of people in a family unit to be considered for a specific calculation. Family unit size is a calculated value. The actual calculated number of people in a family unit may differ depending on the specific requirements of the supplement being assessed, but can include some or all active members of a family unit.",
             "dataType": "number-input",
             "childFields": []
           },

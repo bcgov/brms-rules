@@ -6,8 +6,8 @@
       "id": "5868caf7-1033-4c63-b96b-b6fe15b6f506",
       "name": "request",
       "position": {
-        "x": -350,
-        "y": 15
+        "x": -270,
+        "y": 0
       },
       "content": {
         "fields": [
@@ -61,8 +61,8 @@
       "id": "7211a960-eb4c-481a-86ba-225492de83b7",
       "name": "response",
       "position": {
-        "x": 820,
-        "y": 5
+        "x": 865,
+        "y": -20
       },
       "content": {
         "fields": [
@@ -93,11 +93,6 @@
         "hitPolicy": "first",
         "inputs": [
           {
-            "id": "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a",
-            "name": "Client is eligible for supports through WorkBC ES",
-            "field": "isSupportedbyWorkBC"
-          },
-          {
             "id": "4ddccb30-ac0e-40ba-893c-114c519a851e",
             "field": "familyUnitInPay",
             "name": "Family Unit In Pay"
@@ -106,6 +101,11 @@
             "id": "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa",
             "field": "isEmploymentConfirmed",
             "name": "The recipient must have secured a job that will help the family leave assistance."
+          },
+          {
+            "id": "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a",
+            "name": "Client is eligible for supports through WorkBC ES",
+            "field": "isSupportedbyWorkBC"
           },
           {
             "id": "cfb3e5c2-88e3-4a87-827b-812a45d71647",
@@ -123,41 +123,41 @@
         "rules": [
           {
             "_id": "97736011-58d7-45ae-8710-bca53bd82335",
-            "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a": "true",
             "4ddccb30-ac0e-40ba-893c-114c519a851e": "true",
             "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa": "true",
+            "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a": "true",
             "cfb3e5c2-88e3-4a87-827b-812a45d71647": "false",
             "41305dbd-e6ba-45e8-bac0-1aac59eeac1e": "true"
           },
           {
             "_id": "f889b3fc-e951-4a58-a5f0-5b5a1ae10baa",
-            "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a": "false",
             "4ddccb30-ac0e-40ba-893c-114c519a851e": "true",
             "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa": "true",
+            "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a": "false",
             "cfb3e5c2-88e3-4a87-827b-812a45d71647": "false",
             "41305dbd-e6ba-45e8-bac0-1aac59eeac1e": "true"
           },
           {
             "_id": "109b1899-4960-47a2-88f4-cb47e8e90aff",
+            "4ddccb30-ac0e-40ba-893c-114c519a851e": "true or false",
+            "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa": "true or false",
             "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a": "true",
-            "4ddccb30-ac0e-40ba-893c-114c519a851e": "",
-            "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa": "",
             "cfb3e5c2-88e3-4a87-827b-812a45d71647": "true ",
             "41305dbd-e6ba-45e8-bac0-1aac59eeac1e": "false"
           },
           {
             "_id": "6ae4c58b-341f-48c4-bfe1-84d1144c2c68",
-            "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a": "",
             "4ddccb30-ac0e-40ba-893c-114c519a851e": "false",
-            "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa": "",
-            "cfb3e5c2-88e3-4a87-827b-812a45d71647": "",
+            "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa": "true or false",
+            "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a": "true or false",
+            "cfb3e5c2-88e3-4a87-827b-812a45d71647": "true or false",
             "41305dbd-e6ba-45e8-bac0-1aac59eeac1e": "false"
           },
           {
             "_id": "e9aaae56-77fc-4456-8839-3fa950ac4de7",
-            "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a": "",
             "4ddccb30-ac0e-40ba-893c-114c519a851e": "",
             "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa": "false",
+            "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a": "",
             "cfb3e5c2-88e3-4a87-827b-812a45d71647": "",
             "41305dbd-e6ba-45e8-bac0-1aac59eeac1e": "false"
           }
@@ -166,8 +166,8 @@
       "id": "1e4a0ca0-180b-4b85-808c-4e482919dc91",
       "name": "Eligibility",
       "position": {
-        "x": 50,
-        "y": 90
+        "x": 115,
+        "y": 60
       }
     },
     {
@@ -181,8 +181,8 @@
       "id": "c325bfd5-9432-4157-9cdb-2f67f8a19552",
       "name": "Eligibility Comments",
       "position": {
-        "x": 50,
-        "y": -75
+        "x": 105,
+        "y": -120
       }
     },
     {
@@ -220,31 +220,23 @@
       "id": "456ca34e-231c-4913-b48c-02974c96b301",
       "name": "Supplement Calculation",
       "position": {
-        "x": 425,
-        "y": -5
+        "x": 505,
+        "y": 65
       }
     },
     {
-      "type": "expressionNode",
+      "type": "customNode",
       "content": {
-        "expressions": [
-          {
-            "id": "68d6c9ae-0181-4f04-adc9-133877f20a70",
-            "key": "isEligible",
-            "value": "isEligible"
-          },
-          {
-            "id": "cea5d9fc-6968-46e3-849d-4a7e3b2ae8fb",
-            "key": "supplementAmount",
-            "value": "supplementAmount"
-          }
-        ]
+        "kind": "noteNode",
+        "config": {
+          "value": "Rule currently functions with a limit of $1000, however EAWs need approval over $250. Also not factored in is if they have previous requested an amount and are requesting the balance. "
+        }
       },
-      "id": "444e18d6-46db-4783-af7a-670f48083890",
-      "name": "InEligible",
+      "id": "81e2887e-3e13-4865-9f49-12f621ae7b3a",
+      "name": "Calc Comments",
       "position": {
-        "x": 430,
-        "y": 150
+        "x": 460,
+        "y": -155
       }
     },
     {
@@ -253,22 +245,40 @@
         "hitPolicy": "first",
         "statements": [
           {
-            "id": "93e3e9de-59b6-4b95-b4cb-69aec31f9468",
+            "id": "3d4448f5-d1a0-49e3-8b45-01d608b74694",
             "condition": "isEligible == true",
             "isDefault": false
           },
           {
-            "id": "8ddb324f-f056-4ee6-ab99-7e6f5879b629",
-            "condition": "",
-            "isDefault": true
+            "id": "962580e8-4888-4e80-93b1-84c7bb2a9016",
+            "condition": "isEligible == false",
+            "isDefault": false
           }
         ]
       },
-      "id": "e278fd16-304e-4752-991e-cce3ddb62c77",
+      "id": "ea3a618b-594e-4b2d-964f-5d4a568ef56e",
       "name": "isEligible",
       "position": {
-        "x": 55,
-        "y": 225
+        "x": 115,
+        "y": 210
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "f707c0d6-d430-426e-bad9-42132e4ee79f",
+            "key": "isEligible",
+            "value": "isEligible"
+          }
+        ]
+      },
+      "id": "d4a30dc9-a355-47c5-849b-e7d1df1673c1",
+      "name": "Ineligible",
+      "position": {
+        "x": 485,
+        "y": 235
       }
     }
   ],
@@ -286,36 +296,36 @@
       "targetId": "7211a960-eb4c-481a-86ba-225492de83b7"
     },
     {
-      "id": "3cdb5a26-a909-4da0-9b23-01f6f95d9d6f",
-      "sourceId": "e278fd16-304e-4752-991e-cce3ddb62c77",
+      "id": "48579b89-ee3f-428c-8df0-db18599f44d7",
+      "sourceId": "ea3a618b-594e-4b2d-964f-5d4a568ef56e",
       "type": "edge",
       "targetId": "456ca34e-231c-4913-b48c-02974c96b301",
-      "sourceHandle": "93e3e9de-59b6-4b95-b4cb-69aec31f9468"
+      "sourceHandle": "3d4448f5-d1a0-49e3-8b45-01d608b74694"
     },
     {
-      "id": "ae4b3929-4654-43ea-acf4-25ae073843a8",
-      "sourceId": "e278fd16-304e-4752-991e-cce3ddb62c77",
-      "type": "edge",
-      "targetId": "444e18d6-46db-4783-af7a-670f48083890",
-      "sourceHandle": "8ddb324f-f056-4ee6-ab99-7e6f5879b629"
-    },
-    {
-      "id": "4a83502b-da16-4682-ad32-e84f11619c69",
+      "id": "f57d6587-917a-4d58-9c3b-e63b948c7533",
       "sourceId": "1e4a0ca0-180b-4b85-808c-4e482919dc91",
       "type": "edge",
-      "targetId": "e278fd16-304e-4752-991e-cce3ddb62c77"
+      "targetId": "ea3a618b-594e-4b2d-964f-5d4a568ef56e"
     },
     {
-      "id": "f0be0cd9-1421-4306-bce1-4f36f4ae5e21",
-      "sourceId": "444e18d6-46db-4783-af7a-670f48083890",
+      "id": "3d9c090a-0874-4eec-8f0e-e5cf86aebd35",
+      "sourceId": "ea3a618b-594e-4b2d-964f-5d4a568ef56e",
       "type": "edge",
-      "targetId": "7211a960-eb4c-481a-86ba-225492de83b7"
+      "targetId": "d4a30dc9-a355-47c5-849b-e7d1df1673c1",
+      "sourceHandle": "962580e8-4888-4e80-93b1-84c7bb2a9016"
     },
     {
-      "id": "d96c65d1-fdbb-4ca5-b641-01f15cad7a78",
+      "id": "7cbe3523-6cbc-4494-8c75-843bd42e39bb",
       "sourceId": "5868caf7-1033-4c63-b96b-b6fe15b6f506",
       "type": "edge",
-      "targetId": "456ca34e-231c-4913-b48c-02974c96b301"
+      "targetId": "ea3a618b-594e-4b2d-964f-5d4a568ef56e"
+    },
+    {
+      "id": "5f91f970-7e0f-4479-afe5-358a9668fa28",
+      "sourceId": "d4a30dc9-a355-47c5-849b-e7d1df1673c1",
+      "type": "edge",
+      "targetId": "7211a960-eb4c-481a-86ba-225492de83b7"
     }
   ]
 }

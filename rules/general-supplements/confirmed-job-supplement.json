@@ -20,14 +20,6 @@
             "childFields": []
           },
           {
-            "id": 133,
-            "field": "isSupportedbyWorkBC",
-            "name": "Client is eligible for supports through WorkBC ES",
-            "description": null,
-            "dataType": "true-false",
-            "childFields": []
-          },
-          {
             "id": 134,
             "field": "isEmploymentConfirmed",
             "name": "The recipient must have secured a job that will help the family leave assistance.",
@@ -44,9 +36,9 @@
             "childFields": []
           },
           {
+            "id": 136,
             "field": "eligibleItemCosts",
             "name": "Value of eligible items for supplement",
-            "id": 136,
             "description": null,
             "dataType": "number-input",
             "validationCriteria": "0",
@@ -62,22 +54,22 @@
       "name": "response",
       "position": {
         "x": 865,
-        "y": -20
+        "y": 150
       },
       "content": {
         "fields": [
           {
+            "id": 28,
             "field": "isEligible",
             "name": "Is Eligible",
-            "id": 28,
             "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 58,
             "field": "supplementAmount",
             "name": "Supplement Amount",
-            "id": 58,
             "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
             "dataType": "number-input",
             "validationCriteria": "0",
@@ -103,11 +95,6 @@
             "name": "The recipient must have secured a job that will help the family leave assistance."
           },
           {
-            "id": "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a",
-            "name": "Client is eligible for supports through WorkBC ES",
-            "field": "isSupportedbyWorkBC"
-          },
-          {
             "id": "cfb3e5c2-88e3-4a87-827b-812a45d71647",
             "field": "isAlternateFundingAvailable",
             "name": "isAlternateFundingAvailable"
@@ -125,39 +112,13 @@
             "_id": "97736011-58d7-45ae-8710-bca53bd82335",
             "4ddccb30-ac0e-40ba-893c-114c519a851e": "true",
             "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa": "true",
-            "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a": "true",
-            "cfb3e5c2-88e3-4a87-827b-812a45d71647": "false",
-            "41305dbd-e6ba-45e8-bac0-1aac59eeac1e": "true"
-          },
-          {
-            "_id": "f889b3fc-e951-4a58-a5f0-5b5a1ae10baa",
-            "4ddccb30-ac0e-40ba-893c-114c519a851e": "true",
-            "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa": "true",
-            "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a": "false",
             "cfb3e5c2-88e3-4a87-827b-812a45d71647": "false",
             "41305dbd-e6ba-45e8-bac0-1aac59eeac1e": "true"
           },
           {
             "_id": "109b1899-4960-47a2-88f4-cb47e8e90aff",
-            "4ddccb30-ac0e-40ba-893c-114c519a851e": "true or false",
-            "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa": "true or false",
-            "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a": "true",
-            "cfb3e5c2-88e3-4a87-827b-812a45d71647": "true ",
-            "41305dbd-e6ba-45e8-bac0-1aac59eeac1e": "false"
-          },
-          {
-            "_id": "6ae4c58b-341f-48c4-bfe1-84d1144c2c68",
-            "4ddccb30-ac0e-40ba-893c-114c519a851e": "false",
-            "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa": "true or false",
-            "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a": "true or false",
-            "cfb3e5c2-88e3-4a87-827b-812a45d71647": "true or false",
-            "41305dbd-e6ba-45e8-bac0-1aac59eeac1e": "false"
-          },
-          {
-            "_id": "e9aaae56-77fc-4456-8839-3fa950ac4de7",
             "4ddccb30-ac0e-40ba-893c-114c519a851e": "",
-            "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa": "false",
-            "94ddafbb-ed9e-48da-8f21-6a1e771e4a0a": "",
+            "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa": "",
             "cfb3e5c2-88e3-4a87-827b-812a45d71647": "",
             "41305dbd-e6ba-45e8-bac0-1aac59eeac1e": "false"
           }
@@ -277,8 +238,8 @@
       "id": "d4a30dc9-a355-47c5-849b-e7d1df1673c1",
       "name": "Ineligible",
       "position": {
-        "x": 485,
-        "y": 235
+        "x": 500,
+        "y": 315
       }
     }
   ],

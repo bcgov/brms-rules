@@ -1,0 +1,371 @@
+{
+  "nodes": [
+    {
+      "id": "138b7ca6-85a6-4f27-b7ff-69d619e2b362",
+      "type": "inputNode",
+      "position": {
+        "x": -255,
+        "y": 25
+      },
+      "name": "request",
+      "content": {
+        "fields": [
+          {
+            "id": 18,
+            "field": "familyUnitInPay",
+            "name": "Family Unit In Pay",
+            "description": "Family unit is in pay.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 21,
+            "field": "familyUnitSize",
+            "name": "Family Unit Size",
+            "description": "The number of people in a family unit to be considered for a specific calculation. Family unit size is a calculated value. The calculated number of people in a family unit for this field may differ depending on the specific requirements of the supplement or circumstances being assessed, and therefore can include some, or all, active members of a family unit.",
+            "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "id": 52,
+            "field": "residingInCareFacility",
+            "name": "Residing In Care Facility",
+            "description": "Person(s) residing in a special care facility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 45,
+            "field": "person1HasPWDStatus",
+            "name": "Person 1 Has PWD Status",
+            "description": "If person 1 in a family unit has PWD status.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 46,
+            "field": "person2HasPWDStatus",
+            "name": "Person 2 Has PWD Status",
+            "description": "If person 2 in a family unit has PWD status.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "430d94ce-ca8b-4141-a249-73aab3e989f7",
+      "type": "outputNode",
+      "position": {
+        "x": 690,
+        "y": 110
+      },
+      "name": "response",
+      "content": {
+        "fields": [
+          {
+            "id": 28,
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 58,
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "266080b4-4be8-4370-9b30-ba0407023b64",
+      "type": "decisionTableNode",
+      "position": {
+        "x": 80,
+        "y": -40
+      },
+      "name": "Base Eligibility",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "2b5bfae7-855a-402f-b857-40fc40de159b",
+            "name": "Family Unit In Pay",
+            "type": "expression",
+            "field": "familyUnitInPay"
+          },
+          {
+            "id": "6cc9445e-8787-4dff-9b22-412eb7e26948",
+            "type": "expression",
+            "field": "residingInCareFacility",
+            "name": "Residing In Care Facility"
+          },
+          {
+            "id": "4b01a3a5-6d92-4edd-adcf-4f69d8076c9e",
+            "field": "familyUnitSize",
+            "name": "Family Unit Size"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "eeff18df-0ba3-48e0-b2e8-22cfdb38c291",
+            "field": "isEligible",
+            "name": "isEligible",
+            "type": "expression"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "9b7025f7-959f-45ce-bb83-2ee125dd2983",
+            "2b5bfae7-855a-402f-b857-40fc40de159b": "true",
+            "6cc9445e-8787-4dff-9b22-412eb7e26948": "true",
+            "4b01a3a5-6d92-4edd-adcf-4f69d8076c9e": "> 0",
+            "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "true"
+          },
+          {
+            "_id": "6ac95350-4552-4f0e-8d1a-b6cf50e60fd9",
+            "2b5bfae7-855a-402f-b857-40fc40de159b": "",
+            "6cc9445e-8787-4dff-9b22-412eb7e26948": "",
+            "4b01a3a5-6d92-4edd-adcf-4f69d8076c9e": "",
+            "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "false"
+          }
+        ]
+      }
+    },
+    {
+      "id": "3bee5b5e-1b0f-48ef-ad49-9a582923be7c",
+      "type": "switchNode",
+      "position": {
+        "x": 80,
+        "y": 75
+      },
+      "name": "isEligible",
+      "content": {
+        "statements": [
+          {
+            "id": "b94d9aba-f836-4239-81b7-a8dfeea3a461",
+            "condition": "isEligible == true"
+          },
+          {
+            "id": "43d9ddf4-2427-4866-ad13-650caac187f1",
+            "condition": "isEligible == false"
+          }
+        ]
+      }
+    },
+    {
+      "id": "8e19570d-c370-44b3-9a58-32e9a5ee0523",
+      "type": "expressionNode",
+      "position": {
+        "x": 390,
+        "y": 230
+      },
+      "name": "Ineligible",
+      "content": {
+        "expressions": [
+          {
+            "id": "7cb6f2dd-01af-487c-b020-b0fabcdaf14a",
+            "key": "isEligible",
+            "value": "isEligible"
+          }
+        ]
+      }
+    },
+    {
+      "id": "b73e4f5d-b3f4-49c7-9833-1ac679940629",
+      "type": "decisionTableNode",
+      "position": {
+        "x": 390,
+        "y": 60
+      },
+      "name": "Supplement Calculation",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "c6e34d3d-e237-482c-b60f-4dbfcb408913",
+            "field": "familyUnitSize",
+            "name": "Family Unit Size"
+          },
+          {
+            "id": "32732ad8-b875-4253-a1ac-da75e94fbed7",
+            "name": "Person 1 Has PWD Status",
+            "field": "person1HasPWDStatus"
+          },
+          {
+            "id": "954e6d6d-0b97-4fb1-bd13-d042f9559e26",
+            "field": "person2HasPWDStatus",
+            "name": "Person 2 Has PWD Status"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "fd59b30f-3eba-4f8a-882b-1b946b57d969",
+            "type": "expression",
+            "field": "supplementAmount",
+            "name": "Supplement Amount"
+          },
+          {
+            "id": "d5a8549c-b09a-4b14-b175-cccffc58a36e",
+            "type": "expression",
+            "field": "isEligible",
+            "name": "isEligible"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "13046b42-512e-4c99-95b7-00d77404921f",
+            "_description": "Couple entering Care Facility together. Both PWD. ",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": "== 2",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "true",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "true",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "222 * 2",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
+          },
+          {
+            "_id": "57a08f65-62ff-4498-a493-5daab8cb5605",
+            "_description": "Couple or 1 parent family entering Care Facility together. 1 PWD. ",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": "== 2",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "true",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "222 + 115",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
+          },
+          {
+            "_id": "2e51cece-03c7-424f-b3ad-d7308a080568",
+            "_description": "Couple entering Care Facility together. 1 PWD. ",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": "== 2",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "false",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "true",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "115 + 222",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
+          },
+          {
+            "_id": "b8b88f69-686a-4c23-8af7-dd1b4767eebd",
+            "_description": "Couple or one parent family entering Care Facility together. No PWD. ",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": "== 2",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "false",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "115 * 2",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
+          },
+          {
+            "_id": "19af256e-bb31-4360-8c4b-483e98cc209c",
+            "_description": "Family with two PWD entering Care Facility.",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": ">= 3",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "true",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "true",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "(222*2) + ((familyUnitSize-2)*115)",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
+          },
+          {
+            "_id": "0cb1f109-c6fb-4fa5-87e3-4ec3c6f383c0",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": ">= 3",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "true",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "222 + ((familyUnitSize-1)*115)",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true",
+            "_description": "Family with Person 1 PWD entering Care Facility."
+          },
+          {
+            "_id": "fc94fe1e-76a2-4e7c-b2eb-1f8dc5ffa17e",
+            "_description": "Family with Person 2 PWD entering Care Facility.",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": ">= 3",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "false",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "true",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "222 + ((familyUnitSize-1)*115)",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
+          },
+          {
+            "_id": "5f1c4680-c845-4b0d-a297-bf14c65f9410",
+            "_description": "Family no PWD entering Care Facility.",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": ">= 3",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "false",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "familyUnitSize*115",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
+          },
+          {
+            "_id": "dfb4c945-117f-4235-8f74-45b3522a2cd5",
+            "_description": "Individual PWD entering Care Facility. ",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": "== 1",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "true",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "222",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
+          },
+          {
+            "_id": "534b9974-1651-4533-95d0-b60803d5e3cd",
+            "_description": "Individual non-PWD entering Care Facility. ",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": "== 1",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "false",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "115",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "true"
+          },
+          {
+            "_id": "050185f1-bfbd-4830-a712-b19ada9a4aca",
+            "c6e34d3d-e237-482c-b60f-4dbfcb408913": "",
+            "32732ad8-b875-4253-a1ac-da75e94fbed7": "",
+            "954e6d6d-0b97-4fb1-bd13-d042f9559e26": "",
+            "fd59b30f-3eba-4f8a-882b-1b946b57d969": "",
+            "d5a8549c-b09a-4b14-b175-cccffc58a36e": "false"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "77fd5fd8-50db-4e8e-b515-185d6e22a4cb",
+      "sourceId": "138b7ca6-85a6-4f27-b7ff-69d619e2b362",
+      "type": "edge",
+      "targetId": "266080b4-4be8-4370-9b30-ba0407023b64"
+    },
+    {
+      "id": "eede4c41-255d-44b4-998a-5a30ab017604",
+      "sourceId": "266080b4-4be8-4370-9b30-ba0407023b64",
+      "type": "edge",
+      "targetId": "3bee5b5e-1b0f-48ef-ad49-9a582923be7c"
+    },
+    {
+      "id": "8b1968bc-fd69-42e5-85e0-1b6003496f8b",
+      "sourceId": "138b7ca6-85a6-4f27-b7ff-69d619e2b362",
+      "type": "edge",
+      "targetId": "3bee5b5e-1b0f-48ef-ad49-9a582923be7c"
+    },
+    {
+      "id": "52776891-173b-4623-bd88-aa94fd45ed87",
+      "sourceId": "3bee5b5e-1b0f-48ef-ad49-9a582923be7c",
+      "type": "edge",
+      "targetId": "8e19570d-c370-44b3-9a58-32e9a5ee0523",
+      "sourceHandle": "43d9ddf4-2427-4866-ad13-650caac187f1"
+    },
+    {
+      "id": "30831127-11a1-46eb-899a-be6b4b9fca8a",
+      "sourceId": "8e19570d-c370-44b3-9a58-32e9a5ee0523",
+      "type": "edge",
+      "targetId": "430d94ce-ca8b-4141-a249-73aab3e989f7"
+    },
+    {
+      "id": "c14e054d-f354-413a-9568-1944245b0518",
+      "sourceId": "3bee5b5e-1b0f-48ef-ad49-9a582923be7c",
+      "type": "edge",
+      "targetId": "b73e4f5d-b3f4-49c7-9833-1ac679940629",
+      "sourceHandle": "b94d9aba-f836-4239-81b7-a8dfeea3a461"
+    },
+    {
+      "id": "2346f32c-2a52-46e3-86dd-d67e5ff1020b",
+      "sourceId": "b73e4f5d-b3f4-49c7-9833-1ac679940629",
+      "type": "edge",
+      "targetId": "430d94ce-ca8b-4141-a249-73aab3e989f7"
+    }
+  ]
+}

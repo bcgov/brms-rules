@@ -150,18 +150,7 @@
       "name": "Spouse Calculation",
       "type": "decisionTableNode",
       "content": {
-        "rules": [
-          {
-            "_id": "f3164738-59c2-4e3b-84d5-ceaf3e04aff2",
-            "3991b5b8-b68c-493d-a31b-226a0756ff28": "\"single\"",
-            "c526b490-0906-4505-aff8-d161e8feed4b": "60"
-          },
-          {
-            "_id": "1a7b357d-bbd8-481b-9c24-d91686c83e67",
-            "3991b5b8-b68c-493d-a31b-226a0756ff28": "\"couple\"",
-            "c526b490-0906-4505-aff8-d161e8feed4b": "120"
-          }
-        ],
+        "hitPolicy": "first",
         "inputs": [
           {
             "id": "3991b5b8-b68c-493d-a31b-226a0756ff28",
@@ -169,6 +158,11 @@
             "type": "expression",
             "field": "familyComposition",
             "defaultValue": "single"
+          },
+          {
+            "id": "33d4d4d1-a243-4d7f-8e0c-f73faaeb6cc1",
+            "field": "numberOfChildren",
+            "name": "Number of Children"
           }
         ],
         "outputs": [
@@ -179,7 +173,26 @@
             "field": "baseAmount"
           }
         ],
-        "hitPolicy": "first"
+        "rules": [
+          {
+            "_id": "741c1d33-0606-4b95-a64b-b27bb9800820",
+            "3991b5b8-b68c-493d-a31b-226a0756ff28": "\"single\"",
+            "33d4d4d1-a243-4d7f-8e0c-f73faaeb6cc1": "$ > 0",
+            "c526b490-0906-4505-aff8-d161e8feed4b": "120"
+          },
+          {
+            "_id": "f3164738-59c2-4e3b-84d5-ceaf3e04aff2",
+            "3991b5b8-b68c-493d-a31b-226a0756ff28": "\"single\"",
+            "33d4d4d1-a243-4d7f-8e0c-f73faaeb6cc1": "",
+            "c526b490-0906-4505-aff8-d161e8feed4b": "60"
+          },
+          {
+            "_id": "1a7b357d-bbd8-481b-9c24-d91686c83e67",
+            "3991b5b8-b68c-493d-a31b-226a0756ff28": "\"couple\"",
+            "33d4d4d1-a243-4d7f-8e0c-f73faaeb6cc1": "",
+            "c526b490-0906-4505-aff8-d161e8feed4b": "120"
+          }
+        ]
       },
       "position": {
         "x": 120,
@@ -226,8 +239,8 @@
         "hitPolicy": "first"
       },
       "position": {
-        "x": 480,
-        "y": -20
+        "x": 550,
+        "y": -120
       }
     },
     {

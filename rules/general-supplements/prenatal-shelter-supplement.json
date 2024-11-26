@@ -44,14 +44,6 @@
             "description": "Written confirmation of the pregnancy has been provided.",
             "dataType": "true-false",
             "childFields": []
-          },
-          {
-            "id": 54,
-            "field": "shelterCostConfirmed",
-            "name": "Shelter Cost Confirmed",
-            "description": "Shelter costs confirmed.",
-            "dataType": "true-false",
-            "childFields": []
           }
         ]
       }
@@ -123,9 +115,9 @@
           },
           {
             "id": "shelterCostConfirmed",
-            "name": "Shelter Cost Confirmed",
+            "name": "Shelter Costs",
             "type": "expression",
-            "field": "shelterCostConfirmed"
+            "field": "shelterCosts"
           }
         ],
         "outputs": [
@@ -149,7 +141,7 @@
             "familyUnitInPayForMonth": "true",
             "singleNoDependentChildren": "true",
             "writtenConfirmationProvided": "true",
-            "shelterCostConfirmed": "true",
+            "shelterCostConfirmed": "$ > 0",
             "isEligible": "true",
             "reasonForIneligibility": ""
           },
@@ -176,7 +168,7 @@
             "familyUnitInPayForMonth": "",
             "singleNoDependentChildren": "",
             "writtenConfirmationProvided": "",
-            "shelterCostConfirmed": "false",
+            "shelterCostConfirmed": "$ <= 0",
             "isEligible": "false",
             "reasonForIneligibility": "\"Shelter costs not verified\""
           }

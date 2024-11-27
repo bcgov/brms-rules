@@ -132,21 +132,6 @@
       }
     },
     {
-      "type": "customNode",
-      "content": {
-        "kind": "noteNode",
-        "config": {
-          "value": "A Work BC client can still be eligible if they are not provided with funding, This is captured in the isAlternateFundingAvailable, whether its through WorkBC or not. "
-        }
-      },
-      "id": "c325bfd5-9432-4157-9cdb-2f67f8a19552",
-      "name": "Eligibility Comments",
-      "position": {
-        "x": 125,
-        "y": -130
-      }
-    },
-    {
       "type": "decisionTableNode",
       "content": {
         "hitPolicy": "first",

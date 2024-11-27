@@ -30,7 +30,7 @@
           {
             "id": 115,
             "field": "isAlternateFundingAvailable",
-            "name": "isAlternateFundingAvailable",
+            "name": "Is alternate funding available?",
             "description": "Person requesting supplement (& their family unit) do not have access to other resources. Usually verbal or paper confirmation required.",
             "dataType": "true-false",
             "childFields": []
@@ -136,14 +136,14 @@
       "content": {
         "kind": "noteNode",
         "config": {
-          "value": "There is a possibility of someone participating in WorkBC activities but not having funding available for items covered in this supplement. "
+          "value": "A Work BC client can still be eligible if they are not provided with funding, This is captured in the isAlternateFundingAvailable, whether its through WorkBC or not. "
         }
       },
       "id": "c325bfd5-9432-4157-9cdb-2f67f8a19552",
       "name": "Eligibility Comments",
       "position": {
-        "x": 105,
-        "y": -120
+        "x": 125,
+        "y": -130
       }
     },
     {
@@ -196,8 +196,8 @@
       "id": "81e2887e-3e13-4865-9f49-12f621ae7b3a",
       "name": "Calc Comments",
       "position": {
-        "x": 460,
-        "y": -155
+        "x": 515,
+        "y": -125
       }
     },
     {

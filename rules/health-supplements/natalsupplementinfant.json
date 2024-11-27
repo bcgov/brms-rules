@@ -6,7 +6,7 @@
       "name": "request",
       "type": "inputNode",
       "position": {
-        "x": 80,
+        "x": -5,
         "y": 205
       },
       "content": {
@@ -37,7 +37,7 @@
       "name": "response",
       "type": "outputNode",
       "position": {
-        "x": 1020,
+        "x": 835,
         "y": 205
       },
       "content": {
@@ -114,61 +114,106 @@
         "rules": [
           {
             "_id": "be6af98e-75fd-4c1c-ba16-bd3972b084d3",
-            "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807": "dayOfWeek(date(benefitMonth)) > 0",
-            "be656184-3f4e-4168-b3d5-c82424f79327": "date(benefitMonth) >= date(effectiveDOB) and date(benefitMonth) < date(effectiveDOB) + duration('13months')",
+            "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807": "(effectiveBenefitMonth >= effectiveDOB) and (effectiveBenefitMonth <= thirteenMonthDOBAddition)",
+            "be656184-3f4e-4168-b3d5-c82424f79327": "",
             "e50f146d-8f28-4119-b9cc-b88821c80974": "true",
             "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "80",
-            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": ""
+            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": "",
+            "_description": "Benefit Month >= Date of Birth and <= Thirteen Months from the Date of Birth"
           },
           {
-            "_id": "3dadb145-7f50-42c4-a4f6-50ed54d6ab76",
-            "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807": "dayOfWeek(date(benefitMonth)) > 0",
+            "_id": "9459e146-757e-4139-ad78-c7fd27ed7431",
+            "_description": "Benefit Month < Date of Birth ",
+            "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807": "effectiveBenefitMonth < effectiveDOB",
             "be656184-3f4e-4168-b3d5-c82424f79327": "",
             "e50f146d-8f28-4119-b9cc-b88821c80974": "false",
-            "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "0",
-            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": "\"Person has passed the eligibility period (13 months)\""
+            "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "",
+            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": "\"Benefit Month Prior to Birthdate\""
           },
           {
             "_id": "e0bb1564-6e76-4e8e-9895-7b863ad69b0e",
+            "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807": "effectiveBenefitMonth > thirteenMonthDOBAddition",
+            "be656184-3f4e-4168-b3d5-c82424f79327": "",
+            "e50f146d-8f28-4119-b9cc-b88821c80974": "false",
+            "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "",
+            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": "\"Person has passed the eligibility period (13 months)\"",
+            "_description": "Benefit Month > Thirteen Months from the Date of Birth"
+          },
+          {
+            "_id": "dfe7830c-56aa-4108-98f3-d39b4cf2e901",
             "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807": "",
             "be656184-3f4e-4168-b3d5-c82424f79327": "",
             "e50f146d-8f28-4119-b9cc-b88821c80974": "false",
-            "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "0",
+            "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "",
             "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": ""
           }
         ]
       },
       "position": {
-        "x": 690,
-        "y": 205
+        "x": 545,
+        "y": 260
       }
     },
     {
       "id": "b62a43e0-1144-487d-b7f3-006f56d3ba28",
-      "name": "Effective Date of Birth",
+      "name": "Effective Dates",
       "type": "expressionNode",
       "content": {
         "expressions": [
           {
             "id": "b79ffb55-7bed-4286-8730-6cf120b359aa",
             "key": "effectiveDOB",
-            "value": "startOf(date(dateOfBirth), 'month')"
+            "value": "(dateOfBirth != null) ? startOf(date(dateOfBirth), 'month') : null"
+          },
+          {
+            "id": "3b9a5c57-4129-4f53-b499-a9c31a6ebed9",
+            "key": "effectiveBenefitMonth",
+            "value": "(benefitMonth != null) ? startOf(date(benefitMonth), 'month') : null"
+          },
+          {
+            "id": "b3ba2b5f-b518-4db0-9fa3-b5c002b7608a",
+            "key": "thirteenMonthDOBAddition",
+            "value": "(dateOfBirth != null) ? startOf($.effectiveDOB + duration('9600h'), 'month') : null"
           }
         ]
       },
       "position": {
-        "x": 375,
-        "y": 360
+        "x": 265,
+        "y": 315
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "The effective DOB, Benefit Month, and thirteen months from the DOB are calculated to be the 1st of those months at midnight."
+        }
+      },
+      "id": "8fb92a07-0790-4941-a9b0-66d2c29ffad4",
+      "name": "Note",
+      "position": {
+        "x": 265,
+        "y": 175
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "Attempting to issue for a benefit month prior to birth results in error."
+        }
+      },
+      "id": "33b74e2e-bb9d-4552-92b5-7d244a0901f2",
+      "name": "Note",
+      "position": {
+        "x": 555,
+        "y": 365
       }
     }
   ],
   "edges": [
-    {
-      "id": "c246091b-886d-48b7-bdf9-e155eae82e07",
-      "type": "edge",
-      "sourceId": "c30406af-d05c-4091-9b0a-6a745babe389",
-      "targetId": "9edf24fc-6c62-485b-afdc-5f3fc142cbcb"
-    },
     {
       "id": "e968d2f7-ff11-4ed1-94c0-cafe2437cbe6",
       "type": "edge",
@@ -182,10 +227,16 @@
       "targetId": "9edf24fc-6c62-485b-afdc-5f3fc142cbcb"
     },
     {
-      "id": "53523e8c-ce09-4bc9-b2da-64a58c6a1f5e",
-      "type": "edge",
+      "id": "9d1d0500-5abe-43fc-917e-bc406e79c89d",
       "sourceId": "c30406af-d05c-4091-9b0a-6a745babe389",
+      "type": "edge",
       "targetId": "b62a43e0-1144-487d-b7f3-006f56d3ba28"
+    },
+    {
+      "id": "c63fc1dc-aa60-44e1-83d1-15fc5e936a88",
+      "sourceId": "c30406af-d05c-4091-9b0a-6a745babe389",
+      "type": "edge",
+      "targetId": "9edf24fc-6c62-485b-afdc-5f3fc142cbcb"
     }
   ]
 }

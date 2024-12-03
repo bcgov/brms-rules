@@ -28,6 +28,14 @@
             "validationCriteria": "1910-01-01",
             "validationType": ">=",
             "childFields": []
+          },
+          {
+            "field": "familyUnitInPayForMonth",
+            "name": "Family Unit In Pay For Month",
+            "id": 20,
+            "description": "Family Unit is in pay for the specified month.",
+            "dataType": "true-false",
+            "childFields": []
           }
         ]
       }
@@ -79,6 +87,11 @@
         "hitPolicy": "first",
         "inputs": [
           {
+            "id": "a5fb1ec4-a93c-442b-8c25-2d9f224c5d3b",
+            "field": "familyUnitInPayForMonth",
+            "name": "Family Unit In Pay For Month"
+          },
+          {
             "id": "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807",
             "type": "expression",
             "field": "benefitMonth",
@@ -114,16 +127,18 @@
         "rules": [
           {
             "_id": "be6af98e-75fd-4c1c-ba16-bd3972b084d3",
+            "_description": "Benefit Month >= Date of Birth and <= Thirteen Months from the Date of Birth",
+            "a5fb1ec4-a93c-442b-8c25-2d9f224c5d3b": "true",
             "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807": "(effectiveBenefitMonth >= effectiveDOB) and (effectiveBenefitMonth <= thirteenMonthDOBAddition)",
             "be656184-3f4e-4168-b3d5-c82424f79327": "",
             "e50f146d-8f28-4119-b9cc-b88821c80974": "true",
             "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "80",
-            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": "",
-            "_description": "Benefit Month >= Date of Birth and <= Thirteen Months from the Date of Birth"
+            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": ""
           },
           {
             "_id": "9459e146-757e-4139-ad78-c7fd27ed7431",
             "_description": "Benefit Month < Date of Birth ",
+            "a5fb1ec4-a93c-442b-8c25-2d9f224c5d3b": "true",
             "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807": "effectiveBenefitMonth < effectiveDOB",
             "be656184-3f4e-4168-b3d5-c82424f79327": "",
             "e50f146d-8f28-4119-b9cc-b88821c80974": "false",
@@ -132,15 +147,17 @@
           },
           {
             "_id": "e0bb1564-6e76-4e8e-9895-7b863ad69b0e",
+            "_description": "Benefit Month > Thirteen Months from the Date of Birth",
+            "a5fb1ec4-a93c-442b-8c25-2d9f224c5d3b": "true",
             "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807": "effectiveBenefitMonth > thirteenMonthDOBAddition",
             "be656184-3f4e-4168-b3d5-c82424f79327": "",
             "e50f146d-8f28-4119-b9cc-b88821c80974": "false",
             "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "",
-            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": "\"Person has passed the eligibility period (13 months)\"",
-            "_description": "Benefit Month > Thirteen Months from the Date of Birth"
+            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": "\"Person has passed the eligibility period (13 months)\""
           },
           {
             "_id": "dfe7830c-56aa-4108-98f3-d39b4cf2e901",
+            "a5fb1ec4-a93c-442b-8c25-2d9f224c5d3b": "",
             "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807": "",
             "be656184-3f4e-4168-b3d5-c82424f79327": "",
             "e50f146d-8f28-4119-b9cc-b88821c80974": "false",
@@ -163,7 +180,7 @@
           {
             "id": "b79ffb55-7bed-4286-8730-6cf120b359aa",
             "key": "effectiveDOB",
-            "value": "(dateOfBirth != null) ? startOf(date(dateOfBirth), 'month') : null"
+            "value": "(dateOfBirth !=null) ? startOf(date(dateOfBirth), 'month') : null"
           },
           {
             "id": "3b9a5c57-4129-4f53-b499-a9c31a6ebed9",

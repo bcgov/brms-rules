@@ -25,8 +25,8 @@
             "name": "Estimated Delivery Date",
             "description": "The estimated delivery date for a pregnancy.",
             "dataType": "date",
-            "validationCriteria": "1910-01-01",
-            "validationType": ">=",
+            "validationCriteria": "[1910-01-01,today]",
+            "validationType": "[date]",
             "childFields": []
           },
           {
@@ -43,6 +43,14 @@
             "name": "Benefit Month",
             "description": "The month for which the benefit is being requested.",
             "dataType": "date",
+            "childFields": []
+          },
+          {
+            "id": 20,
+            "field": "familyUnitInPayForMonth",
+            "name": "Family Unit In Pay For Month",
+            "description": "Family Unit is in pay for the specified month.",
+            "dataType": "true-false",
             "childFields": []
           }
         ]
@@ -95,6 +103,11 @@
         "hitPolicy": "first",
         "inputs": [
           {
+            "id": "c9d272c8-463d-4cf0-b584-9e8b8ae33555",
+            "field": "familyUnitInPayForMonth",
+            "name": "Family Unit In Pay For Month"
+          },
+          {
             "id": "d37234fb-d01d-4f6e-b8f0-f826cb33a615",
             "name": "Is Pregnant",
             "type": "expression",
@@ -129,6 +142,7 @@
         "rules": [
           {
             "_id": "8b9df043-5b0b-431c-89bb-2589e4fdbf7a",
+            "c9d272c8-463d-4cf0-b584-9e8b8ae33555": "true",
             "d37234fb-d01d-4f6e-b8f0-f826cb33a615": "true",
             "98513006-75bf-46e3-8f67-79fb98f59a24": "startOf(date(benefitMonth), 'month') <= date(estimatedDeliveryDate)",
             "9f018f81-8b85-41b8-9b88-a6e5a474db76": "",
@@ -137,6 +151,7 @@
           },
           {
             "_id": "cedc93e3-feea-4a2c-94ac-395ec769d9c2",
+            "c9d272c8-463d-4cf0-b584-9e8b8ae33555": "",
             "d37234fb-d01d-4f6e-b8f0-f826cb33a615": "true",
             "98513006-75bf-46e3-8f67-79fb98f59a24": "",
             "9f018f81-8b85-41b8-9b88-a6e5a474db76": "",
@@ -145,6 +160,7 @@
           },
           {
             "_id": "931f8763-1436-4ec0-b090-49742a72df7b",
+            "c9d272c8-463d-4cf0-b584-9e8b8ae33555": "",
             "d37234fb-d01d-4f6e-b8f0-f826cb33a615": "false",
             "98513006-75bf-46e3-8f67-79fb98f59a24": "",
             "9f018f81-8b85-41b8-9b88-a6e5a474db76": "",
@@ -153,6 +169,7 @@
           },
           {
             "_id": "4c87b6cb-49b6-4aa0-b1ea-552e373e32ef",
+            "c9d272c8-463d-4cf0-b584-9e8b8ae33555": "",
             "d37234fb-d01d-4f6e-b8f0-f826cb33a615": "",
             "98513006-75bf-46e3-8f67-79fb98f59a24": "",
             "9f018f81-8b85-41b8-9b88-a6e5a474db76": "",
@@ -162,7 +179,7 @@
         ]
       },
       "position": {
-        "x": -85,
+        "x": -80,
         "y": 145
       }
     },
@@ -211,7 +228,7 @@
       },
       "position": {
         "x": 590,
-        "y": -170
+        "y": -175
       }
     },
     {

@@ -141,7 +141,7 @@
             "familyUnitInPayForMonth": "true",
             "singleNoDependentChildren": "true",
             "writtenConfirmationProvided": "true",
-            "shelterCostConfirmed": "$ > 0",
+            "shelterCostConfirmed": "$ > 500",
             "isEligible": "true",
             "reasonForIneligibility": ""
           },
@@ -168,9 +168,18 @@
             "familyUnitInPayForMonth": "",
             "singleNoDependentChildren": "",
             "writtenConfirmationProvided": "",
-            "shelterCostConfirmed": "$ <= 0",
+            "shelterCostConfirmed": "$ <= 500",
             "isEligible": "false",
-            "reasonForIneligibility": "\"Shelter costs not verified\""
+            "reasonForIneligibility": "\"Shelter costs are less than or equal $500\""
+          },
+          {
+            "_id": "22acda5b-bc84-4f71-a76e-08772264cd58",
+            "familyUnitInPayForMonth": "false",
+            "singleNoDependentChildren": "",
+            "writtenConfirmationProvided": "",
+            "shelterCostConfirmed": "",
+            "isEligible": "false",
+            "reasonForIneligibility": ""
           }
         ]
       },

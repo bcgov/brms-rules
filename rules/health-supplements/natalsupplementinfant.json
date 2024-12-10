@@ -25,14 +25,14 @@
             "name": "Date of Birth",
             "description": "The specific date of birth for an individual.",
             "dataType": "date",
-            "validationCriteria": "1910-01-01",
-            "validationType": ">=",
+            "validationCriteria": "[1910-01-01,today]",
+            "validationType": "[date]",
             "childFields": []
           },
           {
+            "id": 20,
             "field": "familyUnitInPayForMonth",
             "name": "Family Unit In Pay For Month",
-            "id": 20,
             "description": "Family Unit is in pay for the specified month.",
             "dataType": "true-false",
             "childFields": []

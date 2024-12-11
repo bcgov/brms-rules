@@ -190,7 +190,7 @@
           {
             "id": "b3ba2b5f-b518-4db0-9fa3-b5c002b7608a",
             "key": "thirteenMonthDOBAddition",
-            "value": "(dateOfBirth != null) ? startOf($.effectiveDOB + duration('9600h'), 'month') : null"
+            "value": "(dateOfBirth != null) ? startOf($.effectiveDOB + duration('9490h'), 'month') : null"
           }
         ]
       },

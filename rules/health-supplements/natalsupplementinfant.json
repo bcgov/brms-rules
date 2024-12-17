@@ -154,15 +154,6 @@
             "e50f146d-8f28-4119-b9cc-b88821c80974": "false",
             "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "",
             "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": "\"Person has passed the eligibility period (13 months)\""
-          },
-          {
-            "_id": "dfe7830c-56aa-4108-98f3-d39b4cf2e901",
-            "a5fb1ec4-a93c-442b-8c25-2d9f224c5d3b": "",
-            "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807": "",
-            "be656184-3f4e-4168-b3d5-c82424f79327": "",
-            "e50f146d-8f28-4119-b9cc-b88821c80974": "false",
-            "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "",
-            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": ""
           }
         ]
       },
@@ -190,7 +181,7 @@
           {
             "id": "b3ba2b5f-b518-4db0-9fa3-b5c002b7608a",
             "key": "thirteenMonthDOBAddition",
-            "value": "(dateOfBirth != null) ? startOf($.effectiveDOB + duration('9490h'), 'month') : null"
+            "value": "(dateOfBirth != null) ? startOf($.effectiveDOB + duration('9500h'), 'month') : null"
           }
         ]
       },

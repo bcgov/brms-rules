@@ -126,6 +126,15 @@
         ],
         "rules": [
           {
+            "_id": "f5127390-d31d-4a60-87bf-162f7cef3e4f",
+            "a5fb1ec4-a93c-442b-8c25-2d9f224c5d3b": "false",
+            "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807": "",
+            "be656184-3f4e-4168-b3d5-c82424f79327": "",
+            "e50f146d-8f28-4119-b9cc-b88821c80974": "false",
+            "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "",
+            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": "\"Family unit not in pay\""
+          },
+          {
             "_id": "be6af98e-75fd-4c1c-ba16-bd3972b084d3",
             "_description": "Benefit Month >= Date of Birth and <= Thirteen Months from the Date of Birth",
             "a5fb1ec4-a93c-442b-8c25-2d9f224c5d3b": "true",

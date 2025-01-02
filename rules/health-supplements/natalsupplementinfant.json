@@ -45,8 +45,8 @@
       "name": "response",
       "type": "outputNode",
       "position": {
-        "x": 835,
-        "y": 205
+        "x": 860,
+        "y": 255
       },
       "content": {
         "fields": [
@@ -163,6 +163,15 @@
             "e50f146d-8f28-4119-b9cc-b88821c80974": "false",
             "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "",
             "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": "\"Person has passed the eligibility period (13 months)\""
+          },
+          {
+            "_id": "f658f2ff-90f1-453d-9883-e433ba8af747",
+            "a5fb1ec4-a93c-442b-8c25-2d9f224c5d3b": "",
+            "a6cb3834-cd8e-48d7-a6a3-cf18dee2a807": "",
+            "be656184-3f4e-4168-b3d5-c82424f79327": "",
+            "e50f146d-8f28-4119-b9cc-b88821c80974": "false",
+            "d5a9c119-47e7-4f46-9730-efc2ca6e4f4a": "",
+            "59e6ad82-6d8c-412f-8694-13c17ccd6b6c": ""
           }
         ]
       },
@@ -190,7 +199,7 @@
           {
             "id": "b3ba2b5f-b518-4db0-9fa3-b5c002b7608a",
             "key": "thirteenMonthDOBAddition",
-            "value": "(dateOfBirth != null) ? startOf($.effectiveDOB + duration('9500h'), 'month') : null"
+            "value": "(dateOfBirth != null) ? startOf($.effectiveDOB + duration('9600h'), 'month') : null"
           }
         ]
       },
@@ -232,12 +241,6 @@
   ],
   "edges": [
     {
-      "id": "e968d2f7-ff11-4ed1-94c0-cafe2437cbe6",
-      "type": "edge",
-      "sourceId": "9edf24fc-6c62-485b-afdc-5f3fc142cbcb",
-      "targetId": "631e3364-9307-47f9-8f26-ab8288dff6eb"
-    },
-    {
       "id": "63993973-5396-4c76-9797-9b4923eb1800",
       "type": "edge",
       "sourceId": "b62a43e0-1144-487d-b7f3-006f56d3ba28",
@@ -254,6 +257,12 @@
       "sourceId": "c30406af-d05c-4091-9b0a-6a745babe389",
       "type": "edge",
       "targetId": "9edf24fc-6c62-485b-afdc-5f3fc142cbcb"
+    },
+    {
+      "id": "0e0f3b8e-ca98-454a-9e0e-e80eeea55dc4",
+      "sourceId": "9edf24fc-6c62-485b-afdc-5f3fc142cbcb",
+      "type": "edge",
+      "targetId": "631e3364-9307-47f9-8f26-ab8288dff6eb"
     }
   ]
 }

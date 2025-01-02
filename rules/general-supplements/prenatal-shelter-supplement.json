@@ -12,17 +12,17 @@
       "content": {
         "fields": [
           {
+            "id": 20,
             "field": "familyUnitInPayForMonth",
             "name": "Family Unit In Pay For Month",
-            "id": 20,
             "description": "Family Unit is in pay for the specified month.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 55,
             "field": "shelterCosts",
             "name": "Shelter Costs",
-            "id": 55,
             "description": "Amount of shelter costs declared by a family unit.",
             "dataType": "number-input",
             "validationCriteria": "0",
@@ -30,47 +30,19 @@
             "childFields": []
           },
           {
+            "id": 56,
             "field": "singleNoDependentChildren",
             "name": "Single No Dependent Children",
-            "id": 56,
             "description": "Individual is single with no dependent children.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 61,
             "field": "writtenConfirmationOfPregnancy",
             "name": "Written Confirmation Of Pregnancy",
-            "id": 61,
             "description": "Written confirmation of the pregnancy has been provided.",
             "dataType": "true-false",
-            "childFields": []
-          },
-          {
-            "field": "confirmedPregnancyDate",
-            "name": "Confirmed Pregnancy Date",
-            "id": 7,
-            "description": "The confirmed date for the pregnancy due date.",
-            "dataType": "date",
-            "validationCriteria": "[2023-01-01, 2025-12-31]",
-            "validationType": "[date]",
-            "childFields": []
-          },
-          {
-            "field": "shelterCostConfirmed",
-            "name": "Shelter Cost Confirmed",
-            "id": 54,
-            "description": "Shelter costs confirmed.",
-            "dataType": "true-false",
-            "childFields": []
-          },
-          {
-            "field": "expectedDueDate",
-            "name": "Expected Due Date",
-            "id": 15,
-            "description": "The expected due date for a pregnant individual.",
-            "dataType": "date",
-            "validationCriteria": "[2022-01-01, 2029-12-31]",
-            "validationType": "[date]",
             "childFields": []
           }
         ]
@@ -87,49 +59,29 @@
       "content": {
         "fields": [
           {
+            "id": 28,
             "field": "isEligible",
             "name": "Is Eligible",
-            "id": 28,
             "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 47,
             "field": "reason",
             "name": "Reason",
-            "id": 47,
             "description": "The reason provided for a given decision.",
             "dataType": "text-input",
             "childFields": []
           },
           {
+            "id": 58,
             "field": "supplementAmount",
             "name": "Supplement Amount",
-            "id": 58,
             "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
             "dataType": "number-input",
             "validationCriteria": "0",
             "validationType": ">=",
-            "childFields": []
-          },
-          {
-            "field": "benefitPlanStartDate",
-            "name": "Benefit Plan Start Date",
-            "id": 4,
-            "description": "The start date scheduled for a benefit plan.",
-            "dataType": "date",
-            "validationCriteria": "[2022-01-01, 2029-12-31]",
-            "validationType": "[date]",
-            "childFields": []
-          },
-          {
-            "field": "benefitPlanEndDate",
-            "name": "Benefit Plan End Date",
-            "id": 3,
-            "description": "The end date scheduled for a benefit plan.",
-            "dataType": "date",
-            "validationCriteria": "[2022-01-01, 2029-12-31]",
-            "validationType": "[date]",
             "childFields": []
           }
         ]
@@ -163,9 +115,9 @@
           },
           {
             "id": "shelterCostConfirmed",
-            "name": "Shelter Cost Confirmed",
+            "name": "Shelter Costs",
             "type": "expression",
-            "field": "shelterCostConfirmed"
+            "field": "shelterCosts"
           }
         ],
         "outputs": [
@@ -189,7 +141,7 @@
             "familyUnitInPayForMonth": "true",
             "singleNoDependentChildren": "true",
             "writtenConfirmationProvided": "true",
-            "shelterCostConfirmed": "true",
+            "shelterCostConfirmed": "$ > 500",
             "isEligible": "true",
             "reasonForIneligibility": ""
           },
@@ -216,9 +168,18 @@
             "familyUnitInPayForMonth": "",
             "singleNoDependentChildren": "",
             "writtenConfirmationProvided": "",
-            "shelterCostConfirmed": "false",
+            "shelterCostConfirmed": "$ <= 500",
             "isEligible": "false",
-            "reasonForIneligibility": "\"Shelter costs not verified\""
+            "reasonForIneligibility": "\"Shelter costs are less than or equal to the maximum shelter rate for a family unit of one\""
+          },
+          {
+            "_id": "22acda5b-bc84-4f71-a76e-08772264cd58",
+            "familyUnitInPayForMonth": "false",
+            "singleNoDependentChildren": "",
+            "writtenConfirmationProvided": "",
+            "shelterCostConfirmed": "",
+            "isEligible": "false",
+            "reasonForIneligibility": "\"Family unit not in pay of assistance\""
           }
         ]
       },
@@ -244,18 +205,6 @@
             "name": "Check Shelter Costs",
             "type": "expression",
             "field": "shelterCosts"
-          },
-          {
-            "id": "557f29d1-4eb0-4bc1-8032-0954de31a081",
-            "name": "Benefit Plan Start Date",
-            "type": "expression",
-            "field": "confirmedPregnancyDate"
-          },
-          {
-            "id": "0cf5717a-b013-4cba-bcbc-554b061b1dd6",
-            "name": "Benefit Plan End Date",
-            "type": "expression",
-            "field": "expectedDueDate"
           }
         ],
         "outputs": [
@@ -264,18 +213,6 @@
             "name": "Supplement Amount",
             "type": "expression",
             "field": "supplementAmount"
-          },
-          {
-            "id": "584bbd47-9758-4c2a-8a58-03241d53c3e7",
-            "name": "Benefit Plan Start Date",
-            "type": "expression",
-            "field": "benefitPlanStartDate"
-          },
-          {
-            "id": "f9362756-1520-4aa1-9468-85f33dd16f74",
-            "name": "Benefit Plan End Date",
-            "type": "expression",
-            "field": "benefitPlanEndDate"
           }
         ],
         "rules": [
@@ -284,52 +221,7 @@
             "_description": "Start date is from date of application for an applicant or upon confirmed pregnancy for a current recipicant.",
             "8a291cf7-7a5b-4a36-80b8-874671ab58c1": "true",
             "f203a6c9-049c-4cbb-aaa8-0344de541bce": "",
-            "557f29d1-4eb0-4bc1-8032-0954de31a081": "",
-            "0cf5717a-b013-4cba-bcbc-554b061b1dd6": "",
-            "57116634-1b11-4de4-a7e7-0f8a9ea2de69": "min([max([shelterCosts - 500, 0]), 195])",
-            "584bbd47-9758-4c2a-8a58-03241d53c3e7": "confirmedPregnancyDate",
-            "f9362756-1520-4aa1-9468-85f33dd16f74": "expectedDueDate"
-          },
-          {
-            "_id": "63cc2d77-bebf-43df-ac76-a855d161678c",
-            "_description": "",
-            "8a291cf7-7a5b-4a36-80b8-874671ab58c1": "",
-            "f203a6c9-049c-4cbb-aaa8-0344de541bce": "",
-            "557f29d1-4eb0-4bc1-8032-0954de31a081": "",
-            "0cf5717a-b013-4cba-bcbc-554b061b1dd6": "",
-            "57116634-1b11-4de4-a7e7-0f8a9ea2de69": "",
-            "584bbd47-9758-4c2a-8a58-03241d53c3e7": "",
-            "f9362756-1520-4aa1-9468-85f33dd16f74": ""
-          },
-          {
-            "_id": "c2ed501d-8f0e-4769-a67c-4ca482a7bd7f",
-            "8a291cf7-7a5b-4a36-80b8-874671ab58c1": "",
-            "f203a6c9-049c-4cbb-aaa8-0344de541bce": "",
-            "557f29d1-4eb0-4bc1-8032-0954de31a081": "",
-            "0cf5717a-b013-4cba-bcbc-554b061b1dd6": "",
-            "57116634-1b11-4de4-a7e7-0f8a9ea2de69": "",
-            "584bbd47-9758-4c2a-8a58-03241d53c3e7": "",
-            "f9362756-1520-4aa1-9468-85f33dd16f74": ""
-          },
-          {
-            "_id": "b484d94b-8aa6-4f33-bbbe-5cb2595b4121",
-            "8a291cf7-7a5b-4a36-80b8-874671ab58c1": "",
-            "f203a6c9-049c-4cbb-aaa8-0344de541bce": "",
-            "557f29d1-4eb0-4bc1-8032-0954de31a081": "",
-            "0cf5717a-b013-4cba-bcbc-554b061b1dd6": "",
-            "57116634-1b11-4de4-a7e7-0f8a9ea2de69": "",
-            "584bbd47-9758-4c2a-8a58-03241d53c3e7": "",
-            "f9362756-1520-4aa1-9468-85f33dd16f74": ""
-          },
-          {
-            "_id": "5ce61a74-8b9b-41a3-b5d3-5b585db6d940",
-            "8a291cf7-7a5b-4a36-80b8-874671ab58c1": "",
-            "f203a6c9-049c-4cbb-aaa8-0344de541bce": "",
-            "557f29d1-4eb0-4bc1-8032-0954de31a081": "",
-            "0cf5717a-b013-4cba-bcbc-554b061b1dd6": "",
-            "57116634-1b11-4de4-a7e7-0f8a9ea2de69": "",
-            "584bbd47-9758-4c2a-8a58-03241d53c3e7": "",
-            "f9362756-1520-4aa1-9468-85f33dd16f74": ""
+            "57116634-1b11-4de4-a7e7-0f8a9ea2de69": "min([max([shelterCosts - 500, 0]), 195])"
           }
         ]
       },

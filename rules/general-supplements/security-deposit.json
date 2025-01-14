@@ -1,5 +1,4 @@
 {
-  "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
       "type": "inputNode",
@@ -12,33 +11,41 @@
       "content": {
         "fields": [
           {
+            "id": 81,
             "field": "isEligibleForAssistance",
             "name": "Family unit is eligible for IA, DA, or HA",
-            "id": 81,
             "description": "Family unit is eligible for income assistance, disability assistance or hardship assistance.",
             "dataType": "true-false",
             "childFields": []
           },
           {
-            "field": "isDepositNecessary",
-            "name": "Family unit requires the security deposit in order to obtain/retain accommodation?",
             "id": 109,
+            "field": "isDepositNecessary",
+            "name": "Family unit requires the deposit in order to obtain/retain accommodation?",
             "description": null,
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 110,
             "field": "isTenacyValid",
             "name": "Tenancy is a valid tenancy under the Residential Tenancy Act",
-            "id": 110,
             "description": null,
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 111,
             "field": "totalRentAmount",
             "name": "Total amount of rent, including subsidies and portion of the rent payable by roommates/co-tenants",
-            "id": 111,
+            "description": null,
+            "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "id": 138,
+            "field": "requestedAmount",
+            "name": "requestedAmount",
             "description": null,
             "dataType": "number-input",
             "childFields": []
@@ -101,6 +108,11 @@
             "id": "21818a11-72a9-478c-8a36-4a88b1e23149",
             "field": "totalRentAmount",
             "name": "Total amount of rent, including subsidies and portion of the rent payable by roommates/co-tenants"
+          },
+          {
+            "id": "2e26171b-484a-48ef-bc07-21f82b67b383",
+            "field": "requestedAmount",
+            "name": "requestedAmount"
           }
         ],
         "outputs": [
@@ -117,6 +129,7 @@
             "b9555d9f-0873-4862-a35b-19693e9e2dba": "true",
             "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "true",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
+            "2e26171b-484a-48ef-bc07-21f82b67b383": "",
             "91b8c950-b27a-4471-8ab5-c836d12454fb": "true"
           },
           {
@@ -125,6 +138,7 @@
             "b9555d9f-0873-4862-a35b-19693e9e2dba": "false",
             "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "true",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
+            "2e26171b-484a-48ef-bc07-21f82b67b383": "",
             "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           },
           {
@@ -133,6 +147,7 @@
             "b9555d9f-0873-4862-a35b-19693e9e2dba": "true",
             "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "false",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
+            "2e26171b-484a-48ef-bc07-21f82b67b383": "",
             "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           },
           {
@@ -141,6 +156,7 @@
             "b9555d9f-0873-4862-a35b-19693e9e2dba": "true",
             "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "true",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
+            "2e26171b-484a-48ef-bc07-21f82b67b383": "",
             "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           }
         ]
@@ -159,7 +175,7 @@
           {
             "id": "226094df-3b74-4918-a33e-bce434c544a1",
             "key": "supplementAmount",
-            "value": "isEligible == true and totalRentAmount > 0 ? totalRentAmount/2 : 0"
+            "value": "isEligible == true and totalRentAmount > 0 ? (requestedAmount < totalRentAmount/2 ? requestedAmount : totalRentAmount/2) : 0"
           }
         ]
       },

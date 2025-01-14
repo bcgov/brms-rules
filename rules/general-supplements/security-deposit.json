@@ -64,17 +64,17 @@
       "content": {
         "fields": [
           {
+            "id": 28,
             "field": "isEligible",
             "name": "Is Eligible",
-            "id": 28,
             "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 58,
             "field": "supplementAmount",
             "name": "Supplement Amount",
-            "id": 58,
             "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
             "dataType": "number-input",
             "validationCriteria": "0",
@@ -175,7 +175,7 @@
           {
             "id": "226094df-3b74-4918-a33e-bce434c544a1",
             "key": "supplementAmount",
-            "value": "isEligible == true and totalRentAmount > 0 and supplementAmount != 0 ? (requestedAmount < totalRentAmount/2 ? requestedAmount : totalRentAmount/2) : 0"
+            "value": "isEligible == true and totalRentAmount > 0 ? (requestedAmount < totalRentAmount/2 ? requestedAmount : totalRentAmount/2) : 0"
           }
         ]
       },

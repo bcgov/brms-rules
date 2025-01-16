@@ -192,7 +192,7 @@
           {
             "id": "226094df-3b74-4918-a33e-bce434c544a1",
             "key": "supplementAmount",
-            "value": "isEligible == true and isEligible == true and totalRentAmount > 0 ? (requestedAmount < totalRentAmount/2 ? requestedAmount : totalRentAmount/2) : 0\ntotalRentAmount > 0 ? totalRentAmount/2 : 0"
+            "value": "isEligible == true and totalRentAmount > 0 ? (requestedAmount < totalRentAmount/2 ? requestedAmount : totalRentAmount/2) : 0"
           }
         ]
       },

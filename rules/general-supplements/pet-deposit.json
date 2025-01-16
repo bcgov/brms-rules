@@ -11,43 +11,51 @@
       "content": {
         "fields": [
           {
+            "id": 81,
             "field": "isEligibleForAssistance",
             "name": "Family unit is eligible for IA, DA, or HA",
-            "id": 81,
             "description": "Family unit is eligible for income assistance, disability assistance or hardship assistance.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 110,
             "field": "isTenacyValid",
             "name": "Tenancy is a valid tenancy under the Residential Tenancy Act",
-            "id": 110,
             "description": null,
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 111,
             "field": "totalRentAmount",
             "name": "Total amount of rent, including subsidies and portion of the rent payable by roommates/co-tenants",
-            "id": 111,
             "description": null,
             "dataType": "number-input",
             "childFields": []
           },
           {
+            "id": 109,
             "field": "isDepositNecessary",
             "name": "Family unit requires the deposit in order to obtain/retain accommodation?",
-            "id": 109,
             "description": null,
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 120,
             "field": "hasRepaymentAgreement",
             "name": "Has repayment agreement or promise to pay",
-            "id": 120,
             "description": null,
             "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 138,
+            "field": "requestedAmount",
+            "name": "Requested amount of supplement by client if less than full eligible amount of supplement. ",
+            "description": "This input exists in ICM/Siebel as BENEFIT_AMT, in the S_BNFT_PLAN_ITM table, under the PUB Case Benefit Plan Line Item Business Component. ",
+            "dataType": "number-input",
             "childFields": []
           }
         ]
@@ -113,6 +121,11 @@
             "id": "79306118-ee92-46c2-ad6f-1f0b2e48ebd5",
             "field": "hasRepaymentAgreement",
             "name": "Has repayment agreement or promise to pay"
+          },
+          {
+            "id": "67d3311b-905e-4a6c-a90e-4f98a8c1250d",
+            "field": "requestedAmount",
+            "name": "Requested amount of supplement by client if less than full eligible amount of supplement. "
           }
         ],
         "outputs": [
@@ -130,6 +143,7 @@
             "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "true",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "true",
+            "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
             "91b8c950-b27a-4471-8ab5-c836d12454fb": "true"
           },
           {
@@ -139,6 +153,7 @@
             "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "true",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "",
+            "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
             "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           },
           {
@@ -148,6 +163,7 @@
             "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "false",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "",
+            "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
             "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           },
           {
@@ -157,6 +173,7 @@
             "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "true",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "",
+            "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
             "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           }
         ]
@@ -175,7 +192,7 @@
           {
             "id": "226094df-3b74-4918-a33e-bce434c544a1",
             "key": "supplementAmount",
-            "value": "isEligible == true and totalRentAmount > 0 ? totalRentAmount/2 : 0"
+            "value": "isEligible == true and isEligible == true and totalRentAmount > 0 ? (requestedAmount < totalRentAmount/2 ? requestedAmount : totalRentAmount/2) : 0\ntotalRentAmount > 0 ? totalRentAmount/2 : 0"
           }
         ]
       },

@@ -58,8 +58,8 @@
       "id": "a6a646e9-45a2-4aeb-857d-7da154f32db4",
       "name": "response",
       "position": {
-        "x": 765,
-        "y": 205
+        "x": 1130,
+        "y": 165
       },
       "content": {
         "fields": [
@@ -158,14 +158,23 @@
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "2e26171b-484a-48ef-bc07-21f82b67b383": "",
             "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
+          },
+          {
+            "_id": "de0601f7-ffb1-4261-b2b7-22dd547beb1d",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "",
+            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "",
+            "21818a11-72a9-478c-8a36-4a88b1e23149": "",
+            "2e26171b-484a-48ef-bc07-21f82b67b383": "",
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           }
         ]
       },
       "id": "82b27ab1-7901-4fe5-a3a5-f203f6b715de",
       "name": "Eligibility",
       "position": {
-        "x": 410,
-        "y": 185
+        "x": 300,
+        "y": 235
       }
     },
     {
@@ -176,14 +185,76 @@
             "id": "226094df-3b74-4918-a33e-bce434c544a1",
             "key": "supplementAmount",
             "value": "isEligible == true and totalRentAmount > 0 ? (requestedAmount < totalRentAmount/2 ? requestedAmount : totalRentAmount/2) : 0"
+          },
+          {
+            "id": "34599231-01c2-4f0a-959d-409979174df5",
+            "key": "isEligible",
+            "value": "isEligible"
           }
         ]
       },
       "id": "29e9c534-ebb4-420b-ab5e-4071c44c6798",
       "name": "Supplement Calculation",
       "position": {
-        "x": 405,
-        "y": 375
+        "x": 840,
+        "y": 160
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "supplementAmount can be $0 and logically the client can still be eligible as they meet requirements, they are technically just eligible for $0 based on the number inputs. "
+        }
+      },
+      "id": "e23eb7a9-da9b-4b7d-9197-d177a91be439",
+      "name": "Note",
+      "position": {
+        "x": 305,
+        "y": 395
+      }
+    },
+    {
+      "type": "switchNode",
+      "content": {
+        "hitPolicy": "first",
+        "statements": [
+          {
+            "id": "61d42dc3-0b2d-4351-b823-83b9fada183a",
+            "condition": "isEligible == true",
+            "isDefault": false
+          },
+          {
+            "id": "c53240d5-7250-46a8-9dca-e81c81b6aeed",
+            "condition": "",
+            "isDefault": true
+          }
+        ]
+      },
+      "id": "3854d105-bf97-40e3-aff2-1210b3a5d102",
+      "name": "Base Eligible",
+      "position": {
+        "x": 560,
+        "y": 155
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "31540d8b-c36d-44aa-9c67-ddb623d7866d",
+            "key": "isEligible",
+            "value": "isEligible"
+          }
+        ]
+      },
+      "id": "61016677-ced3-4b2e-ad47-2f2dcaa6bc53",
+      "name": "Ineligible",
+      "position": {
+        "x": 840,
+        "y": 270
       }
     }
   ],
@@ -195,26 +266,40 @@
       "targetId": "82b27ab1-7901-4fe5-a3a5-f203f6b715de"
     },
     {
-      "id": "0bb07ce7-51c3-46a3-b709-1ddc2c4640a6",
-      "sourceId": "82b27ab1-7901-4fe5-a3a5-f203f6b715de",
+      "id": "18773d86-93bf-41c8-8ced-54d5ad9cbfc6",
+      "sourceId": "29e9c534-ebb4-420b-ab5e-4071c44c6798",
       "type": "edge",
       "targetId": "a6a646e9-45a2-4aeb-857d-7da154f32db4"
     },
     {
-      "id": "068ebee6-267a-46b2-90b3-296c2dc85267",
-      "sourceId": "82b27ab1-7901-4fe5-a3a5-f203f6b715de",
-      "type": "edge",
-      "targetId": "29e9c534-ebb4-420b-ab5e-4071c44c6798"
-    },
-    {
-      "id": "6cd3e40f-93c7-4a06-91cd-fddc426c62fc",
+      "id": "9781c9fb-71e5-4236-9a74-a66fb1e1cd16",
       "sourceId": "358e427e-ba5e-4811-b851-fb41a73d34ad",
       "type": "edge",
-      "targetId": "29e9c534-ebb4-420b-ab5e-4071c44c6798"
+      "targetId": "3854d105-bf97-40e3-aff2-1210b3a5d102"
     },
     {
-      "id": "18773d86-93bf-41c8-8ced-54d5ad9cbfc6",
-      "sourceId": "29e9c534-ebb4-420b-ab5e-4071c44c6798",
+      "id": "f6c4a5d7-78cb-4989-a569-e690830aa94f",
+      "sourceId": "82b27ab1-7901-4fe5-a3a5-f203f6b715de",
+      "type": "edge",
+      "targetId": "3854d105-bf97-40e3-aff2-1210b3a5d102"
+    },
+    {
+      "id": "5049fab1-e1d8-42a7-a363-b9d390076c0b",
+      "sourceId": "3854d105-bf97-40e3-aff2-1210b3a5d102",
+      "type": "edge",
+      "targetId": "29e9c534-ebb4-420b-ab5e-4071c44c6798",
+      "sourceHandle": "61d42dc3-0b2d-4351-b823-83b9fada183a"
+    },
+    {
+      "id": "9747ebac-0757-4dbe-93aa-ab683caef767",
+      "sourceId": "3854d105-bf97-40e3-aff2-1210b3a5d102",
+      "type": "edge",
+      "targetId": "61016677-ced3-4b2e-ad47-2f2dcaa6bc53",
+      "sourceHandle": "c53240d5-7250-46a8-9dca-e81c81b6aeed"
+    },
+    {
+      "id": "09b0dd6f-ba53-48f6-ac90-b0c4f4f35572",
+      "sourceId": "61016677-ced3-4b2e-ad47-2f2dcaa6bc53",
       "type": "edge",
       "targetId": "a6a646e9-45a2-4aeb-857d-7da154f32db4"
     }

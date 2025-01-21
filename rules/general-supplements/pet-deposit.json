@@ -88,6 +88,14 @@
             "validationCriteria": "0",
             "validationType": ">=",
             "childFields": []
+          },
+          {
+            "field": "reason",
+            "name": "Reason",
+            "id": 47,
+            "description": "The reason provided for a given decision.",
+            "dataType": "text-input",
+            "childFields": []
           }
         ]
       }
@@ -133,6 +141,11 @@
             "id": "91b8c950-b27a-4471-8ab5-c836d12454fb",
             "name": "isEligible",
             "field": "isEligible"
+          },
+          {
+            "id": "c59814a3-33b6-4d75-8355-466b1d01e4a1",
+            "field": "reason",
+            "name": "Reason"
           }
         ],
         "rules": [
@@ -144,7 +157,8 @@
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "true",
             "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "true"
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "true",
+            "c59814a3-33b6-4d75-8355-466b1d01e4a1": ""
           },
           {
             "_id": "bc92a8ab-07fb-4d3e-9ac8-c84036a6f49e",
@@ -154,7 +168,8 @@
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "",
             "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false",
+            "c59814a3-33b6-4d75-8355-466b1d01e4a1": "\"No deposit\""
           },
           {
             "_id": "1866e17f-c260-4cd1-a9ec-0923a9e8bd72",
@@ -164,7 +179,8 @@
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "",
             "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false",
+            "c59814a3-33b6-4d75-8355-466b1d01e4a1": "\"Tenancy not valid\""
           },
           {
             "_id": "a7ca19f8-bfd1-4341-989e-22cf5acea253",
@@ -174,7 +190,8 @@
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "",
             "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false",
+            "c59814a3-33b6-4d75-8355-466b1d01e4a1": "\"Not eligible for assistance\""
           }
         ]
       },

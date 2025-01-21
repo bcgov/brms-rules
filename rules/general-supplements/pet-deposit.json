@@ -21,40 +21,40 @@
           {
             "id": 110,
             "field": "isTenacyValid",
-            "name": "Tenancy is a valid tenancy under the Residential Tenancy Act",
-            "description": null,
+            "name": "Valid Tenancy",
+            "description": "Tenancy is a valid tenancy under the Residential Tenancy Act or for a housing unit owned by a co-op.",
             "dataType": "true-false",
             "childFields": []
           },
           {
             "id": 111,
             "field": "totalRentAmount",
-            "name": "Total amount of rent, including subsidies and portion of the rent payable by roommates/co-tenants",
-            "description": null,
+            "name": "Rent Amount",
+            "description": "Total amount of rent, including subsidies and portion of the rent payable by roommates/co-tenants.",
             "dataType": "number-input",
             "childFields": []
           },
           {
             "id": 109,
             "field": "isDepositNecessary",
-            "name": "Family unit requires the deposit in order to obtain/retain accommodation?",
-            "description": null,
+            "name": "Deposit Necessary",
+            "description": "Family unit requires the deposit in order to obtain/retain accommodation.",
             "dataType": "true-false",
             "childFields": []
           },
           {
             "id": 120,
             "field": "hasRepaymentAgreement",
-            "name": "Has repayment agreement or promise to pay",
-            "description": null,
+            "name": "Repayment Agreement",
+            "description": "Agrees in writing to repay",
             "dataType": "true-false",
             "childFields": []
           },
           {
             "id": 138,
             "field": "requestedAmount",
-            "name": "Requested amount of supplement by client if less than full eligible amount of supplement. ",
-            "description": "This input exists in ICM/Siebel as BENEFIT_AMT, in the S_BNFT_PLAN_ITM table, under the PUB Case Benefit Plan Line Item Business Component. ",
+            "name": "Requested Amount",
+            "description": "Requested amount of assistance by client. Assistance refers to IA, DA, HA or supplements.",
             "dataType": "number-input",
             "childFields": []
           }

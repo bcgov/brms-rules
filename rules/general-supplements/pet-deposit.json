@@ -88,14 +88,6 @@
             "validationCriteria": "0",
             "validationType": ">=",
             "childFields": []
-          },
-          {
-            "field": "reason",
-            "name": "Reason",
-            "id": 47,
-            "description": "The reason provided for a given decision.",
-            "dataType": "text-input",
-            "childFields": []
           }
         ]
       }
@@ -156,9 +148,9 @@
           },
           {
             "_id": "bc92a8ab-07fb-4d3e-9ac8-c84036a6f49e",
-            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "true",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "",
             "b9555d9f-0873-4862-a35b-19693e9e2dba": "false",
-            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "true",
+            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "",
             "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
@@ -166,8 +158,8 @@
           },
           {
             "_id": "1866e17f-c260-4cd1-a9ec-0923a9e8bd72",
-            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "true",
-            "b9555d9f-0873-4862-a35b-19693e9e2dba": "true",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "",
             "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "false",
             "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
@@ -177,8 +169,8 @@
           {
             "_id": "a7ca19f8-bfd1-4341-989e-22cf5acea253",
             "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "false",
-            "b9555d9f-0873-4862-a35b-19693e9e2dba": "true",
-            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "true",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "",
+            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "",
             "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",

@@ -5,33 +5,41 @@
       "id": "358e427e-ba5e-4811-b851-fb41a73d34ad",
       "name": "request",
       "position": {
-        "x": 0,
-        "y": 185
+        "x": -445,
+        "y": 170
       },
       "content": {
         "fields": [
           {
+            "id": 81,
             "field": "isEligibleForAssistance",
             "name": "Family unit is eligible for IA, DA, or HA",
-            "id": 81,
             "description": "Family unit is eligible for income assistance, disability assistance or hardship assistance.",
             "dataType": "true-false",
             "childFields": []
           },
           {
-            "field": "isDepositNecessary",
-            "name": "Family unit requires the deposit in order to obtain/retain accommodation?",
             "id": 109,
-            "description": null,
+            "field": "isDepositNecessary",
+            "name": "Deposit Necessary",
+            "description": "Family unit requires the deposit in order to obtain/retain accommodation.",
             "dataType": "true-false",
             "childFields": []
           },
           {
-            "field": "minimumDepositRequired",
-            "name": "The minimum deposit required to secure utility services.",
             "id": 123,
-            "description": null,
+            "field": "minimumDepositRequired",
+            "name": "Minimum Deposit Required",
+            "description": "The minimum deposit required to secure utility services.",
             "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "id": 120,
+            "field": "hasRepaymentAgreement",
+            "name": "Repayment Agreement",
+            "description": "Agrees in writing to repay",
+            "dataType": "true-false",
             "childFields": []
           }
         ]
@@ -42,23 +50,23 @@
       "id": "a6a646e9-45a2-4aeb-857d-7da154f32db4",
       "name": "response",
       "position": {
-        "x": 765,
-        "y": 205
+        "x": 485,
+        "y": 160
       },
       "content": {
         "fields": [
           {
+            "id": 28,
             "field": "isEligible",
             "name": "Is Eligible",
-            "id": 28,
             "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 58,
             "field": "supplementAmount",
             "name": "Supplement Amount",
-            "id": 58,
             "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
             "dataType": "number-input",
             "validationCriteria": "0",
@@ -84,6 +92,11 @@
             "name": "Family unit requires the deposit in order to obtain/retain accommodation?"
           },
           {
+            "id": "f6f0dddf-0bdc-4b7c-b044-c924781e76c0",
+            "field": "hasRepaymentAgreement",
+            "name": "Repayment Agreement"
+          },
+          {
             "id": "21818a11-72a9-478c-8a36-4a88b1e23149",
             "field": "minimumDepositRequired",
             "name": "The minimum deposit required to secure utility services."
@@ -101,27 +114,31 @@
             "_id": "daed1342-9f69-4021-aa10-8a9c23818497",
             "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "true",
             "b9555d9f-0873-4862-a35b-19693e9e2dba": "true",
+            "f6f0dddf-0bdc-4b7c-b044-c924781e76c0": "true",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "91b8c950-b27a-4471-8ab5-c836d12454fb": "true"
           },
           {
             "_id": "bc92a8ab-07fb-4d3e-9ac8-c84036a6f49e",
-            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "true",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "",
             "b9555d9f-0873-4862-a35b-19693e9e2dba": "false",
-            "21818a11-72a9-478c-8a36-4a88b1e23149": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
-          },
-          {
-            "_id": "1866e17f-c260-4cd1-a9ec-0923a9e8bd72",
-            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "true",
-            "b9555d9f-0873-4862-a35b-19693e9e2dba": "true",
+            "f6f0dddf-0bdc-4b7c-b044-c924781e76c0": "",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           },
           {
             "_id": "a7ca19f8-bfd1-4341-989e-22cf5acea253",
             "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "false",
-            "b9555d9f-0873-4862-a35b-19693e9e2dba": "true",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "",
+            "f6f0dddf-0bdc-4b7c-b044-c924781e76c0": "",
+            "21818a11-72a9-478c-8a36-4a88b1e23149": "",
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
+          },
+          {
+            "_id": "d80ba46c-c2da-46e5-a4b4-9b8ad1536d88",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "",
+            "f6f0dddf-0bdc-4b7c-b044-c924781e76c0": "false",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           }
@@ -130,8 +147,8 @@
       "id": "82b27ab1-7901-4fe5-a3a5-f203f6b715de",
       "name": "Eligibility",
       "position": {
-        "x": 410,
-        "y": 185
+        "x": -125,
+        "y": 160
       }
     },
     {
@@ -148,8 +165,50 @@
       "id": "29e9c534-ebb4-420b-ab5e-4071c44c6798",
       "name": "Supplement Calculation",
       "position": {
-        "x": 405,
-        "y": 375
+        "x": 195,
+        "y": 165
+      }
+    },
+    {
+      "type": "switchNode",
+      "content": {
+        "hitPolicy": "first",
+        "statements": [
+          {
+            "id": "d351fc3f-f677-4f2f-82bf-090d71eb33ec",
+            "condition": "isEligible == true",
+            "isDefault": false
+          },
+          {
+            "id": "73243280-0061-4236-963a-1fba7258f2a9",
+            "condition": "",
+            "isDefault": true
+          }
+        ]
+      },
+      "id": "69c45a20-5ecb-4f8d-b66a-56179bd04d47",
+      "name": "Base Eligible",
+      "position": {
+        "x": -125,
+        "y": 285
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "1230a71e-1d19-4303-b40a-1b3bcec45555",
+            "key": "isEligible",
+            "value": "isEligible"
+          }
+        ]
+      },
+      "id": "c3bb899d-19ac-4586-aba7-c793e68d7a01",
+      "name": "Ineligible",
+      "position": {
+        "x": 190,
+        "y": 285
       }
     }
   ],
@@ -161,26 +220,40 @@
       "targetId": "82b27ab1-7901-4fe5-a3a5-f203f6b715de"
     },
     {
-      "id": "0bb07ce7-51c3-46a3-b709-1ddc2c4640a6",
-      "sourceId": "82b27ab1-7901-4fe5-a3a5-f203f6b715de",
+      "id": "18773d86-93bf-41c8-8ced-54d5ad9cbfc6",
+      "sourceId": "29e9c534-ebb4-420b-ab5e-4071c44c6798",
       "type": "edge",
       "targetId": "a6a646e9-45a2-4aeb-857d-7da154f32db4"
     },
     {
-      "id": "068ebee6-267a-46b2-90b3-296c2dc85267",
+      "id": "25b43a0b-7ba4-4243-b70e-447896d92de0",
       "sourceId": "82b27ab1-7901-4fe5-a3a5-f203f6b715de",
       "type": "edge",
-      "targetId": "29e9c534-ebb4-420b-ab5e-4071c44c6798"
+      "targetId": "69c45a20-5ecb-4f8d-b66a-56179bd04d47"
     },
     {
-      "id": "6cd3e40f-93c7-4a06-91cd-fddc426c62fc",
+      "id": "26b411d3-8917-4ddc-987c-e9fefbfe2b55",
       "sourceId": "358e427e-ba5e-4811-b851-fb41a73d34ad",
       "type": "edge",
-      "targetId": "29e9c534-ebb4-420b-ab5e-4071c44c6798"
+      "targetId": "69c45a20-5ecb-4f8d-b66a-56179bd04d47"
     },
     {
-      "id": "18773d86-93bf-41c8-8ced-54d5ad9cbfc6",
-      "sourceId": "29e9c534-ebb4-420b-ab5e-4071c44c6798",
+      "id": "5042f12a-da24-4e37-a4f2-dace63bdac3d",
+      "sourceId": "69c45a20-5ecb-4f8d-b66a-56179bd04d47",
+      "type": "edge",
+      "targetId": "29e9c534-ebb4-420b-ab5e-4071c44c6798",
+      "sourceHandle": "d351fc3f-f677-4f2f-82bf-090d71eb33ec"
+    },
+    {
+      "id": "f32974c6-36f6-4368-9d31-3e2c7bd2392b",
+      "sourceId": "69c45a20-5ecb-4f8d-b66a-56179bd04d47",
+      "type": "edge",
+      "targetId": "c3bb899d-19ac-4586-aba7-c793e68d7a01",
+      "sourceHandle": "73243280-0061-4236-963a-1fba7258f2a9"
+    },
+    {
+      "id": "eac8e7e9-aced-4312-af23-3999ffe1134e",
+      "sourceId": "c3bb899d-19ac-4586-aba7-c793e68d7a01",
       "type": "edge",
       "targetId": "a6a646e9-45a2-4aeb-857d-7da154f32db4"
     }

@@ -5,8 +5,8 @@
       "id": "358e427e-ba5e-4811-b851-fb41a73d34ad",
       "name": "request",
       "position": {
-        "x": -40,
-        "y": 170
+        "x": 0,
+        "y": 185
       },
       "content": {
         "fields": [
@@ -49,6 +49,14 @@
             "description": "Requested amount of assistance by client. Assistance refers to IA, DA, HA or supplements.",
             "dataType": "number-input",
             "childFields": []
+          },
+          {
+            "id": 120,
+            "field": "hasRepaymentAgreement",
+            "name": "Repayment Agreement",
+            "description": "Agrees in writing to repay",
+            "dataType": "true-false",
+            "childFields": []
           }
         ]
       }
@@ -80,14 +88,6 @@
             "validationCriteria": "0",
             "validationType": ">=",
             "childFields": []
-          },
-          {
-            "id": 47,
-            "field": "reason",
-            "name": "Ineligible Reason",
-            "description": "The reason provided for a given decision.",
-            "dataType": "text-input",
-            "childFields": []
           }
         ]
       }
@@ -113,6 +113,11 @@
             "name": "Tenancy is a valid tenancy under the Residential Tenancy Act"
           },
           {
+            "id": "550c9e1d-b4b3-4adb-ba96-1ee6d5887c0d",
+            "field": "hasRepaymentAgreement",
+            "name": "Repayment Agreement"
+          },
+          {
             "id": "21818a11-72a9-478c-8a36-4a88b1e23149",
             "field": "totalRentAmount",
             "name": "Total amount of rent, including subsidies and portion of the rent payable by roommates/co-tenants"
@@ -128,11 +133,6 @@
             "id": "91b8c950-b27a-4471-8ab5-c836d12454fb",
             "name": "isEligible",
             "field": "isEligible"
-          },
-          {
-            "id": "3006d7f2-a8d9-42dd-834d-db2d12667bf8",
-            "field": "reason",
-            "name": "Ineligible Reason"
           }
         ],
         "rules": [
@@ -141,58 +141,58 @@
             "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "true",
             "b9555d9f-0873-4862-a35b-19693e9e2dba": "true",
             "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "true",
+            "550c9e1d-b4b3-4adb-ba96-1ee6d5887c0d": "",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "2e26171b-484a-48ef-bc07-21f82b67b383": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "true",
-            "3006d7f2-a8d9-42dd-834d-db2d12667bf8": ""
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "true"
           },
           {
             "_id": "bc92a8ab-07fb-4d3e-9ac8-c84036a6f49e",
-            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "true",
             "b9555d9f-0873-4862-a35b-19693e9e2dba": "false",
-            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "",
+            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "true",
+            "550c9e1d-b4b3-4adb-ba96-1ee6d5887c0d": "",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "2e26171b-484a-48ef-bc07-21f82b67b383": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false",
-            "3006d7f2-a8d9-42dd-834d-db2d12667bf8": "\"Deposit not neccessary\""
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           },
           {
             "_id": "1866e17f-c260-4cd1-a9ec-0923a9e8bd72",
-            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "",
-            "b9555d9f-0873-4862-a35b-19693e9e2dba": "",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "true",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "true",
             "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "false",
+            "550c9e1d-b4b3-4adb-ba96-1ee6d5887c0d": "",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "2e26171b-484a-48ef-bc07-21f82b67b383": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false",
-            "3006d7f2-a8d9-42dd-834d-db2d12667bf8": "\"Tenancy invalid\""
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           },
           {
             "_id": "a7ca19f8-bfd1-4341-989e-22cf5acea253",
             "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "false",
-            "b9555d9f-0873-4862-a35b-19693e9e2dba": "",
-            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "true",
+            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "true",
+            "550c9e1d-b4b3-4adb-ba96-1ee6d5887c0d": "",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "2e26171b-484a-48ef-bc07-21f82b67b383": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false",
-            "3006d7f2-a8d9-42dd-834d-db2d12667bf8": "\"Not eligible for assistance\""
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           },
           {
             "_id": "de0601f7-ffb1-4261-b2b7-22dd547beb1d",
             "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "",
             "b9555d9f-0873-4862-a35b-19693e9e2dba": "",
             "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "",
+            "550c9e1d-b4b3-4adb-ba96-1ee6d5887c0d": "",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "2e26171b-484a-48ef-bc07-21f82b67b383": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false",
-            "3006d7f2-a8d9-42dd-834d-db2d12667bf8": ""
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           }
         ]
       },
       "id": "82b27ab1-7901-4fe5-a3a5-f203f6b715de",
       "name": "Eligibility",
       "position": {
-        "x": 270,
-        "y": 225
+        "x": 300,
+        "y": 235
       }
     },
     {
@@ -229,8 +229,8 @@
       "id": "e23eb7a9-da9b-4b7d-9197-d177a91be439",
       "name": "Note",
       "position": {
-        "x": 265,
-        "y": 350
+        "x": 305,
+        "y": 395
       }
     },
     {
@@ -265,11 +265,6 @@
             "id": "31540d8b-c36d-44aa-9c67-ddb623d7866d",
             "key": "isEligible",
             "value": "isEligible"
-          },
-          {
-            "id": "b1ba759e-1dac-4e24-b753-66123c0b8399",
-            "key": "reason",
-            "value": "reason"
           }
         ]
       },

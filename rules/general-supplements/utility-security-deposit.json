@@ -19,14 +19,6 @@
             "childFields": []
           },
           {
-            "id": 109,
-            "field": "isDepositNecessary",
-            "name": "Deposit Necessary",
-            "description": "Family unit requires the deposit in order to obtain/retain accommodation.",
-            "dataType": "true-false",
-            "childFields": []
-          },
-          {
             "id": 123,
             "field": "minimumDepositRequired",
             "name": "Minimum Deposit Required",
@@ -39,6 +31,14 @@
             "field": "hasRepaymentAgreement",
             "name": "Repayment Agreement",
             "description": "Agrees in writing to repay",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 150,
+            "field": "isUtilityDepositNecessary",
+            "name": "Utility Deposit Necessary ",
+            "description": "Family unit requires deposit in order to obtain or continue utility services.",
             "dataType": "true-false",
             "childFields": []
           }
@@ -88,8 +88,8 @@
           },
           {
             "id": "b9555d9f-0873-4862-a35b-19693e9e2dba",
-            "field": "isDepositNecessary",
-            "name": "Family unit requires the deposit in order to obtain/retain accommodation?"
+            "field": "isUtilityDepositNecessary",
+            "name": "Utility Deposit Necessary "
           },
           {
             "id": "f6f0dddf-0bdc-4b7c-b044-c924781e76c0",
@@ -158,7 +158,12 @@
           {
             "id": "226094df-3b74-4918-a33e-bce434c544a1",
             "key": "supplementAmount",
-            "value": "isEligible == true and minimumDepositRequired > 0 ?"
+            "value": "isEligible == true and minimumDepositRequired > 0 ? minimumDepositRequired : 0"
+          },
+          {
+            "id": "0eaef98c-32eb-4c7e-8ace-1e19327a67ef",
+            "key": "isEligible",
+            "value": "isEligible"
           }
         ]
       },
@@ -189,8 +194,8 @@
       "id": "69c45a20-5ecb-4f8d-b66a-56179bd04d47",
       "name": "Base Eligible",
       "position": {
-        "x": -125,
-        "y": 285
+        "x": -115,
+        "y": 340
       }
     },
     {

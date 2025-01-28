@@ -5,8 +5,8 @@
       "id": "358e427e-ba5e-4811-b851-fb41a73d34ad",
       "name": "request",
       "position": {
-        "x": -445,
-        "y": 170
+        "x": -480,
+        "y": 190
       },
       "content": {
         "fields": [
@@ -158,7 +158,7 @@
           {
             "id": "226094df-3b74-4918-a33e-bce434c544a1",
             "key": "supplementAmount",
-            "value": "isEligible == true and minimumDepositRequired > 0 ? (minimumDepositRequired < 500 ? minimumDepositRequired : 500) : 0"
+            "value": "isEligible == true and minimumDepositRequired > 0 ?"
           }
         ]
       },

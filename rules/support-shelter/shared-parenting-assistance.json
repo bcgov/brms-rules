@@ -1,0 +1,320 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "type": "inputNode",
+      "id": "69f01ad3-36ea-48f7-8898-7465e23a1335",
+      "name": "request",
+      "position": {
+        "x": -475,
+        "y": 80
+      },
+      "content": {
+        "fields": [
+          {
+            "id": 18,
+            "field": "familyUnitInPay",
+            "name": "Family Unit In Pay",
+            "description": "Family unit is in pay.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 104,
+            "field": "isDependentChild",
+            "name": "isDependentChild",
+            "description": null,
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 146,
+            "field": "percentTimeInCare",
+            "name": "Percentage of Time in Care",
+            "description": null,
+            "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "id": 148,
+            "field": "totalNightsInMonth",
+            "name": "Total Nights in Month",
+            "description": "Specifies the total nights in a given month, value must be between 28 and 31.",
+            "dataType": "number-input",
+            "validationCriteria": "[28,31]",
+            "childFields": []
+          },
+          {
+            "id": 21,
+            "field": "familyUnitSize",
+            "name": "Family Unit Size",
+            "description": "The number of people in a family unit to be considered for a specific calculation. Family unit size is a calculated value. The calculated number of people in a family unit for this field may differ depending on the specific requirements of the supplement or circumstances being assessed, and therefore can include some, or all, active members of a family unit.",
+            "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "id": 1,
+            "field": "baseAmount",
+            "name": "Base Amount",
+            "description": "The base amount of a supplement. ",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "id": 62,
+            "field": "writtenConfirmationProvided",
+            "name": "Written Confirmation Provided",
+            "description": null,
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 149,
+            "field": "has5050Arrangement ",
+            "name": "Has 50/50 Arrangement",
+            "description": "Indicates if the family unit has a 50/50 arrangement and both parents are on assistance.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 78,
+            "field": "shelterAmount",
+            "name": "Shelter Amount",
+            "description": "Amount to be issued as a shelter payment.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "type": "outputNode",
+      "id": "7ca04eee-9a0d-4501-9418-7f5b4a4e10f0",
+      "name": "response",
+      "position": {
+        "x": 995,
+        "y": 100
+      },
+      "content": {
+        "fields": [
+          {
+            "id": 28,
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "id": 58,
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "29d3fa16-8c43-46da-9ae7-c7ae956fe487",
+            "field": "familyUnitInPay",
+            "name": "Family Unit In Pay"
+          },
+          {
+            "id": "9421c058-19c3-446e-a45b-a1441c4bf493",
+            "name": "isDependentChild",
+            "field": "isDependentChild"
+          },
+          {
+            "id": "29c9d00a-3b9a-447b-998b-d6d4a98be9a5",
+            "field": "writtenConfirmationProvided",
+            "name": "Written Confirmation Provided"
+          },
+          {
+            "id": "dbf62604-eaeb-4e4d-a8db-293fb618a1fd",
+            "field": "has5050Arrangement ",
+            "name": "Has 50/50 Arrangement"
+          },
+          {
+            "id": "3eb74d5f-f820-44af-918f-a13418a48482",
+            "field": "percentTimeInCare",
+            "name": "Percentage of Time in Care"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "10002de1-2ce4-4d55-8264-d8a019c038ee",
+            "name": "Is Eligible",
+            "field": "isEligible"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "cf1c0e5b-0e54-4827-aab2-147134e4014c",
+            "29d3fa16-8c43-46da-9ae7-c7ae956fe487": "true",
+            "9421c058-19c3-446e-a45b-a1441c4bf493": "false",
+            "29c9d00a-3b9a-447b-998b-d6d4a98be9a5": "true",
+            "dbf62604-eaeb-4e4d-a8db-293fb618a1fd": "",
+            "3eb74d5f-f820-44af-918f-a13418a48482": "(percentTimeInCare >= 40 and percentTimeInCare < 50) OR (nightsPerMonth / totalNightsInMonth >= 0.4 and nightsPerMonth / totalNightsInMonth < 0.5)\t",
+            "10002de1-2ce4-4d55-8264-d8a019c038ee": "true"
+          },
+          {
+            "_id": "7375c2c2-9c66-479f-9e4a-9e42bf30091c",
+            "29d3fa16-8c43-46da-9ae7-c7ae956fe487": "",
+            "9421c058-19c3-446e-a45b-a1441c4bf493": "",
+            "29c9d00a-3b9a-447b-998b-d6d4a98be9a5": "",
+            "dbf62604-eaeb-4e4d-a8db-293fb618a1fd": "",
+            "3eb74d5f-f820-44af-918f-a13418a48482": "",
+            "10002de1-2ce4-4d55-8264-d8a019c038ee": ""
+          }
+        ]
+      },
+      "id": "a494b70b-913b-46ca-b3f1-35f8e619862e",
+      "name": "Eligibility",
+      "position": {
+        "x": 15,
+        "y": 85
+      }
+    },
+    {
+      "type": "switchNode",
+      "content": {
+        "hitPolicy": "first",
+        "statements": [
+          {
+            "id": "af1455ef-07e6-4184-9d8e-2b24f1b412e0",
+            "condition": "isEligible == true",
+            "isDefault": false
+          },
+          {
+            "id": "f74bfee0-95be-4eeb-9eb3-e57d5df98283",
+            "condition": "",
+            "isDefault": true
+          }
+        ]
+      },
+      "id": "4b9cf06e-91a4-49ac-a37a-ee834c6b0446",
+      "name": "Base Eligibility",
+      "position": {
+        "x": 15,
+        "y": 215
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "95c56579-366f-45fb-8df7-3298210e0674",
+            "key": "isEligible",
+            "value": "isEligible"
+          }
+        ]
+      },
+      "id": "30256717-e3b2-4e28-9608-288986374182",
+      "name": "Ineligible",
+      "position": {
+        "x": 710,
+        "y": 250
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "rules": [],
+        "inputs": [
+          {
+            "id": "640a0116-387f-45d3-8a12-81b51aec9e8e",
+            "name": "Input"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "8acff5be-75d5-41e8-875e-6961e76225df",
+            "name": "Output",
+            "field": "output"
+          }
+        ]
+      },
+      "id": "f88984d2-40a1-48b5-a230-da8251a5797f",
+      "name": "Supplement Calculation",
+      "position": {
+        "x": 655,
+        "y": -60
+      }
+    },
+    {
+      "type": "decisionNode",
+      "id": "8e5227c5-aecd-4485-9477-4145e783c19f",
+      "name": "Shelter Rule",
+      "position": {
+        "x": 350,
+        "y": 20
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "82085539-a73a-425a-8d42-2db5588bf047",
+      "sourceId": "a494b70b-913b-46ca-b3f1-35f8e619862e",
+      "type": "edge",
+      "targetId": "4b9cf06e-91a4-49ac-a37a-ee834c6b0446"
+    },
+    {
+      "id": "0bbca5ac-ba21-4ea1-894f-61c5f2e4051a",
+      "sourceId": "30256717-e3b2-4e28-9608-288986374182",
+      "type": "edge",
+      "targetId": "7ca04eee-9a0d-4501-9418-7f5b4a4e10f0"
+    },
+    {
+      "id": "5d40b91f-aac0-41ff-80b1-e920496cb105",
+      "sourceId": "4b9cf06e-91a4-49ac-a37a-ee834c6b0446",
+      "type": "edge",
+      "targetId": "30256717-e3b2-4e28-9608-288986374182",
+      "sourceHandle": "f74bfee0-95be-4eeb-9eb3-e57d5df98283"
+    },
+    {
+      "id": "fcf8955d-9524-441a-a240-a17d25cfaacb",
+      "sourceId": "f88984d2-40a1-48b5-a230-da8251a5797f",
+      "type": "edge",
+      "targetId": "7ca04eee-9a0d-4501-9418-7f5b4a4e10f0"
+    },
+    {
+      "id": "97fa5ce7-863a-4a2e-8621-b51532f591cc",
+      "sourceId": "69f01ad3-36ea-48f7-8898-7465e23a1335",
+      "type": "edge",
+      "targetId": "a494b70b-913b-46ca-b3f1-35f8e619862e"
+    },
+    {
+      "id": "9234bf1b-3397-4a83-bb9f-a7a50b839c9a",
+      "sourceId": "69f01ad3-36ea-48f7-8898-7465e23a1335",
+      "type": "edge",
+      "targetId": "4b9cf06e-91a4-49ac-a37a-ee834c6b0446"
+    },
+    {
+      "id": "bb3e93e7-5e34-4f78-a51c-8f9eeb4d17fe",
+      "sourceId": "a494b70b-913b-46ca-b3f1-35f8e619862e",
+      "type": "edge",
+      "targetId": "8e5227c5-aecd-4485-9477-4145e783c19f"
+    },
+    {
+      "id": "ab441716-5ca4-412f-a03f-a6906bdc54a9",
+      "sourceId": "8e5227c5-aecd-4485-9477-4145e783c19f",
+      "type": "edge",
+      "targetId": "f88984d2-40a1-48b5-a230-da8251a5797f"
+    }
+  ]
+}

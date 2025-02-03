@@ -1,0 +1,437 @@
+{
+  "nodes": [
+    {
+      "id": "cbaf13a5-a869-41f9-86fc-ebdce6109b35",
+      "type": "inputNode",
+      "position": {
+        "x": -790,
+        "y": -65
+      },
+      "name": "request",
+      "content": {
+        "fields": [
+          {
+            "field": "hasPWDDesignation",
+            "name": "Has PWD Designation",
+            "id": 23,
+            "description": "Individual has PWD designation.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "hasSupplementBeenPaidThisFiscal",
+            "name": "hasSupplementBeenPaidThisFiscal",
+            "id": 102,
+            "description": null,
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isCampRecognized",
+            "name": "isCampRecognized",
+            "id": 103,
+            "description": null,
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isDependentChild",
+            "name": "isDependentChild",
+            "id": 104,
+            "description": null,
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "feeAmount",
+            "name": "feeAmount",
+            "id": 105,
+            "description": null,
+            "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "field": "isBudgetExhausted",
+            "name": "isBudgetExhausted",
+            "id": 106,
+            "description": null,
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isPrioritizationRequired",
+            "name": "isPrioritizationRequired",
+            "id": 107,
+            "description": null,
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "isRecipientPrioritized",
+            "name": "isRecipientPrioritized",
+            "id": 108,
+            "description": null,
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "familyUnitInPay",
+            "name": "Family Unit In Pay",
+            "id": 18,
+            "description": "Family unit is in pay.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "15d12193-caa2-4e20-b41c-554544e9211c",
+      "type": "outputNode",
+      "position": {
+        "x": 315,
+        "y": 70
+      },
+      "name": "response",
+      "content": {
+        "fields": [
+          {
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "id": 28,
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "id": 58,
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "da964da7-1557-4bb8-b64d-2923d6545b61",
+      "type": "decisionTableNode",
+      "position": {
+        "x": -65,
+        "y": -75
+      },
+      "name": "Eligibility",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "2aea8e5d-791a-47fe-ab58-ea12171ef3d4",
+            "type": "expression",
+            "field": "hasSupplementBeenPaidThisFiscal",
+            "name": "hasSupplementBeenPaidThisFiscal"
+          },
+          {
+            "id": "ec6dbe6a-a7d6-4439-bf52-624090a0f73d",
+            "name": "isCampRecognized",
+            "type": "expression",
+            "field": "isCampRecognized"
+          },
+          {
+            "id": "0c2cf641-631d-479f-a256-42b396e1cc68",
+            "type": "expression",
+            "field": "hasPWDDesignation",
+            "name": "Has PWD Designation"
+          },
+          {
+            "id": "e4f947f3-834a-4c40-823d-76280542e7fe",
+            "type": "expression",
+            "field": "isDependentChild",
+            "name": "isDependentChild"
+          },
+          {
+            "id": "088b5840-d46f-48ef-8f74-b703a8122db6",
+            "type": "expression",
+            "field": "familyUnitInPay",
+            "name": "Family Unit In Pay"
+          },
+          {
+            "id": "18f63360-c02c-447a-85ab-08391baf44dd",
+            "type": "expression",
+            "field": "feeAmount",
+            "name": "Fee Amount",
+            "defaultValue": "0"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "d97e8152-3c69-4b90-9c77-1c355e6a0bbf",
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "type": "expression"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "5eafc039-d7f4-4c88-8951-cd874f667b89",
+            "2aea8e5d-791a-47fe-ab58-ea12171ef3d4": "false",
+            "ec6dbe6a-a7d6-4439-bf52-624090a0f73d": "true",
+            "0c2cf641-631d-479f-a256-42b396e1cc68": "isDependentChild == true or hasPWDDesignation == true",
+            "e4f947f3-834a-4c40-823d-76280542e7fe": "isDependentChild == true or hasPWDDesignation == true",
+            "088b5840-d46f-48ef-8f74-b703a8122db6": "true",
+            "18f63360-c02c-447a-85ab-08391baf44dd": "",
+            "d97e8152-3c69-4b90-9c77-1c355e6a0bbf": "true"
+          },
+          {
+            "_id": "3287d63a-3bd7-4074-aeee-ff611a20f61e",
+            "2aea8e5d-791a-47fe-ab58-ea12171ef3d4": "true",
+            "ec6dbe6a-a7d6-4439-bf52-624090a0f73d": "",
+            "0c2cf641-631d-479f-a256-42b396e1cc68": "",
+            "e4f947f3-834a-4c40-823d-76280542e7fe": "",
+            "088b5840-d46f-48ef-8f74-b703a8122db6": "",
+            "18f63360-c02c-447a-85ab-08391baf44dd": "",
+            "d97e8152-3c69-4b90-9c77-1c355e6a0bbf": "false"
+          },
+          {
+            "_id": "37aee565-38ad-460d-a433-8e52c091b813",
+            "2aea8e5d-791a-47fe-ab58-ea12171ef3d4": "",
+            "ec6dbe6a-a7d6-4439-bf52-624090a0f73d": "false",
+            "0c2cf641-631d-479f-a256-42b396e1cc68": "",
+            "e4f947f3-834a-4c40-823d-76280542e7fe": "",
+            "088b5840-d46f-48ef-8f74-b703a8122db6": "",
+            "18f63360-c02c-447a-85ab-08391baf44dd": "",
+            "d97e8152-3c69-4b90-9c77-1c355e6a0bbf": "false"
+          },
+          {
+            "_id": "1a626623-8a29-48bc-b949-ba4b8e7dcf92",
+            "2aea8e5d-791a-47fe-ab58-ea12171ef3d4": "",
+            "ec6dbe6a-a7d6-4439-bf52-624090a0f73d": "",
+            "0c2cf641-631d-479f-a256-42b396e1cc68": "false",
+            "e4f947f3-834a-4c40-823d-76280542e7fe": "false",
+            "088b5840-d46f-48ef-8f74-b703a8122db6": "",
+            "18f63360-c02c-447a-85ab-08391baf44dd": "",
+            "d97e8152-3c69-4b90-9c77-1c355e6a0bbf": "false"
+          },
+          {
+            "_id": "72eb9dea-f1f3-41c7-bdfe-e7cc72210fce",
+            "2aea8e5d-791a-47fe-ab58-ea12171ef3d4": "",
+            "ec6dbe6a-a7d6-4439-bf52-624090a0f73d": "",
+            "0c2cf641-631d-479f-a256-42b396e1cc68": "",
+            "e4f947f3-834a-4c40-823d-76280542e7fe": "",
+            "088b5840-d46f-48ef-8f74-b703a8122db6": "false",
+            "18f63360-c02c-447a-85ab-08391baf44dd": "",
+            "d97e8152-3c69-4b90-9c77-1c355e6a0bbf": "false"
+          },
+          {
+            "_id": "90b5f5f1-df26-433f-bdfc-4516490689ef",
+            "2aea8e5d-791a-47fe-ab58-ea12171ef3d4": "",
+            "ec6dbe6a-a7d6-4439-bf52-624090a0f73d": "",
+            "0c2cf641-631d-479f-a256-42b396e1cc68": "",
+            "e4f947f3-834a-4c40-823d-76280542e7fe": "",
+            "088b5840-d46f-48ef-8f74-b703a8122db6": "",
+            "18f63360-c02c-447a-85ab-08391baf44dd": "0",
+            "d97e8152-3c69-4b90-9c77-1c355e6a0bbf": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "480bd9d0-f58f-4459-935e-e840d081d34c",
+      "type": "expressionNode",
+      "position": {
+        "x": -70,
+        "y": 60
+      },
+      "name": "Calculate Supplement",
+      "content": {
+        "expressions": [
+          {
+            "id": "66146981-fb3a-408a-92c4-e3002b6641a3",
+            "key": "supplementAmount",
+            "value": "isEligible == true and feeAmount > 0 ? min([feeAmount,200]) : 0"
+          }
+        ]
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "29d70ede-e95e-4c28-912e-ee01bb0cb43f",
+            "field": "isBudgetExhausted",
+            "name": "Is Supplement Budget Exhausted"
+          },
+          {
+            "id": "2434d665-16bf-4af1-9760-1859c2649aac",
+            "field": "isPrioritizationRequired",
+            "name": "Is prioritization Required"
+          },
+          {
+            "id": "e76f059b-240e-4194-90e1-a336bb2d7d92",
+            "name": "isRecipientPrioritized",
+            "field": "isRecipientPrioritized"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "05f0573b-43b0-46db-abeb-00a7ccdee9f8",
+            "name": "Assess for Eligibility",
+            "field": "assessForEligibility"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "232c32d5-3f76-4da2-bf15-d3561c9f0af1",
+            "29d70ede-e95e-4c28-912e-ee01bb0cb43f": "false",
+            "2434d665-16bf-4af1-9760-1859c2649aac": "true",
+            "e76f059b-240e-4194-90e1-a336bb2d7d92": "false",
+            "05f0573b-43b0-46db-abeb-00a7ccdee9f8": "false"
+          },
+          {
+            "_id": "ed6c9d97-3bb3-410f-94b0-363da2e08446",
+            "29d70ede-e95e-4c28-912e-ee01bb0cb43f": "false",
+            "2434d665-16bf-4af1-9760-1859c2649aac": "true or false",
+            "e76f059b-240e-4194-90e1-a336bb2d7d92": "true or false",
+            "05f0573b-43b0-46db-abeb-00a7ccdee9f8": "true"
+          },
+          {
+            "_id": "20b1b53b-a386-4d80-abd4-90a5646850b9",
+            "29d70ede-e95e-4c28-912e-ee01bb0cb43f": "true",
+            "2434d665-16bf-4af1-9760-1859c2649aac": "true or false",
+            "e76f059b-240e-4194-90e1-a336bb2d7d92": "true or false",
+            "05f0573b-43b0-46db-abeb-00a7ccdee9f8": "false"
+          },
+          {
+            "_id": "02ffb51e-b070-4432-b947-89cb002eff36",
+            "29d70ede-e95e-4c28-912e-ee01bb0cb43f": "",
+            "2434d665-16bf-4af1-9760-1859c2649aac": "",
+            "e76f059b-240e-4194-90e1-a336bb2d7d92": "",
+            "05f0573b-43b0-46db-abeb-00a7ccdee9f8": ""
+          }
+        ]
+      },
+      "id": "cbae011a-34dc-46a4-992e-5cd466a5a318",
+      "name": "Budget Assessment",
+      "position": {
+        "x": -420,
+        "y": -120
+      }
+    },
+    {
+      "type": "switchNode",
+      "content": {
+        "hitPolicy": "first",
+        "statements": [
+          {
+            "id": "72ff5d6b-697a-46c1-8a99-7552ec7b83d8",
+            "condition": "assessForEligibility == true",
+            "isDefault": false
+          },
+          {
+            "id": "40d283ec-21a3-4981-87a8-c859488625ca",
+            "condition": "",
+            "isDefault": true
+          }
+        ]
+      },
+      "id": "d5111ee3-f215-484b-b329-f0b03aeeeed7",
+      "name": "Budget Eligible",
+      "position": {
+        "x": -420,
+        "y": -5
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "ad94fcb3-5a04-404d-8717-0ec969f69cbd",
+            "key": "isEligible",
+            "value": "assessForEligibility"
+          },
+          {
+            "id": "5a94a69a-54ac-444a-af95-05d514da2bf3",
+            "key": "supplementAmount",
+            "value": "0 + 0"
+          }
+        ]
+      },
+      "id": "b633be04-5014-4f0a-a59f-2905f2d00d6b",
+      "name": "Ineligible",
+      "position": {
+        "x": -70,
+        "y": 175
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "7e9f7e8d-f94c-4b42-966f-4d908d880bb2",
+      "sourceId": "da964da7-1557-4bb8-b64d-2923d6545b61",
+      "type": "edge",
+      "targetId": "480bd9d0-f58f-4459-935e-e840d081d34c"
+    },
+    {
+      "id": "2542e9bc-ef4c-4ac5-bfdd-0dccbc1e6306",
+      "sourceId": "480bd9d0-f58f-4459-935e-e840d081d34c",
+      "type": "edge",
+      "targetId": "15d12193-caa2-4e20-b41c-554544e9211c"
+    },
+    {
+      "id": "f4560305-89cb-4163-becd-a90a27e8a444",
+      "sourceId": "da964da7-1557-4bb8-b64d-2923d6545b61",
+      "type": "edge",
+      "targetId": "15d12193-caa2-4e20-b41c-554544e9211c"
+    },
+    {
+      "id": "abf04190-c6b8-4691-a177-229e2ad2b728",
+      "sourceId": "d5111ee3-f215-484b-b329-f0b03aeeeed7",
+      "type": "edge",
+      "targetId": "da964da7-1557-4bb8-b64d-2923d6545b61",
+      "sourceHandle": "72ff5d6b-697a-46c1-8a99-7552ec7b83d8"
+    },
+    {
+      "id": "df9476cd-c2ad-4b8f-befd-9d904faf6b6e",
+      "sourceId": "cbae011a-34dc-46a4-992e-5cd466a5a318",
+      "type": "edge",
+      "targetId": "d5111ee3-f215-484b-b329-f0b03aeeeed7"
+    },
+    {
+      "id": "d35cf625-57d4-4ea2-9e79-2e3736c0a075",
+      "sourceId": "cbaf13a5-a869-41f9-86fc-ebdce6109b35",
+      "type": "edge",
+      "targetId": "cbae011a-34dc-46a4-992e-5cd466a5a318"
+    },
+    {
+      "id": "c5bf2201-1be4-4446-8068-1d5ea3bb950d",
+      "sourceId": "d5111ee3-f215-484b-b329-f0b03aeeeed7",
+      "type": "edge",
+      "targetId": "b633be04-5014-4f0a-a59f-2905f2d00d6b",
+      "sourceHandle": "40d283ec-21a3-4981-87a8-c859488625ca"
+    },
+    {
+      "id": "f45579c3-b495-4827-b6e5-06ef9a68cb72",
+      "sourceId": "b633be04-5014-4f0a-a59f-2905f2d00d6b",
+      "type": "edge",
+      "targetId": "15d12193-caa2-4e20-b41c-554544e9211c"
+    },
+    {
+      "id": "6e1187cf-c249-49f9-8e17-d4bcd11a40ae",
+      "sourceId": "cbaf13a5-a869-41f9-86fc-ebdce6109b35",
+      "type": "edge",
+      "targetId": "d5111ee3-f215-484b-b329-f0b03aeeeed7"
+    },
+    {
+      "id": "57d3a421-fe29-4c06-9456-d598822b1d0f",
+      "sourceId": "d5111ee3-f215-484b-b329-f0b03aeeeed7",
+      "type": "edge",
+      "targetId": "480bd9d0-f58f-4459-935e-e840d081d34c",
+      "sourceHandle": "72ff5d6b-697a-46c1-8a99-7552ec7b83d8"
+    }
+  ]
+}

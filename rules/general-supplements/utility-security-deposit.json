@@ -41,6 +41,14 @@
             "description": "Family unit requires deposit in order to obtain or continue utility services.",
             "dataType": "true-false",
             "childFields": []
+          },
+          {
+            "field": "hasUnpaidDeposit",
+            "name": "Unpaid Deposit",
+            "id": 152,
+            "description": "Recipient previously received a utility security deposit for the same service provider and has not yet repaid it.",
+            "dataType": "true-false",
+            "childFields": []
           }
         ]
       }
@@ -72,6 +80,14 @@
             "validationCriteria": "0",
             "validationType": ">=",
             "childFields": []
+          },
+          {
+            "id": 47,
+            "field": "reason",
+            "name": "Ineligible Reason",
+            "description": "The reason provided for a given decision.",
+            "dataType": "text-input",
+            "childFields": []
           }
         ]
       }
@@ -100,6 +116,11 @@
             "id": "21818a11-72a9-478c-8a36-4a88b1e23149",
             "field": "minimumDepositRequired",
             "name": "The minimum deposit required to secure utility services."
+          },
+          {
+            "id": "183c5d55-826f-4d24-b959-67086760d1e9",
+            "field": "hasUnpaidDeposit",
+            "name": "Unpaid Deposit"
           }
         ],
         "outputs": [
@@ -107,6 +128,11 @@
             "id": "91b8c950-b27a-4471-8ab5-c836d12454fb",
             "name": "isEligible",
             "field": "isEligible"
+          },
+          {
+            "id": "7566a0ab-cb49-4e43-aec9-b46473c79fba",
+            "field": "reason",
+            "name": "Ineligible Reason"
           }
         ],
         "rules": [
@@ -116,7 +142,9 @@
             "b9555d9f-0873-4862-a35b-19693e9e2dba": "true",
             "f6f0dddf-0bdc-4b7c-b044-c924781e76c0": "true",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "true"
+            "183c5d55-826f-4d24-b959-67086760d1e9": "",
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "true",
+            "7566a0ab-cb49-4e43-aec9-b46473c79fba": ""
           },
           {
             "_id": "bc92a8ab-07fb-4d3e-9ac8-c84036a6f49e",
@@ -124,7 +152,9 @@
             "b9555d9f-0873-4862-a35b-19693e9e2dba": "false",
             "f6f0dddf-0bdc-4b7c-b044-c924781e76c0": "",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
+            "183c5d55-826f-4d24-b959-67086760d1e9": "",
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false",
+            "7566a0ab-cb49-4e43-aec9-b46473c79fba": "\"Deposit\""
           },
           {
             "_id": "a7ca19f8-bfd1-4341-989e-22cf5acea253",
@@ -132,7 +162,9 @@
             "b9555d9f-0873-4862-a35b-19693e9e2dba": "",
             "f6f0dddf-0bdc-4b7c-b044-c924781e76c0": "",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
+            "183c5d55-826f-4d24-b959-67086760d1e9": "",
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false",
+            "7566a0ab-cb49-4e43-aec9-b46473c79fba": "\"Assistance\""
           },
           {
             "_id": "d80ba46c-c2da-46e5-a4b4-9b8ad1536d88",
@@ -140,7 +172,19 @@
             "b9555d9f-0873-4862-a35b-19693e9e2dba": "",
             "f6f0dddf-0bdc-4b7c-b044-c924781e76c0": "false",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
+            "183c5d55-826f-4d24-b959-67086760d1e9": "",
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false",
+            "7566a0ab-cb49-4e43-aec9-b46473c79fba": "\"Repayment\""
+          },
+          {
+            "_id": "bcd3b583-cd69-451c-912b-2a44031ed30f",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "",
+            "f6f0dddf-0bdc-4b7c-b044-c924781e76c0": "",
+            "21818a11-72a9-478c-8a36-4a88b1e23149": "",
+            "183c5d55-826f-4d24-b959-67086760d1e9": "true",
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false",
+            "7566a0ab-cb49-4e43-aec9-b46473c79fba": "\"Unpaid Deposit\""
           }
         ]
       },
@@ -206,6 +250,11 @@
             "id": "1230a71e-1d19-4303-b40a-1b3bcec45555",
             "key": "isEligible",
             "value": "isEligible"
+          },
+          {
+            "id": "710df459-6f0a-45ec-8f95-b87b1a4a09fc",
+            "key": "reason",
+            "value": "reason"
           }
         ]
       },

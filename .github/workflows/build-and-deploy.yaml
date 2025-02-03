@@ -18,7 +18,7 @@ jobs:
       - name: Trigger workflow in another repo
         env:
           GITHUB_TOKEN: ${{ secrets.BRMS_API_ACCESS_TOKEN }}
-          REPO: bcgov/brms-api
+          REPO: bcgov/brms-backend
           WORKFLOW_ID: build-and-deploy.yml
           # This is the branch name we want to use of the brms backend
           # We want it to be the same as the branch we are building so they stay in sync

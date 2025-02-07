@@ -1,46 +1,4 @@
 {
-  "contentType": "application/vnd.gorules.decision",
-  "edges": [
-    {
-      "id": "9f88d22a-bd9f-4082-856b-7cfe2dbaae78",
-      "type": "edge",
-      "sourceId": "6e70304c-a2e3-4d5a-9541-bb97c3038665",
-      "targetId": "ea124db4-20bc-46bb-99ea-202a55b55b5b"
-    },
-    {
-      "id": "3b9fe63d-f493-457b-b2c8-1ec04b3c075b",
-      "sourceId": "a4568c5b-a4be-4222-b379-02bc117dcb29",
-      "type": "edge",
-      "targetId": "6e70304c-a2e3-4d5a-9541-bb97c3038665"
-    },
-    {
-      "id": "4aae948b-ec25-4d66-a474-dba321306153",
-      "sourceId": "a023eb5d-4691-49c9-9e85-dfcc687801d9",
-      "type": "edge",
-      "targetId": "862b9aae-f2ed-4832-aab7-68676c8124eb"
-    },
-    {
-      "id": "262cb68e-4aee-42bb-b4b8-be0a16a3d5a9",
-      "sourceId": "862b9aae-f2ed-4832-aab7-68676c8124eb",
-      "type": "edge",
-      "targetId": "6e70304c-a2e3-4d5a-9541-bb97c3038665",
-      "sourceHandle": "91271c97-325c-435d-afec-fed17be9ea67"
-    },
-    {
-      "id": "47e2bda3-f0e2-46cf-9bb7-599233b60c7e",
-      "sourceId": "862b9aae-f2ed-4832-aab7-68676c8124eb",
-      "type": "edge",
-      "targetId": "ea124db4-20bc-46bb-99ea-202a55b55b5b",
-      "sourceHandle": "8f469792-0352-4541-a593-eec3cce87696"
-    },
-    {
-      "id": "44ba334a-ad74-4aa2-af57-0189af94c949",
-      "sourceId": "862b9aae-f2ed-4832-aab7-68676c8124eb",
-      "type": "edge",
-      "targetId": "a4568c5b-a4be-4222-b379-02bc117dcb29",
-      "sourceHandle": "91271c97-325c-435d-afec-fed17be9ea67"
-    }
-  ],
   "nodes": [
     {
       "id": "a023eb5d-4691-49c9-9e85-dfcc687801d9",
@@ -61,15 +19,15 @@
             "childFields": [
               {
                 "id": 40,
-                "name": "Person ID",
-                "field": "personID",
+                "name": "personID",
+                "field": "Person ID",
                 "description": null,
                 "dataType": "text-input"
               },
               {
                 "id": 64,
-                "name": "Date of Birth",
-                "field": "dateOfBirth",
+                "name": "dateOfBirth",
+                "field": "Date of Birth",
                 "description": "The specific date of birth for an individual.",
                 "dataType": "date",
                 "validationCriteria": "1910-01-01",
@@ -77,8 +35,8 @@
               },
               {
                 "id": 69,
-                "name": "In School",
-                "field": "inSchool",
+                "name": "inSchool",
+                "field": "In School",
                 "description": "Individual is currently in school.",
                 "dataType": "true-false"
               }
@@ -221,5 +179,47 @@
         "y": 190
       }
     }
-  ]
+  ],
+  "edges": [
+    {
+      "id": "9f88d22a-bd9f-4082-856b-7cfe2dbaae78",
+      "type": "edge",
+      "sourceId": "6e70304c-a2e3-4d5a-9541-bb97c3038665",
+      "targetId": "ea124db4-20bc-46bb-99ea-202a55b55b5b"
+    },
+    {
+      "id": "3b9fe63d-f493-457b-b2c8-1ec04b3c075b",
+      "sourceId": "a4568c5b-a4be-4222-b379-02bc117dcb29",
+      "type": "edge",
+      "targetId": "6e70304c-a2e3-4d5a-9541-bb97c3038665"
+    },
+    {
+      "id": "4aae948b-ec25-4d66-a474-dba321306153",
+      "sourceId": "a023eb5d-4691-49c9-9e85-dfcc687801d9",
+      "type": "edge",
+      "targetId": "862b9aae-f2ed-4832-aab7-68676c8124eb"
+    },
+    {
+      "id": "262cb68e-4aee-42bb-b4b8-be0a16a3d5a9",
+      "sourceId": "862b9aae-f2ed-4832-aab7-68676c8124eb",
+      "type": "edge",
+      "targetId": "6e70304c-a2e3-4d5a-9541-bb97c3038665",
+      "sourceHandle": "91271c97-325c-435d-afec-fed17be9ea67"
+    },
+    {
+      "id": "47e2bda3-f0e2-46cf-9bb7-599233b60c7e",
+      "sourceId": "862b9aae-f2ed-4832-aab7-68676c8124eb",
+      "type": "edge",
+      "targetId": "ea124db4-20bc-46bb-99ea-202a55b55b5b",
+      "sourceHandle": "8f469792-0352-4541-a593-eec3cce87696"
+    },
+    {
+      "id": "44ba334a-ad74-4aa2-af57-0189af94c949",
+      "sourceId": "862b9aae-f2ed-4832-aab7-68676c8124eb",
+      "type": "edge",
+      "targetId": "a4568c5b-a4be-4222-b379-02bc117dcb29",
+      "sourceHandle": "91271c97-325c-435d-afec-fed17be9ea67"
+    }
+  ],
+  "contentType": "application/vnd.gorules.decision"
 }

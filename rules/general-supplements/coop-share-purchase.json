@@ -22,24 +22,24 @@
           {
             "id": 119,
             "field": "inRecieptLast3months",
-            "name": "In Receipt of IA or DA for last 3 months",
-            "description": null,
+            "name": "Receipt IA or DA for last 3 months",
+            "description": "Family unit received income assistance or disability assistance for each of the past 3 calendar months",
             "dataType": "true-false",
             "childFields": []
           },
           {
             "id": 120,
             "field": "hasRepaymentAgreement",
-            "name": "Has repayment agreement or promise to pay",
-            "description": null,
+            "name": "Repayment Agreement",
+            "description": "Agrees in writing to repay",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "field": "coopShares",
+            "name": "Co-op Shares Amount",
             "id": 121,
-            "field": "lumpSum",
-            "name": "Total cost of the co-op shares",
-            "description": null,
+            "description": "The total cost of the co-op shares or the supplement amount they want to request.",
             "dataType": "number-input",
             "childFields": []
           }
@@ -146,9 +146,9 @@
         "inputs": [
           {
             "id": "e3b357f9-8e0b-41d3-a4ce-5b6203a8eca8",
-            "name": "Total cost of the co-op shares",
+            "name": "Co-op Shares Amount",
             "type": "expression",
-            "field": "lumpSum"
+            "field": "coopShares"
           }
         ],
         "outputs": [

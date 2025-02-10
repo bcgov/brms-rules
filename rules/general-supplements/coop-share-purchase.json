@@ -36,10 +36,18 @@
             "childFields": []
           },
           {
-            "field": "coopShares",
-            "name": "Co-op Shares Amount",
             "id": 121,
-            "description": "The total cost of the co-op shares or the supplement amount they want to request.",
+            "field": "lumpSum",
+            "name": "Co-op Shares Amount",
+            "description": "The total cost of the co-op shares.",
+            "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "id": 138,
+            "field": "requestedAmount",
+            "name": "Requested Amount",
+            "description": "Requested amount of assistance by client. Assistance refers to IA, DA, HA or supplements.",
             "dataType": "number-input",
             "childFields": []
           }
@@ -72,6 +80,14 @@
             "dataType": "number-input",
             "validationCriteria": "0",
             "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "id": 47,
+            "field": "reason",
+            "name": "Reason",
+            "description": "The reason provided for a given decision.",
+            "dataType": "text-input",
             "childFields": []
           }
         ]
@@ -113,6 +129,11 @@
             "field": "isEligible",
             "name": "isEligible",
             "type": "expression"
+          },
+          {
+            "id": "1f29a906-eb68-4f68-a812-9a627bf5517c",
+            "field": "reason",
+            "name": "Reason"
           }
         ],
         "rules": [
@@ -121,14 +142,32 @@
             "371a8c6c-f0e3-4636-9af4-82aa299ec2b8": "true",
             "5794af06-d825-4e36-b908-de57d65838cc": "true",
             "72e74f2a-8913-4616-8416-0d9abf80791c": "true",
-            "601b36c4-766f-4516-b051-7ad56535d768": "true"
+            "601b36c4-766f-4516-b051-7ad56535d768": "true",
+            "1f29a906-eb68-4f68-a812-9a627bf5517c": ""
           },
           {
             "_id": "a2691bf2-9f27-4e6e-b8ab-aa19a8616315",
-            "371a8c6c-f0e3-4636-9af4-82aa299ec2b8": "",
+            "371a8c6c-f0e3-4636-9af4-82aa299ec2b8": "false",
             "5794af06-d825-4e36-b908-de57d65838cc": "",
             "72e74f2a-8913-4616-8416-0d9abf80791c": "",
-            "601b36c4-766f-4516-b051-7ad56535d768": "false"
+            "601b36c4-766f-4516-b051-7ad56535d768": "false",
+            "1f29a906-eb68-4f68-a812-9a627bf5517c": "\"Not in pay\""
+          },
+          {
+            "_id": "143a2125-b676-4a88-b974-c7fe6865debd",
+            "371a8c6c-f0e3-4636-9af4-82aa299ec2b8": "",
+            "5794af06-d825-4e36-b908-de57d65838cc": "false",
+            "72e74f2a-8913-4616-8416-0d9abf80791c": "",
+            "601b36c4-766f-4516-b051-7ad56535d768": "false",
+            "1f29a906-eb68-4f68-a812-9a627bf5517c": "\"Last 3 months\""
+          },
+          {
+            "_id": "e4c0f8cc-9096-4587-aa54-78162b73f982",
+            "371a8c6c-f0e3-4636-9af4-82aa299ec2b8": "",
+            "5794af06-d825-4e36-b908-de57d65838cc": "",
+            "72e74f2a-8913-4616-8416-0d9abf80791c": "false",
+            "601b36c4-766f-4516-b051-7ad56535d768": "false",
+            "1f29a906-eb68-4f68-a812-9a627bf5517c": "\"No repayment agreement\""
           }
         ]
       }
@@ -145,10 +184,14 @@
         "hitPolicy": "first",
         "inputs": [
           {
-            "id": "e3b357f9-8e0b-41d3-a4ce-5b6203a8eca8",
+            "id": "a8c2935b-6b72-4865-b39d-9e7a81d8f360",
             "name": "Co-op Shares Amount",
-            "type": "expression",
-            "field": "coopShares"
+            "field": "lumpSum"
+          },
+          {
+            "id": "47815a7d-35b1-4ece-b6da-e480276418e7",
+            "field": "requestedAmount",
+            "name": "Requested Amount"
           }
         ],
         "outputs": [
@@ -168,9 +211,10 @@
         "rules": [
           {
             "_id": "b8c2dcdb-86cd-4323-bb4e-f4b31ae46dc0",
-            "e3b357f9-8e0b-41d3-a4ce-5b6203a8eca8": "",
+            "a8c2935b-6b72-4865-b39d-9e7a81d8f360": "",
+            "47815a7d-35b1-4ece-b6da-e480276418e7": "",
             "649c5d25-f429-4d0c-8226-39a7abe84cf0": "true",
-            "8551c8ca-4e7a-4988-8b73-56f5cbf99bce": "min([(lumpSum/2),850])"
+            "8551c8ca-4e7a-4988-8b73-56f5cbf99bce": "min(min(lumpSum/2, 850), requestedAmount != null ? requestedAmount : min(lumpSum/2, 850))"
           }
         ]
       }
@@ -210,8 +254,43 @@
             "id": "7b95ad3e-b809-4c86-b62e-7fc38650dfd4",
             "key": "isEligible",
             "value": "isEligible"
+          },
+          {
+            "id": "abf1f9ad-47c5-4ee3-be4d-2fe7f0298bf0",
+            "key": "reason",
+            "value": "reason"
           }
         ]
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "e164a1fd-9249-4253-9ad3-310fc7175a2a",
+            "key": "supplementAmount",
+            "value": "requestedAmount != null ? min([min([lumpSum / 2, 850]), requestedAmount]) : min([lumpSum / 2, 850])"
+          }
+        ]
+      },
+      "id": "198eff05-48f7-4262-a5a2-5ee9145715d9",
+      "name": "Supplement Calculation",
+      "position": {
+        "x": 510,
+        "y": 135
+      }
+    },
+    {
+      "type": "functionNode",
+      "content": {
+        "source": "import zen from 'zen';\n\nexport const handler = async (input) => {\n  return input;\n};\n{\n  \"SupplementAmount\": {\n    \"if\": { \"!=\": [ { \"var\": \"requestedAmount\" }, null ] },\n    \"then\": {\n      \"if\": { \"<\": [ { \"var\": \"requestedAmount\" }, { \"min\": [ { \"/\": [ { \"var\": \"lumpSum\" }, 2 ] }, 850 ] } ] },\n      \"then\": { \"var\": \"requestedAmount\" },\n      \"else\": { \"min\": [ { \"/\": [ { \"var\": \"lumpSum\" }, 2 ] }, 850 ] }\n    },\n    \"else\": { \"min\": [ { \"/\": [ { \"var\": \"lumpSum\" }, 2 ] }, 850 ] }\n  }\n}\n"
+      },
+      "id": "1f3c7d2f-b28d-4414-960b-0725db30d7dc",
+      "name": "function1",
+      "position": {
+        "x": 875,
+        "y": 145
       }
     }
   ],
@@ -223,23 +302,10 @@
       "targetId": "931b441f-b3da-46b6-8361-69dc383e93f5"
     },
     {
-      "id": "5f0e5a35-eca1-4fd0-a2fa-700c4cdc22fc",
-      "sourceId": "ac0e5b55-f2bd-4c57-b088-a006d34bab7c",
-      "type": "edge",
-      "targetId": "82750d8f-e85c-4c34-805e-467f76aa2280"
-    },
-    {
       "id": "072eb054-03df-4335-ac9e-9e2b0f364431",
       "sourceId": "931b441f-b3da-46b6-8361-69dc383e93f5",
       "type": "edge",
       "targetId": "31415b4e-9938-4cbd-9a6b-9ea17832ea85"
-    },
-    {
-      "id": "ba944654-f6a9-4ca4-a469-46c2e6963805",
-      "sourceId": "31415b4e-9938-4cbd-9a6b-9ea17832ea85",
-      "type": "edge",
-      "targetId": "ac0e5b55-f2bd-4c57-b088-a006d34bab7c",
-      "sourceHandle": "1b7551bb-6f7f-43e5-be2d-2fde2df672f0"
     },
     {
       "id": "3ec5b7b8-b803-4fbf-a3ce-edee9ed438f7",
@@ -259,6 +325,19 @@
       "sourceId": "eddd8ff1-d068-442e-9f1e-309463d2cefa",
       "type": "edge",
       "targetId": "31415b4e-9938-4cbd-9a6b-9ea17832ea85"
+    },
+    {
+      "id": "2bbef2f2-c584-4816-9e6b-178ef6005a8b",
+      "sourceId": "31415b4e-9938-4cbd-9a6b-9ea17832ea85",
+      "type": "edge",
+      "targetId": "198eff05-48f7-4262-a5a2-5ee9145715d9",
+      "sourceHandle": "1b7551bb-6f7f-43e5-be2d-2fde2df672f0"
+    },
+    {
+      "id": "a27e44dc-7289-44a9-bfda-bb00917ae0ae",
+      "sourceId": "198eff05-48f7-4262-a5a2-5ee9145715d9",
+      "type": "edge",
+      "targetId": "82750d8f-e85c-4c34-805e-467f76aa2280"
     }
   ]
 }

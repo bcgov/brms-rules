@@ -173,53 +173,6 @@
       }
     },
     {
-      "id": "ac0e5b55-f2bd-4c57-b088-a006d34bab7c",
-      "type": "decisionTableNode",
-      "position": {
-        "x": 490,
-        "y": 245
-      },
-      "name": "Supplement Calculation",
-      "content": {
-        "hitPolicy": "first",
-        "inputs": [
-          {
-            "id": "a8c2935b-6b72-4865-b39d-9e7a81d8f360",
-            "name": "Co-op Shares Amount",
-            "field": "lumpSum"
-          },
-          {
-            "id": "47815a7d-35b1-4ece-b6da-e480276418e7",
-            "field": "requestedAmount",
-            "name": "Requested Amount"
-          }
-        ],
-        "outputs": [
-          {
-            "id": "649c5d25-f429-4d0c-8226-39a7abe84cf0",
-            "type": "expression",
-            "field": "isEligible",
-            "name": "is Eligible"
-          },
-          {
-            "id": "8551c8ca-4e7a-4988-8b73-56f5cbf99bce",
-            "type": "expression",
-            "field": "supplementAmount",
-            "name": "Supplement Amount"
-          }
-        ],
-        "rules": [
-          {
-            "_id": "b8c2dcdb-86cd-4323-bb4e-f4b31ae46dc0",
-            "a8c2935b-6b72-4865-b39d-9e7a81d8f360": "",
-            "47815a7d-35b1-4ece-b6da-e480276418e7": "",
-            "649c5d25-f429-4d0c-8226-39a7abe84cf0": "true",
-            "8551c8ca-4e7a-4988-8b73-56f5cbf99bce": "min(min(lumpSum/2, 850), requestedAmount != null ? requestedAmount : min(lumpSum/2, 850))"
-          }
-        ]
-      }
-    },
-    {
       "id": "31415b4e-9938-4cbd-9a6b-9ea17832ea85",
       "type": "switchNode",
       "position": {
@@ -277,20 +230,8 @@
       "id": "198eff05-48f7-4262-a5a2-5ee9145715d9",
       "name": "Supplement Calculation",
       "position": {
-        "x": 510,
-        "y": 135
-      }
-    },
-    {
-      "type": "functionNode",
-      "content": {
-        "source": "import zen from 'zen';\n\nexport const handler = async (input) => {\n  return input;\n};\n{\n  \"SupplementAmount\": {\n    \"if\": { \"!=\": [ { \"var\": \"requestedAmount\" }, null ] },\n    \"then\": {\n      \"if\": { \"<\": [ { \"var\": \"requestedAmount\" }, { \"min\": [ { \"/\": [ { \"var\": \"lumpSum\" }, 2 ] }, 850 ] } ] },\n      \"then\": { \"var\": \"requestedAmount\" },\n      \"else\": { \"min\": [ { \"/\": [ { \"var\": \"lumpSum\" }, 2 ] }, 850 ] }\n    },\n    \"else\": { \"min\": [ { \"/\": [ { \"var\": \"lumpSum\" }, 2 ] }, 850 ] }\n  }\n}\n"
-      },
-      "id": "1f3c7d2f-b28d-4414-960b-0725db30d7dc",
-      "name": "function1",
-      "position": {
-        "x": 875,
-        "y": 145
+        "x": 500,
+        "y": 190
       }
     }
   ],

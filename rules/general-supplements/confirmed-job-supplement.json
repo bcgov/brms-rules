@@ -6,8 +6,8 @@
       "id": "5868caf7-1033-4c63-b96b-b6fe15b6f506",
       "name": "request",
       "position": {
-        "x": -270,
-        "y": 0
+        "x": -275,
+        "y": 10
       },
       "content": {
         "fields": [
@@ -22,24 +22,24 @@
           {
             "id": 134,
             "field": "isEmploymentConfirmed",
-            "name": "The recipient must have secured a job that will help the family leave assistance.",
-            "description": null,
+            "name": "Employment Confirmed",
+            "description": "The recipient must have secured a job that will help the family leave assistance.",
             "dataType": "true-false",
             "childFields": []
           },
           {
             "id": 115,
             "field": "isAlternateFundingAvailable",
-            "name": "Is alternate funding available?",
-            "description": "Person requesting supplement (& their family unit) do not have access to other resources. Usually verbal or paper confirmation required.",
+            "name": "Alternate Funding Available",
+            "description": "Person requesting supplement (& their family unit) do not have access to other funding. Usually verbal or paper confirmation required.",
             "dataType": "true-false",
             "childFields": []
           },
           {
             "id": 136,
             "field": "eligibleItemCosts",
-            "name": "Value of eligible items for supplement",
-            "description": null,
+            "name": "Eligible Item Costs",
+            "description": "Value of eligible items for supplement.",
             "dataType": "number-input",
             "validationCriteria": "0",
             "validationType": ">=",
@@ -53,8 +53,8 @@
       "id": "7211a960-eb4c-481a-86ba-225492de83b7",
       "name": "response",
       "position": {
-        "x": 865,
-        "y": 150
+        "x": 905,
+        "y": 160
       },
       "content": {
         "fields": [

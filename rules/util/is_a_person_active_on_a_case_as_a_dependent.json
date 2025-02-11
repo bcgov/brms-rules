@@ -61,15 +61,15 @@
             "childFields": [
               {
                 "id": 40,
-                "name": "personID",
-                "field": "Person ID",
+                "name": "Person ID",
+                "field": "personID",
                 "description": null,
                 "dataType": "text-input"
               },
               {
                 "id": 64,
-                "name": "dateOfBirth",
-                "field": "Date of Birth",
+                "name": "Date of Birth",
+                "field": "dateOfBirth",
                 "description": "The specific date of birth for an individual.",
                 "dataType": "date",
                 "validationCriteria": "1910-01-01",
@@ -77,8 +77,8 @@
               },
               {
                 "id": 69,
-                "name": "inSchool",
-                "field": "In School",
+                "name": "In School",
+                "field": "inSchool",
                 "description": "Individual is currently in school.",
                 "dataType": "true-false"
               }

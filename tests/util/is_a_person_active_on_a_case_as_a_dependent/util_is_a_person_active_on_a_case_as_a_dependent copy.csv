@@ -1,3 +1,0 @@
-﻿Scenario,Results Match Expected (Pass/Fail),Input: dependentsList[1]dateOfBirth,Input: dependentsList[1]inSchool,Input: dependentsList[1]personID,Input: personID,Expected Result: isActiveOnCase,Result: isActiveOnCase,Error?
-Active Dependent,Pass,,,P1234,P1234,,true,
-Dependent on Case,Pass,2024-10-07,,P1234,P1234,true,true,

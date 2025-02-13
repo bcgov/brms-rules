@@ -1,0 +1,53 @@
+
+name: CSV Rule Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+      - dev
+  workflow_dispatch: # Allows us to trigger this workflow from elsewhere (like the rules repo)
+
+jobs:
+  csv-rule-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get list of rules changed in PR
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+        with:
+          separator: ","
+          files: |
+            **.json
+      
+      - name: List all changed files
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: |
+          for file in ${ALL_CHANGED_FILES}; do
+            echo "$file was changed"
+          done
+
+      - name: Checkout brm-backend repository
+        uses: actions/checkout@v4
+        with:
+          repository: bcgov/brm-backend
+          ref: feature/pipeline-rule-tests # TODO: UPDATE TO main
+
+      - name: Checkout current repository
+        uses: actions/checkout@v4
+        with:
+          path: brms-rules
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run CSV tests
+        env:
+          CHANGED_RULES: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: npm run test:rules ${{ env.CHANGED_RULES }}

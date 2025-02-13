@@ -1,4 +1,4 @@
-name: Trigger the Build and Deploy of BRMS Backend
+name: Trigger the Build and Deploy of BRM Backend
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
       - dev
 
 jobs:
-  trigger:
+  trigger-build-deploy:
     runs-on: ubuntu-latest
 
     steps:

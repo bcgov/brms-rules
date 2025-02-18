@@ -1,5 +1,4 @@
 {
-  "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
       "id": "eddd8ff1-d068-442e-9f1e-309463d2cefa",
@@ -224,8 +223,15 @@
             "id": "e164a1fd-9249-4253-9ad3-310fc7175a2a",
             "key": "supplementAmount",
             "value": "requestedAmount != null ? min([min([lumpSum / 2, 850]), requestedAmount]) : min([lumpSum / 2, 850])"
+          },
+          {
+            "id": "46b7d563-710a-4044-b764-fcea32f05198",
+            "key": "isEligible",
+            "value": "isEligible"
           }
-        ]
+        ],
+        "passThrough": false,
+        "outputPath": null
       },
       "id": "198eff05-48f7-4262-a5a2-5ee9145715d9",
       "name": "Supplement Calculation",
@@ -280,5 +286,6 @@
       "type": "edge",
       "targetId": "82750d8f-e85c-4c34-805e-467f76aa2280"
     }
-  ]
+  ],
+  "contentType": "application/vnd.gorules.decision"
 }

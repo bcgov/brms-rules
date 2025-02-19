@@ -88,14 +88,6 @@
             "validationCriteria": "0",
             "validationType": ">=",
             "childFields": []
-          },
-          {
-            "id": 47,
-            "field": "reason",
-            "name": "Ineligible Reason",
-            "description": "The reason provided for a given decision.",
-            "dataType": "text-input",
-            "childFields": []
           }
         ]
       }
@@ -141,11 +133,6 @@
             "id": "91b8c950-b27a-4471-8ab5-c836d12454fb",
             "name": "isEligible",
             "field": "isEligible"
-          },
-          {
-            "id": "811b754d-a551-4984-bd81-e6d61a535bdc",
-            "field": "reason",
-            "name": "Reason"
           }
         ],
         "rules": [
@@ -157,8 +144,7 @@
             "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "true",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "true",
-            "811b754d-a551-4984-bd81-e6d61a535bdc": ""
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "true"
           },
           {
             "_id": "a7ca19f8-bfd1-4341-989e-22cf5acea253",
@@ -168,8 +154,7 @@
             "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false",
-            "811b754d-a551-4984-bd81-e6d61a535bdc": "\"Not eligible for assistance\""
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           },
           {
             "_id": "1866e17f-c260-4cd1-a9ec-0923a9e8bd72",
@@ -179,8 +164,7 @@
             "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false",
-            "811b754d-a551-4984-bd81-e6d61a535bdc": "\"Tenancy not valid\""
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           },
           {
             "_id": "54fa7c7a-a7b4-4fb4-9a8d-8543533787f9",
@@ -190,8 +174,7 @@
             "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "false",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false",
-            "811b754d-a551-4984-bd81-e6d61a535bdc": "\"No repayment agreement\""
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           },
           {
             "_id": "bc92a8ab-07fb-4d3e-9ac8-c84036a6f49e",
@@ -201,10 +184,11 @@
             "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false",
-            "811b754d-a551-4984-bd81-e6d61a535bdc": "\"No Deposit\""
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           }
-        ]
+        ],
+        "passThorough": false,
+        "executionMode": "single"
       },
       "id": "82b27ab1-7901-4fe5-a3a5-f203f6b715de",
       "name": "Eligibility",

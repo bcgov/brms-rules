@@ -177,16 +177,6 @@
             "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           },
           {
-            "_id": "de0601f7-ffb1-4261-b2b7-22dd547beb1d",
-            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "",
-            "b9555d9f-0873-4862-a35b-19693e9e2dba": "",
-            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "",
-            "550c9e1d-b4b3-4adb-ba96-1ee6d5887c0d": "",
-            "21818a11-72a9-478c-8a36-4a88b1e23149": "",
-            "2e26171b-484a-48ef-bc07-21f82b67b383": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
-          },
-          {
             "_id": "40fa5d24-7ab9-4b87-bb4c-7edd22a30090",
             "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "",
             "b9555d9f-0873-4862-a35b-19693e9e2dba": "",
@@ -194,9 +184,11 @@
             "550c9e1d-b4b3-4adb-ba96-1ee6d5887c0d": "false",
             "21818a11-72a9-478c-8a36-4a88b1e23149": "",
             "2e26171b-484a-48ef-bc07-21f82b67b383": "",
-            "91b8c950-b27a-4471-8ab5-c836d12454fb": ""
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
           }
-        ]
+        ],
+        "passThorough": false,
+        "executionMode": "single"
       },
       "id": "82b27ab1-7901-4fe5-a3a5-f203f6b715de",
       "name": "Eligibility",
@@ -275,6 +267,11 @@
             "id": "31540d8b-c36d-44aa-9c67-ddb623d7866d",
             "key": "isEligible",
             "value": "isEligible"
+          },
+          {
+            "id": "67351fc7-69df-4b66-b97a-c283a776aa0e",
+            "key": "reason",
+            "value": "reason"
           }
         ]
       },

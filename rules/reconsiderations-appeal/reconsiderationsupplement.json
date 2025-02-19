@@ -82,14 +82,6 @@
             "validationCriteria": "0",
             "validationType": ">=",
             "childFields": []
-          },
-          {
-            "id": 47,
-            "field": "reason",
-            "name": "Reason",
-            "description": "The reason provided for a given decision.",
-            "dataType": "text-input",
-            "childFields": []
           }
         ]
       }
@@ -130,11 +122,6 @@
             "id": "4eeaa059-6987-428e-884a-fa522894b041",
             "name": "Is Eligible",
             "field": "isEligible"
-          },
-          {
-            "id": "43de6857-4ef6-4129-b949-1b585328a021",
-            "field": "reason",
-            "name": "Reason"
           }
         ],
         "rules": [
@@ -145,8 +132,7 @@
             "48f65fca-1512-4421-a9e6-aab23dbe8996": "$ != null and $ != undefined",
             "debe303a-238b-4f8b-9df9-cc44c03ca047": "",
             "4c73dcb7-ca77-4f13-9928-c59caa151998": "!= \"Hardship Assistance\"",
-            "4eeaa059-6987-428e-884a-fa522894b041": "true",
-            "43de6857-4ef6-4129-b949-1b585328a021": ""
+            "4eeaa059-6987-428e-884a-fa522894b041": "true"
           },
           {
             "_id": "a261cb70-1d9a-4bff-82ae-51599a25fe14",
@@ -155,8 +141,7 @@
             "48f65fca-1512-4421-a9e6-aab23dbe8996": "",
             "debe303a-238b-4f8b-9df9-cc44c03ca047": "",
             "4c73dcb7-ca77-4f13-9928-c59caa151998": "\"Hardship Assistance\"",
-            "4eeaa059-6987-428e-884a-fa522894b041": "false",
-            "43de6857-4ef6-4129-b949-1b585328a021": "\"Hardship Ineligible\""
+            "4eeaa059-6987-428e-884a-fa522894b041": "false"
           },
           {
             "_id": "62e84e31-df91-45a4-8def-05677e99da8e",
@@ -165,8 +150,7 @@
             "48f65fca-1512-4421-a9e6-aab23dbe8996": "",
             "debe303a-238b-4f8b-9df9-cc44c03ca047": "",
             "4c73dcb7-ca77-4f13-9928-c59caa151998": "",
-            "4eeaa059-6987-428e-884a-fa522894b041": "false",
-            "43de6857-4ef6-4129-b949-1b585328a021": "'No HR0100'"
+            "4eeaa059-6987-428e-884a-fa522894b041": "false"
           },
           {
             "_id": "917279e2-d120-4de0-acb6-2bd15a9acb63",
@@ -175,8 +159,7 @@
             "48f65fca-1512-4421-a9e6-aab23dbe8996": "",
             "debe303a-238b-4f8b-9df9-cc44c03ca047": "",
             "4c73dcb7-ca77-4f13-9928-c59caa151998": "",
-            "4eeaa059-6987-428e-884a-fa522894b041": "false",
-            "43de6857-4ef6-4129-b949-1b585328a021": "\"No Repayment Agreement\""
+            "4eeaa059-6987-428e-884a-fa522894b041": "false"
           },
           {
             "_id": "e9aeb80a-28a4-46df-a5c4-363898135494",
@@ -185,8 +168,7 @@
             "48f65fca-1512-4421-a9e6-aab23dbe8996": "$ == null or $ == undefined",
             "debe303a-238b-4f8b-9df9-cc44c03ca047": "",
             "4c73dcb7-ca77-4f13-9928-c59caa151998": "",
-            "4eeaa059-6987-428e-884a-fa522894b041": "false",
-            "43de6857-4ef6-4129-b949-1b585328a021": "\"No Discontinuation Date\""
+            "4eeaa059-6987-428e-884a-fa522894b041": "false"
           }
         ],
         "passThorough": false,

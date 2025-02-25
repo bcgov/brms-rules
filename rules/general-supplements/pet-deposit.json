@@ -228,11 +228,6 @@
             "id": "8fbff567-d9b0-444e-89c1-2ff01a710890",
             "key": "isEligible",
             "value": "isEligible"
-          },
-          {
-            "id": "f50609dc-1504-4965-a5fd-7ab213294dfa",
-            "key": "reason",
-            "value": "reason"
           }
         ]
       },

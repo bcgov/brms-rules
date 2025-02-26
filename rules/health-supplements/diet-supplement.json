@@ -204,7 +204,7 @@
             "97355f79-f49e-4506-99a8-4ead7859574b": "undefined in [familyUnitInPayForMonth, residingInCareFacility, inPayOfAnyOtherNutritionalSupplement, verificationOfNeedConfirmed, dietSupplementConditions]",
             "b37fff04-9f9f-4ff2-9ad3-3f1ce4c20aff": "undefined in [familyUnitInPayForMonth, residingInCareFacility, inPayOfAnyOtherNutritionalSupplement, verificationOfNeedConfirmed, dietSupplementConditions]",
             "2d1145d8-e5c5-4c12-82e5-841240c58cb5": "false",
-            "b6ddf92d-b911-47a1-8343-88957225aed1": "`Required information is missing: ${familyUnitInPayForMonth == null ? 'familyUnitInPayForMonth' : ''} ${residingInCareFacility == null ? 'residingInCareFacility' : ''} ${inPayOfAnyOtherNutritionalSupplement == null ? 'inPayOfAnyOtherNutritionalSupplement' : ''} ${verificationOfNeedConfirmed == null ? 'verificationOfNeedConfirmed' : ''} ${dietSupplementConditions == null ? 'dietSupplementConditions' : ''}`"
+            "b6ddf92d-b911-47a1-8343-88957225aed1": "`Required information is missing:${familyUnitInPayForMonth == null ? ' familyUnitInPayForMonth' : ''}${residingInCareFacility == null ? ' residingInCareFacility' : ''}${inPayOfAnyOtherNutritionalSupplement == null ? ' inPayOfAnyOtherNutritionalSupplement' : ''}${verificationOfNeedConfirmed == null ? ' verificationOfNeedConfirmed' : ''}${dietSupplementConditions == null ? ' dietSupplementConditions' : ''}`"
           }
         ],
         "passThorough": false,

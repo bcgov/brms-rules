@@ -168,7 +168,7 @@
             "97355f79-f49e-4506-99a8-4ead7859574b": "",
             "b37fff04-9f9f-4ff2-9ad3-3f1ce4c20aff": "",
             "2d1145d8-e5c5-4c12-82e5-841240c58cb5": "false",
-            "b6ddf92d-b911-47a1-8343-88957225aed1": "\"Not in pay\""
+            "b6ddf92d-b911-47a1-8343-88957225aed1": "\"Notinpay\""
           },
           {
             "_id": "4b6a9835-06d2-4b5d-a2de-362724f36bd8",
@@ -177,7 +177,7 @@
             "97355f79-f49e-4506-99a8-4ead7859574b": "",
             "b37fff04-9f9f-4ff2-9ad3-3f1ce4c20aff": "",
             "2d1145d8-e5c5-4c12-82e5-841240c58cb5": "false",
-            "b6ddf92d-b911-47a1-8343-88957225aed1": "\"In care facility\""
+            "b6ddf92d-b911-47a1-8343-88957225aed1": "\"carefacility\""
           },
           {
             "_id": "3a792776-47ac-4d94-b35a-a04992a35a0c",
@@ -186,7 +186,7 @@
             "97355f79-f49e-4506-99a8-4ead7859574b": "true",
             "b37fff04-9f9f-4ff2-9ad3-3f1ce4c20aff": "",
             "2d1145d8-e5c5-4c12-82e5-841240c58cb5": "false",
-            "b6ddf92d-b911-47a1-8343-88957225aed1": "\"In pay of another supplement\""
+            "b6ddf92d-b911-47a1-8343-88957225aed1": "\"supplement\""
           },
           {
             "_id": "36b814a6-3ee4-4cc0-bf2d-5bc9c75ce1ac",
@@ -195,7 +195,7 @@
             "97355f79-f49e-4506-99a8-4ead7859574b": "",
             "b37fff04-9f9f-4ff2-9ad3-3f1ce4c20aff": "false",
             "2d1145d8-e5c5-4c12-82e5-841240c58cb5": "false",
-            "b6ddf92d-b911-47a1-8343-88957225aed1": "\"No written confirmation provided\""
+            "b6ddf92d-b911-47a1-8343-88957225aed1": "\"writtenconfirmation\""
           },
           {
             "_id": "826a41fe-c110-486e-9c3a-6b18f72a3239",
@@ -206,7 +206,9 @@
             "2d1145d8-e5c5-4c12-82e5-841240c58cb5": "false",
             "b6ddf92d-b911-47a1-8343-88957225aed1": "`Required information is missing: ${familyUnitInPayForMonth == null ? 'familyUnitInPayForMonth' : ''} ${residingInCareFacility == null ? 'residingInCareFacility' : ''} ${inPayOfAnyOtherNutritionalSupplement == null ? 'inPayOfAnyOtherNutritionalSupplement' : ''} ${verificationOfNeedConfirmed == null ? 'verificationOfNeedConfirmed' : ''} ${dietSupplementConditions == null ? 'dietSupplementConditions' : ''}`"
           }
-        ]
+        ],
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
         "x": 480,

@@ -11,41 +11,41 @@
       "content": {
         "fields": [
           {
+            "id": 52,
             "field": "residingInCareFacility",
             "name": "Residing In Care Facility",
-            "id": 52,
-            "description": "Individual is residing in a care facility.",
+            "description": "Person(s) residing in a special care facility.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 20,
             "field": "familyUnitInPayForMonth",
             "name": "Family Unit In Pay For Month",
-            "id": 20,
             "description": "Family Unit is in pay for the specified month.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 60,
             "field": "verificationOfNeedConfirmed",
             "name": "Verification Of Need Confirmed",
-            "id": 60,
             "description": "Verification of need for the requested item has been confirmed.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 25,
             "field": "inPayOfAnyOtherNutritionalSupplement",
             "name": "In Pay Of Any Other Nutritional Supplement",
-            "id": 25,
             "description": "Individual is currently in receipt of any other nutritional supplement.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 66,
             "field": "dietSupplementConditions",
             "name": "Diet Supplement Conditions",
-            "id": 66,
             "description": "The condition that an individual is claiming for the purposes of eligibility for the diet supplement.",
             "dataType": "text-input",
             "validationCriteria": "Restricted Sodium Diet, Diabetes, Kidney Dialysis, Gluten-Free Diet, Dysphagia, Cystic Fibrosis, Ketogenic Diet, Low Phenylalanine Diet (PKU), Cancer, Chronic Inflammatory Bowel Disease, Crohn’s Disease, Ulcerative Colitis, HIV Positive Diagnosis, AIDS, Chronic Bacterial Infection, Tuberculosis, Hyperthyroidism, Osteoporosis, Hepatitis B, Hepatitis C",
@@ -66,25 +66,17 @@
       "content": {
         "fields": [
           {
+            "id": 28,
             "field": "isEligible",
             "name": "Is Eligible",
-            "id": 28,
             "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
             "dataType": "true-false",
             "childFields": []
           },
           {
-            "field": "eligibleForBlenderSupplement",
-            "name": "Eligible for Blender Supplement",
-            "id": 11,
-            "description": "Individual is eligible for a one time supplement towards the purchase of a blender.",
-            "dataType": "true-false",
-            "childFields": []
-          },
-          {
+            "id": 58,
             "field": "supplementAmount",
             "name": "Supplement Amount",
-            "id": 58,
             "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
             "dataType": "number-input",
             "validationCriteria": "0",
@@ -92,9 +84,9 @@
             "childFields": []
           },
           {
+            "id": 47,
             "field": "reason",
             "name": "Reason",
-            "id": 47,
             "description": "The reason provided for a given decision.",
             "dataType": "text-input",
             "childFields": []
@@ -254,13 +246,6 @@
             "defaultValue": "0"
           },
           {
-            "id": "8f4130c8-c03e-4503-8208-4a32a726af3a",
-            "name": "Eligible For Blender Supplement",
-            "type": "expression",
-            "field": "eligibleForBlenderSupplement",
-            "defaultValue": "false"
-          },
-          {
             "id": "a6eb5a1a-45ca-45f2-a0cc-9502193bf426",
             "field": "reason",
             "name": "Reason"
@@ -274,7 +259,6 @@
             "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "false",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "null",
-            "8f4130c8-c03e-4503-8208-4a32a726af3a": "false",
             "a6eb5a1a-45ca-45f2-a0cc-9502193bf426": ""
           },
           {
@@ -284,7 +268,6 @@
             "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Cystic Fibrosis\" in $",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "80",
-            "8f4130c8-c03e-4503-8208-4a32a726af3a": "false",
             "a6eb5a1a-45ca-45f2-a0cc-9502193bf426": ""
           },
           {
@@ -294,7 +277,6 @@
             "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "65",
-            "8f4130c8-c03e-4503-8208-4a32a726af3a": "true",
             "a6eb5a1a-45ca-45f2-a0cc-9502193bf426": ""
           },
           {
@@ -304,7 +286,6 @@
             "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Dysphagia\" in $",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "65",
-            "8f4130c8-c03e-4503-8208-4a32a726af3a": "true",
             "a6eb5a1a-45ca-45f2-a0cc-9502193bf426": ""
           },
           {
@@ -314,7 +295,6 @@
             "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Gluten-Free Diet\" in $",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "65",
-            "8f4130c8-c03e-4503-8208-4a32a726af3a": "false",
             "a6eb5a1a-45ca-45f2-a0cc-9502193bf426": ""
           },
           {
@@ -324,7 +304,6 @@
             "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Ketogenic Diet\" in $",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "65",
-            "8f4130c8-c03e-4503-8208-4a32a726af3a": "false",
             "a6eb5a1a-45ca-45f2-a0cc-9502193bf426": ""
           },
           {
@@ -334,7 +313,6 @@
             "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Low Phenylalanine Diet (PKU)\" in $",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "65",
-            "8f4130c8-c03e-4503-8208-4a32a726af3a": "false",
             "a6eb5a1a-45ca-45f2-a0cc-9502193bf426": ""
           },
           {
@@ -344,7 +322,6 @@
             "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Diabetes\" in $",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "60",
-            "8f4130c8-c03e-4503-8208-4a32a726af3a": "false",
             "a6eb5a1a-45ca-45f2-a0cc-9502193bf426": ""
           },
           {
@@ -354,7 +331,6 @@
             "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Kidney Dialysis\" in $",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "50",
-            "8f4130c8-c03e-4503-8208-4a32a726af3a": "false",
             "a6eb5a1a-45ca-45f2-a0cc-9502193bf426": ""
           },
           {
@@ -364,10 +340,11 @@
             "f0e9e752-c27b-4587-b5f5-007fee9c84ae": "\"Restricted Sodium Diet\" in $",
             "08f42743-a9e0-4fcd-9023-bd7cf4db0bdf": "true",
             "929d5c8a-9f93-4620-96fe-2bfac31a307c": "15",
-            "8f4130c8-c03e-4503-8208-4a32a726af3a": "false",
             "a6eb5a1a-45ca-45f2-a0cc-9502193bf426": ""
           }
-        ]
+        ],
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
         "x": 1045,

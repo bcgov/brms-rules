@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: bcgov/brm-backend
-          ref: feature/pipeline-rule-tests # TODO: UPDATE TO main
+          ref: ${{ github.head_ref == 'main' && 'main' || 'dev' }}
 
       - name: Checkout current repository
         uses: actions/checkout@v4

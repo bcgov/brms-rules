@@ -522,11 +522,6 @@
             "value": "len($root) > 0 ? max(map($root, #.supplementAmount)) : null"
           },
           {
-            "id": "b36a20a5-487b-4861-a401-99a96e36816d",
-            "key": "eligibleForBlenderSupplement",
-            "value": "some($root, #.eligibleForBlenderSupplement == true)"
-          },
-          {
             "id": "76b87728-f0bf-46b3-94d4-7fe9ca4be922",
             "key": "reason",
             "value": "len($root) > 0 ? null : \"Condition not in list of eligible conditions\""

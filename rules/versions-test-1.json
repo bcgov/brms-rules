@@ -1,0 +1,128 @@
+{
+  "nodes": [
+    {
+      "type": "inputNode",
+      "content": {
+        "fields": [
+          {
+            "field": "person1age",
+            "name": "Person 1 Age",
+            "id": 41,
+            "description": "The age of person 1 in a family unit in years.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      },
+      "id": "e33ec965-feea-4195-9b9b-aa7c4fc5775b",
+      "name": "request",
+      "position": {
+        "x": 55,
+        "y": 180
+      }
+    },
+    {
+      "type": "outputNode",
+      "content": {
+        "fields": [
+          {
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "id": 28,
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "id": 58,
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      },
+      "id": "496565eb-c2c7-4046-946a-39050e227de3",
+      "name": "response",
+      "position": {
+        "x": 750,
+        "y": 155
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "43ffb9aa-bec6-4420-babb-6ad40126475f",
+            "key": "isEligible",
+            "value": "person1age > 20"
+          },
+          {
+            "id": "e7153435-4cd9-420e-b83e-675335d629a1",
+            "key": "supplementAmount",
+            "value": "person1age > 30 ? 1000 : 10"
+          }
+        ],
+        "passThrough": false,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single"
+      },
+      "id": "55f6a3a9-9f6a-49e1-91ec-fed33e7bfc38",
+      "name": "expression1",
+      "position": {
+        "x": 435,
+        "y": 220
+      }
+    },
+    {
+      "type": "decisionNode",
+      "content": {
+        "key": "general-supplements/guidedogsupplement.json",
+        "passThrough": false,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single"
+      },
+      "id": "42190b95-1f28-4acc-9353-50b66cddb4e1",
+      "name": "Linked Rule",
+      "position": {
+        "x": 430,
+        "y": 50
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "66a3ce36-012b-443b-ba49-8297a5fa02a4",
+      "sourceId": "e33ec965-feea-4195-9b9b-aa7c4fc5775b",
+      "type": "edge",
+      "targetId": "55f6a3a9-9f6a-49e1-91ec-fed33e7bfc38"
+    },
+    {
+      "id": "e9274416-52e4-4b89-a6d9-91ff7f8966e4",
+      "sourceId": "55f6a3a9-9f6a-49e1-91ec-fed33e7bfc38",
+      "type": "edge",
+      "targetId": "496565eb-c2c7-4046-946a-39050e227de3"
+    },
+    {
+      "id": "afdfb5a6-face-4a64-992f-09cf0dd397ab",
+      "sourceId": "e33ec965-feea-4195-9b9b-aa7c4fc5775b",
+      "type": "edge",
+      "targetId": "42190b95-1f28-4acc-9353-50b66cddb4e1"
+    },
+    {
+      "id": "ae62a0ba-5eb5-40de-bd55-2ebab526acd6",
+      "sourceId": "42190b95-1f28-4acc-9353-50b66cddb4e1",
+      "type": "edge",
+      "targetId": "496565eb-c2c7-4046-946a-39050e227de3"
+    }
+  ],
+  "contentType": "application/vnd.gorules.decision"
+}

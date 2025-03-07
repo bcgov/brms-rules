@@ -1,5 +1,4 @@
 {
-  "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
       "id": "138b7ca6-85a6-4f27-b7ff-69d619e2b362",
@@ -84,7 +83,7 @@
       "type": "decisionTableNode",
       "position": {
         "x": -90,
-        "y": -15
+        "y": -90
       },
       "name": "Eligibility",
       "content": {
@@ -208,5 +207,6 @@
       "type": "edge",
       "targetId": "430d94ce-ca8b-4141-a249-73aab3e989f7"
     }
-  ]
+  ],
+  "contentType": "application/vnd.gorules.decision"
 }

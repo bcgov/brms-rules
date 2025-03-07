@@ -35,6 +35,14 @@
                 "validationType": "[=text]"
               }
             ]
+          },
+          {
+            "field": "estimatedDeliveryDate",
+            "name": "Estimated Delivery Date",
+            "id": 14,
+            "description": "The estimated delivery date for a pregnancy.",
+            "dataType": "date",
+            "childFields": []
           }
         ]
       }
@@ -142,6 +150,11 @@
             "id": "91366a2b-67ab-48e9-bee2-aade9b22bee9",
             "field": "retired",
             "name": "Count of certified retired guide or service dog teams"
+          },
+          {
+            "id": "5a3ed9b1-ff08-453e-a0ff-daef91011228",
+            "field": "estimatedDeliveryDate",
+            "name": "Estimated Delivery Date"
           }
         ],
         "outputs": [
@@ -165,6 +178,7 @@
             "2f0b7c62-ebb6-41db-a36e-2d6e83df5f3e": "true",
             "6852d88b-574f-44cc-82e0-c1a615e92917": "$ > 0",
             "91366a2b-67ab-48e9-bee2-aade9b22bee9": "",
+            "5a3ed9b1-ff08-453e-a0ff-daef91011228": "",
             "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "",
             "cee807c7-281e-4f2d-be5a-7be83372701a": "((certification + retired) * 95)"
           },
@@ -174,6 +188,7 @@
             "2f0b7c62-ebb6-41db-a36e-2d6e83df5f3e": "true",
             "6852d88b-574f-44cc-82e0-c1a615e92917": "",
             "91366a2b-67ab-48e9-bee2-aade9b22bee9": "$ > 0",
+            "5a3ed9b1-ff08-453e-a0ff-daef91011228": "",
             "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "",
             "cee807c7-281e-4f2d-be5a-7be83372701a": "((certification + retired) * 95)"
           },
@@ -182,10 +197,22 @@
             "2f0b7c62-ebb6-41db-a36e-2d6e83df5f3e": "",
             "6852d88b-574f-44cc-82e0-c1a615e92917": "",
             "91366a2b-67ab-48e9-bee2-aade9b22bee9": "",
+            "5a3ed9b1-ff08-453e-a0ff-daef91011228": "",
+            "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "false",
+            "cee807c7-281e-4f2d-be5a-7be83372701a": ""
+          },
+          {
+            "_id": "47e3865e-d98e-49d7-908c-9a9a4ebb5ee0",
+            "2f0b7c62-ebb6-41db-a36e-2d6e83df5f3e": "",
+            "6852d88b-574f-44cc-82e0-c1a615e92917": "",
+            "91366a2b-67ab-48e9-bee2-aade9b22bee9": "",
+            "5a3ed9b1-ff08-453e-a0ff-daef91011228": "",
             "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "false",
             "cee807c7-281e-4f2d-be5a-7be83372701a": ""
           }
-        ]
+        ],
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
         "x": 775,
@@ -205,6 +232,11 @@
             "id": "eda9de75-be42-470e-8538-99aea2de0d00",
             "key": "certification",
             "value": "count(guideOrServiceDogTeams, (#.guideDogDocumentationType == 'certifiedActive'))"
+          },
+          {
+            "id": "b0b2cd4d-b64c-4a67-9142-7db6a1f5c9a1",
+            "key": "test",
+            "value": "estimatedDeliveryDate == null"
           }
         ]
       },
@@ -222,7 +254,7 @@
         "statements": [
           {
             "id": "6f4a4ff1-0135-4633-a148-d52d88dc6a39",
-            "condition": "guideOrServiceDogTeams != null",
+            "condition": "guideOrServiceDogTeams != null || estimatedDeliveryDate != null",
             "isDefault": false
           },
           {

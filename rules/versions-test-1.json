@@ -66,7 +66,7 @@
           {
             "id": "e7153435-4cd9-420e-b83e-675335d629a1",
             "key": "supplementAmount",
-            "value": "person1age > 30 ? 1000 : 10"
+            "value": "person1age > 30 ? 69 : 6969"
           }
         ],
         "passThrough": false,
@@ -84,7 +84,7 @@
     {
       "type": "decisionNode",
       "content": {
-        "key": "general-supplements/guidedogsupplement.json",
+        "key": "general-supplements/guidedogsupplement.json?version=inReview",
         "passThrough": false,
         "inputField": null,
         "outputPath": null,

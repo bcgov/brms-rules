@@ -1,0 +1,349 @@
+{
+  "nodes": [
+    {
+      "type": "inputNode",
+      "content": {
+        "fields": [
+          {
+            "id": 120,
+            "field": "hasRepaymentAgreement",
+            "name": "Repayment Agreement",
+            "description": "Agrees in writing to repay",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 165,
+            "field": "discontinuationDate",
+            "name": "Discontinuation or Reduction Date",
+            "description": "Date of discontinuation or reduction. ",
+            "dataType": "date",
+            "childFields": []
+          },
+          {
+            "id": 164,
+            "field": "reducedAmount",
+            "name": "Reduced Amount",
+            "description": "The amount of assistance or supplement, reduced or discontinued, being considering for the reconsideration or appeal supplement.",
+            "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "id": 166,
+            "field": "hasEAAT001",
+            "name": "EAAT001 Submitted",
+            "description": "Family united has submitted a EAAT001- Notice of Appeal to the EAAT Form.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 158,
+            "field": "assistanceEligibilityType",
+            "name": "Assistance Eligibility Type",
+            "description": "The type of assistance that an individual is currently eligible for based on the given information. (Hardship Assistance / Income or Disability Assistance) ",
+            "dataType": "text-input",
+            "validationCriteria": "[Hardship Assistance, Income or Disability Assistance]",
+            "validationType": "[=text]",
+            "childFields": []
+          }
+        ]
+      },
+      "id": "8f022e23-057b-4bd2-8a9a-321753947749",
+      "name": "request",
+      "position": {
+        "x": -285,
+        "y": -60
+      }
+    },
+    {
+      "type": "outputNode",
+      "content": {
+        "fields": [
+          {
+            "id": 58,
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "id": 28,
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
+      },
+      "id": "a9029333-278c-4948-86d4-94ec4e2ca8f7",
+      "name": "response",
+      "position": {
+        "x": 725,
+        "y": -65
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "rules": [
+          {
+            "_id": "f722dcc9-29c0-4b58-b6ad-8817d0c35beb",
+            "1a6bd37c-924f-461d-b968-b47d9a706ec4": "true",
+            "09f4383c-9b7a-4017-8375-9fae747d957d": "true",
+            "48f65fca-1512-4421-a9e6-aab23dbe8996": "$ != null and $ != undefined",
+            "debe303a-238b-4f8b-9df9-cc44c03ca047": "",
+            "b1d0c79f-8e0d-4fa8-8f32-8e67dd6901c4": "!= \"Hardship Assistance\"",
+            "4eeaa059-6987-428e-884a-fa522894b041": "true"
+          },
+          {
+            "_id": "62e84e31-df91-45a4-8def-05677e99da8e",
+            "1a6bd37c-924f-461d-b968-b47d9a706ec4": "false",
+            "09f4383c-9b7a-4017-8375-9fae747d957d": "",
+            "48f65fca-1512-4421-a9e6-aab23dbe8996": "",
+            "debe303a-238b-4f8b-9df9-cc44c03ca047": "",
+            "b1d0c79f-8e0d-4fa8-8f32-8e67dd6901c4": "",
+            "4eeaa059-6987-428e-884a-fa522894b041": "false"
+          },
+          {
+            "_id": "917279e2-d120-4de0-acb6-2bd15a9acb63",
+            "1a6bd37c-924f-461d-b968-b47d9a706ec4": "",
+            "09f4383c-9b7a-4017-8375-9fae747d957d": "false",
+            "48f65fca-1512-4421-a9e6-aab23dbe8996": "",
+            "debe303a-238b-4f8b-9df9-cc44c03ca047": "",
+            "b1d0c79f-8e0d-4fa8-8f32-8e67dd6901c4": "",
+            "4eeaa059-6987-428e-884a-fa522894b041": "false"
+          },
+          {
+            "_id": "6dd32777-84ea-4fc5-95cb-4c36f2848be0",
+            "1a6bd37c-924f-461d-b968-b47d9a706ec4": "",
+            "09f4383c-9b7a-4017-8375-9fae747d957d": "",
+            "48f65fca-1512-4421-a9e6-aab23dbe8996": "",
+            "debe303a-238b-4f8b-9df9-cc44c03ca047": "",
+            "b1d0c79f-8e0d-4fa8-8f32-8e67dd6901c4": "\"Hardship Assistance\"",
+            "4eeaa059-6987-428e-884a-fa522894b041": "false"
+          },
+          {
+            "_id": "e9aeb80a-28a4-46df-a5c4-363898135494",
+            "1a6bd37c-924f-461d-b968-b47d9a706ec4": "",
+            "09f4383c-9b7a-4017-8375-9fae747d957d": "",
+            "48f65fca-1512-4421-a9e6-aab23dbe8996": "$ == null or $ == undefined",
+            "debe303a-238b-4f8b-9df9-cc44c03ca047": "",
+            "b1d0c79f-8e0d-4fa8-8f32-8e67dd6901c4": "",
+            "4eeaa059-6987-428e-884a-fa522894b041": "false"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "1a6bd37c-924f-461d-b968-b47d9a706ec4",
+            "name": "EAAT001 Submitted",
+            "field": "hasEAAT001"
+          },
+          {
+            "id": "09f4383c-9b7a-4017-8375-9fae747d957d",
+            "name": "Repayment Agreement",
+            "field": "hasRepaymentAgreement"
+          },
+          {
+            "id": "48f65fca-1512-4421-a9e6-aab23dbe8996",
+            "name": "Discontinuation or Reduction Date",
+            "field": "discontinuationDate"
+          },
+          {
+            "id": "debe303a-238b-4f8b-9df9-cc44c03ca047",
+            "name": "Reduced Amount",
+            "field": "reducedAmount"
+          },
+          {
+            "id": "b1d0c79f-8e0d-4fa8-8f32-8e67dd6901c4",
+            "field": "assistanceEligibilityType",
+            "name": "Assistance Eligibility Type"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "4eeaa059-6987-428e-884a-fa522894b041",
+            "name": "Is Eligible",
+            "field": "isEligible"
+          }
+        ],
+        "passThrough": false,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single",
+        "passThorough": false
+      },
+      "id": "bbaa4e8c-cda0-46f5-b137-a2dca2ed73a2",
+      "name": "Eligibility",
+      "position": {
+        "x": 105,
+        "y": -65
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "3111a519-18d4-422a-821d-fe7c572fefc9",
+            "key": "isEligible",
+            "value": "isEligible"
+          },
+          {
+            "id": "75f0d6ad-6500-477d-b86f-c08c67006ff8",
+            "key": "supplementAmount",
+            "value": "supplementAmount"
+          },
+          {
+            "id": "17a3e17f-49b8-4a45-a7e1-0d2b3fa48848",
+            "key": "reason",
+            "value": "reason"
+          }
+        ],
+        "passThrough": false,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single"
+      },
+      "id": "18cfec89-4116-415f-82a7-0374ebe7befc",
+      "name": "Ineligible",
+      "position": {
+        "x": 430,
+        "y": 120
+      }
+    },
+    {
+      "type": "switchNode",
+      "content": {
+        "hitPolicy": "first",
+        "statements": [
+          {
+            "id": "409fc069-88a4-403d-8578-f4c4ba9096a6",
+            "condition": "isEligible == true",
+            "isDefault": false
+          },
+          {
+            "id": "48998bdc-0dfd-4f6b-8a4d-85f7ef3f1b36",
+            "condition": "",
+            "isDefault": true
+          }
+        ]
+      },
+      "id": "fb27a2aa-4c40-4a47-aeae-9024057bc9f7",
+      "name": "Switch",
+      "position": {
+        "x": 95,
+        "y": 60
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "rules": [
+          {
+            "_id": "ee57ad47-4670-4f68-9fbb-52b28d4ab826",
+            "6d336550-87ed-4611-ba74-c2ef93b647cb": "",
+            "915165b9-886b-4cce-a6dc-18e303b0e360": "max([reducedAmount,0])",
+            "960ee344-054c-4e5a-acdc-3e9530919f13": "true"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "6d336550-87ed-4611-ba74-c2ef93b647cb",
+            "name": "Reduced Amount",
+            "field": "reducedAmount"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "915165b9-886b-4cce-a6dc-18e303b0e360",
+            "name": "Supplement Amount",
+            "field": "supplementAmount"
+          },
+          {
+            "id": "960ee344-054c-4e5a-acdc-3e9530919f13",
+            "name": "Is Eligible",
+            "field": "isEligible"
+          }
+        ],
+        "passThrough": false,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single"
+      },
+      "id": "3bd03981-0cdd-4c3b-988b-7c7b05a91b83",
+      "name": "Supplement Calculation",
+      "position": {
+        "x": 430,
+        "y": -60
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "discontinuationDate is only used in this iteration as something that's required. This rule is no built with the date and timeline requirements as there is some ambiguity. Refer to the discussion page for appeals and reconsideration "
+        }
+      },
+      "id": "d8636bb8-596b-415e-b251-b17a8a4e0900",
+      "name": "Note",
+      "position": {
+        "x": 110,
+        "y": -270
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "89090c2c-1dcd-4040-a9fe-cf17563fc73f",
+      "sourceId": "bbaa4e8c-cda0-46f5-b137-a2dca2ed73a2",
+      "targetId": "fb27a2aa-4c40-4a47-aeae-9024057bc9f7",
+      "type": "edge"
+    },
+    {
+      "id": "a95a26a2-21c7-4e77-a719-de19c24166e5",
+      "sourceId": "18cfec89-4116-415f-82a7-0374ebe7befc",
+      "targetId": "a9029333-278c-4948-86d4-94ec4e2ca8f7",
+      "type": "edge"
+    },
+    {
+      "id": "700ac83b-efd0-47ac-a5d5-ffb2cbaa299a",
+      "sourceId": "fb27a2aa-4c40-4a47-aeae-9024057bc9f7",
+      "targetId": "3bd03981-0cdd-4c3b-988b-7c7b05a91b83",
+      "sourceHandle": "409fc069-88a4-403d-8578-f4c4ba9096a6",
+      "type": "edge"
+    },
+    {
+      "id": "00843d16-bfeb-4c19-91cf-5ebe4a5f5418",
+      "sourceId": "3bd03981-0cdd-4c3b-988b-7c7b05a91b83",
+      "targetId": "a9029333-278c-4948-86d4-94ec4e2ca8f7",
+      "type": "edge"
+    },
+    {
+      "id": "424bd6d4-2e9c-41cb-a91a-353e6af4594b",
+      "sourceId": "fb27a2aa-4c40-4a47-aeae-9024057bc9f7",
+      "targetId": "18cfec89-4116-415f-82a7-0374ebe7befc",
+      "sourceHandle": "48998bdc-0dfd-4f6b-8a4d-85f7ef3f1b36",
+      "type": "edge"
+    },
+    {
+      "id": "acea269e-d8e0-495c-ae68-bf742761342c",
+      "sourceId": "8f022e23-057b-4bd2-8a9a-321753947749",
+      "type": "edge",
+      "targetId": "bbaa4e8c-cda0-46f5-b137-a2dca2ed73a2"
+    },
+    {
+      "id": "1caa4d3d-70ad-4b63-8e99-89ad2d68296c",
+      "sourceId": "8f022e23-057b-4bd2-8a9a-321753947749",
+      "type": "edge",
+      "targetId": "fb27a2aa-4c40-4a47-aeae-9024057bc9f7"
+    }
+  ],
+  "contentType": "application/vnd.gorules.decision"
+}

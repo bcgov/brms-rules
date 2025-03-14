@@ -23,7 +23,7 @@ If you don't already have a GitHub account, you must [sign up for one](https://g
 
 ### 2. Request Team Access
 
-If you are new to GitHub and/or the BC Government, you will be required to join the [bcgov GitHub organization](https://github.com/bcgov). Sign up for access by following this link to the [bcgov GitHub Single Sign-On Link](https://github.com/orgs/bcgov/sso). If this link does not work, the most up-to-date instructions can be found on the [BCDevExchange](https://dev.developer.gov.bc.ca/docs/default/component/bc-developer-guide/use-github-in-bcgov/bc-government-organizations-in-github/#single-sign-on-is-coming-to-the-bc-governments-github-organizations).
+If you are new to GitHub and/or the BC Government, you will be required to join the [bcgov GitHub organization](https://github.com/bcgov). Sign up for access by following this link to the [bcgov GitHub Single Sign-On Link](https://github.com/orgs/bcgov/sso). If this link does not work, the most up-to-date instructions can be found on the [BC Developer Guide]([https://dev.developer.gov.bc.ca/docs/default/component/bc-developer-guide/use-github-in-bcgov/bc-government-organizations-in-github/#single-sign-on-is-coming-to-the-bc-governments-github-organizations](https://developer.gov.bc.ca/docs/default/component/bc-developer-guide/use-github-in-bcgov/bc-government-organizations-in-github/#directions-to-sign-up-and-link-your-account-for-bcgov)).
 
 After confirming membership in the bcgov organization, request that a team member add you to the ISD-BRE team on GitHub.
 

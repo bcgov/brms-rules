@@ -1,62 +1,61 @@
 {
-  "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
       "type": "inputNode",
       "id": "1fd86f8b-c51d-4d29-8949-42185acb1201",
       "name": "request",
       "position": {
-        "x": -50,
-        "y": 115
+        "x": -75,
+        "y": 125
       },
       "content": {
         "fields": [
           {
+            "id": 81,
             "field": "isEligibleForAssistance",
             "name": "Family unit is eligible for IA, DA, or HA",
-            "id": 81,
             "description": "Family unit is eligible for income assistance, disability assistance or hardship assistance.",
             "dataType": "true-false",
             "childFields": []
           },
           {
-            "field": "isRisidingInSpecialCareFacility ",
-            "name": "Residing in a special care facility",
-            "id": 112,
-            "description": null,
-            "dataType": "true-false",
-            "childFields": []
-          },
-          {
+            "id": 113,
             "field": "isReceivingComfortsAllowance",
             "name": "Receiving comforts allowance",
-            "id": 113,
             "description": "Person is receiving comforts allowance",
             "dataType": "true-false",
             "childFields": []
           },
           {
-            "field": "isClothingProvided",
-            "name": "Is clothing provided by the facility",
-            "id": 114,
-            "description": null,
+            "id": 52,
+            "field": "residingInCareFacility",
+            "name": "Residing In Care Facility",
+            "description": "Person(s) residing in a special care facility.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 114,
+            "field": "isClothingProvided",
+            "name": "Clothing Provided",
+            "description": "Special care facility does provides clothing.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 115,
+            "field": "isAlternateFundingAvailable",
+            "name": "Alternate Funding Available",
+            "description": "Person requesting supplement (& their family unit) do not have access to other funding. Usually verbal or paper confirmation required.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 116,
             "field": "clothingCosts",
             "name": "Requested amount for clothing supplement",
-            "id": 116,
             "description": null,
             "dataType": "number-input",
-            "childFields": []
-          },
-          {
-            "field": "isAlternateFundingAvailable",
-            "name": "isAlternateFundingAvailable",
-            "id": 115,
-            "description": "Person requesting supplement (& their family unit) do not have access to other resources to purchase clothing. Usually verbal or paper confirmation required. If facility is requesting, they may provide this detail.",
-            "dataType": "true-false",
             "childFields": []
           }
         ]
@@ -67,27 +66,27 @@
       "id": "f494aca4-0945-47fd-8e03-3fe83f533484",
       "name": "response",
       "position": {
-        "x": 640,
-        "y": 115
+        "x": 945,
+        "y": 210
       },
       "content": {
         "fields": [
           {
+            "id": 28,
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 58,
             "field": "supplementAmount",
             "name": "Supplement Amount",
-            "id": 58,
             "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
             "dataType": "number-input",
             "validationCriteria": "0",
             "validationType": ">=",
-            "childFields": []
-          },
-          {
-            "field": "isEligible",
-            "name": "Is Eligible",
-            "id": 28,
-            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
-            "dataType": "true-false",
             "childFields": []
           }
         ]
@@ -105,8 +104,8 @@
           },
           {
             "id": "2e10d339-1431-4ccb-9a92-c476ecf4834a",
-            "name": "Residing in a special care facility",
-            "field": "isRisidingInSpecialCareFacility "
+            "name": "Residing In Care Facility",
+            "field": "residingInCareFacility"
           },
           {
             "id": "4bd6fa7d-e72a-4e53-bd13-8b6085094216",
@@ -122,11 +121,6 @@
             "id": "4123b6cd-c306-4aed-8801-7c8e0e0abcd7",
             "field": "isAlternateFundingAvailable",
             "name": "isAlternateFundingAvailable"
-          },
-          {
-            "id": "41421b9c-5b39-4631-8afd-7bbf85dcf07f",
-            "field": "clothingCosts",
-            "name": "Requested amount for clothing supplement"
           }
         ],
         "outputs": [
@@ -144,16 +138,62 @@
             "4bd6fa7d-e72a-4e53-bd13-8b6085094216": "true",
             "5cdaf4ea-cd47-4586-bc7d-7fae88827419": "false",
             "4123b6cd-c306-4aed-8801-7c8e0e0abcd7": "false",
-            "41421b9c-5b39-4631-8afd-7bbf85dcf07f": "",
             "bd7918f3-c5ef-48f0-b5bd-b9493f528980": "true"
+          },
+          {
+            "_id": "9726dbfa-49fc-4c5f-aa9c-481566047a0e",
+            "6f4dc495-11db-4791-8608-a58df8ffb5b2": "false",
+            "2e10d339-1431-4ccb-9a92-c476ecf4834a": "",
+            "4bd6fa7d-e72a-4e53-bd13-8b6085094216": "",
+            "5cdaf4ea-cd47-4586-bc7d-7fae88827419": "",
+            "4123b6cd-c306-4aed-8801-7c8e0e0abcd7": "",
+            "bd7918f3-c5ef-48f0-b5bd-b9493f528980": "false"
+          },
+          {
+            "_id": "83d12c26-fa38-493e-be94-91b18b6ff4da",
+            "6f4dc495-11db-4791-8608-a58df8ffb5b2": "",
+            "2e10d339-1431-4ccb-9a92-c476ecf4834a": "false",
+            "4bd6fa7d-e72a-4e53-bd13-8b6085094216": "",
+            "5cdaf4ea-cd47-4586-bc7d-7fae88827419": "",
+            "4123b6cd-c306-4aed-8801-7c8e0e0abcd7": "",
+            "bd7918f3-c5ef-48f0-b5bd-b9493f528980": "false"
+          },
+          {
+            "_id": "f9ece1b4-19c2-4aa8-86dd-1759ffa55ccf",
+            "6f4dc495-11db-4791-8608-a58df8ffb5b2": "",
+            "2e10d339-1431-4ccb-9a92-c476ecf4834a": "",
+            "4bd6fa7d-e72a-4e53-bd13-8b6085094216": "false",
+            "5cdaf4ea-cd47-4586-bc7d-7fae88827419": "",
+            "4123b6cd-c306-4aed-8801-7c8e0e0abcd7": "",
+            "bd7918f3-c5ef-48f0-b5bd-b9493f528980": "false"
+          },
+          {
+            "_id": "1c663469-9415-42b8-8cf9-b7a51ce7bdd9",
+            "6f4dc495-11db-4791-8608-a58df8ffb5b2": "",
+            "2e10d339-1431-4ccb-9a92-c476ecf4834a": "",
+            "4bd6fa7d-e72a-4e53-bd13-8b6085094216": "",
+            "5cdaf4ea-cd47-4586-bc7d-7fae88827419": "true",
+            "4123b6cd-c306-4aed-8801-7c8e0e0abcd7": "",
+            "bd7918f3-c5ef-48f0-b5bd-b9493f528980": "false"
+          },
+          {
+            "_id": "ff453418-aadf-4b00-bbed-b7fba9dea41d",
+            "6f4dc495-11db-4791-8608-a58df8ffb5b2": "",
+            "2e10d339-1431-4ccb-9a92-c476ecf4834a": "",
+            "4bd6fa7d-e72a-4e53-bd13-8b6085094216": "",
+            "5cdaf4ea-cd47-4586-bc7d-7fae88827419": "",
+            "4123b6cd-c306-4aed-8801-7c8e0e0abcd7": "true",
+            "bd7918f3-c5ef-48f0-b5bd-b9493f528980": "false"
           }
-        ]
+        ],
+        "passThorough": false,
+        "executionMode": "single"
       },
       "id": "39ffe434-5079-4fe3-892a-57aa6b6f65ad",
       "name": "Eligibility",
       "position": {
-        "x": 285,
-        "y": 115
+        "x": 255,
+        "y": 95
       }
     },
     {
@@ -162,49 +202,142 @@
         "expressions": [
           {
             "id": "33e95425-7de2-4ea0-8e6c-34e0f7f109eb",
-            "key": "supplementAmount",
-            "value": "isEligible == true and clothingCosts > 0 ? clothingCosts: 0"
+            "key": "isEligible",
+            "value": "isEligible"
           }
         ]
       },
       "id": "ffae526e-e77f-4e4d-8b86-fa9faef93cc2",
-      "name": "SupplementCalculation",
+      "name": "Ineligible",
       "position": {
-        "x": 305,
-        "y": 305
+        "x": 595,
+        "y": 310
+      }
+    },
+    {
+      "type": "switchNode",
+      "content": {
+        "hitPolicy": "first",
+        "statements": [
+          {
+            "id": "f1da8d23-ef2b-4fe3-9eaf-5afad327c032",
+            "condition": "isEligible == true",
+            "isDefault": false
+          },
+          {
+            "id": "7493f523-5678-4e9b-a585-73ecdb62377d",
+            "condition": "",
+            "isDefault": true
+          }
+        ]
+      },
+      "id": "b8da5649-faaf-477c-9a71-70f2c2a7ff80",
+      "name": "isEligible",
+      "position": {
+        "x": 265,
+        "y": 240
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "adbf7ba7-1290-4ac8-8091-20577e8694b6",
+            "name": "Requested amount for clothing supplement",
+            "field": "clothingCosts"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "1d4d3a52-64c1-4384-8a11-c9cf14ec97c0",
+            "name": "Is Eligible",
+            "field": "isEligible"
+          },
+          {
+            "id": "a088b10a-46fa-4800-b6bf-3834a7a15dc4",
+            "field": "supplementAmount",
+            "name": "Supplement Amount"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "40677ca1-5429-47b0-9013-9a3397074314",
+            "adbf7ba7-1290-4ac8-8091-20577e8694b6": "",
+            "1d4d3a52-64c1-4384-8a11-c9cf14ec97c0": "true",
+            "a088b10a-46fa-4800-b6bf-3834a7a15dc4": "clothingCosts"
+          }
+        ]
+      },
+      "id": "f7b124ef-d1bc-46b8-9159-c4b2e4b48b55",
+      "name": "Supplement Calculation",
+      "position": {
+        "x": 600,
+        "y": 175
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "Rule is currently built without any financial limits as there are not limits in policy or regs. "
+        }
+      },
+      "id": "542c122f-bb6d-41e6-b5a1-44c2104437b1",
+      "name": "Note",
+      "position": {
+        "x": 595,
+        "y": 40
       }
     }
   ],
   "edges": [
     {
-      "id": "29cccb58-9642-4651-af15-7e0fa519aed6",
+      "id": "201edb6d-2993-45a8-ac17-e542dc505cb5",
       "sourceId": "1fd86f8b-c51d-4d29-8949-42185acb1201",
       "type": "edge",
       "targetId": "39ffe434-5079-4fe3-892a-57aa6b6f65ad"
     },
     {
-      "id": "87f8c4f4-f9cf-4d96-86ca-d97a77144a31",
-      "sourceId": "39ffe434-5079-4fe3-892a-57aa6b6f65ad",
-      "type": "edge",
-      "targetId": "ffae526e-e77f-4e4d-8b86-fa9faef93cc2"
-    },
-    {
-      "id": "893bd0dd-2a5a-42f5-bd20-beaf9696388b",
+      "id": "1cfb7743-fe9b-4b36-90de-0f9060a2945d",
       "sourceId": "1fd86f8b-c51d-4d29-8949-42185acb1201",
       "type": "edge",
-      "targetId": "ffae526e-e77f-4e4d-8b86-fa9faef93cc2"
+      "targetId": "b8da5649-faaf-477c-9a71-70f2c2a7ff80"
     },
     {
-      "id": "04ec64d8-6496-4d37-bd23-25b0f0fffb9c",
+      "id": "2ccc7d2b-f376-4ec2-aae8-43dfb06eedb7",
+      "sourceId": "39ffe434-5079-4fe3-892a-57aa6b6f65ad",
+      "type": "edge",
+      "targetId": "b8da5649-faaf-477c-9a71-70f2c2a7ff80"
+    },
+    {
+      "id": "f1352322-3ea4-4938-b15a-776fa9a8039d",
+      "sourceId": "f7b124ef-d1bc-46b8-9159-c4b2e4b48b55",
+      "type": "edge",
+      "targetId": "f494aca4-0945-47fd-8e03-3fe83f533484"
+    },
+    {
+      "id": "1ee374a2-0ca2-45aa-9df1-01ad04d7d9fd",
       "sourceId": "ffae526e-e77f-4e4d-8b86-fa9faef93cc2",
       "type": "edge",
       "targetId": "f494aca4-0945-47fd-8e03-3fe83f533484"
     },
     {
-      "id": "31410f55-19fe-47e4-aa6a-4b8742dac7db",
-      "sourceId": "39ffe434-5079-4fe3-892a-57aa6b6f65ad",
+      "id": "ab13bec9-ac5f-4910-add7-28473241c52d",
+      "sourceId": "b8da5649-faaf-477c-9a71-70f2c2a7ff80",
       "type": "edge",
-      "targetId": "f494aca4-0945-47fd-8e03-3fe83f533484"
+      "targetId": "f7b124ef-d1bc-46b8-9159-c4b2e4b48b55",
+      "sourceHandle": "f1da8d23-ef2b-4fe3-9eaf-5afad327c032"
+    },
+    {
+      "id": "729f379c-0d6b-470e-b9ef-b7f8017cd9ad",
+      "sourceId": "b8da5649-faaf-477c-9a71-70f2c2a7ff80",
+      "type": "edge",
+      "targetId": "ffae526e-e77f-4e4d-8b86-fa9faef93cc2",
+      "sourceHandle": "7493f523-5678-4e9b-a585-73ecdb62377d"
     }
-  ]
+  ],
+  "contentType": "application/vnd.gorules.decision"
 }

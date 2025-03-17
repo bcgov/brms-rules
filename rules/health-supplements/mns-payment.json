@@ -43,14 +43,6 @@
             "childFields": []
           },
           {
-            "id": 60,
-            "field": "verificationOfNeedConfirmed",
-            "name": "Verification Of Need Confirmed",
-            "description": "Verification of need for the requested item has been confirmed.",
-            "dataType": "true-false",
-            "childFields": []
-          },
-          {
             "id": 50,
             "field": "receivingInKindNutrition",
             "name": "Receiving In-Kind Nutrition-Related Supplement",
@@ -269,12 +261,6 @@
             "field": "isAlcoholOrDrugFacility"
           },
           {
-            "id": "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868",
-            "name": "Need Verified by Adjudicator?",
-            "type": "expression",
-            "field": "verificationOfNeedConfirmed"
-          },
-          {
             "id": "151d2b93-e1df-47ec-9208-878f600b9274",
             "name": "Receiving In-Kind Nutrition-Related Supplement",
             "type": "expression",
@@ -307,7 +293,6 @@
             "b3e2189c-cb2f-484e-b058-64858cb99ebe": "true",
             "3d8a44cd-463d-49bf-bba4-48077681ee8f": "false",
             "c1bf0321-88ca-4dd5-a773-330124859839": "",
-            "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868": "true",
             "151d2b93-e1df-47ec-9208-878f600b9274": "false",
             "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "false",
             "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "true",
@@ -319,7 +304,6 @@
             "b3e2189c-cb2f-484e-b058-64858cb99ebe": "true",
             "3d8a44cd-463d-49bf-bba4-48077681ee8f": "true",
             "c1bf0321-88ca-4dd5-a773-330124859839": "true",
-            "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868": "true",
             "151d2b93-e1df-47ec-9208-878f600b9274": "false",
             "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "false",
             "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "true",
@@ -330,8 +314,7 @@
             "734bc693-aa56-4ab5-903c-65d1a58d453c": "",
             "b3e2189c-cb2f-484e-b058-64858cb99ebe": "",
             "3d8a44cd-463d-49bf-bba4-48077681ee8f": "true",
-            "c1bf0321-88ca-4dd5-a773-330124859839": "true",
-            "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868": "",
+            "c1bf0321-88ca-4dd5-a773-330124859839": "$ == false or $ == null",
             "151d2b93-e1df-47ec-9208-878f600b9274": "",
             "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "",
             "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "false",
@@ -343,7 +326,6 @@
             "b3e2189c-cb2f-484e-b058-64858cb99ebe": "",
             "3d8a44cd-463d-49bf-bba4-48077681ee8f": "",
             "c1bf0321-88ca-4dd5-a773-330124859839": "",
-            "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868": "",
             "151d2b93-e1df-47ec-9208-878f600b9274": "",
             "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "",
             "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "false",
@@ -355,23 +337,10 @@
             "b3e2189c-cb2f-484e-b058-64858cb99ebe": "false",
             "3d8a44cd-463d-49bf-bba4-48077681ee8f": "",
             "c1bf0321-88ca-4dd5-a773-330124859839": "",
-            "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868": "",
             "151d2b93-e1df-47ec-9208-878f600b9274": "",
             "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "",
             "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "false",
             "ae112efb-119f-4d84-8b3c-187dcc0ac76f": "\"notinpay\""
-          },
-          {
-            "_id": "83a7804d-c865-4d31-83d5-b974b49f7929",
-            "734bc693-aa56-4ab5-903c-65d1a58d453c": "",
-            "b3e2189c-cb2f-484e-b058-64858cb99ebe": "",
-            "3d8a44cd-463d-49bf-bba4-48077681ee8f": "",
-            "c1bf0321-88ca-4dd5-a773-330124859839": "",
-            "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868": "false",
-            "151d2b93-e1df-47ec-9208-878f600b9274": "",
-            "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "",
-            "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "false",
-            "ae112efb-119f-4d84-8b3c-187dcc0ac76f": "\"need\""
           },
           {
             "_id": "3c989171-e641-4c4a-8523-69c5d015627e",
@@ -379,7 +348,6 @@
             "b3e2189c-cb2f-484e-b058-64858cb99ebe": "",
             "3d8a44cd-463d-49bf-bba4-48077681ee8f": "",
             "c1bf0321-88ca-4dd5-a773-330124859839": "",
-            "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868": "",
             "151d2b93-e1df-47ec-9208-878f600b9274": "true",
             "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "",
             "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "false",
@@ -391,7 +359,6 @@
             "b3e2189c-cb2f-484e-b058-64858cb99ebe": "",
             "3d8a44cd-463d-49bf-bba4-48077681ee8f": "",
             "c1bf0321-88ca-4dd5-a773-330124859839": "",
-            "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868": "",
             "151d2b93-e1df-47ec-9208-878f600b9274": "",
             "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "true",
             "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "false",
@@ -399,15 +366,14 @@
           },
           {
             "_id": "e58af273-9f69-499d-b6cc-b891bfc51fa1",
-            "734bc693-aa56-4ab5-903c-65d1a58d453c": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, verificationOfNeedConfirmed, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
-            "b3e2189c-cb2f-484e-b058-64858cb99ebe": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, verificationOfNeedConfirmed, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
-            "3d8a44cd-463d-49bf-bba4-48077681ee8f": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, verificationOfNeedConfirmed, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
-            "c1bf0321-88ca-4dd5-a773-330124859839": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, verificationOfNeedConfirmed, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
-            "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, verificationOfNeedConfirmed, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
-            "151d2b93-e1df-47ec-9208-878f600b9274": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, verificationOfNeedConfirmed, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
-            "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, verificationOfNeedConfirmed, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
+            "734bc693-aa56-4ab5-903c-65d1a58d453c": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
+            "b3e2189c-cb2f-484e-b058-64858cb99ebe": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
+            "3d8a44cd-463d-49bf-bba4-48077681ee8f": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
+            "c1bf0321-88ca-4dd5-a773-330124859839": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
+            "151d2b93-e1df-47ec-9208-878f600b9274": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
+            "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
             "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "false",
-            "ae112efb-119f-4d84-8b3c-187dcc0ac76f": "`Required information is missing: ${ hasPWDDesignation == null ? 'hasPWDDesignation': ''} ${residingInCareFacility == null ? 'residingInCareFacility' : ''} ${ inPayOfDA == null ? 'inPayOfDA': ''} ${verificationOfNeedConfirmed == null ? 'verificationOfNeedConfirmed' : ''} ${ receivingInKindNutrition == null ? 'receivingInKindNutrition': ''}${ receivingScheduleCAppealAwardGP == null ? 'receivingScheduleCAppealAwardGP': ''}`"
+            "ae112efb-119f-4d84-8b3c-187dcc0ac76f": "`Required information is missing: ${ hasPWDDesignation == null ? 'hasPWDDesignation': ''} ${residingInCareFacility == null ? 'residingInCareFacility' : ''} ${ inPayOfDA == null ? 'inPayOfDA': ''} ${ receivingInKindNutrition == null ? 'receivingInKindNutrition': ''}${ receivingScheduleCAppealAwardGP == null ? 'receivingScheduleCAppealAwardGP': ''}`"
           }
         ],
         "passThorough": false,

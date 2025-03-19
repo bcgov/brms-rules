@@ -1,0 +1,81 @@
+{
+  "nodes": [
+    {
+      "type": "inputNode",
+      "content": {
+        "fields": [
+          {
+            "field": "person1age",
+            "name": "Person 1 Age",
+            "id": 41,
+            "description": "The age of person 1 in a family unit in years.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      },
+      "id": "2f96d1dd-b4f1-4a69-852d-2d106c4a844a",
+      "name": "request",
+      "position": {
+        "x": 225,
+        "y": 165
+      }
+    },
+    {
+      "type": "outputNode",
+      "content": {
+        "fields": [
+          {
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "id": 58,
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      },
+      "id": "53b96c8f-16eb-4e23-819d-7300058b182b",
+      "name": "response",
+      "position": {
+        "x": 885,
+        "y": 165
+      }
+    },
+    {
+      "type": "decisionNode",
+      "content": {
+        "key": "march-19-demo-child.json?version=inReview",
+        "passThrough": false,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single"
+      },
+      "id": "bd455785-022f-4fc2-8fbb-1a41e32aed1e",
+      "name": "Linked Rule",
+      "position": {
+        "x": 565,
+        "y": 115
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "62705441-3191-4512-912b-f59608642da1",
+      "sourceId": "2f96d1dd-b4f1-4a69-852d-2d106c4a844a",
+      "type": "edge",
+      "targetId": "bd455785-022f-4fc2-8fbb-1a41e32aed1e"
+    },
+    {
+      "id": "05e06703-f16a-4c5b-bc51-37c2107ffe18",
+      "sourceId": "bd455785-022f-4fc2-8fbb-1a41e32aed1e",
+      "type": "edge",
+      "targetId": "53b96c8f-16eb-4e23-819d-7300058b182b"
+    }
+  ],
+  "contentType": "application/vnd.gorules.decision"
+}

@@ -1,84 +1,67 @@
 {
-  "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
       "id": "37f1e8ea-3729-48ea-b9fe-21e8a06f0ef4",
       "name": "request",
       "type": "inputNode",
       "position": {
-        "x": -1200,
-        "y": 965
+        "x": -1055,
+        "y": 960
       },
       "content": {
         "fields": [
           {
+            "id": 23,
             "field": "hasPWDDesignation",
             "name": "Has PWD Designation",
-            "id": 23,
             "description": "Individual has PWD designation.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 26,
             "field": "inPayOfDA",
             "name": "In Pay Of DA",
-            "id": 26,
             "description": "Individual is in a family unit that is in pay of Disability Assistance.",
             "dataType": "true-false",
             "childFields": []
           },
           {
-            "field": "mnsPaymentAlreadyMade",
-            "name": "MNS Payment Already Made",
-            "id": 32,
-            "description": "The payment for a monthly nutritional supplement has already been made in this benefit period.",
-            "dataType": "true-false",
-            "childFields": []
-          },
-          {
+            "id": 52,
             "field": "residingInCareFacility",
             "name": "Residing In Care Facility",
-            "id": 52,
-            "description": "Individual is residing in a care facility.",
+            "description": "Person(s) residing in a special care facility.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 53,
             "field": "isAlcoholOrDrugFacility",
             "name": "Facility is an Alcohol Or Drug Care Facility",
-            "id": 53,
             "description": "The given facility is an alcohol or drug care facility.",
             "dataType": "true-false",
             "childFields": []
           },
           {
-            "field": "verificationOfNeedConfirmed",
-            "name": "Verification Of Need Confirmed",
-            "id": 60,
-            "description": "Verification of need for the requested item has been confirmed.",
-            "dataType": "true-false",
-            "childFields": []
-          },
-          {
+            "id": 50,
             "field": "receivingInKindNutrition",
             "name": "Receiving In-Kind Nutrition-Related Supplement",
-            "id": 50,
             "description": "The individual is receiving tube feed an in-kind nutrition-related supplement.",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 51,
             "field": "receivingScheduleCAppealAwardGP",
             "name": "Receiving Schedule C Appeal Award (code 29)",
-            "id": 51,
             "description": "Individual is in receipt of Schedule C Appeal Award (code 29).",
             "dataType": "true-false",
             "childFields": []
           },
           {
+            "id": 34,
             "field": "mnsType",
             "name": "MNS Type",
-            "id": 34,
             "description": "The type of monthly nutritional supplement requested.",
             "dataType": "text-input",
             "validationCriteria": "additionalNutritionalItems, vitaminsOrMinerals, both",
@@ -86,19 +69,13 @@
             "childFields": []
           },
           {
+            "id": 49,
             "field": "receivingDietSupplement",
             "name": "Receiving Diet Supplement",
-            "id": 49,
-            "description": "Individual is currently receiving a diet supplement.",
-            "dataType": "true-false",
-            "childFields": []
-          },
-          {
-            "field": "familyUnitDeemedIneligible",
-            "name": "Family Unit Deemed Ineligible",
-            "id": 17,
-            "description": "Family Unit is currently deemed ineligible for assistance.",
-            "dataType": "true-false",
+            "description": "Amount individual is currently receiving for a diet supplement. Blank or 0 if individual is not in receipt of a supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
             "childFields": []
           }
         ]
@@ -109,19 +86,11 @@
       "name": "response",
       "type": "outputNode",
       "position": {
-        "x": 580,
-        "y": 1165
+        "x": 375,
+        "y": 1020
       },
       "content": {
         "fields": [
-          {
-            "field": "reason",
-            "name": "Reason",
-            "id": 47,
-            "description": "The reason provided for a given decision.",
-            "dataType": "text-input",
-            "childFields": []
-          },
           {
             "field": "isEligible",
             "name": "Is Eligible",
@@ -131,17 +100,15 @@
             "childFields": []
           },
           {
-            "field": "nutritionalSupplementDietPayment",
-            "name": "Nutritional Supplement Diet Payment",
-            "id": 38,
-            "description": "The amount to be paid out for the nutritional diet supplement.",
-            "dataType": "number-input",
-            "validationCriteria": "0",
-            "validationType": ">=",
+            "field": "reason",
+            "name": "Reason",
+            "id": 47,
+            "description": "The reason provided for a given decision.",
+            "dataType": "text-input",
             "childFields": []
           },
           {
-            "field": "nutritionalSupplementVitaminsPayment",
+            "field": "nutritionalSupplementVitaminsPaymentAmount",
             "name": "Nutritional Supplement Vitamins Payment",
             "id": 39,
             "description": "The amount to be paid out for the nutritional vitamin supplement.",
@@ -149,48 +116,18 @@
             "validationCriteria": "0",
             "validationType": ">=",
             "childFields": []
-          }
-        ]
-      }
-    },
-    {
-      "id": "711c9a25-7b13-4580-aa38-16ab482eae35",
-      "name": "Has PWD Designation?",
-      "type": "decisionTableNode",
-      "content": {
-        "rules": [
-          {
-            "_id": "e996df6f-b67d-431d-a261-2bc6ec365d4f",
-            "433aac2d-556c-4b54-9a1f-4f466cc140fe": "true",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"\""
           },
           {
-            "_id": "75c515a6-cbd8-4f43-a4cb-81bab8acf01b",
-            "433aac2d-556c-4b54-9a1f-4f466cc140fe": "false",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"Persons who do not have PWD designation do not qualify for the Monthly Nutritional Supplement.\""
+            "field": "nutritionalSupplementDietPaymentAmount",
+            "name": "Nutritional Supplement Diet Payment",
+            "id": 38,
+            "description": "The amount to be paid out for the nutritional diet supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
           }
-        ],
-        "inputs": [
-          {
-            "id": "433aac2d-556c-4b54-9a1f-4f466cc140fe",
-            "name": "PWD Designation",
-            "type": "expression",
-            "field": "hasPWDDesignation"
-          }
-        ],
-        "outputs": [
-          {
-            "id": "9e52fae8-e6a5-4878-ad99-70de7b33fe1f",
-            "name": "Comments",
-            "type": "expression",
-            "field": "PWDComments"
-          }
-        ],
-        "hitPolicy": "first"
-      },
-      "position": {
-        "x": -740,
-        "y": 545
+        ]
       }
     },
     {
@@ -201,14 +138,14 @@
         "rules": [
           {
             "_id": "5c229e53-b8d6-485b-9a25-26892fa1c82d",
-            "774d0677-0e3e-4643-861c-08a770cb39fe": "0",
+            "774d0677-0e3e-4643-861c-08a770cb39fe": "null",
             "a9b1c49b-7ef2-42ea-9895-ff7790697079": "180",
             "f8dad00d-9623-4094-a1a0-bf6db8a65a01": "\"additionalNutritionalItems\""
           },
           {
             "_id": "1daa0249-be92-47f5-b9eb-d9c5164f9aa9",
             "774d0677-0e3e-4643-861c-08a770cb39fe": "45",
-            "a9b1c49b-7ef2-42ea-9895-ff7790697079": "0",
+            "a9b1c49b-7ef2-42ea-9895-ff7790697079": "null",
             "f8dad00d-9623-4094-a1a0-bf6db8a65a01": "\"vitaminsOrMinerals\""
           },
           {
@@ -240,11 +177,14 @@
             "field": "additionalNutritionalItemsAmount"
           }
         ],
-        "hitPolicy": "first"
+        "hitPolicy": "first",
+        "passThrough": true,
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
-        "x": 225,
-        "y": 920
+        "x": -205,
+        "y": 950
       }
     },
     {
@@ -255,13 +195,13 @@
         "rules": [
           {
             "_id": "04180eb4-ece7-4da3-9348-b67de8a2b4e8",
-            "9901e6d9-259d-417d-8f19-e58889df68a4": "dietSupplementAmount",
-            "cb914a8b-b03f-49d3-8dca-92133ec06500": "true"
+            "9901e6d9-259d-417d-8f19-e58889df68a4": "receivingDietSupplement",
+            "cb914a8b-b03f-49d3-8dca-92133ec06500": "$ != null"
           },
           {
             "_id": "e6aa8f29-1efd-44f6-8193-881adaac38f4",
             "9901e6d9-259d-417d-8f19-e58889df68a4": "0",
-            "cb914a8b-b03f-49d3-8dca-92133ec06500": "false"
+            "cb914a8b-b03f-49d3-8dca-92133ec06500": ""
           }
         ],
         "inputs": [
@@ -280,192 +220,22 @@
             "field": "dietSupplementAmount"
           }
         ],
-        "hitPolicy": "first"
-      },
-      "position": {
-        "x": 230,
-        "y": 1040
-      }
-    },
-    {
-      "id": "596ad9af-199f-4225-a5e1-2e885d3ef17a",
-      "name": "In Pay of Disability Assistance?",
-      "type": "decisionTableNode",
-      "content": {
-        "rules": [
-          {
-            "_id": "e996df6f-b67d-431d-a261-2bc6ec365d4f",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"\"",
-            "d6a4b0f0-7c06-441e-8e1d-a1201c9339ce": "true"
-          },
-          {
-            "_id": "0cda4532-3cac-43d8-add3-1d31c245210a",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"Persons must be in pay of Disability Assistance (other than Hardship) to qualify.\"",
-            "d6a4b0f0-7c06-441e-8e1d-a1201c9339ce": "false"
-          }
-        ],
-        "inputs": [
-          {
-            "id": "d6a4b0f0-7c06-441e-8e1d-a1201c9339ce",
-            "name": "In Pay of Disability Assistance",
-            "type": "expression",
-            "field": "inPayOfDA"
-          }
-        ],
-        "outputs": [
-          {
-            "id": "9e52fae8-e6a5-4878-ad99-70de7b33fe1f",
-            "name": "Comments",
-            "type": "expression",
-            "field": "inPayOfDAComments"
-          }
-        ],
-        "hitPolicy": "first"
-      },
-      "position": {
-        "x": -745,
-        "y": 665
-      }
-    },
-    {
-      "id": "19173f76-c902-4bab-86bd-0ff13642e685",
-      "name": "Residing in Special Care Facility (other than Alcohol/Drug)?",
-      "type": "decisionTableNode",
-      "content": {
         "hitPolicy": "first",
-        "inputs": [
-          {
-            "id": "79ee77c9-88c5-4c1a-a7f0-b7fb7a182efb",
-            "field": "residingInCareFacility",
-            "name": "Residing In Care Facility"
-          },
-          {
-            "id": "0eae7297-d8da-455a-921d-28249ed1546a",
-            "field": "isAlcoholOrDrugFacility",
-            "name": "An Alcohol Or Drug Care Facility"
-          }
-        ],
-        "outputs": [
-          {
-            "id": "9e52fae8-e6a5-4878-ad99-70de7b33fe1f",
-            "name": "Comments",
-            "type": "expression",
-            "field": "residingInCareFacilityComments"
-          }
-        ],
-        "rules": [
-          {
-            "_id": "e996df6f-b67d-431d-a261-2bc6ec365d4f",
-            "79ee77c9-88c5-4c1a-a7f0-b7fb7a182efb": "false",
-            "0eae7297-d8da-455a-921d-28249ed1546a": "",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"\""
-          },
-          {
-            "_id": "7b76513c-ad0f-4e8b-8e4f-4c5fc2a99515",
-            "_description": "",
-            "79ee77c9-88c5-4c1a-a7f0-b7fb7a182efb": "true",
-            "0eae7297-d8da-455a-921d-28249ed1546a": "false",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"To qualify, persons may not be residing in a care facility other than an alcohol or drug treatment centre.\""
-          },
-          {
-            "_id": "b80ba4fe-09ee-4186-b090-8ea92856fd14",
-            "79ee77c9-88c5-4c1a-a7f0-b7fb7a182efb": "",
-            "0eae7297-d8da-455a-921d-28249ed1546a": "",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"\""
-          }
-        ]
+        "passThorough": false,
+        "executionMode": "single",
+        "passThrough": true
       },
       "position": {
-        "x": -740,
-        "y": 935
-      }
-    },
-    {
-      "id": "129f54bb-e711-4827-bd8a-1e39f289a2ef",
-      "name": "Need for MNS Verified?",
-      "type": "decisionTableNode",
-      "content": {
-        "rules": [
-          {
-            "_id": "e996df6f-b67d-431d-a261-2bc6ec365d4f",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"\"",
-            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "true"
-          },
-          {
-            "_id": "af3ccf89-6d6d-44d8-baa7-6630026907db",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"To qualify for payment, the need for this supplement must be verified by an adjudicator.\"",
-            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "false"
-          }
-        ],
-        "inputs": [
-          {
-            "id": "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d",
-            "name": "Has provided necessary verification that health situation meets criteria in the MNS Symptoms list",
-            "type": "expression",
-            "field": "verificationOfNeedConfirmed"
-          }
-        ],
-        "outputs": [
-          {
-            "id": "9e52fae8-e6a5-4878-ad99-70de7b33fe1f",
-            "name": "Comments",
-            "type": "expression",
-            "field": "verificationOfNeedConfirmedComments"
-          }
-        ],
-        "hitPolicy": "first"
-      },
-      "position": {
-        "x": -750,
-        "y": 1455
-      }
-    },
-    {
-      "id": "780a31ac-9d63-48d0-8d09-0f1cacb09919",
-      "name": "MNS payment already received?",
-      "type": "decisionTableNode",
-      "content": {
-        "hitPolicy": "first",
-        "inputs": [
-          {
-            "id": "433aac2d-556c-4b54-9a1f-4f466cc140fe",
-            "name": "MNS Payment Already Made",
-            "type": "expression",
-            "field": "mnsPaymentAlreadyMade"
-          }
-        ],
-        "outputs": [
-          {
-            "id": "9e52fae8-e6a5-4878-ad99-70de7b33fe1f",
-            "name": "Comments",
-            "type": "expression",
-            "field": "paymentAlreadyMadeComments"
-          }
-        ],
-        "rules": [
-          {
-            "_id": "e996df6f-b67d-431d-a261-2bc6ec365d4f",
-            "433aac2d-556c-4b54-9a1f-4f466cc140fe": "false",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"\""
-          },
-          {
-            "_id": "75c515a6-cbd8-4f43-a4cb-81bab8acf01b",
-            "433aac2d-556c-4b54-9a1f-4f466cc140fe": "true",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"A Monthly Nutritional Supplement payment has already been made for the person for this benefit month.\""
-          }
-        ]
-      },
-      "position": {
-        "x": -745,
-        "y": 795
+        "x": -215,
+        "y": 1095
       }
     },
     {
       "id": "f9ca2047-7159-4d0a-aba2-6b6df7436920",
-      "name": "Eligibility for Payment",
+      "name": "Eligibility",
       "type": "decisionTableNode",
       "content": {
-        "hitPolicy": "first",
+        "hitPolicy": "collect",
         "inputs": [
           {
             "id": "734bc693-aa56-4ab5-903c-65d1a58d453c",
@@ -480,22 +250,15 @@
             "field": "inPayOfDA"
           },
           {
-            "id": "7f5afc86-85b1-401e-8f35-afe1138caf4d",
-            "name": "MNS Payment Already Made",
-            "type": "expression",
-            "field": "mnsPaymentAlreadyMade"
+            "id": "3d8a44cd-463d-49bf-bba4-48077681ee8f",
+            "field": "residingInCareFacility",
+            "name": "Residing In Care Facility"
           },
           {
             "id": "c1bf0321-88ca-4dd5-a773-330124859839",
             "name": "An Alcohol Or Drug Care Facility",
             "type": "expression",
             "field": "isAlcoholOrDrugFacility"
-          },
-          {
-            "id": "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868",
-            "name": "Need Verified by Adjudicator?",
-            "type": "expression",
-            "field": "verificationOfNeedConfirmed"
           },
           {
             "id": "151d2b93-e1df-47ec-9208-878f600b9274",
@@ -508,12 +271,6 @@
             "name": "Receiving Schedule C Appeal Award?",
             "type": "expression",
             "field": "receivingScheduleCAppealAwardGP"
-          },
-          {
-            "id": "9a016649-3e84-45dc-b774-b8d3b54f5bd5",
-            "name": "Family Unit deemed ineligible for assistance?",
-            "type": "expression",
-            "field": "familyUnitDeemedIneligible"
           }
         ],
         "outputs": [
@@ -522,6 +279,11 @@
             "name": "Is Eligible",
             "type": "expression",
             "field": "isEligible"
+          },
+          {
+            "id": "ae112efb-119f-4d84-8b3c-187dcc0ac76f",
+            "field": "reason",
+            "name": "Reason"
           }
         ],
         "rules": [
@@ -529,36 +291,102 @@
             "_id": "f42edef3-4db8-4fa3-aa2c-543302cd4cc8",
             "734bc693-aa56-4ab5-903c-65d1a58d453c": "true",
             "b3e2189c-cb2f-484e-b058-64858cb99ebe": "true",
-            "7f5afc86-85b1-401e-8f35-afe1138caf4d": "false",
-            "c1bf0321-88ca-4dd5-a773-330124859839": "isAlcoholOrDrugFacility == true or residingInCareFacility == false",
-            "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868": "true",
+            "3d8a44cd-463d-49bf-bba4-48077681ee8f": "false",
+            "c1bf0321-88ca-4dd5-a773-330124859839": "",
             "151d2b93-e1df-47ec-9208-878f600b9274": "false",
             "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "false",
-            "9a016649-3e84-45dc-b774-b8d3b54f5bd5": "false",
-            "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "true"
+            "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "true",
+            "ae112efb-119f-4d84-8b3c-187dcc0ac76f": ""
           },
           {
             "_id": "f90c8a54-0159-4b4d-a2cc-776dcaeba7cb",
+            "734bc693-aa56-4ab5-903c-65d1a58d453c": "true",
+            "b3e2189c-cb2f-484e-b058-64858cb99ebe": "true",
+            "3d8a44cd-463d-49bf-bba4-48077681ee8f": "true",
+            "c1bf0321-88ca-4dd5-a773-330124859839": "true",
+            "151d2b93-e1df-47ec-9208-878f600b9274": "false",
+            "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "false",
+            "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "true",
+            "ae112efb-119f-4d84-8b3c-187dcc0ac76f": ""
+          },
+          {
+            "_id": "34eeed15-5ec3-4c43-a3d3-226024686ec4",
             "734bc693-aa56-4ab5-903c-65d1a58d453c": "",
             "b3e2189c-cb2f-484e-b058-64858cb99ebe": "",
-            "7f5afc86-85b1-401e-8f35-afe1138caf4d": "",
-            "c1bf0321-88ca-4dd5-a773-330124859839": "",
-            "da5653d7-f8a6-4dbe-a6d5-fd92b0f82868": "",
+            "3d8a44cd-463d-49bf-bba4-48077681ee8f": "true",
+            "c1bf0321-88ca-4dd5-a773-330124859839": "$ == false or $ == null",
             "151d2b93-e1df-47ec-9208-878f600b9274": "",
             "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "",
-            "9a016649-3e84-45dc-b774-b8d3b54f5bd5": "",
-            "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "false"
+            "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "false",
+            "ae112efb-119f-4d84-8b3c-187dcc0ac76f": "\"facility\""
+          },
+          {
+            "_id": "6a5876e2-99a1-4e50-b498-e54346b4b89a",
+            "734bc693-aa56-4ab5-903c-65d1a58d453c": "false",
+            "b3e2189c-cb2f-484e-b058-64858cb99ebe": "",
+            "3d8a44cd-463d-49bf-bba4-48077681ee8f": "",
+            "c1bf0321-88ca-4dd5-a773-330124859839": "",
+            "151d2b93-e1df-47ec-9208-878f600b9274": "",
+            "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "",
+            "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "false",
+            "ae112efb-119f-4d84-8b3c-187dcc0ac76f": "\"notPWD\""
+          },
+          {
+            "_id": "9832f697-f962-4b46-8f18-f7f77e2e5b4e",
+            "734bc693-aa56-4ab5-903c-65d1a58d453c": "",
+            "b3e2189c-cb2f-484e-b058-64858cb99ebe": "false",
+            "3d8a44cd-463d-49bf-bba4-48077681ee8f": "",
+            "c1bf0321-88ca-4dd5-a773-330124859839": "",
+            "151d2b93-e1df-47ec-9208-878f600b9274": "",
+            "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "",
+            "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "false",
+            "ae112efb-119f-4d84-8b3c-187dcc0ac76f": "\"notinpay\""
+          },
+          {
+            "_id": "3c989171-e641-4c4a-8523-69c5d015627e",
+            "734bc693-aa56-4ab5-903c-65d1a58d453c": "",
+            "b3e2189c-cb2f-484e-b058-64858cb99ebe": "",
+            "3d8a44cd-463d-49bf-bba4-48077681ee8f": "",
+            "c1bf0321-88ca-4dd5-a773-330124859839": "",
+            "151d2b93-e1df-47ec-9208-878f600b9274": "true",
+            "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "",
+            "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "false",
+            "ae112efb-119f-4d84-8b3c-187dcc0ac76f": "\"inkind\""
+          },
+          {
+            "_id": "55a1fe34-d838-4883-8ccd-fb7ce7019b27",
+            "734bc693-aa56-4ab5-903c-65d1a58d453c": "",
+            "b3e2189c-cb2f-484e-b058-64858cb99ebe": "",
+            "3d8a44cd-463d-49bf-bba4-48077681ee8f": "",
+            "c1bf0321-88ca-4dd5-a773-330124859839": "",
+            "151d2b93-e1df-47ec-9208-878f600b9274": "",
+            "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "true",
+            "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "false",
+            "ae112efb-119f-4d84-8b3c-187dcc0ac76f": "\"scheduleC\""
+          },
+          {
+            "_id": "e58af273-9f69-499d-b6cc-b891bfc51fa1",
+            "734bc693-aa56-4ab5-903c-65d1a58d453c": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
+            "b3e2189c-cb2f-484e-b058-64858cb99ebe": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
+            "3d8a44cd-463d-49bf-bba4-48077681ee8f": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
+            "c1bf0321-88ca-4dd5-a773-330124859839": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
+            "151d2b93-e1df-47ec-9208-878f600b9274": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
+            "5b0a036e-808e-4c9a-b1e6-5aa7760d9570": "undefined in [hasPWDDesignation, residingInCareFacility, inPayOfDA, receivingInKindNutrition, receivingScheduleCAppealAwardGP]",
+            "615dcb0c-70ef-4a8b-9687-26d63ef3993c": "false",
+            "ae112efb-119f-4d84-8b3c-187dcc0ac76f": "`Required information is missing: ${ hasPWDDesignation == null ? 'hasPWDDesignation': ''} ${residingInCareFacility == null ? 'residingInCareFacility' : ''} ${ inPayOfDA == null ? 'inPayOfDA': ''} ${ receivingInKindNutrition == null ? 'receivingInKindNutrition': ''}${ receivingScheduleCAppealAwardGP == null ? 'receivingScheduleCAppealAwardGP': ''}`"
           }
-        ]
+        ],
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
-        "x": -395,
-        "y": 1100
+        "x": -750,
+        "y": 995
       }
     },
     {
       "id": "064f4995-bc7c-4bed-8c44-e66af5427c87",
-      "name": "switch4",
+      "name": "Base Eligible Decisoin",
       "type": "switchNode",
       "content": {
         "hitPolicy": "first",
@@ -568,202 +396,27 @@
             "condition": "isEligible == true"
           },
           {
-            "id": "35712b6e-83b2-4648-9490-60d56fae0eca",
-            "condition": "isEligible == false"
+            "id": "92eb1acc-5118-4306-842e-b77ad7592635",
+            "condition": "",
+            "isDefault": true
           }
         ]
       },
       "position": {
-        "x": -90,
-        "y": 1040
+        "x": -510,
+        "y": 1265
       }
     },
     {
-      "id": "5f8aaaa5-1a18-4baa-afc1-515a551e79a8",
-      "name": "Calculate Amounts to Pay",
-      "type": "decisionTableNode",
+      "type": "functionNode",
       "content": {
-        "hitPolicy": "first",
-        "inputs": [
-          {
-            "id": "5a1dfbff-aae4-4666-b801-91a3104d65b9",
-            "name": "Amount Qualified for Vitamins or Minerals",
-            "type": "expression",
-            "field": "vitaminsOrMineralsAmount"
-          },
-          {
-            "id": "be7b38a2-978a-401d-976c-4cc7e733c718",
-            "name": "Amount Qualified for Additional Nutritional Items",
-            "type": "expression",
-            "field": "additionalNutritionalItemsAmount"
-          },
-          {
-            "id": "f5471bf2-bd3a-404c-9e9f-b2da00743153",
-            "name": "Diet Supplement Amount",
-            "type": "expression",
-            "field": "dietSupplementAmount"
-          }
-        ],
-        "outputs": [
-          {
-            "id": "cb2ba9b6-0ceb-447a-8e9e-31f893d6a601",
-            "name": "Payment Amount for Code 28 (Nutritional Supplement - Vitamins)",
-            "type": "expression",
-            "field": "nutritionalSupplementVitaminsPayment"
-          },
-          {
-            "id": "57669f33-eae2-4b89-9bfa-d8b74c46b689",
-            "name": "Payment Amount for Code 22 (Nutritional Supplement - Diet)",
-            "type": "expression",
-            "field": "nutritionalSupplementDietPayment"
-          },
-          {
-            "id": "843dbcce-69c3-403b-aa17-7655fac1703b",
-            "field": "isEligible",
-            "name": "Is Eligible"
-          },
-          {
-            "id": "d0aa3d54-041a-4fd5-8cff-de0fd9a25cdd",
-            "field": "reason",
-            "name": "Reason"
-          }
-        ],
-        "rules": [
-          {
-            "_id": "8d80eb57-b335-46c1-a0c6-0e638d9e43df",
-            "5a1dfbff-aae4-4666-b801-91a3104d65b9": "",
-            "be7b38a2-978a-401d-976c-4cc7e733c718": "",
-            "f5471bf2-bd3a-404c-9e9f-b2da00743153": "",
-            "cb2ba9b6-0ceb-447a-8e9e-31f893d6a601": "vitaminsOrMineralsAmount",
-            "57669f33-eae2-4b89-9bfa-d8b74c46b689": "additionalNutritionalItemsAmount - dietSupplementAmount",
-            "843dbcce-69c3-403b-aa17-7655fac1703b": "true",
-            "d0aa3d54-041a-4fd5-8cff-de0fd9a25cdd": "null"
-          }
-        ]
+        "source": "import zen from 'zen';\nexport const handler = async (input) => {\n  if (input && Array.isArray(input) && input.length > 0) {\n    // Filter out no `reason` property\n    const reasons = input\n      .map(item => item.reason)\n      .filter(reason => reason)\n      .join(', ') || null;\n    if (input[0]) {\n      input[0].reason = reasons;\n    }\n    return input;\n  }\n  return input;\n};\n"
       },
+      "id": "9b968719-14b9-40f4-8afe-80ff5ae03bc2",
+      "name": "Reason Collection",
       "position": {
-        "x": 555,
-        "y": 945
-      }
-    },
-    {
-      "id": "14d83ef9-f602-42cd-a53b-f804f9f514d8",
-      "name": "Receiving In-Kind?",
-      "type": "decisionTableNode",
-      "content": {
-        "hitPolicy": "first",
-        "inputs": [
-          {
-            "id": "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d",
-            "name": "Receiving In-Kind Nutrition-Related Supplement",
-            "type": "expression",
-            "field": "receivingInKindNutrition"
-          }
-        ],
-        "outputs": [
-          {
-            "id": "9e52fae8-e6a5-4878-ad99-70de7b33fe1f",
-            "name": "Comments",
-            "type": "expression",
-            "field": "receivingInKindComments"
-          }
-        ],
-        "rules": [
-          {
-            "_id": "e996df6f-b67d-431d-a261-2bc6ec365d4f",
-            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "true",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"Persons cannot receive payments for Monthly Nutritional Supplement at the same time as they are receiving an in-kind nutrition-related supplement.\""
-          },
-          {
-            "_id": "af3ccf89-6d6d-44d8-baa7-6630026907db",
-            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "false",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"\""
-          }
-        ]
-      },
-      "position": {
-        "x": -745,
-        "y": 1080
-      }
-    },
-    {
-      "id": "9b2dc08d-68ad-4885-88da-c2e46e43048d",
-      "name": "Receiving Schedule C Appeal Award?",
-      "type": "decisionTableNode",
-      "content": {
-        "rules": [
-          {
-            "_id": "e996df6f-b67d-431d-a261-2bc6ec365d4f",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"Persons cannot receive payments for Monthly Nutritional Supplement at the same time as they are receiving a Schedule C Appeal Award.\"",
-            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "true"
-          },
-          {
-            "_id": "af3ccf89-6d6d-44d8-baa7-6630026907db",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"\"",
-            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "false"
-          }
-        ],
-        "inputs": [
-          {
-            "id": "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d",
-            "name": "Receiving Schedule C Appeal Award (code 29)",
-            "type": "expression",
-            "field": "receivingScheduleCAppealAwardGP"
-          }
-        ],
-        "outputs": [
-          {
-            "id": "9e52fae8-e6a5-4878-ad99-70de7b33fe1f",
-            "name": "Comments",
-            "type": "expression",
-            "field": "receivingScheduleCAppealAwardGPComments"
-          }
-        ],
-        "hitPolicy": "first"
-      },
-      "position": {
-        "x": -745,
-        "y": 1195
-      }
-    },
-    {
-      "id": "b2e9e49a-56aa-4a97-bc32-67c75e96baad",
-      "name": "Family Unit Deemed Ineligible?",
-      "type": "decisionTableNode",
-      "content": {
-        "rules": [
-          {
-            "_id": "e996df6f-b67d-431d-a261-2bc6ec365d4f",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"This person is not eligible for MNS payment because the family unit has been deemed ineligible for assistance.\"",
-            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "true"
-          },
-          {
-            "_id": "af3ccf89-6d6d-44d8-baa7-6630026907db",
-            "9e52fae8-e6a5-4878-ad99-70de7b33fe1f": "\"\"",
-            "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d": "false"
-          }
-        ],
-        "inputs": [
-          {
-            "id": "dfcf7c75-baef-4ce1-a8b9-8a7f1088868d",
-            "name": "Family unit deemed ineligible for assistance?",
-            "type": "expression",
-            "field": "familyUnitDeemedIneligible"
-          }
-        ],
-        "outputs": [
-          {
-            "id": "9e52fae8-e6a5-4878-ad99-70de7b33fe1f",
-            "name": "Comments",
-            "type": "expression",
-            "field": "familyUnitDeemedIneligibleComments"
-          }
-        ],
-        "hitPolicy": "first"
-      },
-      "position": {
-        "x": -745,
-        "y": 1320
+        "x": -750,
+        "y": 1090
       }
     },
     {
@@ -771,150 +424,86 @@
       "content": {
         "expressions": [
           {
-            "id": "643b5f01-1cb3-452c-a698-90f822538f92",
+            "id": "c82dbc4f-b72e-4916-9937-b765cc43577a",
+            "key": "isEligible",
+            "value": "none($root, (#.isEligible == false))"
+          },
+          {
+            "id": "9aafc662-26ab-41f7-89a3-ead5c57cd568",
+            "key": "reason",
+            "value": "$root[0].reason"
+          }
+        ],
+        "passThrough": true,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single"
+      },
+      "id": "9b31d8ca-c637-47bc-8c5c-4b02aa1c1192",
+      "name": "Eligibility and Reason",
+      "position": {
+        "x": -750,
+        "y": 1180
+      }
+    },
+    {
+      "type": "switchNode",
+      "content": {
+        "hitPolicy": "first",
+        "statements": [
+          {
+            "id": "63718e42-4456-457a-a022-676442836366",
+            "condition": "isEligible == true",
+            "isDefault": false
+          }
+        ]
+      },
+      "id": "b4d629f2-bcdd-489c-90ee-4947f91dd712",
+      "name": "Conditional Pass",
+      "position": {
+        "x": -480,
+        "y": 920
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "e9faf646-d9af-4575-a8ea-2437c10833f1",
             "key": "isEligible",
             "value": "isEligible"
           },
           {
-            "id": "47823af6-b160-4599-8988-9942fdde5875",
+            "id": "757675d6-9b74-4676-8310-8d89389ac138",
+            "key": "nutritionalSupplementVitaminsPaymentAmount",
+            "value": "vitaminsOrMineralsAmount != null ? vitaminsOrMineralsAmount : null"
+          },
+          {
+            "id": "f57e06cc-495e-433d-93b3-dbed62a67770",
+            "key": "nutritionalSupplementDietPaymentAmount",
+            "value": "additionalNutritionalItemsAmount != null ? additionalNutritionalItemsAmount - dietSupplementAmount : null"
+          },
+          {
+            "id": "20d8c790-19f4-4feb-be51-d057b76da87f",
             "key": "reason",
-            "value": "string(PWDComments + inPayOfDAComments + paymentAlreadyMadeComments + residingInCareFacilityComments + verificationOfNeedConfirmedComments + receivingScheduleCAppealAwardGPComments + receivingInKindComments + familyUnitDeemedIneligibleComments)"
+            "value": ""
           }
-        ]
+        ],
+        "passThrough": false,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single"
       },
-      "id": "faf6749c-ea23-4394-b443-477f69e94bcf",
-      "name": "Ineligible Reason",
+      "id": "48f68bc8-2f70-42cd-94e9-79c3c17aed77",
+      "name": "Amounts",
       "position": {
-        "x": -90,
-        "y": 1310
+        "x": 65,
+        "y": 1005
       }
     }
   ],
   "edges": [
-    {
-      "id": "81b41e70-af4f-4cfe-88e5-5120fbab5c43",
-      "type": "edge",
-      "sourceId": "37f1e8ea-3729-48ea-b9fe-21e8a06f0ef4",
-      "targetId": "596ad9af-199f-4225-a5e1-2e885d3ef17a"
-    },
-    {
-      "id": "558d61ad-5624-45d3-a6fa-9895c501bb67",
-      "type": "edge",
-      "sourceId": "37f1e8ea-3729-48ea-b9fe-21e8a06f0ef4",
-      "targetId": "19173f76-c902-4bab-86bd-0ff13642e685"
-    },
-    {
-      "id": "b8fddf76-f51b-4b83-b02f-f028b065c2d8",
-      "type": "edge",
-      "sourceId": "37f1e8ea-3729-48ea-b9fe-21e8a06f0ef4",
-      "targetId": "129f54bb-e711-4827-bd8a-1e39f289a2ef"
-    },
-    {
-      "id": "4447272c-67b9-42a7-891c-3dd2b4fb4a7c",
-      "type": "edge",
-      "sourceId": "37f1e8ea-3729-48ea-b9fe-21e8a06f0ef4",
-      "targetId": "780a31ac-9d63-48d0-8d09-0f1cacb09919"
-    },
-    {
-      "id": "2f724148-b142-4bee-8c15-ca4e5fdc96b5",
-      "type": "edge",
-      "sourceId": "37f1e8ea-3729-48ea-b9fe-21e8a06f0ef4",
-      "targetId": "711c9a25-7b13-4580-aa38-16ab482eae35"
-    },
-    {
-      "id": "92ff1ace-e8a7-4cb8-9691-815146236d5c",
-      "type": "edge",
-      "sourceId": "064f4995-bc7c-4bed-8c44-e66af5427c87",
-      "targetId": "3af05cd1-4628-41fe-b7ff-1f1b774099d6",
-      "sourceHandle": "03123220-6e98-47d0-9803-7a5e2f391075"
-    },
-    {
-      "id": "61ef3069-50b7-4703-be1c-1e9085f73af3",
-      "type": "edge",
-      "sourceId": "064f4995-bc7c-4bed-8c44-e66af5427c87",
-      "targetId": "84207ef0-f655-4d3d-81cd-998ba75e76ff",
-      "sourceHandle": "ce08fcff-e543-46f1-9756-4ce7937ffd1b"
-    },
-    {
-      "id": "036bb9af-22c2-43e9-b895-b0002b5045ab",
-      "type": "edge",
-      "sourceId": "37f1e8ea-3729-48ea-b9fe-21e8a06f0ef4",
-      "targetId": "14d83ef9-f602-42cd-a53b-f804f9f514d8"
-    },
-    {
-      "id": "ff39bd22-2d09-44a8-84ca-4319feab0759",
-      "type": "edge",
-      "sourceId": "3af05cd1-4628-41fe-b7ff-1f1b774099d6",
-      "targetId": "5f8aaaa5-1a18-4baa-afc1-515a551e79a8"
-    },
-    {
-      "id": "db425f39-6fab-4418-87a3-7e6d7031aa02",
-      "type": "edge",
-      "sourceId": "5f8aaaa5-1a18-4baa-afc1-515a551e79a8",
-      "targetId": "84207ef0-f655-4d3d-81cd-998ba75e76ff"
-    },
-    {
-      "id": "65a38eeb-b953-40ca-8c40-025a6754c945",
-      "type": "edge",
-      "sourceId": "064f4995-bc7c-4bed-8c44-e66af5427c87",
-      "targetId": "79460bcd-65aa-4417-a5e1-261cf38759c2",
-      "sourceHandle": "03123220-6e98-47d0-9803-7a5e2f391075"
-    },
-    {
-      "id": "e4868ef2-2c88-4e5a-b7f7-ac12669a0fd8",
-      "type": "edge",
-      "sourceId": "064f4995-bc7c-4bed-8c44-e66af5427c87",
-      "targetId": "5f8aaaa5-1a18-4baa-afc1-515a551e79a8",
-      "sourceHandle": "03123220-6e98-47d0-9803-7a5e2f391075"
-    },
-    {
-      "id": "4aee928a-fbc9-4262-8db4-237e785230e8",
-      "type": "edge",
-      "sourceId": "79460bcd-65aa-4417-a5e1-261cf38759c2",
-      "targetId": "5f8aaaa5-1a18-4baa-afc1-515a551e79a8"
-    },
-    {
-      "id": "2ca2d98b-08cb-47cf-b98b-3d1773900005",
-      "type": "edge",
-      "sourceId": "14d83ef9-f602-42cd-a53b-f804f9f514d8",
-      "targetId": "f9ca2047-7159-4d0a-aba2-6b6df7436920"
-    },
-    {
-      "id": "27958952-baee-4680-ac10-2c58f82b0c3f",
-      "type": "edge",
-      "sourceId": "129f54bb-e711-4827-bd8a-1e39f289a2ef",
-      "targetId": "f9ca2047-7159-4d0a-aba2-6b6df7436920"
-    },
-    {
-      "id": "6e00fdfe-2cd9-4f3c-b742-4599382a227a",
-      "type": "edge",
-      "sourceId": "596ad9af-199f-4225-a5e1-2e885d3ef17a",
-      "targetId": "f9ca2047-7159-4d0a-aba2-6b6df7436920"
-    },
-    {
-      "id": "387a0759-1a4f-4c51-bba5-794c60f46e82",
-      "type": "edge",
-      "sourceId": "711c9a25-7b13-4580-aa38-16ab482eae35",
-      "targetId": "f9ca2047-7159-4d0a-aba2-6b6df7436920"
-    },
-    {
-      "id": "3be6a0b5-1645-4c23-ace3-5bdce0195aee",
-      "type": "edge",
-      "sourceId": "780a31ac-9d63-48d0-8d09-0f1cacb09919",
-      "targetId": "f9ca2047-7159-4d0a-aba2-6b6df7436920"
-    },
-    {
-      "id": "81ef8cd1-60a5-4497-8de9-0aa7ad164bdc",
-      "type": "edge",
-      "sourceId": "19173f76-c902-4bab-86bd-0ff13642e685",
-      "targetId": "f9ca2047-7159-4d0a-aba2-6b6df7436920"
-    },
-    {
-      "id": "2dfb5605-bb3c-4018-9c91-a5ad477f1667",
-      "type": "edge",
-      "sourceId": "f9ca2047-7159-4d0a-aba2-6b6df7436920",
-      "targetId": "064f4995-bc7c-4bed-8c44-e66af5427c87"
-    },
     {
       "id": "edb3cc75-ff95-4b31-adbe-b65ad7c71b51",
       "type": "edge",
@@ -922,95 +511,88 @@
       "targetId": "f9ca2047-7159-4d0a-aba2-6b6df7436920"
     },
     {
-      "id": "085260c3-1581-4236-9a51-ff90c6d0dfc3",
+      "id": "f5040d2c-facf-4be5-bf3d-73c2a8f5c88a",
+      "sourceId": "f9ca2047-7159-4d0a-aba2-6b6df7436920",
       "type": "edge",
-      "sourceId": "37f1e8ea-3729-48ea-b9fe-21e8a06f0ef4",
-      "targetId": "9b2dc08d-68ad-4885-88da-c2e46e43048d"
+      "targetId": "9b968719-14b9-40f4-8afe-80ff5ae03bc2"
     },
     {
-      "id": "3efa289b-494a-4b45-8985-3decec98f89a",
+      "id": "3a2c9735-0189-4119-a791-e17f5ae33bcd",
+      "sourceId": "9b968719-14b9-40f4-8afe-80ff5ae03bc2",
       "type": "edge",
-      "sourceId": "9b2dc08d-68ad-4885-88da-c2e46e43048d",
-      "targetId": "f9ca2047-7159-4d0a-aba2-6b6df7436920"
+      "targetId": "9b31d8ca-c637-47bc-8c5c-4b02aa1c1192"
     },
     {
-      "id": "615529a2-e90d-4347-a489-2bcebff59a46",
-      "type": "edge",
-      "sourceId": "37f1e8ea-3729-48ea-b9fe-21e8a06f0ef4",
-      "targetId": "b2e9e49a-56aa-4a97-bc32-67c75e96baad"
-    },
-    {
-      "id": "484ccad7-157b-4635-a889-2442c86f66ce",
-      "type": "edge",
-      "sourceId": "b2e9e49a-56aa-4a97-bc32-67c75e96baad",
-      "targetId": "f9ca2047-7159-4d0a-aba2-6b6df7436920"
-    },
-    {
-      "id": "2475909d-dd2a-43d4-8349-861d55d45ace",
-      "sourceId": "37f1e8ea-3729-48ea-b9fe-21e8a06f0ef4",
+      "id": "3fe4a5c7-2d1c-4beb-a39d-7ff86c692b40",
+      "sourceId": "9b31d8ca-c637-47bc-8c5c-4b02aa1c1192",
       "type": "edge",
       "targetId": "064f4995-bc7c-4bed-8c44-e66af5427c87"
     },
     {
-      "id": "48842972-1c96-40ed-bf4e-2b551613a7a6",
+      "id": "fe33fbad-bab2-48a1-88a7-f644981e01ef",
       "sourceId": "064f4995-bc7c-4bed-8c44-e66af5427c87",
       "type": "edge",
-      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf",
-      "sourceHandle": "35712b6e-83b2-4648-9490-60d56fae0eca"
+      "targetId": "84207ef0-f655-4d3d-81cd-998ba75e76ff",
+      "sourceHandle": "92eb1acc-5118-4306-842e-b77ad7592635"
     },
     {
-      "id": "d6c31cac-a288-4147-87cf-d0b31c50331f",
-      "sourceId": "faf6749c-ea23-4394-b443-477f69e94bcf",
+      "id": "40403b5b-299c-46c0-a6d8-24c4852be464",
+      "sourceId": "064f4995-bc7c-4bed-8c44-e66af5427c87",
+      "type": "edge",
+      "targetId": "3af05cd1-4628-41fe-b7ff-1f1b774099d6",
+      "sourceHandle": "03123220-6e98-47d0-9803-7a5e2f391075"
+    },
+    {
+      "id": "925d2966-9f5a-4d31-adeb-7721152f0556",
+      "sourceId": "064f4995-bc7c-4bed-8c44-e66af5427c87",
+      "type": "edge",
+      "targetId": "79460bcd-65aa-4417-a5e1-261cf38759c2",
+      "sourceHandle": "03123220-6e98-47d0-9803-7a5e2f391075"
+    },
+    {
+      "id": "952f85f3-95b8-418b-ba8b-114cb59eb937",
+      "sourceId": "9b31d8ca-c637-47bc-8c5c-4b02aa1c1192",
+      "type": "edge",
+      "targetId": "b4d629f2-bcdd-489c-90ee-4947f91dd712"
+    },
+    {
+      "id": "45578b15-090c-482c-afe4-028baf9874d6",
+      "sourceId": "37f1e8ea-3729-48ea-b9fe-21e8a06f0ef4",
+      "type": "edge",
+      "targetId": "b4d629f2-bcdd-489c-90ee-4947f91dd712"
+    },
+    {
+      "id": "1b7e3ad0-3b52-4fe4-aaab-52cc2aed7aff",
+      "sourceId": "b4d629f2-bcdd-489c-90ee-4947f91dd712",
+      "type": "edge",
+      "targetId": "3af05cd1-4628-41fe-b7ff-1f1b774099d6",
+      "sourceHandle": "63718e42-4456-457a-a022-676442836366"
+    },
+    {
+      "id": "08d37f98-e551-4d8e-b1ba-de1ac8de49d0",
+      "sourceId": "b4d629f2-bcdd-489c-90ee-4947f91dd712",
+      "type": "edge",
+      "targetId": "79460bcd-65aa-4417-a5e1-261cf38759c2",
+      "sourceHandle": "63718e42-4456-457a-a022-676442836366"
+    },
+    {
+      "id": "a43dd515-3067-4365-856b-c44d8758e8dd",
+      "sourceId": "3af05cd1-4628-41fe-b7ff-1f1b774099d6",
+      "type": "edge",
+      "targetId": "48f68bc8-2f70-42cd-94e9-79c3c17aed77"
+    },
+    {
+      "id": "971c137a-faef-4d63-9fd0-bc2b44b1e7bc",
+      "sourceId": "79460bcd-65aa-4417-a5e1-261cf38759c2",
+      "type": "edge",
+      "targetId": "48f68bc8-2f70-42cd-94e9-79c3c17aed77"
+    },
+    {
+      "id": "dab9ff00-7767-49f5-ba98-690eaaa3b218",
+      "sourceId": "48f68bc8-2f70-42cd-94e9-79c3c17aed77",
       "type": "edge",
       "targetId": "84207ef0-f655-4d3d-81cd-998ba75e76ff"
-    },
-    {
-      "id": "19d98ab2-438a-4b2c-b3e5-7a7b0305859b",
-      "sourceId": "711c9a25-7b13-4580-aa38-16ab482eae35",
-      "type": "edge",
-      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf"
-    },
-    {
-      "id": "7f8b4fe8-07be-40c2-9ee3-2d3adf9d5c8e",
-      "sourceId": "596ad9af-199f-4225-a5e1-2e885d3ef17a",
-      "type": "edge",
-      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf"
-    },
-    {
-      "id": "a31f543d-7030-4641-a4ae-ba7ac19b683f",
-      "sourceId": "780a31ac-9d63-48d0-8d09-0f1cacb09919",
-      "type": "edge",
-      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf"
-    },
-    {
-      "id": "7176777f-98a2-471b-88b7-767de73b2813",
-      "sourceId": "19173f76-c902-4bab-86bd-0ff13642e685",
-      "type": "edge",
-      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf"
-    },
-    {
-      "id": "042b4378-7b5d-479e-8629-b0772478962b",
-      "sourceId": "14d83ef9-f602-42cd-a53b-f804f9f514d8",
-      "type": "edge",
-      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf"
-    },
-    {
-      "id": "9c7a95e5-f2fb-4d5b-823d-74f052f1c4fb",
-      "sourceId": "9b2dc08d-68ad-4885-88da-c2e46e43048d",
-      "type": "edge",
-      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf"
-    },
-    {
-      "id": "9809d0bb-861f-4d89-9e3d-26dcffb6a252",
-      "sourceId": "b2e9e49a-56aa-4a97-bc32-67c75e96baad",
-      "type": "edge",
-      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf"
-    },
-    {
-      "id": "b658a8eb-e4ca-45e6-bfba-5a43d442198c",
-      "sourceId": "129f54bb-e711-4827-bd8a-1e39f289a2ef",
-      "type": "edge",
-      "targetId": "faf6749c-ea23-4394-b443-477f69e94bcf"
     }
-  ]
+  ],
+  "contentType": "application/vnd.gorules.decision"
 }

@@ -1,0 +1,102 @@
+{
+  "nodes": [
+    {
+      "type": "inputNode",
+      "content": {
+        "fields": [
+          {
+            "field": "person1age",
+            "name": "Person 1 Age",
+            "id": 41,
+            "description": "The age of person 1 in a family unit in years.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      },
+      "id": "0bd7765a-1f2e-4e6f-92b0-4f30019d91ba",
+      "name": "request",
+      "position": {
+        "x": 70,
+        "y": 135
+      }
+    },
+    {
+      "type": "outputNode",
+      "content": {
+        "fields": [
+          {
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "id": 58,
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      },
+      "id": "78c73d7a-87f4-4e89-a2b6-a8630a9d6249",
+      "name": "response",
+      "position": {
+        "x": 850,
+        "y": 145
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "rules": [
+          {
+            "_id": "f4305cf0-f2d7-4733-bbc3-6db65730db5f",
+            "d818f95b-f250-4d9a-adaf-4a504a17bb21": "person1age > 18",
+            "56ab4e4f-7296-41f6-b18a-43d9dba24a88": "2000"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "d818f95b-f250-4d9a-adaf-4a504a17bb21",
+            "name": "Input"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "56ab4e4f-7296-41f6-b18a-43d9dba24a88",
+            "name": "Supplement Amount",
+            "field": "supplementAmount"
+          }
+        ],
+        "passThrough": true,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single",
+        "passThorough": false
+      },
+      "id": "3c0a8c90-8266-4858-97eb-8bc80a0db350",
+      "name": "decisionTable1",
+      "position": {
+        "x": 440,
+        "y": 170
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "cab7222a-8d86-4b35-8c53-acf1590ec6fe",
+      "sourceId": "0bd7765a-1f2e-4e6f-92b0-4f30019d91ba",
+      "type": "edge",
+      "targetId": "3c0a8c90-8266-4858-97eb-8bc80a0db350"
+    },
+    {
+      "id": "82c339f4-3b8f-4d84-97c9-900964981d78",
+      "sourceId": "3c0a8c90-8266-4858-97eb-8bc80a0db350",
+      "type": "edge",
+      "targetId": "78c73d7a-87f4-4e89-a2b6-a8630a9d6249"
+    }
+  ],
+  "contentType": "application/vnd.gorules.decision"
+}

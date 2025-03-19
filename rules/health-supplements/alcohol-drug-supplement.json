@@ -263,6 +263,21 @@
         "x": 360,
         "y": 155
       }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "isdependentchild when true, does not require the eligibility types, but does require the other inputs true/false."
+        }
+      },
+      "id": "fc81d8e1-669c-41a3-a580-20c067f4f22b",
+      "name": "Note",
+      "position": {
+        "x": 0,
+        "y": -190
+      }
     }
   ],
   "edges": [

@@ -1,0 +1,309 @@
+{
+  "nodes": [
+    {
+      "type": "inputNode",
+      "content": {
+        "fields": [
+          {
+            "id": 104,
+            "field": "isDependentChild",
+            "name": "Dependent Child",
+            "description": "A dependent child is one who lives with a parent for more than 50% of each month, relies on that parent for basic needs, and is not 18 years old with a Persons with Disabilities (PWD) designation.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 158,
+            "field": "assistanceEligibilityType",
+            "name": "Assistance Eligibility Type",
+            "description": "The type of assistance that an individual is currently eligible for based on the given information. (Hardship Assistance / Income or Disability Assistance) ",
+            "dataType": "text-input",
+            "validationCriteria": "[Hardship Assistance, Income or Disability Assistance]",
+            "validationType": "[=text]",
+            "childFields": []
+          },
+          {
+            "id": 115,
+            "field": "isAlternateFundingAvailable",
+            "name": "Alternate Funding Available",
+            "description": "Person requesting supplement (& their family unit) do not have access to other funding. Usually verbal or paper confirmation required.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 138,
+            "field": "requestedAmount",
+            "name": "Requested Amount",
+            "description": "Requested amount of assistance by client. Assistance refers to IA, DA, HA or supplements.",
+            "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "field": "hasPreapproval",
+            "name": "Pre-Approval ",
+            "id": 167,
+            "description": "Recipient has sought pre-approval for a qualifying service.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
+      },
+      "id": "1f154b7b-515a-423f-b071-cedcea98dc76",
+      "name": "request",
+      "position": {
+        "x": -320,
+        "y": -40
+      }
+    },
+    {
+      "type": "outputNode",
+      "content": {
+        "fields": [
+          {
+            "id": 58,
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "id": 28,
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
+      },
+      "id": "700b80bf-7358-47ad-9caf-771db6a33bb3",
+      "name": "response",
+      "position": {
+        "x": 655,
+        "y": -20
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "rules": [
+          {
+            "_id": "9ab47e74-f367-421d-9c6f-34f58983eb60",
+            "4eb62fef-8fbe-42c8-b425-56ca21378ef1": "\"Hardship Assistance\" or \"Income or Disability Assistance\"",
+            "50803934-fa9b-4c62-9f73-a81fbacafd85": "false",
+            "094dff99-95d7-4c6b-ae35-00f9bed0a281": "true",
+            "09ab2ef8-b26c-41d6-8b0a-6f900efad7f7": "false",
+            "69159ec7-b531-4468-b3e7-f49605da0b93": "true"
+          },
+          {
+            "_id": "8ce02d17-709b-4ef6-9715-811add4d0205",
+            "4eb62fef-8fbe-42c8-b425-56ca21378ef1": "",
+            "50803934-fa9b-4c62-9f73-a81fbacafd85": "false",
+            "094dff99-95d7-4c6b-ae35-00f9bed0a281": "true",
+            "09ab2ef8-b26c-41d6-8b0a-6f900efad7f7": "true",
+            "69159ec7-b531-4468-b3e7-f49605da0b93": "true"
+          },
+          {
+            "_id": "e1d25e45-b926-45a1-bc6f-7a0ae32b6f2b",
+            "4eb62fef-8fbe-42c8-b425-56ca21378ef1": "",
+            "50803934-fa9b-4c62-9f73-a81fbacafd85": "true",
+            "094dff99-95d7-4c6b-ae35-00f9bed0a281": "",
+            "09ab2ef8-b26c-41d6-8b0a-6f900efad7f7": "",
+            "69159ec7-b531-4468-b3e7-f49605da0b93": "false"
+          },
+          {
+            "_id": "93307775-0299-4bef-af87-444b365f28b6",
+            "4eb62fef-8fbe-42c8-b425-56ca21378ef1": "",
+            "50803934-fa9b-4c62-9f73-a81fbacafd85": "",
+            "094dff99-95d7-4c6b-ae35-00f9bed0a281": "false",
+            "09ab2ef8-b26c-41d6-8b0a-6f900efad7f7": "",
+            "69159ec7-b531-4468-b3e7-f49605da0b93": "false"
+          },
+          {
+            "_id": "a1152b83-bf50-4e78-881a-aa94b21ce92e",
+            "4eb62fef-8fbe-42c8-b425-56ca21378ef1": "",
+            "50803934-fa9b-4c62-9f73-a81fbacafd85": "",
+            "094dff99-95d7-4c6b-ae35-00f9bed0a281": "",
+            "09ab2ef8-b26c-41d6-8b0a-6f900efad7f7": "",
+            "69159ec7-b531-4468-b3e7-f49605da0b93": "false"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "4eb62fef-8fbe-42c8-b425-56ca21378ef1",
+            "name": "Assistance Eligibility Type",
+            "field": "assistanceEligibilityType"
+          },
+          {
+            "id": "50803934-fa9b-4c62-9f73-a81fbacafd85",
+            "field": "isAlternateFundingAvailable",
+            "name": "Alternate Funding Available"
+          },
+          {
+            "id": "094dff99-95d7-4c6b-ae35-00f9bed0a281",
+            "field": "hasPreapproval",
+            "name": "Pre-Approval "
+          },
+          {
+            "id": "09ab2ef8-b26c-41d6-8b0a-6f900efad7f7",
+            "field": "isDependentChild",
+            "name": "Dependent Child"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "69159ec7-b531-4468-b3e7-f49605da0b93",
+            "field": "isEligible",
+            "name": "Is Eligible"
+          }
+        ],
+        "passThrough": true,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single",
+        "passThorough": false
+      },
+      "id": "4928680f-09ef-4564-b5a5-299b0357f2fa",
+      "name": "Eligibility",
+      "position": {
+        "x": 0,
+        "y": -40
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "rules": [
+          {
+            "_id": "fd2ffff3-5254-4d6c-8e0c-387e28f8a5f5",
+            "dc9b8f96-26c9-4625-a663-f520166f19c9": "",
+            "8f5c4ec9-b767-4ab6-a6c2-95e650eb3d74": "min([requestedAmount,500])",
+            "239217c1-9a8a-48f1-a3d4-b5f47064b369": "true"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "dc9b8f96-26c9-4625-a663-f520166f19c9",
+            "name": "Requested Amount",
+            "field": "requestedAmount"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "8f5c4ec9-b767-4ab6-a6c2-95e650eb3d74",
+            "name": "Supplement Amount",
+            "field": "supplementAmount"
+          },
+          {
+            "id": "239217c1-9a8a-48f1-a3d4-b5f47064b369",
+            "field": "isEligible",
+            "name": "Is Eligible"
+          }
+        ],
+        "passThrough": false,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single",
+        "passThorough": false
+      },
+      "id": "8a444137-53eb-4319-83c1-6cddd3c90325",
+      "name": "Supplement Calculation",
+      "position": {
+        "x": 355,
+        "y": -40
+      }
+    },
+    {
+      "type": "switchNode",
+      "content": {
+        "hitPolicy": "first",
+        "statements": [
+          {
+            "id": "e5050bfa-1aca-4190-a1b9-516904b97279",
+            "condition": "isEligible == true",
+            "isDefault": false
+          },
+          {
+            "id": "ed6b62eb-209b-4901-af8c-7bd19710f843",
+            "condition": "",
+            "isDefault": true
+          }
+        ]
+      },
+      "id": "7f39586c-eb0f-4985-bc9d-9a1777bd0b68",
+      "name": "Eligibility",
+      "position": {
+        "x": -20,
+        "y": 85
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "a613afa5-9332-4d09-b791-100a94933d56",
+            "key": "isEligible",
+            "value": "isEligible"
+          }
+        ],
+        "passThrough": false,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single"
+      },
+      "id": "cac4f9c0-68d3-4a52-abcf-8fc938164eee",
+      "name": "Ineligible",
+      "position": {
+        "x": 360,
+        "y": 155
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "ba9e3245-5e53-4a24-b055-dcb7e99a793f",
+      "sourceId": "1f154b7b-515a-423f-b071-cedcea98dc76",
+      "type": "edge",
+      "targetId": "4928680f-09ef-4564-b5a5-299b0357f2fa"
+    },
+    {
+      "id": "1ed3ce11-d994-4725-bf56-3885d7b1ebe6",
+      "sourceId": "8a444137-53eb-4319-83c1-6cddd3c90325",
+      "type": "edge",
+      "targetId": "700b80bf-7358-47ad-9caf-771db6a33bb3"
+    },
+    {
+      "id": "0c03aa53-6bba-47fc-8fca-011f40b44a48",
+      "sourceId": "7f39586c-eb0f-4985-bc9d-9a1777bd0b68",
+      "type": "edge",
+      "targetId": "8a444137-53eb-4319-83c1-6cddd3c90325",
+      "sourceHandle": "e5050bfa-1aca-4190-a1b9-516904b97279"
+    },
+    {
+      "id": "fb9e0e20-3c97-42b8-bcca-39238dd1dab4",
+      "sourceId": "4928680f-09ef-4564-b5a5-299b0357f2fa",
+      "type": "edge",
+      "targetId": "7f39586c-eb0f-4985-bc9d-9a1777bd0b68"
+    },
+    {
+      "id": "24082a0f-e492-4424-b6c8-4d042a176fd4",
+      "sourceId": "cac4f9c0-68d3-4a52-abcf-8fc938164eee",
+      "type": "edge",
+      "targetId": "700b80bf-7358-47ad-9caf-771db6a33bb3"
+    },
+    {
+      "id": "7b65feaf-5ee0-4155-84a2-94bbbaf27024",
+      "sourceId": "7f39586c-eb0f-4985-bc9d-9a1777bd0b68",
+      "type": "edge",
+      "targetId": "cac4f9c0-68d3-4a52-abcf-8fc938164eee",
+      "sourceHandle": "ed6b62eb-209b-4901-af8c-7bd19710f843"
+    }
+  ],
+  "contentType": "application/vnd.gorules.decision"
+}

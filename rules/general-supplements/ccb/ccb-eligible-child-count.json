@@ -134,17 +134,17 @@
           {
             "id": "a1665c95-c24b-4232-bfb7-4732f806b04d",
             "key": "childCountCCBEligible",
-            "value": "0 + 0"
+            "value": "0"
           },
           {
             "id": "6733d70e-d443-4191-84ec-7ed1a64ab1d6",
             "key": "childCountDeemedEligible",
-            "value": "0 + 0"
+            "value": "0"
           },
           {
             "id": "0497b26b-6caa-4878-b5cc-508f7e8d845b",
-            "key": "",
-            "value": ""
+            "key": "childCountCCBDataMatched",
+            "value": "0"
           }
         ]
       },
@@ -170,16 +170,17 @@
             "value": "monthOfYear(date(benefitMonth))"
           },
           {
-            "id": "84644af0-c783-4d3c-bcf2-4eb8766351e3",
-            "key": "markAsUsed",
-            "value": "dependentsList"
-          },
-          {
             "id": "3196a20c-26a7-49c3-8790-69712b6fa094",
             "key": "markAsUsed",
             "value": "benefitMonth"
+          },
+          {
+            "id": "d212e25e-bcaf-43c2-8de2-7cb85834d605",
+            "key": "markAsUsed",
+            "value": "dependentsList"
           }
-        ]
+        ],
+        "passThrough": false
       },
       "id": "052c60ea-55a7-4446-9995-08edf3e10c93",
       "name": "Format Benefit Month",
@@ -218,7 +219,7 @@
           {
             "id": "e1d25c91-2e44-4842-8d2f-987b51fd1b11",
             "key": "testingDeemed",
-            "value": "filter(dependentsListYearandMonth, (#.ageInMonths < 2 or (#.ageInYears >= 18 and #.ageInYears < 19) or (#.ageInYears >= 19 and #.inSchool == true)))"
+            "value": "filter(dependentsListYearandMonth, ((#.ageInMonths < 2 and #.ageInMonths >= 0) or (#.ageInYears >= 18 and #.ageInYears < 19) or (#.ageInYears >= 19 and #.inSchool == true)))"
           }
         ]
       },
@@ -266,12 +267,6 @@
       "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
     },
     {
-      "id": "e1a3c04e-25a1-40d7-9a56-bac0f204caa0",
-      "sourceId": "17119358-634b-4f74-b48b-d49d5163a0fc",
-      "type": "edge",
-      "targetId": "7c2595a1-56dd-4ce4-89b3-f652084ef761"
-    },
-    {
       "id": "0c3f2e62-fb43-4fa2-b615-bdb85db8bdc9",
       "sourceId": "7c2595a1-56dd-4ce4-89b3-f652084ef761",
       "type": "edge",
@@ -315,6 +310,12 @@
       "sourceId": "1580189a-4982-48b3-af20-dfb4f2d25cec",
       "type": "edge",
       "targetId": "6bacdcb2-46d2-424d-9b21-07514c587044"
+    },
+    {
+      "id": "2fb0b115-d4d3-467b-bd5e-7a43b7c86956",
+      "sourceId": "17119358-634b-4f74-b48b-d49d5163a0fc",
+      "type": "edge",
+      "targetId": "7c2595a1-56dd-4ce4-89b3-f652084ef761"
     }
   ]
 }

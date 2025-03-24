@@ -214,12 +214,12 @@
           {
             "id": "8261c9db-da6b-4dc3-96bc-eeac80b70380",
             "key": "testingCCBEligible",
-            "value": "filter(dependentsListYearandMonth, (#.ageInMonths >= 2 and #.ageInYears < 18))"
+            "value": "filter(dependentsListYearandMonth, (#.ageInMonths >= 2 and #.ageInMonths < 218))"
           },
           {
             "id": "e1d25c91-2e44-4842-8d2f-987b51fd1b11",
             "key": "testingDeemed",
-            "value": "filter(dependentsListYearandMonth, ((#.ageInMonths < 2 and #.ageInMonths >= 0) or (#.ageInYears >= 18 and #.ageInYears < 19) or (#.ageInYears >= 19 and #.inSchool == true)))"
+            "value": "filter(dependentsListYearandMonth, ((#.ageInMonths < 2 and #.ageInMonths >= 0) or (#.ageInMonths >= 218 and #.ageInYears < 19) or (#.ageInYears >= 19 and #.inSchool == true)))"
           }
         ]
       },

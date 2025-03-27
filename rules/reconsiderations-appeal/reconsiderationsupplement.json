@@ -6,7 +6,7 @@
       "name": "request",
       "position": {
         "x": -275,
-        "y": -60
+        "y": -50
       },
       "content": {
         "fields": [
@@ -49,6 +49,16 @@
             "description": "The type of assistance that an individual is currently eligible for based on the given information. (Hardship Assistance / Income or Disability Assistance) ",
             "dataType": "text-input",
             "validationCriteria": "[Hardship Assistance, Income or Disability Assistance]",
+            "validationType": "[=text]",
+            "childFields": []
+          },
+          {
+            "id": 169,
+            "field": "assistanceType",
+            "name": "Assistance Type",
+            "description": "Types of assistance provided, categorized for the purpose of determining reconsideration eligibility.",
+            "dataType": "text-input",
+            "validationCriteria": "Support/Shelter, Supplement - Eligible Recon, Supplement - Ineligible Recon",
             "validationType": "[=text]",
             "childFields": []
           }
@@ -115,6 +125,11 @@
             "id": "4c73dcb7-ca77-4f13-9928-c59caa151998",
             "field": "assistanceEligibilityType",
             "name": "Assistance Eligibility Type"
+          },
+          {
+            "id": "32aa98ea-1450-4db3-acc9-0b33b1e6b267",
+            "field": "assistanceType",
+            "name": "Assistance Type"
           }
         ],
         "outputs": [
@@ -131,17 +146,19 @@
             "09f4383c-9b7a-4017-8375-9fae747d957d": "true",
             "48f65fca-1512-4421-a9e6-aab23dbe8996": "$ != null and $ != undefined",
             "debe303a-238b-4f8b-9df9-cc44c03ca047": "",
-            "4c73dcb7-ca77-4f13-9928-c59caa151998": "!= \"Hardship Assistance\"",
+            "4c73dcb7-ca77-4f13-9928-c59caa151998": "\"Income or Disability Assistance\"",
+            "32aa98ea-1450-4db3-acc9-0b33b1e6b267": "\"Support/Shelter\" or \"Supplement - Eligible Recon\"",
             "4eeaa059-6987-428e-884a-fa522894b041": "true"
           },
           {
-            "_id": "a261cb70-1d9a-4bff-82ae-51599a25fe14",
-            "1a6bd37c-924f-461d-b968-b47d9a706ec4": "",
-            "09f4383c-9b7a-4017-8375-9fae747d957d": "",
-            "48f65fca-1512-4421-a9e6-aab23dbe8996": "",
+            "_id": "f79c4c0f-065a-4f2f-9df8-81c07c6852cd",
+            "1a6bd37c-924f-461d-b968-b47d9a706ec4": "true",
+            "09f4383c-9b7a-4017-8375-9fae747d957d": "true",
+            "48f65fca-1512-4421-a9e6-aab23dbe8996": "$ != null and $ != undefined",
             "debe303a-238b-4f8b-9df9-cc44c03ca047": "",
             "4c73dcb7-ca77-4f13-9928-c59caa151998": "\"Hardship Assistance\"",
-            "4eeaa059-6987-428e-884a-fa522894b041": "false"
+            "32aa98ea-1450-4db3-acc9-0b33b1e6b267": "\"Supplement - Eligible Recon\"",
+            "4eeaa059-6987-428e-884a-fa522894b041": "true"
           },
           {
             "_id": "62e84e31-df91-45a4-8def-05677e99da8e",
@@ -150,6 +167,7 @@
             "48f65fca-1512-4421-a9e6-aab23dbe8996": "",
             "debe303a-238b-4f8b-9df9-cc44c03ca047": "",
             "4c73dcb7-ca77-4f13-9928-c59caa151998": "",
+            "32aa98ea-1450-4db3-acc9-0b33b1e6b267": "",
             "4eeaa059-6987-428e-884a-fa522894b041": "false"
           },
           {
@@ -159,6 +177,7 @@
             "48f65fca-1512-4421-a9e6-aab23dbe8996": "",
             "debe303a-238b-4f8b-9df9-cc44c03ca047": "",
             "4c73dcb7-ca77-4f13-9928-c59caa151998": "",
+            "32aa98ea-1450-4db3-acc9-0b33b1e6b267": "",
             "4eeaa059-6987-428e-884a-fa522894b041": "false"
           },
           {
@@ -168,6 +187,17 @@
             "48f65fca-1512-4421-a9e6-aab23dbe8996": "$ == null or $ == undefined",
             "debe303a-238b-4f8b-9df9-cc44c03ca047": "",
             "4c73dcb7-ca77-4f13-9928-c59caa151998": "",
+            "32aa98ea-1450-4db3-acc9-0b33b1e6b267": "",
+            "4eeaa059-6987-428e-884a-fa522894b041": "false"
+          },
+          {
+            "_id": "cd7544fb-c8ab-490d-8809-3bace66ed6c8",
+            "1a6bd37c-924f-461d-b968-b47d9a706ec4": "",
+            "09f4383c-9b7a-4017-8375-9fae747d957d": "",
+            "48f65fca-1512-4421-a9e6-aab23dbe8996": "",
+            "debe303a-238b-4f8b-9df9-cc44c03ca047": "",
+            "4c73dcb7-ca77-4f13-9928-c59caa151998": "",
+            "32aa98ea-1450-4db3-acc9-0b33b1e6b267": "",
             "4eeaa059-6987-428e-884a-fa522894b041": "false"
           }
         ],
@@ -194,11 +224,6 @@
             "id": "75f0d6ad-6500-477d-b86f-c08c67006ff8",
             "key": "supplementAmount",
             "value": "supplementAmount"
-          },
-          {
-            "id": "17a3e17f-49b8-4a45-a7e1-0d2b3fa48848",
-            "key": "reason",
-            "value": "reason"
           }
         ]
       },
@@ -259,11 +284,19 @@
         "rules": [
           {
             "_id": "ee57ad47-4670-4f68-9fbb-52b28d4ab826",
-            "6d336550-87ed-4611-ba74-c2ef93b647cb": "",
+            "6d336550-87ed-4611-ba74-c2ef93b647cb": "!= null",
             "915165b9-886b-4cce-a6dc-18e303b0e360": "max([reducedAmount,0])",
             "960ee344-054c-4e5a-acdc-3e9530919f13": "true"
+          },
+          {
+            "_id": "13bda42e-0758-4b0d-9176-acaf0b11bf55",
+            "6d336550-87ed-4611-ba74-c2ef93b647cb": "",
+            "915165b9-886b-4cce-a6dc-18e303b0e360": "0",
+            "960ee344-054c-4e5a-acdc-3e9530919f13": "true"
           }
-        ]
+        ],
+        "passThorough": false,
+        "executionMode": "single"
       },
       "id": "3bd03981-0cdd-4c3b-988b-7c7b05a91b83",
       "name": "Supplement Calculation",

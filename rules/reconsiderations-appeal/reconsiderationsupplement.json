@@ -55,7 +55,7 @@
           {
             "id": 169,
             "field": "assistanceType",
-            "name": "Assistance Type",
+            "name": "Discontinued/Reduced Assistance Type",
             "description": "Types of assistance provided, categorized for the purpose of determining reconsideration eligibility.",
             "dataType": "text-input",
             "validationCriteria": "Support/Shelter, Supplement - Eligible Recon, Supplement - Ineligible Recon",

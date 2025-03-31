@@ -1,13 +1,12 @@
 {
-  "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
       "id": "4ac175b6-173f-4de6-b00c-42cf5dd9126d",
       "name": "request",
       "type": "inputNode",
       "position": {
-        "x": -270,
-        "y": 220
+        "x": -250,
+        "y": 215
       },
       "content": {
         "fields": [
@@ -30,6 +29,16 @@
             "validationCriteria": "0",
             "validationType": ">=",
             "childFields": []
+          },
+          {
+            "field": "childCountCCBDataMatched",
+            "name": "Count of children eligible for CCB with federal data match",
+            "id": 125,
+            "description": "A count of the children in a family unit where the federal benefit data report indicates that this dependent is counted in the calculation of federal benefits allocated to this family unit.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
           }
         ]
       }
@@ -39,8 +48,8 @@
       "name": "response",
       "type": "outputNode",
       "position": {
-        "x": 705,
-        "y": 285
+        "x": 625,
+        "y": 295
       },
       "content": {
         "fields": [
@@ -103,8 +112,8 @@
         "hitPolicy": "first"
       },
       "position": {
-        "x": 350,
-        "y": 170
+        "x": 335,
+        "y": 140
       }
     },
     {
@@ -115,7 +124,7 @@
         "statements": [
           {
             "id": "d40bbe27-1b36-4643-9985-b449e9e41f2d",
-            "condition": "childCountCCBEligible == 0"
+            "condition": "childCountCCBEligible == 0 or childCountCCBDataMatched == 0"
           },
           {
             "id": "06fa3548-072c-4cd6-a21b-b64a6dcbeb80",
@@ -136,41 +145,50 @@
         "rules": [
           {
             "_id": "401d7d19-de6d-4de4-82d8-94d784e4d641",
+            "5d56fc95-09c4-4afd-bff1-d97c96107d2b": "==1",
             "0178c364-6128-4136-9586-ac1c37d66ed0": "==1",
-            "271963d8-7658-4712-a055-52195159f881": "209.92",
-            "82b5adc3-473c-4da9-b18b-242932c60f18": "==1"
+            "82b5adc3-473c-4da9-b18b-242932c60f18": "",
+            "271963d8-7658-4712-a055-52195159f881": "209.92"
           },
           {
             "_id": "16f232c8-803d-49ee-8a09-31b09c1d203a",
+            "5d56fc95-09c4-4afd-bff1-d97c96107d2b": "==1",
             "0178c364-6128-4136-9586-ac1c37d66ed0": ">=2",
-            "271963d8-7658-4712-a055-52195159f881": "(209.92)+((childCountDeemedEligible-1)*199.75)",
-            "82b5adc3-473c-4da9-b18b-242932c60f18": "==1"
+            "82b5adc3-473c-4da9-b18b-242932c60f18": "",
+            "271963d8-7658-4712-a055-52195159f881": "(209.92)+((childCountDeemedEligible-1)*199.75)"
           },
           {
             "_id": "90e350c3-a8e0-42f6-9993-597cd961aea8",
+            "5d56fc95-09c4-4afd-bff1-d97c96107d2b": ">=2",
             "0178c364-6128-4136-9586-ac1c37d66ed0": ">=1",
-            "271963d8-7658-4712-a055-52195159f881": "((childCountDeemedEligible)*199.75)",
-            "82b5adc3-473c-4da9-b18b-242932c60f18": ">=2"
+            "82b5adc3-473c-4da9-b18b-242932c60f18": "",
+            "271963d8-7658-4712-a055-52195159f881": "((childCountDeemedEligible)*199.75)"
           },
           {
             "_id": "d810eeaa-18a7-4721-9070-218d4399db78",
+            "5d56fc95-09c4-4afd-bff1-d97c96107d2b": "",
             "0178c364-6128-4136-9586-ac1c37d66ed0": "",
-            "271963d8-7658-4712-a055-52195159f881": "0",
-            "82b5adc3-473c-4da9-b18b-242932c60f18": ""
+            "82b5adc3-473c-4da9-b18b-242932c60f18": "",
+            "271963d8-7658-4712-a055-52195159f881": "0"
           }
         ],
         "inputs": [
           {
-            "id": "82b5adc3-473c-4da9-b18b-242932c60f18",
-            "name": "childCountCCBEligible",
-            "type": "expression",
-            "field": "childCountCCBEligible"
+            "id": "5d56fc95-09c4-4afd-bff1-d97c96107d2b",
+            "field": "eligibleChildrenMatch",
+            "name": "Eligible Child Count"
           },
           {
             "id": "0178c364-6128-4136-9586-ac1c37d66ed0",
             "name": "childCountDeemedEligible",
             "type": "expression",
             "field": "childCountDeemedEligible"
+          },
+          {
+            "id": "82b5adc3-473c-4da9-b18b-242932c60f18",
+            "name": "childCountCCBEligible",
+            "type": "expression",
+            "field": "childCountCCBEligible"
           }
         ],
         "outputs": [
@@ -181,11 +199,80 @@
             "field": "monthlyCCBTopupInLieuAmount"
           }
         ],
-        "hitPolicy": "first"
+        "hitPolicy": "first",
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
-        "x": 360,
-        "y": 345
+        "x": 335,
+        "y": 550
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "2ac42bce-35df-4ef8-a444-faa6425ce4e4",
+            "key": "eligibleChildrenMatch",
+            "value": "childCountCCBEligible - childCountCCBDataMatched > 0 ? childCountCCBDataMatched : childCountCCBEligible"
+          }
+        ],
+        "passThrough": true,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single"
+      },
+      "id": "01337c88-c9ce-43a5-8164-bcaf75f7ff29",
+      "name": "Child Count Match",
+      "position": {
+        "x": 335,
+        "y": 445
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "If there are no CCB eligible dependents, support in lieu is calculated per the child benefit top-up supplement amounts."
+        }
+      },
+      "id": "2857e13f-8c00-48e7-a48a-366bc40bfe53",
+      "name": "Note",
+      "position": {
+        "x": 335,
+        "y": -30
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "If there are dependents who should be in receipt of CCB, the support-in-lieu counts deemed dependents following the CCB eligible children. "
+        }
+      },
+      "id": "6a182436-fcdf-4d08-99a3-54a6a3fbcc35",
+      "name": "Note",
+      "position": {
+        "x": 635,
+        "y": 440
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "Children who are not CCB Data Matched are ignored, as benefits would be issued separately with the Temporary Child Benefits Top-up Supplement"
+        }
+      },
+      "id": "b98f3d1d-29a4-4c07-b633-75dfe9d66dac",
+      "name": "Note",
+      "position": {
+        "x": 335,
+        "y": 245
       }
     }
   ],
@@ -210,17 +297,24 @@
       "targetId": "982aebae-fc23-40ca-ac93-a69764f09536"
     },
     {
-      "id": "a854ef7a-6733-4861-b638-2a5a19023790",
-      "type": "edge",
-      "sourceId": "776bdc61-07d9-45a2-86aa-0f1d45e997b1",
-      "targetId": "f91d6116-bc49-431e-8ca9-1a8d51f6f001",
-      "sourceHandle": "06fa3548-072c-4cd6-a21b-b64a6dcbeb80"
-    },
-    {
       "id": "2287a86c-63fa-4115-9f4e-edbd0d739227",
       "type": "edge",
       "sourceId": "f91d6116-bc49-431e-8ca9-1a8d51f6f001",
       "targetId": "982aebae-fc23-40ca-ac93-a69764f09536"
+    },
+    {
+      "id": "afb87bff-a310-411e-86b2-2ac069934c23",
+      "sourceId": "776bdc61-07d9-45a2-86aa-0f1d45e997b1",
+      "type": "edge",
+      "targetId": "01337c88-c9ce-43a5-8164-bcaf75f7ff29",
+      "sourceHandle": "06fa3548-072c-4cd6-a21b-b64a6dcbeb80"
+    },
+    {
+      "id": "ab8073ca-bb46-4f6d-b37b-3847874ea34a",
+      "sourceId": "01337c88-c9ce-43a5-8164-bcaf75f7ff29",
+      "type": "edge",
+      "targetId": "f91d6116-bc49-431e-8ca9-1a8d51f6f001"
     }
-  ]
+  ],
+  "contentType": "application/vnd.gorules.decision"
 }

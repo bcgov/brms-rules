@@ -1,4 +1,4 @@
-name: Trigger the Build and Deploy of BRM Backend
+name: Trigger the Deploy of BRM Backend
 
 on:
   push:
@@ -15,11 +15,11 @@ jobs:
         id: extract_branch
         run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
 
-      - name: Trigger workflow in another repo
+      - name: Trigger deploy workflow in brm-backend repo
         env:
           GITHUB_TOKEN: ${{ secrets.BRMS_API_ACCESS_TOKEN }}
           REPO: bcgov/brm-backend
-          WORKFLOW_ID: build-and-deploy.yml
+          WORKFLOW_ID: deploy.yml
           # This is the branch name we want to use of the brms backend
           # We want it to be the same as the branch we are building so they stay in sync
           BRANCH: ${{ env.BRANCH_NAME }}

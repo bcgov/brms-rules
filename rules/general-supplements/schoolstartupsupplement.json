@@ -97,6 +97,14 @@
             "validationCriteria": "0",
             "validationType": ">=",
             "childFields": []
+          },
+          {
+            "field": "reason",
+            "name": "Reason",
+            "id": 47,
+            "description": "The reason provided for a given decision.",
+            "dataType": "text-input",
+            "childFields": []
           }
         ]
       }
@@ -127,6 +135,11 @@
             "id": "bd790f69-6ef3-4f79-b372-e2a11a5d2770",
             "name": "isEligible",
             "field": "isEligible"
+          },
+          {
+            "id": "73605faf-aad0-4213-8fd9-51d8334ad0e1",
+            "field": "reason",
+            "name": "Reason"
           }
         ],
         "rules": [
@@ -136,23 +149,28 @@
             "ce6c9be1-9d14-4938-a540-256f623c9c03": "true",
             "b42dda88-d8f1-40e5-acb2-be1f870cae7f": "",
             "65e2e8e5-3532-4d49-861a-33dc0d379044": "",
-            "bd790f69-6ef3-4f79-b372-e2a11a5d2770": "true"
+            "bd790f69-6ef3-4f79-b372-e2a11a5d2770": "true",
+            "73605faf-aad0-4213-8fd9-51d8334ad0e1": ""
           },
           {
             "_id": "b095a1db-cfd9-4e27-bc5b-858de177f4d6",
             "ce6c9be1-9d14-4938-a540-256f623c9c03": "false",
             "b42dda88-d8f1-40e5-acb2-be1f870cae7f": "",
             "65e2e8e5-3532-4d49-861a-33dc0d379044": "",
-            "bd790f69-6ef3-4f79-b372-e2a11a5d2770": "false"
+            "bd790f69-6ef3-4f79-b372-e2a11a5d2770": "false",
+            "73605faf-aad0-4213-8fd9-51d8334ad0e1": "'Family Unit Not in Pay'"
           },
           {
             "_id": "95df6d51-13fe-4a84-96cb-026369ace8a2",
             "ce6c9be1-9d14-4938-a540-256f623c9c03": "",
             "b42dda88-d8f1-40e5-acb2-be1f870cae7f": "",
             "65e2e8e5-3532-4d49-861a-33dc0d379044": "",
-            "bd790f69-6ef3-4f79-b372-e2a11a5d2770": "false"
+            "bd790f69-6ef3-4f79-b372-e2a11a5d2770": "false",
+            "73605faf-aad0-4213-8fd9-51d8334ad0e1": ""
           }
-        ]
+        ],
+        "passThorough": false,
+        "executionMode": "single"
       },
       "id": "c7601f88-3a3d-46e1-8113-f1db6cb41e7e",
       "name": "Eligibility",
@@ -263,6 +281,11 @@
             "id": "1db9ef35-b495-4ac6-b645-fa096c3d3bc4",
             "field": "count12to18",
             "name": "Count of dependents 12 - 18 in school"
+          },
+          {
+            "id": "6a1febf8-4013-4906-83b2-084498a283f1",
+            "field": "isEligible",
+            "name": "Is Eligible"
           }
         ],
         "outputs": [
@@ -275,6 +298,11 @@
             "id": "2de55825-8575-4fc6-9f4f-963247fefb6b",
             "field": "isEligible",
             "name": "Is Eligible"
+          },
+          {
+            "id": "608cbb75-a777-47f3-9df1-89f5bce6b60b",
+            "field": "reason",
+            "name": "Reason"
           }
         ],
         "rules": [
@@ -282,24 +310,41 @@
             "_id": "8a887c5b-f2ec-48ae-9e3b-65b9bf5c02a0",
             "fd2b7646-0286-4a69-b0d2-748e1d47f0ac": "> 0",
             "1db9ef35-b495-4ac6-b645-fa096c3d3bc4": "",
+            "6a1febf8-4013-4906-83b2-084498a283f1": "",
             "19a2cb8c-79b6-4ece-8cc0-60d557574d6e": "(count5to11 * 120) + (count12to18 * 210)",
-            "2de55825-8575-4fc6-9f4f-963247fefb6b": "true"
+            "2de55825-8575-4fc6-9f4f-963247fefb6b": "true",
+            "608cbb75-a777-47f3-9df1-89f5bce6b60b": ""
           },
           {
             "_id": "5de1b4ae-51e9-4205-b6c1-24045f3e5f75",
             "fd2b7646-0286-4a69-b0d2-748e1d47f0ac": "",
             "1db9ef35-b495-4ac6-b645-fa096c3d3bc4": "> 0",
+            "6a1febf8-4013-4906-83b2-084498a283f1": "",
             "19a2cb8c-79b6-4ece-8cc0-60d557574d6e": "(count5to11 * 120) + (count12to18 * 210)",
-            "2de55825-8575-4fc6-9f4f-963247fefb6b": "true"
+            "2de55825-8575-4fc6-9f4f-963247fefb6b": "true",
+            "608cbb75-a777-47f3-9df1-89f5bce6b60b": ""
+          },
+          {
+            "_id": "951fe98a-517c-4be1-8343-77eb05006d18",
+            "fd2b7646-0286-4a69-b0d2-748e1d47f0ac": "",
+            "1db9ef35-b495-4ac6-b645-fa096c3d3bc4": "",
+            "6a1febf8-4013-4906-83b2-084498a283f1": "$ == false",
+            "19a2cb8c-79b6-4ece-8cc0-60d557574d6e": "",
+            "2de55825-8575-4fc6-9f4f-963247fefb6b": "false",
+            "608cbb75-a777-47f3-9df1-89f5bce6b60b": "reason"
           },
           {
             "_id": "5cf3f506-5fbb-4611-a36e-929fed79f8f1",
             "fd2b7646-0286-4a69-b0d2-748e1d47f0ac": "",
             "1db9ef35-b495-4ac6-b645-fa096c3d3bc4": "",
+            "6a1febf8-4013-4906-83b2-084498a283f1": "",
             "19a2cb8c-79b6-4ece-8cc0-60d557574d6e": "",
-            "2de55825-8575-4fc6-9f4f-963247fefb6b": "false"
+            "2de55825-8575-4fc6-9f4f-963247fefb6b": "false",
+            "608cbb75-a777-47f3-9df1-89f5bce6b60b": "'No eligible children'"
           }
-        ]
+        ],
+        "passThorough": false,
+        "executionMode": "single"
       },
       "id": "a073d661-58db-42fa-89f2-eaa3cad8d0be",
       "name": "Supplement Amounts",

@@ -48,4 +48,4 @@ jobs:
       - name: Run CSV tests
         env:
           CHANGED_RULES: ${{ steps.changed-files.outputs.all_changed_files }}
-        run: npm run test:rules ${{ env.CHANGED_RULES }}
+        run: npm run test:rules ${{ github.repository }} ${{ env.CHANGED_RULES }}

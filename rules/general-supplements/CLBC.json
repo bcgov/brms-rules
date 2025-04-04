@@ -1,0 +1,267 @@
+{
+  "nodes": [
+    {
+      "id": "138b7ca6-85a6-4f27-b7ff-69d619e2b362",
+      "type": "inputNode",
+      "position": {
+        "x": -430,
+        "y": 70
+      },
+      "name": "request",
+      "content": {
+        "fields": [
+          {
+            "id": 18,
+            "field": "familyUnitInPay",
+            "name": "Family Unit In Pay",
+            "description": "Family unit is in pay.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 55,
+            "field": "shelterCosts",
+            "name": "Shelter Costs",
+            "description": "Amount of shelter costs declared by a family unit.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "id": 132,
+            "field": "isCLBC",
+            "name": "Facility is CLBC",
+            "description": "The specified facility is a CLBC facility.",
+            "dataType": "true-false",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "430d94ce-ca8b-4141-a249-73aab3e989f7",
+      "type": "outputNode",
+      "position": {
+        "x": 695,
+        "y": 130
+      },
+      "name": "response",
+      "content": {
+        "fields": [
+          {
+            "id": 28,
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 58,
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "266080b4-4be8-4370-9b30-ba0407023b64",
+      "type": "decisionTableNode",
+      "position": {
+        "x": -45,
+        "y": -5
+      },
+      "name": "Eligibility",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "2b5bfae7-855a-402f-b857-40fc40de159b",
+            "name": "Family Unit In Pay",
+            "type": "expression",
+            "field": "familyUnitInPay"
+          },
+          {
+            "id": "181b4040-97ae-40ce-aa1c-d13bc45ff62a",
+            "type": "expression",
+            "field": "isCLBC",
+            "name": "isCLBC"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "eeff18df-0ba3-48e0-b2e8-22cfdb38c291",
+            "field": "isEligible",
+            "name": "isEligible",
+            "type": "expression"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "9b7025f7-959f-45ce-bb83-2ee125dd2983",
+            "2b5bfae7-855a-402f-b857-40fc40de159b": "true",
+            "181b4040-97ae-40ce-aa1c-d13bc45ff62a": "true",
+            "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "true"
+          },
+          {
+            "_id": "eb1d8bfc-40e4-4e3b-b767-86535b55857f",
+            "2b5bfae7-855a-402f-b857-40fc40de159b": "false",
+            "181b4040-97ae-40ce-aa1c-d13bc45ff62a": "",
+            "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "false"
+          },
+          {
+            "_id": "c022abe0-d515-4a0a-89fb-9e940942d96c",
+            "2b5bfae7-855a-402f-b857-40fc40de159b": "",
+            "181b4040-97ae-40ce-aa1c-d13bc45ff62a": "",
+            "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "false"
+          },
+          {
+            "_id": "56b1156f-7f4a-4358-bd93-443b2b102c08",
+            "2b5bfae7-855a-402f-b857-40fc40de159b": "",
+            "181b4040-97ae-40ce-aa1c-d13bc45ff62a": "false",
+            "eeff18df-0ba3-48e0-b2e8-22cfdb38c291": "false"
+          }
+        ]
+      }
+    },
+    {
+      "id": "41eea16c-6a1b-40d6-9de3-7b96621b4dcf",
+      "type": "decisionTableNode",
+      "position": {
+        "x": 320,
+        "y": 45
+      },
+      "name": "Supplement Calculation",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "9bd4737e-7a5b-4fec-80f0-70cc4f0bf41d",
+            "name": "Shelter Costs",
+            "type": "expression",
+            "field": "shelterCosts"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "8c39304f-1c32-4040-815e-52f109ea0b4c",
+            "type": "expression",
+            "field": "isEligible",
+            "name": "isEligible"
+          },
+          {
+            "id": "c2834fd4-eb8c-4d2b-9fc6-8f60e6af61da",
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "type": "expression"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "69716c73-1420-48dd-b240-0339dd408fd4",
+            "9bd4737e-7a5b-4fec-80f0-70cc4f0bf41d": "$ > 0",
+            "8c39304f-1c32-4040-815e-52f109ea0b4c": "true",
+            "c2834fd4-eb8c-4d2b-9fc6-8f60e6af61da": "841.13"
+          },
+          {
+            "_id": "7d252263-e644-40b3-8ce8-9676eb160eb9",
+            "9bd4737e-7a5b-4fec-80f0-70cc4f0bf41d": "$ <= 0",
+            "8c39304f-1c32-4040-815e-52f109ea0b4c": "false",
+            "c2834fd4-eb8c-4d2b-9fc6-8f60e6af61da": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "3bee5b5e-1b0f-48ef-ad49-9a582923be7c",
+      "type": "switchNode",
+      "position": {
+        "x": -40,
+        "y": 120
+      },
+      "name": "isEligible",
+      "content": {
+        "statements": [
+          {
+            "id": "b94d9aba-f836-4239-81b7-a8dfeea3a461",
+            "condition": "isEligible == true"
+          },
+          {
+            "id": "43d9ddf4-2427-4866-ad13-650caac187f1",
+            "condition": "isEligible == false"
+          }
+        ]
+      }
+    },
+    {
+      "id": "8e19570d-c370-44b3-9a58-32e9a5ee0523",
+      "type": "expressionNode",
+      "position": {
+        "x": 295,
+        "y": 290
+      },
+      "name": "InEligible",
+      "content": {
+        "expressions": [
+          {
+            "id": "7cb6f2dd-01af-487c-b020-b0fabcdaf14a",
+            "key": "isEligible",
+            "value": "isEligible"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "77fd5fd8-50db-4e8e-b515-185d6e22a4cb",
+      "sourceId": "138b7ca6-85a6-4f27-b7ff-69d619e2b362",
+      "type": "edge",
+      "targetId": "266080b4-4be8-4370-9b30-ba0407023b64"
+    },
+    {
+      "id": "259c4bd5-7d65-4b14-a115-900adf8110db",
+      "sourceId": "41eea16c-6a1b-40d6-9de3-7b96621b4dcf",
+      "type": "edge",
+      "targetId": "430d94ce-ca8b-4141-a249-73aab3e989f7"
+    },
+    {
+      "id": "eede4c41-255d-44b4-998a-5a30ab017604",
+      "sourceId": "266080b4-4be8-4370-9b30-ba0407023b64",
+      "type": "edge",
+      "targetId": "3bee5b5e-1b0f-48ef-ad49-9a582923be7c"
+    },
+    {
+      "id": "cec09e94-0eb2-4afa-8fb3-cd75fc54df2b",
+      "sourceId": "3bee5b5e-1b0f-48ef-ad49-9a582923be7c",
+      "type": "edge",
+      "targetId": "41eea16c-6a1b-40d6-9de3-7b96621b4dcf",
+      "sourceHandle": "b94d9aba-f836-4239-81b7-a8dfeea3a461"
+    },
+    {
+      "id": "8b1968bc-fd69-42e5-85e0-1b6003496f8b",
+      "sourceId": "138b7ca6-85a6-4f27-b7ff-69d619e2b362",
+      "type": "edge",
+      "targetId": "3bee5b5e-1b0f-48ef-ad49-9a582923be7c"
+    },
+    {
+      "id": "52776891-173b-4623-bd88-aa94fd45ed87",
+      "sourceId": "3bee5b5e-1b0f-48ef-ad49-9a582923be7c",
+      "type": "edge",
+      "targetId": "8e19570d-c370-44b3-9a58-32e9a5ee0523",
+      "sourceHandle": "43d9ddf4-2427-4866-ad13-650caac187f1"
+    },
+    {
+      "id": "30831127-11a1-46eb-899a-be6b4b9fca8a",
+      "sourceId": "8e19570d-c370-44b3-9a58-32e9a5ee0523",
+      "type": "edge",
+      "targetId": "430d94ce-ca8b-4141-a249-73aab3e989f7"
+    }
+  ]
+}

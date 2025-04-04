@@ -1,5 +1,4 @@
 {
-  "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
       "id": "8553e366-c7d6-4a22-93d5-54fd696960db",
@@ -87,7 +86,7 @@
           {
             "_id": "ca90e81f-7700-43a4-8349-00f09660eeb7",
             "51a27303-aa40-4f36-946b-d5f536a203b4": "",
-            "defe8c0a-a6ed-45cd-8b9d-005f83599275": "dateString(date(mnsEligibilityAssessmentDate) + duration('12months'))",
+            "defe8c0a-a6ed-45cd-8b9d-005f83599275": "split(dateString(startOf((date(mnsEligibilityAssessmentDate) + duration('12months')), 'day')), \" \")[0]",
             "83c28e9b-8575-415a-a9e9-8d1888c401aa": ""
           },
           {
@@ -96,7 +95,9 @@
             "defe8c0a-a6ed-45cd-8b9d-005f83599275": "",
             "83c28e9b-8575-415a-a9e9-8d1888c401aa": "'Person is not shown in the system as receiving MNS.'"
           }
-        ]
+        ],
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
         "x": 400,
@@ -117,5 +118,6 @@
       "sourceId": "14877138-a765-4efe-975c-9598963c13b5",
       "targetId": "7f8c40cc-c714-4610-8115-9d4af481d6ae"
     }
-  ]
+  ],
+  "contentType": "application/vnd.gorules.decision"
 }

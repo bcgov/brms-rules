@@ -35,6 +35,16 @@
                 "validationType": "[=text]"
               }
             ]
+          },
+          {
+            "id": 90,
+            "field": "currentDate",
+            "name": "The Current Date",
+            "description": "This is the current date.",
+            "dataType": "date",
+            "validationCriteria": "1950-01-01",
+            "validationType": ">=",
+            "childFields": []
           }
         ]
       }
@@ -86,7 +96,7 @@
       },
       "position": {
         "x": 505,
-        "y": 325
+        "y": 490
       }
     },
     {
@@ -116,6 +126,16 @@
             "validationCriteria": "0",
             "validationType": ">=",
             "childFields": []
+          },
+          {
+            "id": 65,
+            "field": "twoMonthEligibility",
+            "name": "Up To Two Months of Eligibility",
+            "description": "The date that a supplement is eligible to be issued until based on start date information provided.",
+            "dataType": "date",
+            "validationCriteria": "[2022-01-01, 2029-12-31]",
+            "validationType": "[date]",
+            "childFields": []
           }
         ]
       }
@@ -133,15 +153,16 @@
             "name": "Is eligible"
           },
           {
-            "id": "6852d88b-574f-44cc-82e0-c1a615e92917",
-            "field": "certification",
-            "name": "Count of certified guide or service dog teams",
+            "id": "f06e8fde-1d31-4ad1-ae94-f8cf6fe0fddf",
+            "field": "pending",
+            "name": "Count of dog teams with booked tests",
             "defaultValue": ""
           },
           {
-            "id": "91366a2b-67ab-48e9-bee2-aade9b22bee9",
-            "field": "retired",
-            "name": "Count of certified retired guide or service dog teams"
+            "id": "75dd5e22-fdc4-4ee2-b8dd-edbdba505b3a",
+            "field": "currentDate",
+            "name": "The Current Date",
+            "defaultValue": "date('now')"
           }
         ],
         "outputs": [
@@ -156,34 +177,32 @@
             "id": "cee807c7-281e-4f2d-be5a-7be83372701a",
             "field": "supplementAmount",
             "name": "Supplement Amount"
+          },
+          {
+            "id": "04206b13-1572-446c-9877-14c28923c332",
+            "field": "twoMonthEligibility",
+            "name": "Up To Two Months of Eligibility"
           }
         ],
         "rules": [
           {
-            "_id": "1468e0db-8faf-468d-b9f7-54b8bdc7ea5d",
-            "_description": "Proof of certification provided for all dog teams which includes: \nA valid Guide Dog and Service Dog Act (GDSDA) Certificate issued by the Registrar of Guide Dogs and Service Dogs OR\n A valid identification (ID) card issued by an accredited training school.",
+            "_id": "e07580c9-79a4-46ec-b36a-8b0e0c6e9750",
+            "_description": "A test booked with the Justice Institute for certification for a date within two months of requesting the supplement for at least one of the teams.",
             "2f0b7c62-ebb6-41db-a36e-2d6e83df5f3e": "true",
-            "6852d88b-574f-44cc-82e0-c1a615e92917": "$ > 0",
-            "91366a2b-67ab-48e9-bee2-aade9b22bee9": "",
+            "f06e8fde-1d31-4ad1-ae94-f8cf6fe0fddf": "$ > 0",
+            "75dd5e22-fdc4-4ee2-b8dd-edbdba505b3a": "",
             "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "",
-            "cee807c7-281e-4f2d-be5a-7be83372701a": "((certification + retired) * 95)"
-          },
-          {
-            "_id": "9e372954-b632-40f6-8e6e-d34190cf0a1c",
-            "_description": "Proof of certification provided for all retired dog teams which includes: \nA valid Guide Dog and Service Dog Act (GDSDA) Certificate issued by the Registrar of Guide Dogs and Service Dogs OR\n A valid identification (ID) card issued by an accredited training school.",
-            "2f0b7c62-ebb6-41db-a36e-2d6e83df5f3e": "true",
-            "6852d88b-574f-44cc-82e0-c1a615e92917": "",
-            "91366a2b-67ab-48e9-bee2-aade9b22bee9": "$ > 0",
-            "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "",
-            "cee807c7-281e-4f2d-be5a-7be83372701a": "((certification + retired) * 95)"
+            "cee807c7-281e-4f2d-be5a-7be83372701a": "pending * 95",
+            "04206b13-1572-446c-9877-14c28923c332": "twoMonthsDate"
           },
           {
             "_id": "6243ad86-e852-401b-a7af-c165256c02a7",
             "2f0b7c62-ebb6-41db-a36e-2d6e83df5f3e": "",
-            "6852d88b-574f-44cc-82e0-c1a615e92917": "",
-            "91366a2b-67ab-48e9-bee2-aade9b22bee9": "",
+            "f06e8fde-1d31-4ad1-ae94-f8cf6fe0fddf": "",
+            "75dd5e22-fdc4-4ee2-b8dd-edbdba505b3a": "",
             "e30caacc-23e4-40d8-b8f3-976bb5bc36f9": "false",
-            "cee807c7-281e-4f2d-be5a-7be83372701a": ""
+            "cee807c7-281e-4f2d-be5a-7be83372701a": "",
+            "04206b13-1572-446c-9877-14c28923c332": ""
           }
         ]
       },
@@ -197,22 +216,17 @@
       "content": {
         "expressions": [
           {
-            "id": "a580083f-8854-49b1-b5bc-317045c966d1",
-            "key": "retired",
-            "value": "count(guideOrServiceDogTeams, (#.guideDogDocumentationType == 'certifiedRetired'))"
-          },
-          {
-            "id": "eda9de75-be42-470e-8538-99aea2de0d00",
-            "key": "certification",
-            "value": "count(guideOrServiceDogTeams, (#.guideDogDocumentationType == 'certifiedActive'))"
+            "id": "7c89301f-b8a0-4f0b-99ef-a5c0bdd1bf08",
+            "key": "pending",
+            "value": "count(guideOrServiceDogTeams, (#.guideDogDocumentationType == 'testBooked'))"
           }
         ]
       },
       "id": "213b1bcf-0443-4de3-93b6-6644efd409ef",
       "name": "Dog Team Count",
       "position": {
-        "x": 495,
-        "y": 205
+        "x": 505,
+        "y": 390
       }
     },
     {
@@ -251,7 +265,7 @@
       "name": "Note",
       "position": {
         "x": 505,
-        "y": 35
+        "y": 220
       }
     },
     {
@@ -259,7 +273,7 @@
       "content": {
         "kind": "noteNode",
         "config": {
-          "value": "If base eligibility passes, and at least one dog team has documentation, they are eligible for the supplement. Amount is based on the number of dog teams with documentation."
+          "value": "If base eligibility passes, and at least one dog team has the correct documentation, they are eligible for the supplement. Amount is based on the number of dog teams with documentation."
         }
       },
       "id": "324df88e-49c9-4312-b525-5a322a1c38f6",
@@ -267,6 +281,48 @@
       "position": {
         "x": 775,
         "y": 20
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "Determines eligibility for a temporary supplement for guide dog teams where a test has been booked for a guide dog team, but they are not yet certified."
+        }
+      },
+      "id": "02c994c5-18b5-4cf1-a98c-c7da69844426",
+      "name": "Note",
+      "position": {
+        "x": -85,
+        "y": 0
+      }
+    },
+    {
+      "type": "functionNode",
+      "content": {
+        "source": "import dayjs from 'dayjs';\n\nexport const handler = async (input) => {\n  const currentDateString = (input.currentDate || new Date()).toString();\n  function addTwoMonths(dateString) {\n    return dayjs(dateString).add(2, 'month').format('YYYY-MM-DD');\n  }\n  const newDate = addTwoMonths(currentDateString);\n  console.log(newDate); // Outputs: '2024-12-24'\n  input.twoMonthsDate = newDate;\n  return input;\n};\n\n\n\n\n\n"
+      },
+      "id": "df68d89c-d3a2-423e-b82a-6ad40e2560fb",
+      "name": "2 Months Calculation",
+      "position": {
+        "x": 500,
+        "y": 105
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "A calculation of 2 months from the current or selected date is provided if any of the dog teams are 'test booked'. The date defaults to 2 months from the current date if no date given."
+        }
+      },
+      "id": "d2ceb295-3651-4ef7-ac6c-3553680c3347",
+      "name": "Note",
+      "position": {
+        "x": 505,
+        "y": -85
       }
     }
   ],
@@ -282,6 +338,12 @@
       "sourceId": "f97bbcc0-aae0-4844-82eb-bfa8a7a150e3",
       "type": "edge",
       "targetId": "3d92a47a-f301-4481-a287-84fa41daec6a"
+    },
+    {
+      "id": "8eaad5e1-7972-4e0f-b2f0-4dc160b229f5",
+      "sourceId": "213b1bcf-0443-4de3-93b6-6644efd409ef",
+      "type": "edge",
+      "targetId": "f97bbcc0-aae0-4844-82eb-bfa8a7a150e3"
     },
     {
       "id": "f30bf4a3-9120-4428-bea0-578425eed943",
@@ -317,8 +379,22 @@
       "targetId": "3d92a47a-f301-4481-a287-84fa41daec6a"
     },
     {
-      "id": "a4ecb6c2-7574-4917-b14b-789fafff2f22",
-      "sourceId": "213b1bcf-0443-4de3-93b6-6644efd409ef",
+      "id": "17ef2304-4a57-407f-9e2e-28362f939645",
+      "sourceId": "0e67fe53-6035-45bb-92dc-08b271322328",
+      "type": "edge",
+      "targetId": "f97bbcc0-aae0-4844-82eb-bfa8a7a150e3",
+      "sourceHandle": "6f4a4ff1-0135-4633-a148-d52d88dc6a39"
+    },
+    {
+      "id": "856d43fb-ecdd-4841-8f13-cbe01c7b1702",
+      "sourceId": "0e67fe53-6035-45bb-92dc-08b271322328",
+      "type": "edge",
+      "targetId": "df68d89c-d3a2-423e-b82a-6ad40e2560fb",
+      "sourceHandle": "6f4a4ff1-0135-4633-a148-d52d88dc6a39"
+    },
+    {
+      "id": "5dfd3d4a-0216-4d48-97eb-f3f779a4aa37",
+      "sourceId": "df68d89c-d3a2-423e-b82a-6ad40e2560fb",
       "type": "edge",
       "targetId": "f97bbcc0-aae0-4844-82eb-bfa8a7a150e3"
     }

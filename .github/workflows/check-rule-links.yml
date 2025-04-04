@@ -1,0 +1,27 @@
+# Checks if using unmergeable version in JSON file
+# This is done to make sure we don't accidentally merge a version of a rule that is not ready for dev/production
+name: Checks if using unmergeable linked version in JSON file
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+  pull_request:
+    branches:
+      - dev
+      - main
+
+jobs:
+  csv-rule-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for "?version=" in JSON files
+        run: |
+          if git grep -q '?version=' -- '*.json'; then
+            echo 'Found unmergeable linked version (usually inReview) in JSON files'
+            exit 1
+          fi

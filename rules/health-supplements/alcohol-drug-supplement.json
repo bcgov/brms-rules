@@ -182,7 +182,7 @@
           {
             "_id": "fd2ffff3-5254-4d6c-8e0c-387e28f8a5f5",
             "dc9b8f96-26c9-4625-a663-f520166f19c9": "",
-            "8f5c4ec9-b767-4ab6-a6c2-95e650eb3d74": "min([requestedAmount,500])",
+            "8f5c4ec9-b767-4ab6-a6c2-95e650eb3d74": "min([requestedAmount])",
             "239217c1-9a8a-48f1-a3d4-b5f47064b369": "true"
           }
         ],

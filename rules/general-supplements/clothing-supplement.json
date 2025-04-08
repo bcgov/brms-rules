@@ -5,8 +5,8 @@
       "id": "1fd86f8b-c51d-4d29-8949-42185acb1201",
       "name": "request",
       "position": {
-        "x": -75,
-        "y": 125
+        "x": -60,
+        "y": 50
       },
       "content": {
         "fields": [
@@ -56,6 +56,22 @@
             "name": "Requested amount for clothing supplement",
             "description": null,
             "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "id": 53,
+            "field": "isAlcoholOrDrugFacility",
+            "name": "Facility is an Alcohol Or Drug Care Facility",
+            "description": "The given facility is an alcohol or drug care facility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 172,
+            "field": "isContractedCLBCFacility",
+            "name": "Facility is a contracted CLBC facility",
+            "description": "The given facility is a contracted CLBC facility.",
+            "dataType": "true-false",
             "childFields": []
           }
         ]
@@ -121,6 +137,16 @@
             "id": "4123b6cd-c306-4aed-8801-7c8e0e0abcd7",
             "field": "isAlternateFundingAvailable",
             "name": "isAlternateFundingAvailable"
+          },
+          {
+            "id": "14dce453-e53c-4c30-ab64-c29fe89c08e2",
+            "field": "isAlcoholOrDrugFacility",
+            "name": "Facility is an Alcohol Or Drug Care Facility"
+          },
+          {
+            "id": "a1f36c77-354c-41d5-b7f5-66b14d480e59",
+            "field": "isContractedCLBCFacility",
+            "name": "Facility is a contracted CLBC facility"
           }
         ],
         "outputs": [
@@ -138,6 +164,8 @@
             "4bd6fa7d-e72a-4e53-bd13-8b6085094216": "true",
             "5cdaf4ea-cd47-4586-bc7d-7fae88827419": "false",
             "4123b6cd-c306-4aed-8801-7c8e0e0abcd7": "false",
+            "14dce453-e53c-4c30-ab64-c29fe89c08e2": "false",
+            "a1f36c77-354c-41d5-b7f5-66b14d480e59": "false",
             "bd7918f3-c5ef-48f0-b5bd-b9493f528980": "true"
           },
           {
@@ -147,6 +175,8 @@
             "4bd6fa7d-e72a-4e53-bd13-8b6085094216": "",
             "5cdaf4ea-cd47-4586-bc7d-7fae88827419": "",
             "4123b6cd-c306-4aed-8801-7c8e0e0abcd7": "",
+            "14dce453-e53c-4c30-ab64-c29fe89c08e2": "",
+            "a1f36c77-354c-41d5-b7f5-66b14d480e59": "",
             "bd7918f3-c5ef-48f0-b5bd-b9493f528980": "false"
           },
           {
@@ -156,6 +186,8 @@
             "4bd6fa7d-e72a-4e53-bd13-8b6085094216": "",
             "5cdaf4ea-cd47-4586-bc7d-7fae88827419": "",
             "4123b6cd-c306-4aed-8801-7c8e0e0abcd7": "",
+            "14dce453-e53c-4c30-ab64-c29fe89c08e2": "",
+            "a1f36c77-354c-41d5-b7f5-66b14d480e59": "",
             "bd7918f3-c5ef-48f0-b5bd-b9493f528980": "false"
           },
           {
@@ -165,6 +197,8 @@
             "4bd6fa7d-e72a-4e53-bd13-8b6085094216": "false",
             "5cdaf4ea-cd47-4586-bc7d-7fae88827419": "",
             "4123b6cd-c306-4aed-8801-7c8e0e0abcd7": "",
+            "14dce453-e53c-4c30-ab64-c29fe89c08e2": "",
+            "a1f36c77-354c-41d5-b7f5-66b14d480e59": "",
             "bd7918f3-c5ef-48f0-b5bd-b9493f528980": "false"
           },
           {
@@ -174,6 +208,8 @@
             "4bd6fa7d-e72a-4e53-bd13-8b6085094216": "",
             "5cdaf4ea-cd47-4586-bc7d-7fae88827419": "true",
             "4123b6cd-c306-4aed-8801-7c8e0e0abcd7": "",
+            "14dce453-e53c-4c30-ab64-c29fe89c08e2": "",
+            "a1f36c77-354c-41d5-b7f5-66b14d480e59": "",
             "bd7918f3-c5ef-48f0-b5bd-b9493f528980": "false"
           },
           {
@@ -183,6 +219,30 @@
             "4bd6fa7d-e72a-4e53-bd13-8b6085094216": "",
             "5cdaf4ea-cd47-4586-bc7d-7fae88827419": "",
             "4123b6cd-c306-4aed-8801-7c8e0e0abcd7": "true",
+            "14dce453-e53c-4c30-ab64-c29fe89c08e2": "",
+            "a1f36c77-354c-41d5-b7f5-66b14d480e59": "",
+            "bd7918f3-c5ef-48f0-b5bd-b9493f528980": "false"
+          },
+          {
+            "_id": "378974c5-7bb4-4b3c-8154-3937c3b850ce",
+            "6f4dc495-11db-4791-8608-a58df8ffb5b2": "",
+            "2e10d339-1431-4ccb-9a92-c476ecf4834a": "",
+            "4bd6fa7d-e72a-4e53-bd13-8b6085094216": "",
+            "5cdaf4ea-cd47-4586-bc7d-7fae88827419": "",
+            "4123b6cd-c306-4aed-8801-7c8e0e0abcd7": "",
+            "14dce453-e53c-4c30-ab64-c29fe89c08e2": "true",
+            "a1f36c77-354c-41d5-b7f5-66b14d480e59": "",
+            "bd7918f3-c5ef-48f0-b5bd-b9493f528980": "false"
+          },
+          {
+            "_id": "b19696b5-cd78-44ec-8570-5e751772919d",
+            "6f4dc495-11db-4791-8608-a58df8ffb5b2": "",
+            "2e10d339-1431-4ccb-9a92-c476ecf4834a": "",
+            "4bd6fa7d-e72a-4e53-bd13-8b6085094216": "",
+            "5cdaf4ea-cd47-4586-bc7d-7fae88827419": "",
+            "4123b6cd-c306-4aed-8801-7c8e0e0abcd7": "",
+            "14dce453-e53c-4c30-ab64-c29fe89c08e2": "",
+            "a1f36c77-354c-41d5-b7f5-66b14d480e59": "true",
             "bd7918f3-c5ef-48f0-b5bd-b9493f528980": "false"
           }
         ],

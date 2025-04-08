@@ -67,10 +67,10 @@
             "childFields": []
           },
           {
-            "id": 172,
-            "field": "isContractedCLBCFacility",
-            "name": "Facility is a contracted CLBC facility",
-            "description": "The given facility is a contracted CLBC facility.",
+            "id": 132,
+            "field": "isCLBC",
+            "name": "Facility is CLBC",
+            "description": "The specified facility is a CLBC facility.",
             "dataType": "true-false",
             "childFields": []
           }
@@ -145,8 +145,8 @@
           },
           {
             "id": "a1f36c77-354c-41d5-b7f5-66b14d480e59",
-            "field": "isContractedCLBCFacility",
-            "name": "Facility is a contracted CLBC facility"
+            "field": "isCLBC",
+            "name": "Facility is CLBC"
           }
         ],
         "outputs": [

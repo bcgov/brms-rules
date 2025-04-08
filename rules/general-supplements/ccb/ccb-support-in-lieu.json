@@ -81,6 +81,11 @@
             "_id": "d9f349f8-64b5-4bd0-b8c1-624b36c9bf66",
             "19bc3c42-ee62-43b3-8f1c-98934898325a": ">=3",
             "d7df20fc-6a16-45f6-80ef-75ccff32cf52": "(237.33+209.92)+((childCountDeemedEligible-2)*199.75)"
+          },
+          {
+            "_id": "62dc81a9-514e-43fa-94d1-ff552a8b16b4",
+            "19bc3c42-ee62-43b3-8f1c-98934898325a": "",
+            "d7df20fc-6a16-45f6-80ef-75ccff32cf52": "0"
           }
         ],
         "inputs": [
@@ -99,7 +104,9 @@
             "field": "monthlyCCBTopupInLieuAmount"
           }
         ],
-        "hitPolicy": "first"
+        "hitPolicy": "first",
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
         "x": 335,
@@ -114,7 +121,7 @@
         "statements": [
           {
             "id": "d40bbe27-1b36-4643-9985-b449e9e41f2d",
-            "condition": "childCountCCBEligible <= 0"
+            "condition": "undefined in [childCountCCBEligible] or childCountCCBEligible <= 0"
           },
           {
             "id": "f9b4006f-cc71-4015-8489-ca89cd57cf8e",

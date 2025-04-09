@@ -1,13 +1,12 @@
 {
-  "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
       "id": "5b19498f-574a-457a-bc86-9ee9e017321c",
       "name": "request",
       "type": "inputNode",
       "position": {
-        "x": 15,
-        "y": 195
+        "x": 55,
+        "y": 165
       },
       "content": {
         "fields": [
@@ -30,6 +29,16 @@
             "validationCriteria": "0",
             "validationType": ">=",
             "childFields": []
+          },
+          {
+            "field": "childCountCCBDataMatched",
+            "name": "Count of children eligible for CCB with federal data match",
+            "id": 125,
+            "description": "A count of the children in a family unit where the federal benefit data report indicates that this dependent is counted in the calculation of federal benefits allocated to this family unit.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
           }
         ]
       }
@@ -39,8 +48,8 @@
       "name": "response",
       "type": "outputNode",
       "position": {
-        "x": 1580,
-        "y": 205
+        "x": 1385,
+        "y": 160
       },
       "content": {
         "fields": [
@@ -65,18 +74,21 @@
         "rules": [
           {
             "_id": "af650458-501f-44f8-99df-4e7da51c9927",
-            "04e66a8e-900e-40c2-9760-0c62db6c04ce": "==1",
+            "04e66a8e-900e-40c2-9760-0c62db6c04ce": "",
+            "4a458055-9f5e-475c-840f-ed729ef31cee": "$ == 1",
             "24aa41f7-74a7-47be-a006-951759307f90": "237.33*12"
           },
           {
             "_id": "3e9d5c6d-b74e-4a4e-a6a3-24f109878bc8",
-            "04e66a8e-900e-40c2-9760-0c62db6c04ce": "==2",
+            "04e66a8e-900e-40c2-9760-0c62db6c04ce": "",
+            "4a458055-9f5e-475c-840f-ed729ef31cee": "$ == 2",
             "24aa41f7-74a7-47be-a006-951759307f90": "(237.33 + 209.92 )*12"
           },
           {
             "_id": "0b0e57cb-c304-43ea-a247-6d7621cee10d",
-            "04e66a8e-900e-40c2-9760-0c62db6c04ce": ">=3",
-            "24aa41f7-74a7-47be-a006-951759307f90": "(237.33 + 209.92 + ((childCountCCBEligible-2)*199.75)) * 12"
+            "04e66a8e-900e-40c2-9760-0c62db6c04ce": "",
+            "4a458055-9f5e-475c-840f-ed729ef31cee": "$ >= 3",
+            "24aa41f7-74a7-47be-a006-951759307f90": "(237.33 + 209.92 + ((eligibleChildrenMatch-2)*199.75)) * 12"
           }
         ],
         "inputs": [
@@ -85,6 +97,11 @@
             "name": "Number of Children Eligible for CCB",
             "type": "expression",
             "field": "childCountCCBEligible"
+          },
+          {
+            "id": "4a458055-9f5e-475c-840f-ed729ef31cee",
+            "field": "eligibleChildrenMatch",
+            "name": "Count of eligible Children"
           }
         ],
         "outputs": [
@@ -95,11 +112,13 @@
             "field": "baseAmountChild"
           }
         ],
-        "hitPolicy": "first"
+        "hitPolicy": "first",
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
-        "x": 370,
-        "y": 95
+        "x": 645,
+        "y": 125
       }
     },
     {
@@ -139,7 +158,7 @@
       },
       "position": {
         "x": 360,
-        "y": 300
+        "y": 240
       }
     },
     {
@@ -150,18 +169,18 @@
         "rules": [
           {
             "_id": "7a828756-23d0-47b1-a791-b2f318fbcc44",
-            "53b4001b-975e-41fe-bf9b-d7b2554a29f6": "remainingFamilyNetIncome*0.122",
-            "7057b964-bfcd-42cd-adeb-aa7143899085": "==1"
+            "7057b964-bfcd-42cd-adeb-aa7143899085": "==1",
+            "53b4001b-975e-41fe-bf9b-d7b2554a29f6": "remainingFamilyNetIncome*0.122"
           },
           {
             "_id": "afb337cb-4c3b-4e3c-85e1-f8fbbab43b55",
-            "53b4001b-975e-41fe-bf9b-d7b2554a29f6": "0+(remainingFamilyNetIncome*0.230)",
-            "7057b964-bfcd-42cd-adeb-aa7143899085": "==2"
+            "7057b964-bfcd-42cd-adeb-aa7143899085": "==2",
+            "53b4001b-975e-41fe-bf9b-d7b2554a29f6": "remainingFamilyNetIncome*0.230"
           },
           {
             "_id": "9b420ae5-5b16-48b1-b8d5-1c8083f90540",
-            "53b4001b-975e-41fe-bf9b-d7b2554a29f6": "0+(remainingFamilyNetIncome*0.333)",
-            "7057b964-bfcd-42cd-adeb-aa7143899085": ">=3"
+            "7057b964-bfcd-42cd-adeb-aa7143899085": ">=3",
+            "53b4001b-975e-41fe-bf9b-d7b2554a29f6": "remainingFamilyNetIncome*0.333"
           }
         ],
         "inputs": [
@@ -169,7 +188,7 @@
             "id": "7057b964-bfcd-42cd-adeb-aa7143899085",
             "name": "Count of Children Eligible For CCB",
             "type": "expression",
-            "field": "childCountCCBEligible"
+            "field": "eligibleChildrenMatch"
           }
         ],
         "outputs": [
@@ -180,10 +199,12 @@
             "field": "percentageDeduction"
           }
         ],
-        "hitPolicy": "first"
+        "hitPolicy": "first",
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
-        "x": 685,
+        "x": 645,
         "y": 205
       }
     },
@@ -223,7 +244,7 @@
         "hitPolicy": "first"
       },
       "position": {
-        "x": 960,
+        "x": 895,
         "y": 160
       }
     },
@@ -241,6 +262,11 @@
           {
             "_id": "70aa88a3-cea7-4ab5-b637-3dc5b1f5e1d1",
             "327608c7-2598-4a88-aa6f-243bf9e189d9": "<=0",
+            "6cc07735-a0f3-4601-b62a-856576d115ae": "0"
+          },
+          {
+            "_id": "6c001859-78b4-44af-acab-7f5e03a9c28d",
+            "327608c7-2598-4a88-aa6f-243bf9e189d9": "",
             "6cc07735-a0f3-4601-b62a-856576d115ae": "0"
           }
         ],
@@ -260,21 +286,54 @@
             "field": "monthlyChildBenefitTopupAmount"
           }
         ],
-        "hitPolicy": "first"
+        "hitPolicy": "first",
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
-        "x": 1250,
-        "y": 200
+        "x": 1140,
+        "y": 160
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "8288cec6-55c4-47a8-ba1e-2514800dce63",
+            "key": "eligibleChildrenMatch",
+            "value": "childCountCCBEligible - childCountCCBDataMatched > 0 ? childCountCCBDataMatched : childCountCCBEligible"
+          }
+        ],
+        "passThrough": true,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single"
+      },
+      "id": "d2b88899-e8bd-495d-a7e3-ee476944e8b4",
+      "name": "Eligible Children Match",
+      "position": {
+        "x": 360,
+        "y": 165
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "Formula per the original NCBS Calculation currently in use applied to the current Child Top-Up Supplement rates as of March 2025"
+        }
+      },
+      "id": "70a792eb-8071-4521-82da-d450a5f3087a",
+      "name": "Note",
+      "position": {
+        "x": 890,
+        "y": 245
       }
     }
   ],
   "edges": [
-    {
-      "id": "08d28295-81a0-4aab-bda2-86bb436424c3",
-      "type": "edge",
-      "sourceId": "5b19498f-574a-457a-bc86-9ee9e017321c",
-      "targetId": "5ba65cea-5a47-4c86-bac4-57721678cf8a"
-    },
     {
       "id": "15f5b7fb-9fcb-46de-a8ce-397382d18522",
       "type": "edge",
@@ -285,12 +344,6 @@
       "id": "865a6f7f-ce8e-449d-8980-a9eab635f617",
       "type": "edge",
       "sourceId": "e415fdce-c7e2-4e57-8bf1-1407a60a8a5c",
-      "targetId": "43718020-0694-4fa7-a9ad-e4f21c91672a"
-    },
-    {
-      "id": "a9bc0ef4-c6f1-4f6c-98a8-f9c11ba30696",
-      "type": "edge",
-      "sourceId": "5b19498f-574a-457a-bc86-9ee9e017321c",
       "targetId": "43718020-0694-4fa7-a9ad-e4f21c91672a"
     },
     {
@@ -316,6 +369,25 @@
       "type": "edge",
       "sourceId": "f1918cde-f801-465a-a355-0c0a3ae9c4c6",
       "targetId": "d41af8a8-e440-420d-9332-836023903fdb"
+    },
+    {
+      "id": "ec072f0f-0e51-4a07-9fee-fdcfbbac1f64",
+      "sourceId": "5b19498f-574a-457a-bc86-9ee9e017321c",
+      "type": "edge",
+      "targetId": "d2b88899-e8bd-495d-a7e3-ee476944e8b4"
+    },
+    {
+      "id": "932be2b8-626d-4ead-b2d0-ab0c965ccf71",
+      "sourceId": "d2b88899-e8bd-495d-a7e3-ee476944e8b4",
+      "type": "edge",
+      "targetId": "43718020-0694-4fa7-a9ad-e4f21c91672a"
+    },
+    {
+      "id": "b40ddf1d-08ed-4bc1-bdf5-4b8ada8ca089",
+      "sourceId": "d2b88899-e8bd-495d-a7e3-ee476944e8b4",
+      "type": "edge",
+      "targetId": "5ba65cea-5a47-4c86-bac4-57721678cf8a"
     }
-  ]
+  ],
+  "contentType": "application/vnd.gorules.decision"
 }

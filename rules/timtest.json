@@ -1,0 +1,69 @@
+{
+  "nodes": [
+    {
+      "type": "inputNode",
+      "content": {
+        "fields": [
+          {
+            "field": "writtenConfirmationProvided",
+            "name": "Written Confirmation Provided"
+          }
+        ]
+      },
+      "id": "4950a9a6-47a4-44ef-9f46-09fbb171a4d1",
+      "name": "request",
+      "position": {
+        "x": 215,
+        "y": 195
+      }
+    },
+    {
+      "type": "outputNode",
+      "content": {
+        "fields": [
+          {
+            "field": "",
+            "name": ""
+          }
+        ]
+      },
+      "id": "2eadfd15-cc46-4212-b67a-5b80deb9fd7b",
+      "name": "response",
+      "position": {
+        "x": 710,
+        "y": 195
+      }
+    },
+    {
+      "type": "decisionNode",
+      "content": {
+        "key": "general-supplements/pet-deposit.json?version=inReview",
+        "passThrough": false,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single"
+      },
+      "id": "6104654c-339d-4d9c-aa6c-bae25cd58287",
+      "name": "Linked Rule",
+      "position": {
+        "x": 420,
+        "y": 65
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "8294f209-f6d2-4515-9a13-6b0d9794efab",
+      "sourceId": "4950a9a6-47a4-44ef-9f46-09fbb171a4d1",
+      "type": "edge",
+      "targetId": "6104654c-339d-4d9c-aa6c-bae25cd58287"
+    },
+    {
+      "id": "4c117ff9-232c-4e25-ab7d-e7f1e9d646b6",
+      "sourceId": "6104654c-339d-4d9c-aa6c-bae25cd58287",
+      "type": "edge",
+      "targetId": "2eadfd15-cc46-4212-b67a-5b80deb9fd7b"
+    }
+  ],
+  "contentType": "application/vnd.gorules.decision"
+}

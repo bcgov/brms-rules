@@ -141,7 +141,7 @@
       },
       "name": "Shelter Amount",
       "content": {
-        "key": "support-shelter/shelter.json?version=inReview"
+        "key": "support-shelter/shelter.json"
       }
     },
     {
@@ -153,7 +153,7 @@
       },
       "name": "IA Support",
       "content": {
-        "key": "support-shelter/IASupport.json?version=inReview"
+        "key": "support-shelter/IASupport.json"
       }
     },
     {
@@ -165,7 +165,7 @@
       },
       "name": "DA Support",
       "content": {
-        "key": "support-shelter/da-support.json?version=inReview"
+        "key": "support-shelter/da-support.json"
       }
     },
     {

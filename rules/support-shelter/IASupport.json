@@ -1,5 +1,4 @@
 {
-  "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
       "id": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
@@ -66,7 +65,7 @@
         "statements": [
           {
             "id": "371816d5-dfad-494e-af27-f68367b8a574",
-            "condition": "applicant2age != null"
+            "condition": "person2age != null"
           },
           {
             "id": "71d825d5-b9e2-45a6-b106-4cbe576f379a",
@@ -162,8 +161,17 @@
             "564db848-f951-461f-b572-0b14f4499e05": "true",
             "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c": "> 1",
             "aed03151-e8ba-4284-b360-29b70f07a573": "760"
+          },
+          {
+            "_id": "308e2396-64f0-409f-beb5-f9b4a40a1f37",
+            "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": "",
+            "564db848-f951-461f-b572-0b14f4499e05": "",
+            "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c": "",
+            "aed03151-e8ba-4284-b360-29b70f07a573": "0"
           }
-        ]
+        ],
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
         "x": 820,
@@ -387,9 +395,11 @@
             "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "",
             "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "",
             "e0163cbe-f048-41de-b8f9-4f902257c6ac": "",
-            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": ""
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "0"
           }
-        ]
+        ],
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
         "x": 780,
@@ -418,12 +428,6 @@
       "targetId": "87a78f50-78f3-4ed8-9368-bcbeb110516d"
     },
     {
-      "id": "d688ef06-de14-422e-a1ce-623ba2555574",
-      "type": "edge",
-      "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
-      "targetId": "42de2c3f-f9c0-4acf-93bd-f06a3adf5ef2"
-    },
-    {
       "id": "26aafec1-d88f-4144-8f2c-14711851f18b",
       "type": "edge",
       "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
@@ -442,12 +446,7 @@
       "sourceId": "95a8fd76-0915-48d9-b716-11577923dd7b",
       "targetId": "42de2c3f-f9c0-4acf-93bd-f06a3adf5ef2",
       "sourceHandle": "71d825d5-b9e2-45a6-b106-4cbe576f379a"
-    },
-    {
-      "id": "7b0e9066-0fe9-4317-bf28-2946f94985de",
-      "type": "edge",
-      "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
-      "targetId": "464e51e5-4ce2-45a4-b3b0-7dbd7c87d93e"
     }
-  ]
+  ],
+  "contentType": "application/vnd.gorules.decision"
 }

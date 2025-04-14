@@ -1,5 +1,4 @@
 {
-  "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
       "id": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
@@ -183,6 +182,11 @@
             "_description": "",
             "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1140 + (50*(familyUnitSize-10))",
             "f60aecf1-41b4-46cb-be41-da2a321eace7": ">= 11"
+          },
+          {
+            "_id": "489fc557-84b6-4691-8ef9-8fb0dbf4f152",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "0"
           }
         ],
         "inputs": [
@@ -201,7 +205,9 @@
             "field": "maximumShelterAmount"
           }
         ],
-        "hitPolicy": "first"
+        "hitPolicy": "first",
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
         "x": 320,
@@ -279,6 +285,11 @@
             "_description": "",
             "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "375 + (25*(familyUnitSize-10))",
             "f60aecf1-41b4-46cb-be41-da2a321eace7": ">= 11"
+          },
+          {
+            "_id": "afacb6ce-c0e0-45a0-a875-f09b99af9b12",
+            "f60aecf1-41b4-46cb-be41-da2a321eace7": "",
+            "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "0"
           }
         ],
         "inputs": [
@@ -297,7 +308,9 @@
             "field": "minimumShelterAmount"
           }
         ],
-        "hitPolicy": "first"
+        "hitPolicy": "first",
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
         "x": 320,
@@ -577,5 +590,6 @@
       "sourceId": "0ef9b348-b509-4ccd-abf5-d3eb5f97b0d6",
       "targetId": "95a8fd76-0915-48d9-b716-11577923dd7b"
     }
-  ]
+  ],
+  "contentType": "application/vnd.gorules.decision"
 }

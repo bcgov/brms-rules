@@ -65,7 +65,7 @@
         "statements": [
           {
             "id": "371816d5-dfad-494e-af27-f68367b8a574",
-            "condition": "person2age != null"
+            "condition": "person2age != null and familyUnitSize >= 2"
           },
           {
             "id": "71d825d5-b9e2-45a6-b106-4cbe576f379a",

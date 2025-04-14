@@ -65,7 +65,7 @@
         "statements": [
           {
             "id": "371816d5-dfad-494e-af27-f68367b8a574",
-            "condition": "person2age != null"
+            "condition": "person2age != null and familyUnitSize >= 2"
           },
           {
             "id": "71d825d5-b9e2-45a6-b106-4cbe576f379a",
@@ -118,7 +118,7 @@
             "_id": "1e20c7a4-e759-4f2e-ae7b-03b409963a6e",
             "_description": "A: Employable singles under 65 years of age.\n",
             "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": "< 65",
-            "564db848-f951-461f-b572-0b14f4499e05": "false",
+            "564db848-f951-461f-b572-0b14f4499e05": "false or null",
             "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c": "== 1",
             "aed03151-e8ba-4284-b360-29b70f07a573": "560"
           },
@@ -134,7 +134,7 @@
             "_id": "553c0645-0282-429a-b473-9d09a1886798",
             "_description": "C: Employable one-parent families where the parent is under 65.",
             "eae2f93a-2685-4bfa-b8c0-9efbf0e254ca": "< 65",
-            "564db848-f951-461f-b572-0b14f4499e05": "false",
+            "564db848-f951-461f-b572-0b14f4499e05": "false or null",
             "d2d8ee7f-7eb0-4576-9737-5376bdb9e48c": "> 1",
             "aed03151-e8ba-4284-b360-29b70f07a573": "710"
           },
@@ -252,9 +252,9 @@
             "_id": "1f0000ea-9710-4dd9-a8aa-129bd8091ebb",
             "_description": "A: Employable couple where all adults are under 65 years of age.",
             "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65",
-            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "false",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "false or null",
             "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65",
-            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false or null",
             "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
             "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "955"
           },
@@ -262,9 +262,9 @@
             "_id": "095a879b-4eee-4957-bd00-bf4edea34c4a",
             "_description": "A: Employable two-parent family where all adults are under 65 years of age. ",
             "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65",
-            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "false",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "false or null",
             "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65",
-            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false or null",
             "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",
             "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1055"
           },
@@ -354,7 +354,7 @@
             "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65",
             "2228d8e9-e32a-47f2-8905-dcd24315fb44": "true",
             "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65",
-            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false or null",
             "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
             "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1005"
           },
@@ -362,7 +362,7 @@
             "_id": "ed31394e-2ee4-4b2d-a735-29810a38571d",
             "_description": "H: Couples where one adult meets the PPMB criteria and all are under 65. ",
             "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65",
-            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "false",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "false or null",
             "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "",
             "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "true",
             "e0163cbe-f048-41de-b8f9-4f902257c6ac": "== 2",
@@ -374,7 +374,7 @@
             "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65",
             "2228d8e9-e32a-47f2-8905-dcd24315fb44": "true",
             "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65",
-            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false",
+            "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "false or null",
             "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",
             "20f8d6b0-0f96-4f1a-9547-24c947b7b5c6": "1105"
           },
@@ -382,7 +382,7 @@
             "_id": "70024b9c-874b-4f96-82d4-ec8b68cca2c3",
             "_description": "H: Two-parent families where one adult meets the PPMB criteria and all are under 65. ",
             "f60aecf1-41b4-46cb-be41-da2a321eace7": "< 65\t",
-            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "false",
+            "2228d8e9-e32a-47f2-8905-dcd24315fb44": "false or null",
             "8abc2014-5c23-42a9-9ba7-0b106e9158d2": "< 65\t",
             "b816ade1-bef2-42de-9d6f-4c389b8c16a5": "true",
             "e0163cbe-f048-41de-b8f9-4f902257c6ac": "> 2",

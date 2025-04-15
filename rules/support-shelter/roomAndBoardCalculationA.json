@@ -1,13 +1,12 @@
 {
-  "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
       "id": "f1eb4300-0831-48d8-9be4-6e5a3ddee346",
       "name": "request",
       "type": "inputNode",
       "position": {
-        "x": 10,
-        "y": 235
+        "x": -5,
+        "y": 240
       },
       "content": {
         "fields": [
@@ -152,13 +151,15 @@
             "dcfb8186-ad11-4974-a114-04f019bb9c42": "",
             "3a9b96c6-215a-405d-85e4-feba8354dd54": "",
             "90ad7a83-831e-471d-9280-001b00a15cc3": "",
-            "4dcce982-347d-4e04-862b-dd850f43ce5d": ""
+            "4dcce982-347d-4e04-862b-dd850f43ce5d": "0"
           }
-        ]
+        ],
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
-        "x": 280,
-        "y": 150
+        "x": 285,
+        "y": 160
       }
     },
     {
@@ -184,6 +185,12 @@
             "a033bce8-e5a7-498d-808c-1495646eccaa": "true",
             "c7633900-0045-40fe-99fd-ad8b2e7e6d00": "127*2",
             "d3e396b5-3811-4c5f-b5ab-08d0bc11d559": "true"
+          },
+          {
+            "_id": "2735403f-ee06-49a1-80d1-612a67f2989a",
+            "a033bce8-e5a7-498d-808c-1495646eccaa": "",
+            "d3e396b5-3811-4c5f-b5ab-08d0bc11d559": "",
+            "c7633900-0045-40fe-99fd-ad8b2e7e6d00": "0"
           }
         ],
         "inputs": [
@@ -208,11 +215,13 @@
             "field": "pwdAmount"
           }
         ],
-        "hitPolicy": "first"
+        "hitPolicy": "first",
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
-        "x": 275,
-        "y": 290
+        "x": 285,
+        "y": 320
       }
     },
     {
@@ -238,7 +247,8 @@
             "id": "4eeec7e4-d3c2-4293-9691-d4d5fb0c0b80",
             "name": "Confirmed Shelter Costs",
             "type": "expression",
-            "field": "shelterCosts"
+            "field": "shelterCosts",
+            "defaultValue": "0"
           }
         ],
         "outputs": [
@@ -255,13 +265,15 @@
             "7ded162c-6a47-4638-986d-a90ef31d7ebd": "",
             "f5a2a63c-ef10-421e-adc8-14f17359dd45": "",
             "4eeec7e4-d3c2-4293-9691-d4d5fb0c0b80": "",
-            "dd14661d-ee13-4854-9fa8-7fd1951de299": "baseSupportAmount + pwdAmount + confirmedShelterCosts"
+            "dd14661d-ee13-4854-9fa8-7fd1951de299": "baseSupportAmount + pwdAmount + ((shelterCosts != null and shelterCosts > 0 and shelterCosts != undefined) ? shelterCosts : 0) "
           }
-        ]
+        ],
+        "passThorough": false,
+        "executionMode": "single"
       },
       "position": {
-        "x": 540,
-        "y": 235
+        "x": 535,
+        "y": 240
       }
     }
   ],
@@ -277,12 +289,6 @@
       "type": "edge",
       "sourceId": "f1eb4300-0831-48d8-9be4-6e5a3ddee346",
       "targetId": "b3719c5c-ed90-4626-b388-9d6b64ed9e54"
-    },
-    {
-      "id": "3061b182-be0a-496e-8463-95179b261ec7",
-      "type": "edge",
-      "sourceId": "f1eb4300-0831-48d8-9be4-6e5a3ddee346",
-      "targetId": "f41efde5-6b4d-4528-bfe5-49ac8514b2f7"
     },
     {
       "id": "510b9948-c0e6-40f5-9690-953db5cc30eb",
@@ -301,6 +307,13 @@
       "type": "edge",
       "sourceId": "f41efde5-6b4d-4528-bfe5-49ac8514b2f7",
       "targetId": "47cd916c-3dbc-4318-ac35-494866661198"
+    },
+    {
+      "id": "88822589-f6a7-4ede-9869-ca0bada6f108",
+      "sourceId": "f1eb4300-0831-48d8-9be4-6e5a3ddee346",
+      "type": "edge",
+      "targetId": "f41efde5-6b4d-4528-bfe5-49ac8514b2f7"
     }
-  ]
+  ],
+  "contentType": "application/vnd.gorules.decision"
 }

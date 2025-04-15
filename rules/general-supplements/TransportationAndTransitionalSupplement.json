@@ -321,7 +321,7 @@
         "rules": [
           {
             "_id": "c500bead-0c14-4d3c-ab25-82b0c0bb9e27",
-            "_description": "In-kind (concession bus pass costing $52)",
+            "_description": "In-kind  (concession bus pass costing $52)",
             "49890ec0-8f95-4750-98db-ebfad5f1a284": "== 'pass'",
             "b0819074-4d3c-4402-acbc-f79d7b39beb0": "\"In-kind Bus Pass\"",
             "500d014f-fd23-4af8-8249-23727b89d54f": "",

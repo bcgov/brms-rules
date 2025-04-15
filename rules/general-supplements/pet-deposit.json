@@ -1,0 +1,327 @@
+{
+  "nodes": [
+    {
+      "type": "inputNode",
+      "id": "358e427e-ba5e-4811-b851-fb41a73d34ad",
+      "name": "request",
+      "position": {
+        "x": -190,
+        "y": 205
+      },
+      "content": {
+        "fields": [
+          {
+            "id": 81,
+            "field": "isEligibleForAssistance",
+            "name": "Family unit is eligible for IA, DA, or HA",
+            "description": "Family unit is eligible for income assistance, disability assistance or hardship assistance.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 110,
+            "field": "isTenacyValid",
+            "name": "Valid Tenancy",
+            "description": "Tenancy is a valid tenancy under the Residential Tenancy Act or for a housing unit owned by a co-op.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 111,
+            "field": "totalRentAmount",
+            "name": "Rent Amount",
+            "description": "Total amount of rent, including subsidies and portion of the rent payable by roommates/co-tenants.",
+            "dataType": "number-input",
+            "childFields": []
+          },
+          {
+            "id": 109,
+            "field": "isDepositNecessary",
+            "name": "Deposit Necessary",
+            "description": "Family unit requires the deposit in order to obtain/retain accommodation.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 120,
+            "field": "hasRepaymentAgreement",
+            "name": "Repayment Agreement",
+            "description": "Agrees in writing to repay",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 138,
+            "field": "requestedAmount",
+            "name": "Requested Amount",
+            "description": "Requested amount of assistance by client. Assistance refers to IA, DA, HA or supplements.",
+            "dataType": "number-input",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "type": "outputNode",
+      "id": "a6a646e9-45a2-4aeb-857d-7da154f32db4",
+      "name": "response",
+      "position": {
+        "x": 1050,
+        "y": 190
+      },
+      "content": {
+        "fields": [
+          {
+            "id": 28,
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 58,
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "caa6534f-8b32-4cda-b4e7-c92df196b5b7",
+            "field": "isEligibleForAssistance",
+            "name": "Family unit is eligible for IA, DA, or HA"
+          },
+          {
+            "id": "b9555d9f-0873-4862-a35b-19693e9e2dba",
+            "field": "isDepositNecessary",
+            "name": "Family unit requires the security deposit in order to obtain/retain accommodation?"
+          },
+          {
+            "id": "13790d55-bc2d-4f2b-bb5a-bf91ae22807c",
+            "field": "isTenacyValid",
+            "name": "Tenancy is a valid tenancy under the Residential Tenancy Act"
+          },
+          {
+            "id": "79306118-ee92-46c2-ad6f-1f0b2e48ebd5",
+            "field": "hasRepaymentAgreement",
+            "name": "Has repayment agreement or promise to pay"
+          },
+          {
+            "id": "21818a11-72a9-478c-8a36-4a88b1e23149",
+            "field": "totalRentAmount",
+            "name": "Total amount of rent, including subsidies and portion of the rent payable by roommates/co-tenants"
+          },
+          {
+            "id": "67d3311b-905e-4a6c-a90e-4f98a8c1250d",
+            "field": "requestedAmount",
+            "name": "Requested amount of supplement by client if less than full eligible amount of supplement. "
+          }
+        ],
+        "outputs": [
+          {
+            "id": "91b8c950-b27a-4471-8ab5-c836d12454fb",
+            "name": "isEligible",
+            "field": "isEligible"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "daed1342-9f69-4021-aa10-8a9c23818497",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "true",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "true",
+            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "true",
+            "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "true",
+            "21818a11-72a9-478c-8a36-4a88b1e23149": "",
+            "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "true"
+          },
+          {
+            "_id": "a7ca19f8-bfd1-4341-989e-22cf5acea253",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "false",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "",
+            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "",
+            "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "",
+            "21818a11-72a9-478c-8a36-4a88b1e23149": "",
+            "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
+          },
+          {
+            "_id": "1866e17f-c260-4cd1-a9ec-0923a9e8bd72",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "",
+            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "false",
+            "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "",
+            "21818a11-72a9-478c-8a36-4a88b1e23149": "",
+            "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
+          },
+          {
+            "_id": "54fa7c7a-a7b4-4fb4-9a8d-8543533787f9",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "",
+            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "",
+            "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "false",
+            "21818a11-72a9-478c-8a36-4a88b1e23149": "",
+            "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
+          },
+          {
+            "_id": "bc92a8ab-07fb-4d3e-9ac8-c84036a6f49e",
+            "caa6534f-8b32-4cda-b4e7-c92df196b5b7": "",
+            "b9555d9f-0873-4862-a35b-19693e9e2dba": "false",
+            "13790d55-bc2d-4f2b-bb5a-bf91ae22807c": "",
+            "79306118-ee92-46c2-ad6f-1f0b2e48ebd5": "",
+            "21818a11-72a9-478c-8a36-4a88b1e23149": "",
+            "67d3311b-905e-4a6c-a90e-4f98a8c1250d": "",
+            "91b8c950-b27a-4471-8ab5-c836d12454fb": "false"
+          }
+        ],
+        "passThorough": false,
+        "executionMode": "single"
+      },
+      "id": "82b27ab1-7901-4fe5-a3a5-f203f6b715de",
+      "name": "Eligibility",
+      "position": {
+        "x": 120,
+        "y": 310
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "226094df-3b74-4918-a33e-bce434c544a1",
+            "key": "supplementAmount",
+            "value": "isEligible == true and totalRentAmount > 0 ? (requestedAmount < totalRentAmount/2 ? requestedAmount : totalRentAmount/2) : 0"
+          },
+          {
+            "id": "69332537-87e3-4c63-a564-9707f59edbe8",
+            "key": "isEligible",
+            "value": "isEligible"
+          }
+        ]
+      },
+      "id": "29e9c534-ebb4-420b-ab5e-4071c44c6798",
+      "name": "Supplement Calculation",
+      "position": {
+        "x": 740,
+        "y": 180
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "8fbff567-d9b0-444e-89c1-2ff01a710890",
+            "key": "isEligible",
+            "value": "isEligible"
+          }
+        ]
+      },
+      "id": "5d2d73b9-07ed-490d-b5eb-a2e802365baf",
+      "name": "Ineligible",
+      "position": {
+        "x": 750,
+        "y": 305
+      }
+    },
+    {
+      "type": "switchNode",
+      "content": {
+        "hitPolicy": "first",
+        "statements": [
+          {
+            "id": "0956ec51-e732-48e8-8528-40e3983a9466",
+            "condition": "isEligible == true",
+            "isDefault": false
+          },
+          {
+            "id": "4b5b0d2f-dcdf-40c1-8635-2fbdaed38b09",
+            "condition": "",
+            "isDefault": true
+          }
+        ]
+      },
+      "id": "d747f620-7546-4cd3-9c7b-73c777860f48",
+      "name": "Base Eligible",
+      "position": {
+        "x": 430,
+        "y": 200
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "Reason output provides one reason when ineligible in current build. This can be expanded to indicate all reasons providing an ineligible result, this would require the rule to be built differently. This will be done in future iterations. "
+        }
+      },
+      "id": "9abdbb27-2ebe-4b07-ae12-5fd73c8ed162",
+      "name": "Note",
+      "position": {
+        "x": 775,
+        "y": 410
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "2d1c0e05-b2b4-4bfb-8e3e-30e35ffdf091",
+      "sourceId": "358e427e-ba5e-4811-b851-fb41a73d34ad",
+      "type": "edge",
+      "targetId": "82b27ab1-7901-4fe5-a3a5-f203f6b715de"
+    },
+    {
+      "id": "d9a3bbd4-5406-49ed-bccd-588f8a81b3bc",
+      "sourceId": "d747f620-7546-4cd3-9c7b-73c777860f48",
+      "type": "edge",
+      "targetId": "5d2d73b9-07ed-490d-b5eb-a2e802365baf",
+      "sourceHandle": "4b5b0d2f-dcdf-40c1-8635-2fbdaed38b09"
+    },
+    {
+      "id": "a53926f9-fbdc-48eb-a72d-fbf56e2b282f",
+      "sourceId": "d747f620-7546-4cd3-9c7b-73c777860f48",
+      "type": "edge",
+      "targetId": "29e9c534-ebb4-420b-ab5e-4071c44c6798",
+      "sourceHandle": "0956ec51-e732-48e8-8528-40e3983a9466"
+    },
+    {
+      "id": "d509dec7-ed04-492c-b2a9-460ffcb874fe",
+      "sourceId": "358e427e-ba5e-4811-b851-fb41a73d34ad",
+      "type": "edge",
+      "targetId": "d747f620-7546-4cd3-9c7b-73c777860f48"
+    },
+    {
+      "id": "37b84313-b57d-49f1-87d1-b564ce1bbc41",
+      "sourceId": "82b27ab1-7901-4fe5-a3a5-f203f6b715de",
+      "type": "edge",
+      "targetId": "d747f620-7546-4cd3-9c7b-73c777860f48"
+    },
+    {
+      "id": "7004a9bc-d261-452a-930c-d4218baceb1e",
+      "sourceId": "5d2d73b9-07ed-490d-b5eb-a2e802365baf",
+      "type": "edge",
+      "targetId": "a6a646e9-45a2-4aeb-857d-7da154f32db4"
+    },
+    {
+      "id": "3f24b52e-a2fc-4bd6-8865-927c6f7329dc",
+      "sourceId": "29e9c534-ebb4-420b-ab5e-4071c44c6798",
+      "type": "edge",
+      "targetId": "a6a646e9-45a2-4aeb-857d-7da154f32db4"
+    }
+  ]
+}

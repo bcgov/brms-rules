@@ -5,8 +5,8 @@
       "name": "request",
       "type": "inputNode",
       "position": {
-        "x": -1085,
-        "y": 425
+        "x": -1340,
+        "y": 610
       },
       "content": {
         "fields": [
@@ -65,8 +65,8 @@
       "name": "response",
       "type": "outputNode",
       "position": {
-        "x": -85,
-        "y": 450
+        "x": -470,
+        "y": 625
       },
       "content": {
         "fields": [
@@ -104,6 +104,46 @@
       }
     },
     {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "a1665c95-c24b-4232-bfb7-4732f806b04d",
+            "key": "childCountCCBEligible",
+            "value": "0"
+          },
+          {
+            "id": "6733d70e-d443-4191-84ec-7ed1a64ab1d6",
+            "key": "childCountDeemedEligible",
+            "value": "0"
+          },
+          {
+            "id": "0497b26b-6caa-4878-b5cc-508f7e8d845b",
+            "key": "childCountCCBDataMatched",
+            "value": "0"
+          }
+        ]
+      },
+      "id": "5038060c-b9a3-401e-a1e2-7a54f235abee",
+      "name": "Default 0",
+      "position": {
+        "x": -765,
+        "y": 785
+      }
+    },
+    {
+      "type": "functionNode",
+      "content": {
+        "source": "import zen from 'zen';\n\n/**\n * @param {InputSchema & Object.<string, any>} input\n * @returns {Promise<any>}\n */\nexport const handler = async (input) => {\n  console.log(input, 'this is input')\n\n  const updatedDependentsList = input.dependentsList.map(dependent => {\n    const dateOfBirth = new Date(dependent.dateOfBirth);\n    const birthYear = dateOfBirth.getFullYear();\n    const birthMonth = dateOfBirth.getMonth() + 1; // getMonth() returns 0-11\n\n    const ageInYears = input.benefitMonthYear - birthYear;\n    const ageInMonths = ageInYears * 12 + (input.benefitMonthMonth - birthMonth);\n\n    return {\n      ageInYears,\n      ageInMonths,\n      inSchool: dependent.inSchool,\n      ccbDataMatched: dependent.ccbDataMatched\n    };\n  });\n\n  console.log(updatedDependentsList)\n\n  const deemed = updatedDependentsList.filter(dependent => {\n    const { ageInMonths, ageInYears, inSchool } = dependent;\n    return (\n      (ageInMonths < 2 && ageInMonths >= 0) ||\n      (ageInMonths >= 218 && ageInYears < 19) ||\n      (ageInYears >= 19 && inSchool === true)\n    );\n  });\n\n  const eligible = updatedDependentsList.filter(dependent => {\n    const { ageInMonths } = dependent;\n    return ageInMonths >= 2 && ageInMonths < 218;\n  });\n\n  const childCountCCBDataMatched = eligible.filter(dependent => dependent.ccbDataMatched === true).length;\n  const childCountCCBEligible = eligible.length;\n  const childCountDeemedEligible = deemed.length;\n\n  console.log(childCountCCBDataMatched, childCountCCBEligible, childCountDeemedEligible)\n\n\n  return {\n    childCountCCBDataMatched,\n    childCountCCBEligible,\n    childCountDeemedEligible\n  }\n\n};\n"
+      },
+      "id": "5650562f-b066-4ee6-859c-a14f145aad41",
+      "name": "Count Dependents",
+      "position": {
+        "x": -765,
+        "y": 695
+      }
+    },
+    {
       "type": "switchNode",
       "content": {
         "hitPolicy": "first",
@@ -120,39 +160,11 @@
           }
         ]
       },
-      "id": "7c2595a1-56dd-4ce4-89b3-f652084ef761",
+      "id": "5ac63f6a-7774-4da4-a365-28ca5755ca13",
       "name": "Check if dependents exist",
       "position": {
-        "x": -795,
-        "y": 425
-      }
-    },
-    {
-      "type": "expressionNode",
-      "content": {
-        "expressions": [
-          {
-            "id": "a1665c95-c24b-4232-bfb7-4732f806b04d",
-            "key": "childCountCCBEligible",
-            "value": "0 + 0"
-          },
-          {
-            "id": "6733d70e-d443-4191-84ec-7ed1a64ab1d6",
-            "key": "childCountDeemedEligible",
-            "value": "0 + 0"
-          },
-          {
-            "id": "0497b26b-6caa-4878-b5cc-508f7e8d845b",
-            "key": "",
-            "value": ""
-          }
-        ]
-      },
-      "id": "5038060c-b9a3-401e-a1e2-7a54f235abee",
-      "name": "Default 0",
-      "position": {
-        "x": -430,
-        "y": 690
+        "x": -1040,
+        "y": 610
       }
     },
     {
@@ -170,151 +182,64 @@
             "value": "monthOfYear(date(benefitMonth))"
           },
           {
-            "id": "84644af0-c783-4d3c-bcf2-4eb8766351e3",
-            "key": "markAsUsed",
-            "value": "dependentsList"
-          },
-          {
             "id": "3196a20c-26a7-49c3-8790-69712b6fa094",
             "key": "markAsUsed",
             "value": "benefitMonth"
+          },
+          {
+            "id": "d212e25e-bcaf-43c2-8de2-7cb85834d605",
+            "key": "markAsUsed",
+            "value": "dependentsList"
           }
-        ]
+        ],
+        "passThrough": true
       },
-      "id": "052c60ea-55a7-4446-9995-08edf3e10c93",
+      "id": "1406434d-ee02-48a7-8a86-46e19553ffcc",
       "name": "Format Benefit Month",
       "position": {
-        "x": -500,
-        "y": 325
-      }
-    },
-    {
-      "type": "expressionNode",
-      "content": {
-        "expressions": [
-          {
-            "id": "a6d1f32f-035d-492d-a244-9a6b544a1571",
-            "key": "dependentsListYearandMonth",
-            "value": "map(dependentsList, ({ageInYears:(benefitMonthYear - year(date(#.dateOfBirth))), ageInMonths: ((benefitMonthYear - year(date(#.dateOfBirth))) * 12 + (benefitMonthMonth - monthOfYear(date(#.dateOfBirth)))), inSchool: #.inSchool, ccbDataMatched: #.ccbDataMatched} ))"
-          }
-        ]
-      },
-      "id": "40a5b4e8-0217-4b1c-b35d-e5e9155c8682",
-      "name": "Add YearMonth Dependents",
-      "position": {
-        "x": -425,
-        "y": 430
-      }
-    },
-    {
-      "type": "expressionNode",
-      "content": {
-        "expressions": [
-          {
-            "id": "8261c9db-da6b-4dc3-96bc-eeac80b70380",
-            "key": "testingCCBEligible",
-            "value": "filter(dependentsListYearandMonth, (#.ageInMonths >= 2 and #.ageInYears < 18))"
-          },
-          {
-            "id": "e1d25c91-2e44-4842-8d2f-987b51fd1b11",
-            "key": "testingDeemed",
-            "value": "filter(dependentsListYearandMonth, (#.ageInMonths < 2 or (#.ageInYears >= 18 and #.ageInYears < 19) or (#.ageInYears >= 19 and #.inSchool == true)))"
-          }
-        ]
-      },
-      "id": "1580189a-4982-48b3-af20-dfb4f2d25cec",
-      "name": "Filter Dependents",
-      "position": {
-        "x": -425,
-        "y": 520
-      }
-    },
-    {
-      "type": "expressionNode",
-      "content": {
-        "expressions": [
-          {
-            "id": "94ec3f7a-22ae-48db-8541-85b401a84dfd",
-            "key": "childCountCCBEligible",
-            "value": "len(testingCCBEligible)"
-          },
-          {
-            "id": "068e69f5-1efe-4461-ac43-767f3124252d",
-            "key": "childCountDeemedEligible",
-            "value": "len(testingDeemed)"
-          },
-          {
-            "id": "f465321c-3c56-4539-8194-6017307d3e00",
-            "key": "childCountCCBDataMatched",
-            "value": "count(testingCCBEligible, (#.ccbDataMatched == true))"
-          }
-        ]
-      },
-      "id": "6bacdcb2-46d2-424d-9b21-07514c587044",
-      "name": "Count Dependents",
-      "position": {
-        "x": -430,
+        "x": -765,
         "y": 605
       }
     }
   ],
   "edges": [
     {
-      "id": "f237ce32-5cdd-4a66-adb2-f948f94b3963",
+      "id": "69c9087d-a300-4e3d-be6d-cf9db360c6de",
       "sourceId": "5038060c-b9a3-401e-a1e2-7a54f235abee",
       "type": "edge",
       "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
     },
     {
-      "id": "e1a3c04e-25a1-40d7-9a56-bac0f204caa0",
+      "id": "a1be86be-a004-448b-9736-b4df5826e112",
       "sourceId": "17119358-634b-4f74-b48b-d49d5163a0fc",
       "type": "edge",
-      "targetId": "7c2595a1-56dd-4ce4-89b3-f652084ef761"
+      "targetId": "5ac63f6a-7774-4da4-a365-28ca5755ca13"
     },
     {
-      "id": "0c3f2e62-fb43-4fa2-b615-bdb85db8bdc9",
-      "sourceId": "7c2595a1-56dd-4ce4-89b3-f652084ef761",
+      "id": "7675a9e5-83cb-413d-86b2-ba2cc65cffd1",
+      "sourceId": "5ac63f6a-7774-4da4-a365-28ca5755ca13",
       "type": "edge",
       "targetId": "5038060c-b9a3-401e-a1e2-7a54f235abee",
       "sourceHandle": "547d8e4d-304c-41ef-a9d0-3f59937e08ba"
     },
     {
-      "id": "21052656-03f8-424b-a77f-1d9f25b2ff4a",
-      "sourceId": "7c2595a1-56dd-4ce4-89b3-f652084ef761",
+      "id": "beecccd8-2dda-4664-9dd6-a93218102569",
+      "sourceId": "5ac63f6a-7774-4da4-a365-28ca5755ca13",
       "type": "edge",
-      "targetId": "40a5b4e8-0217-4b1c-b35d-e5e9155c8682",
+      "targetId": "1406434d-ee02-48a7-8a86-46e19553ffcc",
       "sourceHandle": "f9f1f545-7595-44cf-9785-3c52eee65b52"
     },
     {
-      "id": "3071329b-8fb5-4a52-8656-a6001b65cae6",
-      "sourceId": "7c2595a1-56dd-4ce4-89b3-f652084ef761",
+      "id": "2fd47583-8afb-4a82-b42f-b56f3489d630",
+      "sourceId": "1406434d-ee02-48a7-8a86-46e19553ffcc",
       "type": "edge",
-      "targetId": "052c60ea-55a7-4446-9995-08edf3e10c93",
-      "sourceHandle": "f9f1f545-7595-44cf-9785-3c52eee65b52"
+      "targetId": "5650562f-b066-4ee6-859c-a14f145aad41"
     },
     {
-      "id": "8a1212f7-5987-4f8f-bbc1-05e58a2e7250",
-      "sourceId": "052c60ea-55a7-4446-9995-08edf3e10c93",
-      "type": "edge",
-      "targetId": "40a5b4e8-0217-4b1c-b35d-e5e9155c8682"
-    },
-    {
-      "id": "922fc42c-4465-4896-a5b0-67e4c0c83ae7",
-      "sourceId": "40a5b4e8-0217-4b1c-b35d-e5e9155c8682",
-      "type": "edge",
-      "targetId": "1580189a-4982-48b3-af20-dfb4f2d25cec"
-    },
-    {
-      "id": "d4a8f6fe-12cf-4525-a4a4-159069fbcbc8",
-      "sourceId": "6bacdcb2-46d2-424d-9b21-07514c587044",
+      "id": "806cc026-d57f-4774-936f-d84c157c54ed",
+      "sourceId": "5650562f-b066-4ee6-859c-a14f145aad41",
       "type": "edge",
       "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
-    },
-    {
-      "id": "fb3061b8-35e7-4802-9301-c52650ef3f93",
-      "sourceId": "1580189a-4982-48b3-af20-dfb4f2d25cec",
-      "type": "edge",
-      "targetId": "6bacdcb2-46d2-424d-9b21-07514c587044"
     }
   ]
 }

@@ -1,20 +1,19 @@
 {
-  "contentType": "application/vnd.gorules.decision",
   "nodes": [
     {
       "id": "17119358-634b-4f74-b48b-d49d5163a0fc",
       "name": "request",
       "type": "inputNode",
       "position": {
-        "x": -880,
+        "x": -1165,
         "y": 385
       },
       "content": {
         "fields": [
           {
+            "id": 72,
             "field": "adjustedFamilyNetIncome",
             "name": "Adjusted Family Net Income",
-            "id": 72,
             "description": "The Adjusted Family Net Income as reported in the data match for Canada Child Benefits.",
             "dataType": "number-input",
             "validationCriteria": "0",
@@ -22,26 +21,48 @@
             "childFields": []
           },
           {
+            "id": 2,
+            "field": "benefitMonth",
+            "name": "Benefit Month",
+            "description": "The month for which the benefit is being requested.",
+            "dataType": "date",
+            "childFields": []
+          },
+          {
+            "id": 8,
             "field": "dependentsList",
             "name": "Dependents List",
-            "id": 8,
             "description": "A list of dependent active on a case with their relevant properties.",
             "dataType": "object-array",
             "childFields": [
               {
                 "id": 64,
-                "name": "dateOfBirth",
-                "field": "Date of Birth",
+                "name": "Date of Birth",
+                "field": "dateOfBirth",
                 "description": "The specific date of birth for an individual.",
                 "dataType": "date",
-                "validationCriteria": "1910-01-01",
-                "validationType": ">="
+                "validationCriteria": "[1910-01-01,today]",
+                "validationType": "[date]"
+              },
+              {
+                "id": 40,
+                "name": "Person ID",
+                "field": "personID",
+                "description": "The unique id on a person's contact.",
+                "dataType": "text-input"
               },
               {
                 "id": 69,
-                "name": "inSchool",
-                "field": "In School",
+                "name": "In School",
+                "field": "inSchool",
                 "description": "Individual is currently in school.",
+                "dataType": "true-false"
+              },
+              {
+                "id": 124,
+                "name": "CCB Data Matched",
+                "field": "ccbDataMatched",
+                "description": "Federal benefit data report indicates that this dependent is counted in the calculation of federal benefits allocated to this family unit.",
                 "dataType": "true-false"
               }
             ]
@@ -60,9 +81,9 @@
       "content": {
         "fields": [
           {
+            "id": 74,
             "field": "monthlyCCBTopupInLieuAmount",
             "name": "Monthly CCB Topup In Lieu Amount",
-            "id": 74,
             "description": "The amount to issue to a family unit for Support in Lieu of CCB, based on the number of children in the family unit who would receive CCB and those who are deemed eligible to receive support in lieu.",
             "dataType": "number-input",
             "validationCriteria": "0",
@@ -70,13 +91,21 @@
             "childFields": []
           },
           {
+            "id": 75,
             "field": "monthlyCCBAutoTopupAmount",
             "name": "Monthly Child Benefit Auto Topup Amount",
-            "id": 75,
             "description": "The amount the system provides as an automatic topup to family units based on the number of children eligible to receive CCB, and the adjusted family net income of the family unit.",
             "dataType": "number-input",
             "validationCriteria": "0",
             "validationType": ">=",
+            "childFields": []
+          },
+          {
+            "id": 47,
+            "field": "reason",
+            "name": "Reason",
+            "description": "The reason provided for a given decision.",
+            "dataType": "text-input",
             "childFields": []
           }
         ]
@@ -127,6 +156,11 @@
             "id": "afd14f7f-af3e-4c80-92a3-8d4402ec33d9",
             "field": "childCountCCBEligible",
             "name": "Number of Children Eligible for CCB"
+          },
+          {
+            "id": "487f1899-b6ee-4544-9cfa-953fa1b7ea72",
+            "field": "dependentsList",
+            "name": "Dependents List"
           }
         ],
         "outputs": [
@@ -140,24 +174,30 @@
           {
             "_id": "c13bf92e-3683-4dfe-9aea-2d24e3652eb3",
             "afd14f7f-af3e-4c80-92a3-8d4402ec33d9": "==1",
+            "487f1899-b6ee-4544-9cfa-953fa1b7ea72": "",
             "44e23806-b76d-4f78-929b-0a5c006da002": "237.33"
           },
           {
             "_id": "de3fef5c-0532-419a-b045-65bae251ed98",
             "afd14f7f-af3e-4c80-92a3-8d4402ec33d9": "==2",
+            "487f1899-b6ee-4544-9cfa-953fa1b7ea72": "",
             "44e23806-b76d-4f78-929b-0a5c006da002": "(237.33 + 209.92 )"
           },
           {
             "_id": "e35e35cd-98c8-4caa-a2a1-3e3db19c58e0",
             "afd14f7f-af3e-4c80-92a3-8d4402ec33d9": "==3",
+            "487f1899-b6ee-4544-9cfa-953fa1b7ea72": "",
             "44e23806-b76d-4f78-929b-0a5c006da002": "(237.33 + 209.92 + ((childCountCCBEligible-2)*199.75))"
           },
           {
             "_id": "f605c54d-13a5-49c1-8cc1-61912059acaa",
             "afd14f7f-af3e-4c80-92a3-8d4402ec33d9": "",
+            "487f1899-b6ee-4544-9cfa-953fa1b7ea72": "",
             "44e23806-b76d-4f78-929b-0a5c006da002": "0"
           }
-        ]
+        ],
+        "passThorough": false,
+        "executionMode": "single"
       },
       "id": "a2619b04-3807-48d6-827f-01ab4f5111de",
       "name": "CB Supplement Amounts",
@@ -185,21 +225,59 @@
       }
     },
     {
+      "type": "switchNode",
+      "content": {
+        "hitPolicy": "first",
+        "statements": [
+          {
+            "id": "503d46f4-61eb-44a3-b88a-15e86a60a12e",
+            "condition": "adjustedFamilyNetIncome != null and benefitMonth != null",
+            "isDefault": false
+          },
+          {
+            "id": "d5bd038a-510a-4e82-843c-2db41c4f3f95",
+            "condition": "",
+            "isDefault": true
+          }
+        ]
+      },
+      "id": "5a0da10b-902a-4104-860c-8046d66316bb",
+      "name": "Check Inputs",
+      "position": {
+        "x": -860,
+        "y": 385
+      }
+    },
+    {
       "type": "expressionNode",
       "content": {
         "expressions": [
           {
-            "id": "7b6fca8c-eebb-4e56-b010-b5903b3b58cc",
-            "key": "fillerInput",
-            "value": "dependentsList"
+            "id": "240f3916-1edc-43a0-94b6-d28d33bf29e6",
+            "key": "monthlyCCBAutoTopupAmount",
+            "value": "0"
+          },
+          {
+            "id": "8456f1b8-d70f-44f9-9dc4-0bbfbb405fa9",
+            "key": "monthlyCCBTopupInLieuAmount",
+            "value": "0"
+          },
+          {
+            "id": "8cc83fbe-5625-46d8-85c3-5392b76fde36",
+            "key": "reason",
+            "value": "`Missing fields: ${adjustedFamilyNetIncome == null ? 'adjustedFamilyNetIncome' : ''} ${benefitMonth == null ? 'benefitMonth' : ''}`"
           }
-        ]
+        ],
+        "passThrough": false,
+        "inputField": null,
+        "outputPath": null,
+        "executionMode": "single"
       },
-      "id": "0a486204-4d85-4ffc-a369-59230f1da65d",
-      "name": "Mark Used Input",
+      "id": "a6735f17-10e5-4989-9fa5-ab9470d23353",
+      "name": "Default 0 - Missing Fields",
       "position": {
-        "x": -595,
-        "y": 580
+        "x": -570,
+        "y": 630
       }
     }
   ],
@@ -209,12 +287,6 @@
       "sourceId": "7749efa8-50c5-47d6-b5fb-bce302fac8cc",
       "type": "edge",
       "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
-    },
-    {
-      "id": "55dae37b-9213-4e95-8130-400941b089cd",
-      "sourceId": "17119358-634b-4f74-b48b-d49d5163a0fc",
-      "type": "edge",
-      "targetId": "3c35a5d6-8574-4ad4-8b3e-f1c21f4259e1"
     },
     {
       "id": "463c1965-b64f-4d13-9804-265e3cd4dd05",
@@ -227,12 +299,6 @@
       "sourceId": "fb8102ea-0e32-415b-866d-ff90dfa5dfcd",
       "type": "edge",
       "targetId": "7749efa8-50c5-47d6-b5fb-bce302fac8cc"
-    },
-    {
-      "id": "840a6c1e-08b1-4b6a-bed2-9905ddcf22b8",
-      "sourceId": "17119358-634b-4f74-b48b-d49d5163a0fc",
-      "type": "edge",
-      "targetId": "fb8102ea-0e32-415b-866d-ff90dfa5dfcd"
     },
     {
       "id": "dae0dce9-bbb2-4ec7-95ef-c5bc4eacee33",
@@ -259,17 +325,46 @@
       "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
     },
     {
-      "id": "02f663a6-73df-4ff4-85a1-e7e96c3e87d9",
+      "id": "ce0186e3-caf6-4b52-835e-695953632297",
       "sourceId": "17119358-634b-4f74-b48b-d49d5163a0fc",
       "type": "edge",
-      "targetId": "0a486204-4d85-4ffc-a369-59230f1da65d"
+      "targetId": "5a0da10b-902a-4104-860c-8046d66316bb"
     },
     {
-      "id": "c8e9227b-b846-4052-902e-ff189e1a6845",
-      "sourceId": "0a486204-4d85-4ffc-a369-59230f1da65d",
+      "id": "4d5391ec-0fe4-4019-8670-fcce6c3ea8cd",
+      "sourceId": "5a0da10b-902a-4104-860c-8046d66316bb",
       "type": "edge",
-      "targetId": "fb8102ea-0e32-415b-866d-ff90dfa5dfcd"
+      "targetId": "a2619b04-3807-48d6-827f-01ab4f5111de",
+      "sourceHandle": "503d46f4-61eb-44a3-b88a-15e86a60a12e"
+    },
+    {
+      "id": "dde673b5-3216-4075-ba49-1707649efb63",
+      "sourceId": "5a0da10b-902a-4104-860c-8046d66316bb",
+      "type": "edge",
+      "targetId": "3c35a5d6-8574-4ad4-8b3e-f1c21f4259e1",
+      "sourceHandle": "503d46f4-61eb-44a3-b88a-15e86a60a12e"
+    },
+    {
+      "id": "eb00c2fc-7517-4fd1-8e0d-f2fc932dd708",
+      "sourceId": "5a0da10b-902a-4104-860c-8046d66316bb",
+      "type": "edge",
+      "targetId": "fb8102ea-0e32-415b-866d-ff90dfa5dfcd",
+      "sourceHandle": "503d46f4-61eb-44a3-b88a-15e86a60a12e"
+    },
+    {
+      "id": "fe1670db-0c7a-4f55-859e-8eb3ac41a132",
+      "sourceId": "5a0da10b-902a-4104-860c-8046d66316bb",
+      "type": "edge",
+      "targetId": "a6735f17-10e5-4989-9fa5-ab9470d23353",
+      "sourceHandle": "d5bd038a-510a-4e82-843c-2db41c4f3f95"
+    },
+    {
+      "id": "90a334a7-7b52-42b5-ba49-c1c3b141e6ff",
+      "sourceId": "a6735f17-10e5-4989-9fa5-ab9470d23353",
+      "type": "edge",
+      "targetId": "de2830d9-2046-4d3c-9979-e7c68259afaf"
     }
   ],
+  "contentType": "application/vnd.gorules.decision",
   "tests": []
 }

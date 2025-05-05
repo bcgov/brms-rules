@@ -15,13 +15,60 @@ jobs:
         id: extract_branch
         run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
 
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      - name: Generate JWT for GitHub App
+        id: generate_jwt
+        env:
+          GH_APP_ID: ${{ secrets.GH_APP_ID }}
+          GH_APP_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
+        run: |
+          # Write private key to file
+          echo "$GH_APP_PRIVATE_KEY" > private-key.pem
+
+          # Create JWT
+          jwt=$(jq -n --arg iat "$(date +%s)" --arg iss "$GH_APP_ID" '
+            {
+              alg: "RS256",
+              typ: "JWT"
+            } as $hdr |
+            {
+              iat: ($iat | tonumber - 60),
+              exp: ($iat | tonumber + 600),
+              iss: $iss
+            } as $payload |
+            [$hdr, $payload]
+            | map(@base64 | gsub("\\n"; ""))
+            | join(".")
+          ')
+
+          header=$(echo '{"alg":"RS256","typ":"JWT"}' | openssl base64 -e | tr -d '=' | tr '/+' '_-' | tr -d '\n')
+          payload=$(echo "{\"iat\":$(date +%s),\"exp\":$(($(date +%s)+600)),\"iss\":$GH_APP_ID}" | openssl base64 -e | tr -d '=' | tr '/+' '_-' | tr -d '\n')
+          data="${header}.${payload}"
+          signature=$(openssl dgst -sha256 -sign private-key.pem <(echo -n "$data") | openssl base64 -e | tr -d '=' | tr '/+' '_-' | tr -d '\n')
+          echo "jwt=${data}.${signature}" >> $GITHUB_OUTPUT
+
+      - name: Get installation token
+        id: get_token
+        env:
+          JWT: ${{ steps.generate_jwt.outputs.jwt }}
+          INSTALLATION_ID: ${{ secrets.GH_APP_INSTALLATION_ID }}
+        run: |
+          access_token=$(curl -s -X POST \
+            -H "Authorization: Bearer $JWT" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/app/installations/$INSTALLATION_ID/access_tokens | jq -r .token)
+
+          echo "access_token=$access_token" >> $GITHUB_OUTPUT
+
       - name: Trigger deploy workflow in brm-backend repo
         env:
-          GITHUB_TOKEN: ${{ secrets.BRMS_API_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.get_token.outputs.access_token }}
           REPO: bcgov/brm-backend
           WORKFLOW_ID: deploy.yml
-          # This is the branch name we want to use of the brms backend
-          # We want it to be the same as the branch we are building so they stay in sync
           BRANCH: ${{ env.BRANCH_NAME }}
         run: |
           curl -X POST \

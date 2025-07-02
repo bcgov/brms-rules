@@ -1,0 +1,277 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "nodes": [
+    {
+      "type": "inputNode",
+      "id": "5868caf7-1033-4c63-b96b-b6fe15b6f506",
+      "name": "request",
+      "position": {
+        "x": -275,
+        "y": 10
+      },
+      "content": {
+        "fields": [
+          {
+            "id": 18,
+            "field": "familyUnitInPay",
+            "name": "Family Unit In Pay",
+            "description": "Family unit is in pay.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 134,
+            "field": "isEmploymentConfirmed",
+            "name": "Employment Confirmed",
+            "description": "The recipient must have secured a job that will help the family leave assistance.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 115,
+            "field": "isAlternateFundingAvailable",
+            "name": "Alternate Funding Available",
+            "description": "Person requesting supplement (& their family unit) do not have access to other funding. Usually verbal or paper confirmation required.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 136,
+            "field": "eligibleItemCosts",
+            "name": "Eligible Item Costs",
+            "description": "Value of eligible items for supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "type": "outputNode",
+      "id": "7211a960-eb4c-481a-86ba-225492de83b7",
+      "name": "response",
+      "position": {
+        "x": 905,
+        "y": 160
+      },
+      "content": {
+        "fields": [
+          {
+            "id": 28,
+            "field": "isEligible",
+            "name": "Is Eligible",
+            "description": "General \"Is Eligible\" statement used in conjunction with supplement building to describe eligibility.",
+            "dataType": "true-false",
+            "childFields": []
+          },
+          {
+            "id": 58,
+            "field": "supplementAmount",
+            "name": "Supplement Amount",
+            "description": "General \"Supplement Amount\" field to define total supplement amount output for a specific supplement.",
+            "dataType": "number-input",
+            "validationCriteria": "0",
+            "validationType": ">=",
+            "childFields": []
+          }
+        ]
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "4ddccb30-ac0e-40ba-893c-114c519a851e",
+            "field": "familyUnitInPay",
+            "name": "Family Unit In Pay"
+          },
+          {
+            "id": "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa",
+            "field": "isEmploymentConfirmed",
+            "name": "The recipient must have secured a job that will help the family leave assistance."
+          },
+          {
+            "id": "cfb3e5c2-88e3-4a87-827b-812a45d71647",
+            "field": "isAlternateFundingAvailable",
+            "name": "isAlternateFundingAvailable"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "41305dbd-e6ba-45e8-bac0-1aac59eeac1e",
+            "name": "Is Eligible",
+            "field": "isEligible"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "97736011-58d7-45ae-8710-bca53bd82335",
+            "4ddccb30-ac0e-40ba-893c-114c519a851e": "true",
+            "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa": "true",
+            "cfb3e5c2-88e3-4a87-827b-812a45d71647": "false",
+            "41305dbd-e6ba-45e8-bac0-1aac59eeac1e": "true"
+          },
+          {
+            "_id": "109b1899-4960-47a2-88f4-cb47e8e90aff",
+            "4ddccb30-ac0e-40ba-893c-114c519a851e": "",
+            "7527bae4-2469-4b5b-86e9-b1f69a0a9aaa": "",
+            "cfb3e5c2-88e3-4a87-827b-812a45d71647": "",
+            "41305dbd-e6ba-45e8-bac0-1aac59eeac1e": "false"
+          }
+        ]
+      },
+      "id": "1e4a0ca0-180b-4b85-808c-4e482919dc91",
+      "name": "Eligibility",
+      "position": {
+        "x": 115,
+        "y": 60
+      }
+    },
+    {
+      "type": "decisionTableNode",
+      "content": {
+        "hitPolicy": "first",
+        "inputs": [
+          {
+            "id": "74ee8265-5a5e-49c6-a8bb-fcbe5363acb8",
+            "name": "Value of eligible items for supplement",
+            "field": "eligibleItemCosts"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "998669fa-1288-4789-a4e9-15d869c88aeb",
+            "field": "isEligible",
+            "name": "Is Eligible"
+          },
+          {
+            "id": "a5ddf22a-68dd-42c6-a961-37860f8a4643",
+            "name": "Supplement Amount",
+            "field": "supplementAmount"
+          }
+        ],
+        "rules": [
+          {
+            "_id": "cce481a6-d2e3-4055-9140-40fc821614ce",
+            "74ee8265-5a5e-49c6-a8bb-fcbe5363acb8": "",
+            "998669fa-1288-4789-a4e9-15d869c88aeb": "true",
+            "a5ddf22a-68dd-42c6-a961-37860f8a4643": "min([eligibleItemCosts,1000])"
+          }
+        ]
+      },
+      "id": "456ca34e-231c-4913-b48c-02974c96b301",
+      "name": "Supplement Calculation",
+      "position": {
+        "x": 505,
+        "y": 65
+      }
+    },
+    {
+      "type": "customNode",
+      "content": {
+        "kind": "noteNode",
+        "config": {
+          "value": "Rule currently functions with a limit of $1000, however EAWs need approval over $250. Also not factored in is if they have previous requested an amount and are requesting the balance. "
+        }
+      },
+      "id": "81e2887e-3e13-4865-9f49-12f621ae7b3a",
+      "name": "Calc Comments",
+      "position": {
+        "x": 515,
+        "y": -125
+      }
+    },
+    {
+      "type": "switchNode",
+      "content": {
+        "hitPolicy": "first",
+        "statements": [
+          {
+            "id": "3d4448f5-d1a0-49e3-8b45-01d608b74694",
+            "condition": "isEligible == true",
+            "isDefault": false
+          },
+          {
+            "id": "962580e8-4888-4e80-93b1-84c7bb2a9016",
+            "condition": "isEligible == false",
+            "isDefault": false
+          }
+        ]
+      },
+      "id": "ea3a618b-594e-4b2d-964f-5d4a568ef56e",
+      "name": "isEligible",
+      "position": {
+        "x": 115,
+        "y": 210
+      }
+    },
+    {
+      "type": "expressionNode",
+      "content": {
+        "expressions": [
+          {
+            "id": "f707c0d6-d430-426e-bad9-42132e4ee79f",
+            "key": "isEligible",
+            "value": "isEligible"
+          }
+        ]
+      },
+      "id": "d4a30dc9-a355-47c5-849b-e7d1df1673c1",
+      "name": "Ineligible",
+      "position": {
+        "x": 500,
+        "y": 315
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "26713b15-d556-47ea-b38c-f0e256bebb9b",
+      "sourceId": "5868caf7-1033-4c63-b96b-b6fe15b6f506",
+      "type": "edge",
+      "targetId": "1e4a0ca0-180b-4b85-808c-4e482919dc91"
+    },
+    {
+      "id": "f2fe0aa0-3496-4540-b6a1-d9d55889a597",
+      "sourceId": "456ca34e-231c-4913-b48c-02974c96b301",
+      "type": "edge",
+      "targetId": "7211a960-eb4c-481a-86ba-225492de83b7"
+    },
+    {
+      "id": "48579b89-ee3f-428c-8df0-db18599f44d7",
+      "sourceId": "ea3a618b-594e-4b2d-964f-5d4a568ef56e",
+      "type": "edge",
+      "targetId": "456ca34e-231c-4913-b48c-02974c96b301",
+      "sourceHandle": "3d4448f5-d1a0-49e3-8b45-01d608b74694"
+    },
+    {
+      "id": "f57d6587-917a-4d58-9c3b-e63b948c7533",
+      "sourceId": "1e4a0ca0-180b-4b85-808c-4e482919dc91",
+      "type": "edge",
+      "targetId": "ea3a618b-594e-4b2d-964f-5d4a568ef56e"
+    },
+    {
+      "id": "3d9c090a-0874-4eec-8f0e-e5cf86aebd35",
+      "sourceId": "ea3a618b-594e-4b2d-964f-5d4a568ef56e",
+      "type": "edge",
+      "targetId": "d4a30dc9-a355-47c5-849b-e7d1df1673c1",
+      "sourceHandle": "962580e8-4888-4e80-93b1-84c7bb2a9016"
+    },
+    {
+      "id": "7cbe3523-6cbc-4494-8c75-843bd42e39bb",
+      "sourceId": "5868caf7-1033-4c63-b96b-b6fe15b6f506",
+      "type": "edge",
+      "targetId": "ea3a618b-594e-4b2d-964f-5d4a568ef56e"
+    },
+    {
+      "id": "5f91f970-7e0f-4479-afe5-358a9668fa28",
+      "sourceId": "d4a30dc9-a355-47c5-849b-e7d1df1673c1",
+      "type": "edge",
+      "targetId": "7211a960-eb4c-481a-86ba-225492de83b7"
+    }
+  ]
+}
